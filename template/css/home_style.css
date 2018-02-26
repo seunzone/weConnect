@@ -163,25 +163,25 @@ body {
 }
 
 .btn-lg {
-  background: #28a745;
-  border-color: #28a745;
+  background: #B71C1C;
+  border-color: #B71C1C;
   color: white;
 }
 
 .btn-lg:hover {
   background: white;
   border-color: white;
-  color: #28a745;
+  color: #B71C1C;
 }
 body * {
     font-family: 'HKGroteskRegular', sans-serif, Helvetica, Arial;
 }
 
 .login {
-    background-color: #28a745 !important;
+    background-color: #1A237E !important;
     width: 120px;
     height: 37px;
-    text-decoration-color: #28a745;
+    text-decoration-color: #1A237E;
     border-radius: 40px;
     color: #ffffff;
     -webkit-appearance: none;
@@ -192,7 +192,7 @@ body * {
     height: 37px;
     text-decoration-color: #ffffff;
     border-radius: 40px;
-    color: #28a745;
+    color: #1A237E;
     -webkit-appearance: none;
 }
 .input {

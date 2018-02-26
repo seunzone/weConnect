@@ -1,0 +1,83 @@
+.landing-banner {
+    width: 100%;
+    min-height: 550px;
+    background: linear-gradient(to bottom, rgba(0, 16, 96, 0.3), rgba(0, 16, 96, 0.3)), url("../img/wk4.png") center bottom;
+    position: relative; }
+  @media(min-width: 1360px){
+      .landing-banner{
+          background-size: cover;
+      }
+  }
+  @media (max-width: 47.5em) {
+    .landing-banner {
+      background-size: cover;
+      min-height: 700px; } }
+  
+  .banner-menu {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 4rem; }
+  .banner-menu .banner-logo {
+    align-items: center; }
+  .banner-menu .banner-logo a {
+    margin: 0;
+    text-decoration: none;
+    font-family: 'Tangerine', cursive;
+    font-size: 2.4rem;
+    color: white; }
+  .banner-menu .start-here a {
+    margin: 0;
+    box-shadow: none; }
+  .banner-menu .start-here a:hover {
+    color: whitesmoke; }
+  @media (max-width: 25em) {
+    .banner-menu {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; }
+    .banner-menu .banner-logo {
+      margin-bottom: 1rem; } }
+  
+  .banner-content {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 70%;
+    margin: 0 15%;
+    padding: 8rem 0; }
+  .banner-content .banner-title {
+    color: whitesmoke;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.9rem; }
+  .banner-content p {
+    color: whitesmoke;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 1rem 0; }
+  @media (min-width: 760px) and (max-width: 860px) {
+    .banner-content {
+      width: 88%;
+      margin: 0 6%; } }
+  @media (max-width: 25em) {
+    .banner-content {
+      width: 94%;
+      margin: 0 3%; } }
+
+    .img-zoom {
+        position: relative;
+        overflow: hidden;
+    }
+    .img-zoom:hover img {
+        transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+    .img-zoom img {
+        transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+    }

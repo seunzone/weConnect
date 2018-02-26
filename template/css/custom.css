@@ -1,7 +1,7 @@
 .landing-banner {
     width: 100%;
     min-height: 550px;
-    background: linear-gradient(to bottom, rgba(0, 16, 96, 0.3), rgba(0, 16, 96, 0.3)), url("../img/wk4.png") center bottom;
+    background: linear-gradient(to bottom, rgba(0, 16, 96, 0.3), rgba(0, 16, 96, 0.3)), url("../img/banner.png") center bottom;
     position: relative; }
   @media(min-width: 1360px){
       .landing-banner{

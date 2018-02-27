@@ -16,71 +16,117 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
     crossorigin="anonymous">
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/hk-grotesk" type="text/css" />
+  <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" type="text/css"
+  />
+  <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    type="text/css" />
 
   <!-- Custom styles for this template -->
-  <link href="css/homepage.css" rel="stylesheet">
-  <link href="css/home_style.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
 
   <!-- Link to favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
-  <div class="site-wrapper">
-    <video src="videos/vid.mp4" playsinline muted autoplay loop></video>
-    <div class="site-wrapper-inner">
-      <div class="cover-container">
-        <form>
-          <header class="masthead clearfix">
-            <div class="inner">
-              <div class="masthead-brand">
-                <a href="index.html">
-                  <img src="img/logo.png">
-                </a>
-              </div>
-              <nav class="nav nav-masthead">
-                <input type="text" class="input" placeholder="username"> &nbsp;&nbsp;
-                <input type="password" class="input" placeholder="Password"> &nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Sign In" class="btn login">
-              </nav>
-            </div>
-          </header>
-        </form>
 
-        <main role="main" class="inner cover">
-          <br>
+  <!-- Navbar Starts Here -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.png" class="navbar-logo-img mr-2" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="signin.html" class="nav-link btn-primary text-white">
+            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In
+          </a>
+        </li> &nbsp;&nbsp;
+        <li class="nav-item mr-3">
+          <a class="nav-link btn-danger text-white" href="signup.html">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+  <!-- The navigation bar ending -->
+
+  <!-- The Jumbotron Area -->
+  <div id="jumbotron" class="jumbotron text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <h1 class="display-3 mb-5">
+    
+            <img src="img/logo.png" class="jumbotron-logo-img mr-2" alt="">
+          </h1>
           <h1 class="cover-heading"></h1>
-          <hr>
-          <p class="lead">WeConnect provides a platform that brings businesses and individuals together
-          </p>
-          <p class="lead">We create awareness for your business and let people review them.
-          </p>
+          <br>
           <p class="lead">
-            <a href="signup.html" class="btn btn-lg btn-secondary">Sign up Now</a>
+            <a href="feeds.html" class="btn btn-success btn-lg">View Catalogue</a>
+            <!-- End of the home button -->
           </p>
-          <hr>
-          <p class="lead">
-            <a href="feeds.html">See Business Catalogue</a>
-          </p>
-        </main>
+        </div>
+        <div class="col-lg-4">
+            <div class="card bg-success text-center card-form">
+                <div class="card-body">
+                    <h3>Sign Up</h3>
+                    <h6 class="font-weight-light">Create an account</h6>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-sm" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control form-control-sm" placeholder="email address">
+                        </div>
 
-        <footer class="mastfoot">
-          <div class="inner">
-            <p> &copy; 2018...Designed by
-              <a class="text-white" href="https://github.com/seunzone">Seun</a>
-            </p>
-          </div>
-        </footer>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-sm" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-sm" placeholder=" ConfirmPassword">
+                        </div>
+
+                        <input type="submit" value="Sign Up" class="btn btn-danger btn-block">
+                    </form>
+                    <hr>
+                    <h6>Forgotten your password?
+                        <a class="text-white" href="#">Recover it</a>
+                    </h6>
+                </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
-  <!-- Github Ribbon -->
-  <a href="https://github.com/seunzone/weConnect">
-    <img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67"
-      alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png">
-  </a>
+  <!-- End of the jumbotron area -->
 
-  <!-- Scripts ================================================== -->
+
+
+
+  <!--Begin page footer -->
+  <footer class="mastfoot" align="center">
+    <div class="inner">
+      <p> &copy; 2018...Designed by
+        <a href="https://github.com/seunzone">Seun</a>
+      </p>
+    </div>
+  </footer>
+  <!-- End page footer -->
+
+
+  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

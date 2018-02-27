@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="#">
 
-    <title>Sign Up</title>
+    <title>Sign In</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
@@ -42,7 +42,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a href="signup.html" class="nav-link btn-success text-white">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In
+                        <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up
                     </a>
                 </li>
             </ul>
@@ -50,35 +50,33 @@
     </nav>
     <!-- The navigation bar endss here -->
     <br>
+    <br>
+    <br>
     <!--form goes here-->
     <div class="container my-5">
         <div class="row justify-content-center">
-            <div class="card bg-warning text-center card-form">
-                <div class="card-body">
-                    <h3>Sign Up</h3>
-                    <h6 class="font-weight-light">Create an account</h6>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control form-control-sm" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control form-control-sm" placeholder="email address">
-                        </div>
+            <div class="col-md-4 col-lg-4 col-xs-4">
+                <div class="card bg-warning text-center card-form">
+                    <div class="card-body">
+                        <h3>Sign In</h3>
+                        <h6 class="font-weight-light">Enter your login details</h6>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" placeholder="Username">
+                            </div>
 
-                        <div class="form-group">
-                            <input type="password" class="form-control form-control-sm" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control form-control-sm" placeholder=" ConfirmPassword">
-                        </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-sm" placeholder="Password">
+                            </div>
 
-                        <button class="btn btn-primary btn-block">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</button>
-                    </form>
-                    <hr>
-                    <h6>Forgotten your password?
-                        <a class="text-white" href="#">Recover it</a>
-                    </h6>
+                            <button class="btn btn-danger btn-block">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</button>
+                        </form>
+                        <hr>
+                        <h6>Forgotten your password?
+                            <a class="text-white" href="#">Recover it</a>
+                        </h6>
+                    </div>
                 </div>
             </div>
         </div>

@@ -70,7 +70,7 @@ body {
     .banner-content {
       width: 94%;
       margin: 0 3%; } }
-      
+
       /* Zoom Images */
     .img-zoom {
         position: relative;
@@ -106,3 +106,11 @@ body {
       color: #ffffff;
       font-weight: 700;
   }
+
+  .upload-img {
+    background-color: rgba(0,0,0,.2);
+    height: 190px;
+    padding: 60px;
+    color: rgba(0,0,0,.6);
+    font-weight: bolder;
+}

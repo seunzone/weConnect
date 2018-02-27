@@ -1,3 +1,7 @@
+body {
+  background-image: url('./../img/bg.jpg');
+}
+
 .landing-banner {
     width: 100%;
     min-height: 550px;
@@ -66,7 +70,8 @@
     .banner-content {
       width: 94%;
       margin: 0 3%; } }
-
+      
+      /* Zoom Images */
     .img-zoom {
         position: relative;
         overflow: hidden;
@@ -81,3 +86,23 @@
         -moz-transition: all 0.5s;
         -webkit-transition: all 0.5s;
     }
+
+    .navbar-custom {
+      background-color: #212121;
+      opacity: 0.8;
+  }
+  /* change the brand and text color */
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-text {
+      color: rgba(255,255,255,.8);
+  }
+  /* change the link color */
+  .navbar-custom .navbar-nav .nav-link {
+      color: rgba(255,255,255,.5);
+  }
+  /* change the color of active or hovered links */
+  .navbar-custom .nav-item.active .nav-link,
+  .navbar-custom .nav-item:hover .nav-link {
+      color: #ffffff;
+      font-weight: 700;
+  }

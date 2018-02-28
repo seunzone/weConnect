@@ -1,0 +1,30 @@
+{
+  "name": "weconnect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seunzone/weConnect.git"
+  },
+  "author": "@seunzone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seunzone/weConnect/issues"
+  },
+  "homepage": "https://github.com/seunzone/weConnect#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "volleyball": "^1.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.1"
+  }
+}

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="#">
+
+    <title>Update Profile</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+        crossorigin="anonymous">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/hk-grotesk" type="text/css" />
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" type="text/css"
+    />
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- Link to favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <!-- The navigation bar begins here -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <a class="navbar-brand" href="index.html">
+            <img src="img/logo.png" class="navbar-logo-img mr-2" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-trash-o"></i> Delete Profile</button>
+            </ul>
+        </div>
+    </nav>
+    <!-- End of Nav bar -->
+    <!-- Page body -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <h1 class="text-center my-5 header-color">Update Business Profile</h1>
+        </div>
+        <div class="row justify-content-center">
+
+            <div class="col-lg-10 col-md-10">
+                <div class="card">
+                    <!-- Upload image -->
+                    <div class="upload-img">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <p class="text-center">
+                                    <span class="h2">
+                                        <i class="fa fa-camera" aria-hidden="true"></i>
+                                    </span>
+                                    <br> Click to upload image
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End upload image -->
+                    <hr>
+
+                    <!-- Create form -->
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label>Name:</label>
+                                <input type="text" class="form-control" placeholder="lorem ipsum">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="category">Select Category</label>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>ICT</option>
+                                        <option>Oil Firm</option>
+                                        <option>Corporate Firm</option>
+                                        <option>Agriculture</option>
+                                        <option>Entertainment</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="location">Select Location</label>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Abuja</option>
+                                        <option>Lagos</option>
+                                        <option>Port Harcort</option>
+                                        <option>Benin City</option>
+                                        <option>Ibadan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <label>Details</label>
+                        <textarea placeholder="Lorem Ipsum Dolor" cols="3" rows="3" class="form-control"></textarea>
+                        <hr>
+                        <div class="text-center">
+                            <button class="btn btn-primary">
+                                Update Profile
+                            </button>
+                        </div>
+                    </div>
+                    <!-- End form -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End page body -->
+    <!--Begin page footer -->
+    <footer class="mastfoot" align="center">
+        <div class="inner">
+            <p> &copy; 2018...Designed by
+                <a href="https://github.com/seunzone">Seun</a>
+            </p>
+        </div>
+    </footer>
+    <!-- End page footer -->
+
+    <!-- Delete MODAL -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete your profile?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Agree</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete MODAL ENDS -->
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

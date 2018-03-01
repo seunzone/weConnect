@@ -39,6 +39,29 @@ class Review {
         review: newReview
       });
   }
+  /**
+   *
+   *get review
+   * @param {any} req
+   * @param {any} res
+   * @returns {json}gets review of a business
+   * @memberof Review
+   */
+  getReview(req, res) {
+    for (let i = 0; i < db.reviews.length; i++) {
+      if (db.reviews[i].id === parseInt(req.params.id)) {
+        return res.status(200).json({
+          center: db.reviews[i],
+          message: 'success',
+          error: false
+        });
+      }
+    }
+    res.status(404).json({
+      message: 'Business not found',
+      error: true
+    });
+  }
 }
 
 

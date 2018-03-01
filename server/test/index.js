@@ -125,11 +125,11 @@ describe('API delete Profile', () => {
   });
 });
 
-// Test for reviews
-describe('Test for review', () => {
+// Test for posting reviews
+describe('Test for posting review', () => {
   it('Should return 201 if successful', (done) => {
     chai.request(app)
-      .post('/api/v1/profile/:id/review')
+      .post('/api/v1/profile/review/:id')
       .send({
         reviewer: 'Seun',
         content: 'Just a test content'
@@ -141,13 +141,32 @@ describe('Test for review', () => {
   });
   it('Should return 400 if any empty parameters', (done) => {
     chai.request(app)
-      .post('/api/v1/profile/:id/review')
+      .post('/api/v1/profile/review/:id')
       .send({
         reviewer: '',
         content: 'Just a test content'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+// Test for getting reviews
+describe('GET Reviews', () => {
+  it('Should return 200 for getting reviews', (done) => {
+    chai.request(app)
+      .get('/api/v1/profile/review/1')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('Should return 404 for reviews that does not exist', (done) => {
+    chai.request(app)
+      .get('/api/v1/profile/review/50')
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
         done();
       });
   });

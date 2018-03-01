@@ -65,6 +65,27 @@ class Profile {
     }
     return res.status(404).send(`profile with id ${id} not found`);
   }
+  /**
+   * delete business
+   * @param {object} req expres req object
+   * @param {object} res exp res object
+   * @returns {json} json
+   * @memberof Profile
+   */
+  deleteProfile(req, res) {
+    for (let i = 0; i < db.profile.length; i += 1) {
+      if (parseInt(db.profile[i].id, 10) === parseInt(req.params.id, 10)) {
+        db.profile.splice(i, 1);
+        return res.status(200)
+          .json({
+            status: 'success',
+            message: 'Your business detials has been deleted'
+          });
+      }
+    }
+    return res.status(404)
+      .send('Busines not found');
+  }
 }
 
 const profile = new Profile();

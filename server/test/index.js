@@ -48,7 +48,7 @@ describe('POST business', () => {
   });
 });
 
-// Test for posting a business without a business name
+// Test for posting a business with any field missing
 describe('POST business', () => {
   it('Should return 400 for post without event title', (done) => {
     chai.request(app)
@@ -66,4 +66,61 @@ describe('POST business', () => {
       });
   });
 });
+// Test for updating a business
+describe('API to update business', () => {
+  it('Should return 200 if successful', (done) => {
+    chai.request(app)
+      .put('/api/v1/profile/1')
+      .send({
+        id: 1,
+        name: 'Andela Naija',
+        details: 'Andela na the place o, if you are somewhere else, you are wrong. Copy that?',
+        location: 'Lagos',
+        category: 'ICT'
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body).to.have.property('status').equal('success');
+        done();
+      });
+  });
+});
 
+// Test for updating a business with any field missing
+describe('API to update business', () => {
+  it('Should return 200 if successful', (done) => {
+    chai.request(app)
+      .put('/api/v1/profile/1')
+      .send({
+        id: 1,
+        name: '',
+        details: 'Andela na the place o, if you are somewhere else, you are wrong. Copy that?',
+        location: 'Lagos',
+        category: 'ICT'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+
+// Test to delete a business Profile
+describe('API delete Profile', () => {
+  it('Should return 200 for succesful delete request ', (done) => {
+    chai.request(app)
+      .delete('/api/v1/profile/1')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it('Should return 404 if parameter is not found', (done) => {
+    chai.request(app)
+      .delete('/api/v1/delete/')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+});

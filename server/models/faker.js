@@ -23,7 +23,7 @@ db.profile = [
     name: 'Chocolate City',
     details: 'The ideal music store of all times',
     location: 'Lagos',
-    category: 'Entatainment'
+    category: 'Entertainment'
   }
 ];
 

@@ -1,7 +1,5 @@
 const db = [];
 
-db.reviews = [];
-
 
 db.profile = [
   {
@@ -27,5 +25,22 @@ db.profile = [
   }
 ];
 
+db.reviews = [
+  {
+    id: 1,
+    reviewer: 'Seun',
+    content: 'this is a review'
+  },
+  {
+    id: 2,
+    reviewer: 'Tobi',
+    content: 'lorem ipaum dolor'
+  },
+  {
+    id: 3,
+    reviewer: 'Lolu',
+    content: 'Another one'
+  }
+];
 
 export default db;

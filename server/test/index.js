@@ -124,3 +124,31 @@ describe('API delete Profile', () => {
       });
   });
 });
+
+// Test for reviews
+describe('Test for review', () => {
+  it('Should return 201 if successful', (done) => {
+    chai.request(app)
+      .post('/api/v1/profile/:id/review')
+      .send({
+        reviewer: 'Seun',
+        content: 'Just a test content'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        done();
+      });
+  });
+  it('Should return 400 if any empty parameters', (done) => {
+    chai.request(app)
+      .post('/api/v1/profile/:id/review')
+      .send({
+        reviewer: '',
+        content: 'Just a test content'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});

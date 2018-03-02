@@ -23,15 +23,17 @@
   "homepage": "https://github.com/seunzone/weConnect#readme",
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-istanbul": "^0.12.2",
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "eslint": "^4.18.1",
     "express": "^4.16.2",
     "validator": "^9.4.1",
-    "volleyball": "^1.4.1",
-    "chai-http": "^3.0.0",
-    "chai": "^4.1.2"
+    "volleyball": "^1.4.1"
   },
   "devDependencies": {
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",

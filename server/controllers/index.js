@@ -86,6 +86,43 @@ class Profile {
     return res.status(404)
       .send('Busines not found');
   }
+  /**
+   *
+   * get details of all businesses
+   * @param {any} req
+   * @param {any} res
+   * @returns {json}gets all businesses
+   * @memberof Profile
+   */
+  getAllProfile(req, res) {
+    res.status(200).json({
+      profiles: db.profile,
+      status: 'success'
+    });
+  }
+  /**
+   *
+   *get business details
+   * @param {any} req
+   * @param {any} res
+   * @returns {json}gets single
+   * @memberof centers
+   */
+  getProfileById(req, res) {
+    for (let i = 0; i < db.profile.length; i++) {
+      if (db.profile[i].id === parseInt(req.params.id)) {
+        return res.status(200).json({
+          profileId: db.profile[i],
+          message: 'success',
+          error: false
+        });
+      }
+    }
+    res.status(404).json({
+      message: 'Business not found',
+      error: true
+    });
+  }
 }
 
 const profile = new Profile();

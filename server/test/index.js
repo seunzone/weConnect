@@ -171,3 +171,35 @@ describe('GET Reviews', () => {
       });
   });
 });
+
+// Test searching for  allbusiness
+describe('API to search all business', () => {
+  it('Should return 200 if successful', (done) => {
+    chai.request(app)
+      .get('/api/v1/profile')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+
+// Test searching for getting an individual business
+describe('API to search a business', () => {
+  it('Should return 200 if successful', (done) => {
+    chai.request(app)
+      .get('/api/v1/profile/2')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it('Should return 404 if business is not found', (done) => {
+    chai.request(app)
+      .get('/api/v1/profile/50')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+});

@@ -14,6 +14,8 @@ const routes = (app) => {
   app.delete('/api/v1/profile/:id', Profile.deleteProfile); // Deletes a profile
   app.post('/api/v1/profile/review/:id', Review.addReview); // Post Review for a business
   app.get('/api/v1/profile/review/:id', Review.getReview); // See review for a business
+  app.get('/api/v1/profile', Profile.getAllProfile); // See review for a business
+  app.get('/api/v1/profile/:id', Profile.getProfileById); // See review for a individual business
 };
 
 export default routes;

@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 routes(app);
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to my cool API',
+app.get('*', (req, res) => res.status(404).send({
+  message: 'A beast ate this page, durh',
 }));
 
 app.listen(port);

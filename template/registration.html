@@ -10,119 +10,129 @@
   <meta name="author" content="">
   <link rel="icon" href="#">
 
-  <title>Register Your business</title>
+  <title>Register Business</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
     crossorigin="anonymous">
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/hk-grotesk" type="text/css" />
+  <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" type="text/css"
+  />
+  <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    type="text/css" />
 
   <!-- Custom styles for this template -->
-  <link href="css/homepage.css" rel="stylesheet">
-  <link href="css/home_style.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+
   <!-- Link to favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
-  <div class="site-wrapper">
-    <video src="videos/vid.mp4" playsinline muted autoplay loop></video>
+  <!-- The navigation bar begins here -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.png" class="navbar-logo-img mr-2" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="signup.html" class="nav-link btn-danger text-white">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- The navigation bar endss here -->
+  <hr>
 
-    <div class="site-wrapper-inner">
-
-      <div class="cover-container">
-        <form>
-          <header class="masthead clearfix">
-            <div class="inner">
-              <a href="index.html">
-                <img src="img/logo.png">
-              </a>
-            </div>
-          </header>
-        </form>
-
-        <div class="row">
-
-          <div class="col-md-12">
-            <p class="lead">Welcome to weConnect
-              <br> Thanks for signing up...
-            </p>
-            <p class="lead">We're glad to have you on board
-            </p>
-            <p class="lead">
-              <a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#registerModal">Register My Business</a>
-            </p>
-          </div>
-
-        </div>
-
-        <footer class="mastfoot">
-          <div class="inner">
-            <p> &copy; 2018...
-              <a class="text-white" href="https://github.com/seunzone">Seun</a>
-            </p>
-          </div>
-        </footer>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <h1 class="cover-heading"></h1>
+      <br>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 justify-content-center">
+        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <br> Vero nemo velit sunt tenetur neque ad praesentium ab aperiam aliquid minus!</p>
+        <br>
+        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <br> Vero nemo velit sunt tenetur neque ad praesentium ab aperiam aliquid minus!</p>
+          <br><br>
+          <a href="#" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#registerModal">Register My Business</a>
       </div>
-
     </div>
   </div>
 
+
+  <!--Begin page footer -->
+  <footer class="mastfoot" align="center">
+    <div class="inner">
+      <p> &copy; 2018...Designed by
+        <a href="https://github.com/seunzone">Seun</a>
+      </p>
+    </div>
+  </footer>
+  <!-- End page footer -->
 
   <!-- Register MODAL -->
   <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 style="color:black;" class="modal-title" id="exampleModalLabel">Register my Business</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="Name" style="color:black;">Name of Business</label>
-              <input type="name" class="form-control" placeholder="Business Name">
-            </div>
-            <div class="form-group upload-btn-wrapper">
-              <label style="color:black;" for="image">Upload Image</label>
-              <input type="file" name="myfile" />
-            </div>
-            <div class="form-group">
-              <label style="color:black;" for="category">Select Category</label>
-              <select class="form-control">
-                <option>ICT</option>
-                <option>Oil Firm</option>
-                <option>Corporate Firm</option>
-                <option>Agriculture</option>
-                <option>Entertainment</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label style="color:black;" for="location">Select location</label>
-              <select class="form-control">
-                <option>Abuja</option>
-                <option>Lagos</option>
-                <option>Port Harcort</option>
-                <option>Benin City</option>
-                <option>Ibadan</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label style="color:black;" for="details">Business Description:</label>
-              <textarea class="form-control" placeholder="Type in here..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-success btn-block">Register My Business Now</button>
-          </form>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 style="color:black;" class="modal-title" id="exampleModalLabel">Register my Business</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="Name" style="color:black;">Name of Business</label>
+                <input type="name" class="form-control" placeholder="Business Name">
+              </div>
+              <div class="form-group upload-btn-wrapper">
+                <label style="color:black;" for="image">Upload Image</label>
+                <input type="file" name="myfile" />
+              </div>
+              <div class="form-group">
+                <label style="color:black;" for="category">Select Category</label>
+                <select class="form-control">
+                  <option>ICT</option>
+                  <option>Oil Firm</option>
+                  <option>Corporate Firm</option>
+                  <option>Agriculture</option>
+                  <option>Entertainment</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label style="color:black;" for="location">Select location</label>
+                <select class="form-control">
+                  <option>Abuja</option>
+                  <option>Lagos</option>
+                  <option>Port Harcort</option>
+                  <option>Benin City</option>
+                  <option>Ibadan</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label style="color:black;" for="details">Business Description:</label>
+                <textarea class="form-control" placeholder="Type in here..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-danger btn-block">Register My Business Now</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Register modal ends here -->
+    <!-- Register modal ends here -->
 
-  <!-- JavaScripts
-    ================================================== -->
+  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

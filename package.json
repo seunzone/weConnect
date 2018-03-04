@@ -2,7 +2,7 @@
   "name": "weconnect",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
     "build": "babel server -d server/dist --copy-files --ignore server/dist",

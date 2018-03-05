@@ -2,6 +2,7 @@
 import Profile from '../controllers';
 import Review from '../controllers/reviews';
 import Validator from '../validators';
+import Auth from '../controllers/user';
 
 const routes = (app) => {
   app.get('/', (req, res) => {
@@ -16,6 +17,8 @@ const routes = (app) => {
   app.get('/api/v1/profile/review/:id', Review.getReview); // See review for a business
   app.get('/api/v1/profile', Profile.getAllProfile); // See profile of businesses
   app.get('/api/v1/profile/:id', Profile.getProfileById); // See profile for a individual business
+  app.post('/api/v1/signup', Auth.signUp); // Signup a new user
+  app.post('/api/v1/login', Auth.login); // log in registered user
 };
 
 export default routes;

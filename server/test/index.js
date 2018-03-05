@@ -211,3 +211,59 @@ describe('API to search a business', () => {
       });
   });
 });
+
+// Test Signing up a user
+describe('Create new user', () => {
+  it('Should return 400 for missing fields', (done) => {
+    chai.request(app)
+      .post('/api/v1/signup')
+      .send({
+        username: 'seun',
+        password: ''
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+  it('Should return 200 for success', (done) => {
+    chai.request(app)
+      .post('/api/v1/signup')
+      .send({
+        username: 'seun',
+        password: 'boom'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+
+// Test Signing in a user
+describe('Login user', () => {
+  it('Should return 400 for wrong inputs', (done) => {
+    chai.request(app)
+      .post('/api/v1/login')
+      .send({
+        username: 'wrong',
+        password: 'wrong'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+  it('Should return 200 for success in logging in', (done) => {
+    chai.request(app)
+      .post('/api/v1/login')
+      .send({
+        username: 'seun',
+        password: 'boom'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});

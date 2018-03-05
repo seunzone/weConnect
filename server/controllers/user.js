@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import user from '../models/userfaker';
 
 /**
@@ -15,7 +16,8 @@ class Auth {
      * @memberof Auth
      */
   signUp(req, res) {
-    const { username, password } = req.body;
+    const { username } = req.body;
+    const password = bcrypt.hashSync(req.body.password, 10);
     if (!username || !password) {
       return res.status(400).json({
         message: 'All fields must be filled',

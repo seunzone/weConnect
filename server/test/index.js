@@ -218,8 +218,8 @@ describe('Create new user', () => {
     chai.request(app)
       .post('/api/v1/signup')
       .send({
-        username: 'seun',
-        password: ''
+        username: '',
+        password: 'password'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);

@@ -49,7 +49,7 @@ class Review {
    */
   getReview(req, res) {
     for (let i = 0; i < db.reviews.length; i += 1) {
-      if (db.reviews[i].id === parseInt(req.params.id)) {
+      if (db.reviews[i].id === parseInt(req.params.id, 10)) {
         return res.status(200).json({
           center: db.reviews[i],
           message: 'success',

@@ -106,7 +106,7 @@ class Profile {
    * @param {any} req
    * @param {any} res
    * @returns {json}gets single
-   * @memberof centers
+   * @memberof profile
    */
   getProfileById(req, res) {
     for (let i = 0; i < db.profile.length; i++) {
@@ -128,3 +128,4 @@ class Profile {
 const profile = new Profile();
 
 export default profile;
+

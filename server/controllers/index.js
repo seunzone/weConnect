@@ -106,11 +106,11 @@ class Profile {
    * @param {any} req
    * @param {any} res
    * @returns {json}gets single
-   * @memberof centers
+   * @memberof profile
    */
   getProfileById(req, res) {
-    for (let i = 0; i < db.profile.length; i++) {
-      if (db.profile[i].id === parseInt(req.params.id)) {
+    for (let i = 0; i < db.profile.length; i += 1) {
+      if (db.profile[i].id === parseInt(req.params.id, 10)) {
         return res.status(200).json({
           profileId: db.profile[i],
           message: 'success',
@@ -128,3 +128,4 @@ class Profile {
 const profile = new Profile();
 
 export default profile;
+

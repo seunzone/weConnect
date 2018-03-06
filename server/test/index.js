@@ -39,9 +39,9 @@ describe('Test API', () => {
 
 // Test for posting a business
 describe('POST business', () => {
-  it('Should return 400 for post without event title', (done) => {
+  it('Should return 200 for a sucessful post', (done) => {
     chai.request(app)
-      .post('/api/v1/profile')
+      .post('/api/v1/businesses')
       .send({
         id: 6,
         name: 'Andela Nigeria',
@@ -60,7 +60,7 @@ describe('POST business', () => {
 describe('POST business', () => {
   it('Should return 400 for post without event title', (done) => {
     chai.request(app)
-      .post('/api/v1/profile')
+      .post('/api/v1/businesses')
       .send({
         id: 6,
         name: '',
@@ -78,7 +78,7 @@ describe('POST business', () => {
 describe('API to update business', () => {
   it('Should return 200 if successful', (done) => {
     chai.request(app)
-      .put('/api/v1/profile/1')
+      .put('/api/v1/businesses/1')
       .send({
         id: 1,
         name: 'Andela Naija',
@@ -98,7 +98,7 @@ describe('API to update business', () => {
 describe('API to update business', () => {
   it('Should return 200 if successful', (done) => {
     chai.request(app)
-      .put('/api/v1/profile/1')
+      .put('/api/v1/businesses/1')
       .send({
         id: 1,
         name: '',
@@ -117,7 +117,7 @@ describe('API to update business', () => {
 describe('API delete Profile', () => {
   it('Should return 200 for succesful delete request ', (done) => {
     chai.request(app)
-      .delete('/api/v1/profile/1')
+      .delete('/api/v1/businesses/1')
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();
@@ -125,7 +125,7 @@ describe('API delete Profile', () => {
   });
   it('Should return 404 if parameter is not found', (done) => {
     chai.request(app)
-      .delete('/api/v1/delete/')
+      .delete('/api/v1/businesses/50')
       .end((err, res) => {
         expect(res).to.have.status(404);
         done();
@@ -137,7 +137,7 @@ describe('API delete Profile', () => {
 describe('Test for posting review', () => {
   it('Should return 201 if successful', (done) => {
     chai.request(app)
-      .post('/api/v1/profile/review/:id')
+      .post('/api/v1/businesses/reviews/:id')
       .send({
         reviewer: 'Seun',
         content: 'Just a test content'
@@ -149,7 +149,7 @@ describe('Test for posting review', () => {
   });
   it('Should return 400 if any empty parameters', (done) => {
     chai.request(app)
-      .post('/api/v1/profile/review/:id')
+      .post('/api/v1/businesses/reviews/:id')
       .send({
         reviewer: '',
         content: 'Just a test content'
@@ -164,7 +164,7 @@ describe('Test for posting review', () => {
 describe('GET Reviews', () => {
   it('Should return 200 for getting reviews', (done) => {
     chai.request(app)
-      .get('/api/v1/profile/review/1')
+      .get('/api/v1/businesses/reviews/1')
       .end((err, res) => {
         expect(res.status).to.equal(200);
         done();
@@ -172,7 +172,7 @@ describe('GET Reviews', () => {
   });
   it('Should return 404 for reviews that does not exist', (done) => {
     chai.request(app)
-      .get('/api/v1/profile/review/50')
+      .get('/api/v1/businesses/review/50')
       .end((err, res) => {
         expect(res.status).to.equal(404);
         done();
@@ -184,7 +184,7 @@ describe('GET Reviews', () => {
 describe('API to search all business', () => {
   it('Should return 200 if successful', (done) => {
     chai.request(app)
-      .get('/api/v1/profile')
+      .get('/api/v1/businesses')
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();
@@ -196,7 +196,7 @@ describe('API to search all business', () => {
 describe('API to search a business', () => {
   it('Should return 200 if successful', (done) => {
     chai.request(app)
-      .get('/api/v1/profile/2')
+      .get('/api/v1/businesses/2')
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();
@@ -204,7 +204,7 @@ describe('API to search a business', () => {
   });
   it('Should return 404 if business is not found', (done) => {
     chai.request(app)
-      .get('/api/v1/profile/50')
+      .get('/api/v1/businesses/50')
       .end((err, res) => {
         expect(res).to.have.status(404);
         done();
@@ -216,7 +216,7 @@ describe('API to search a business', () => {
 describe('Create new user', () => {
   it('Should return 400 for missing fields', (done) => {
     chai.request(app)
-      .post('/api/v1/signup')
+      .post('/api/v1/auth/signup')
       .send({
         username: '',
         password: 'password'
@@ -228,7 +228,7 @@ describe('Create new user', () => {
   });
   it('Should return 200 for success', (done) => {
     chai.request(app)
-      .post('/api/v1/signup')
+      .post('/api/v1/auth/signup')
       .send({
         username: 'seun',
         password: 'boom'
@@ -242,21 +242,21 @@ describe('Create new user', () => {
 
 // Test Signing in a user
 describe('Login user', () => {
-  it('Should return 400 for wrong inputs', (done) => {
+  it('Should return 401 for wrong inputs', (done) => {
     chai.request(app)
-      .post('/api/v1/login')
+      .post('/api/v1/auth/login')
       .send({
         username: 'wrong',
         password: 'wrong'
       })
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(401);
         done();
       });
   });
   it('Should return 200 for success in logging in', (done) => {
     chai.request(app)
-      .post('/api/v1/login')
+      .post('/api/v1/auth/login')
       .send({
         username: 'seun',
         password: 'boom'
@@ -267,3 +267,23 @@ describe('Login user', () => {
       });
   });
 });
+// Test for Sorting user search
+describe('GET Reviews', () => {
+  it('Should return 200 for searching by location', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses?location=abuja')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('Should return 200 for searching by category', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses?category=ict')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+});
+

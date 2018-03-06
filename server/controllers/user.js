@@ -48,7 +48,7 @@ class Auth {
         });
       }
     });
-    res.status(400).json({
+    res.status(401).json({
       message: 'Error logining in',
       error: true
     });

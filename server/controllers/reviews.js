@@ -48,8 +48,8 @@ class Review {
    * @memberof Review
    */
   getReview(req, res) {
-    for (let i = 0; i < db.reviews.length; i++) {
-      if (db.reviews[i].id === parseInt(req.params.id)) {
+    for (let i = 0; i < db.reviews.length; i += 1) {
+      if (db.reviews[i].id === parseInt(req.params.id, 10)) {
         return res.status(200).json({
           center: db.reviews[i],
           message: 'success',

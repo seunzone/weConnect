@@ -11,6 +11,7 @@ class Validator {
      *
      * @param {any} req
      * @param {any} res
+     * @param {any} next
      * @returns {json} validate business registeration
      * @memberof Validator
      */

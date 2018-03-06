@@ -39,7 +39,7 @@ describe('Test API', () => {
 
 // Test for posting a business
 describe('POST business', () => {
-  it('Should return 400 for post without event title', (done) => {
+  it('Should return 200 for a sucessful post', (done) => {
     chai.request(app)
       .post('/api/v1/businesses')
       .send({
@@ -267,3 +267,23 @@ describe('Login user', () => {
       });
   });
 });
+// Test for Sorting user search
+describe('GET Reviews', () => {
+  it('Should return 200 for searching by location', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses?location=abuja')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('Should return 200 for searching by category', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses?category=ict')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+});
+

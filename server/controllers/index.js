@@ -109,7 +109,7 @@ class Profile {
    * @memberof profile
    */
   getProfileById(req, res) {
-    for (let i = 0; i < db.profile.length; i++) {
+    for (let i = 0; i < db.profile.length; i += 1) {
       if (db.profile[i].id === parseInt(req.params.id)) {
         return res.status(200).json({
           profileId: db.profile[i],

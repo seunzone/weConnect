@@ -22,12 +22,12 @@
 </ul>
 
 ### Routes
-- **POST** http://localhost:3000/api/v1/profile - Adds a new Business
-- **PUT** http://localhost:3000/api/v1/profile/:id - Modifies a business
-- **DELETE** http://localhost:3000/api/v1/profile/:id - Deletes a business
-- **POST** http://localhost:3000/api/v1/profile/review/:id - Adds review for a business
-- **GET** http://localhost:3000/api/v1/profile/review/:id - Gets review for a business
-- **GET** http://localhost:3000/api/v1/profile - Gets all businesses
-- **GET** http://localhost:3000/api/v1/profile/:id - Gets details of a single business
-- **POST** http://localhost:3000/api/v1/signup - Creates a new user
-- **POST** http://localhost:3000/api/v1/login - Signs in a new user
+- **POST** http://localhost:3000/api/v1/businesses - Adds a new Business
+- **PUT** http://localhost:3000/api/v1/businesses/:id - Modifies a business
+- **DELETE** http://localhost:3000/api/v1/businesses/:id - Deletes a business
+- **POST** http://localhost:3000/api/v1/businesses/review/:id - Adds review for a business
+- **GET** http://localhost:3000/api/v1/businesses/review/:id - Gets review for a business
+- **GET** http://localhost:3000/api/v1/businesses - Gets all businesses
+- **GET** http://localhost:3000/api/v1/businesses/:id - Gets details of a single business
+- **POST** http://localhost:3000/api/v1/auth/signup - Creates a new user
+- **POST** http://localhost:3000/api/v1/auth/login - Signs in a new user

@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": null,
+    "database": "wecon",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": null,
+    "database": "wecon",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

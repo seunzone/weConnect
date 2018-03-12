@@ -1,69 +1,68 @@
-import validator from 'validator';
+import { isEmpty } from 'lodash';
+import Validator from 'validator';
 
-/**
- *
- *
- * @class Validator
- */
-class Validator {
-  /**
-     *
-     *
-     * @param {any} req
-     * @param {any} res
-     * @param {any} next
-     * @returns {json} validate business registeration
-     * @memberof Validator
-     */
-  addBusinessValidator(req, res, next) {
-    const {
-      name, details, category, location
-    } = req.body;
-    const errors = {};
-    if (name === undefined || details === undefined || category === undefined
-            || location === undefined) {
-      res.status(400)
-        .json({
-          message: 'All or some of the field is/are undefined',
-        });
-    } else {
-      // check for name
-      if (!validator.isEmpty(name)) {
-        if (!validator.isLength(name, { min: 3, max: 50 })) {
-          errors.name = 'Name of business must between 3 to 50 characters';
-        }
-      } else {
-        errors.name = 'Name of business is required';
-      }
 
-      // check for details
-      if (!validator.isEmpty(details)) {
-        if (!validator.isLength(details, { min: 20, max: 500 })) {
-          errors.details = 'Details of business must between 20 to 500 characters';
-        }
-      } else {
-        errors.details = 'Details of business is required';
-      }
+export const validateLogin = (req, res, next) => {
+  const { email, password } = req.body;
+  const error = {};
 
-      // check for category
-      if (validator.isEmpty(category)) {
-        errors.category = 'category is required';
-      }
-
-      // check for location
-      if (validator.isEmpty(location)) {
-        errors.location = 'location is required';
-      }
-
-      if (Object.keys(errors).length !== 0) {
-        return res.status(400)
-          .json(errors);
-      } next();
-    }
+  if (!password) {
+    error.password = 'Password is required';
   }
-}
+
+  if (password && Validator.isEmpty(password.trim() || '')) {
+    error.password = 'Password is required';
+  }
+
+  if (!email) {
+    error.email = 'Email is required';
+  }
+
+  if (email && !Validator.isEmail(email.trim() || '')) {
+    error.email = 'Please provide a valid email address';
+  }
+
+  if (isEmpty(error)) return next();
+  return res.status(400).json({ error });
+};
 
 
-const validate = new Validator();
+export const validateSignup = (req, res, next) => {
+  const {
+    username, email, password, confirmPassword
+  } = req.body;
+  const error = {};
 
-export default validate;
+  if (!username) {
+    error.username = 'Username is required';
+  }
+
+  if (username && Validator.isEmpty(username.trim() || '')) {
+    error.username = 'Username is required';
+  }
+
+  if (!password) {
+    error.password = 'Password is required';
+  }
+
+  if (!confirmPassword) {
+    error.password = 'Please confirm your password';
+  }
+
+  if (Validator.isEmpty(password || '') ||
+    Validator.isEmpty(confirmPassword || '') ||
+    (confirmPassword.trim() !== password.trim())) {
+    error.password = 'Passwords do not match';
+  }
+
+  if (!email) {
+    error.email = 'Email is required';
+  }
+
+  if (email && !Validator.isEmail(email.trim() || '')) {
+    error.email = 'Email address is empty or invalid';
+  }
+
+  if (isEmpty(error)) return next();
+  return res.status(400).json({ error });
+};

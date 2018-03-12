@@ -1,0 +1,12 @@
+anguage: node_js
+node_js:
+- "stable"
+env:
+global:
+ - export NODE_ENV=test
+before_script:
+- npm install
+script:
+- npm test
+- npm run coverage
+after_success: npm run coveralls

@@ -44,13 +44,13 @@
     "nyc": "^11.4.1",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.36.0",
-    "sequelize-cli": "^4.0.0",
-    "validator": "^9.4.1"
+    "sequelize": "^4.19.0",
+    "sequelize-cli": "^3.0.0",
+    "validator": "^9.4.1",
+    "volleyball": "^1.4.1"
   },
   "devDependencies": {
     "nodemon": "^1.17.1",
-    "volleyball": "^1.4.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0"
   }

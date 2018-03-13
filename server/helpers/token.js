@@ -1,8 +1,12 @@
+import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
-const makeToken = ({ id }) => jwt.sign(
-  { id },
-  process.env.MY_SECRET,
+dotenv.config();
+const secret = process.env.MY_SECRET;
+
+const makeToken = ({ payload }) => jwt.sign(
+  { payload },
+  secret,
   { expiresIn: '24h' }
 );
 

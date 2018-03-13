@@ -1,7 +1,11 @@
 import express from 'express';
 import volleyball from 'volleyball';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import routes from './routes';
+
+
+dotenv.config();
 
 // Defining the Port Variable
 const port = process.env.PORT || 3000;

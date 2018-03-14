@@ -8,6 +8,7 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const userSignup = '/api/v1/auth/signup';
+const userLogin = '/api/v1/auth/login';
 // Test Signing up a user
 describe('User signup', () => {
   it('It Should create user with right signup credentials', (done) => {
@@ -124,3 +125,78 @@ describe('User signup', () => {
   });
 });
 
+describe('User login', () => {
+  it('Should login a user with the correct details', (done) => {
+    chai.request(app)
+      .post(userLogin)
+      .send(users[1])
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.foundUser.email).to.equal(users[1].email);
+        expect(res.body).to.have.property('token');
+        expect(res.body.foundUser).to.not.have.property(users[1].password);
+        expect(res.body).to.have.property('token');
+        expect(res.body.token).to.be.a('string');
+        done();
+      });
+  });
+  it('Should not login user without password', (done) => {
+    chai.request(app)
+      .post(userLogin)
+      .send({
+        email: 'test@we.com',
+        password: '',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body.error.password).to.equal('Password is required');
+        done();
+      });
+  });
+  it('Should not login user without email address', (done) => {
+    chai.request(app)
+      .post(userLogin)
+      .send({
+        email: '',
+        password: 'password',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body.error.email).to.equal('Email is required');
+        done();
+      });
+  });
+  it('Should not sign in a user with an incorrect password', (done) => {
+    chai.request(app)
+      .post(userLogin)
+      .send({
+        email: 'test@we.com',
+        password: 'wrongpassword',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body.message)
+          .to.equal('You entered a wrong password');
+        done();
+      });
+  });
+  it('Should not login user with an incorrect email address', (done) => {
+    chai.request(app)
+      .post(userLogin)
+      .send({
+        email: 'wrong@email.com',
+        password: 'test@we.com',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body.message)
+          .to.equal('user does not exist');
+        done();
+      });
+  });
+});

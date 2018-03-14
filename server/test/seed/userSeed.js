@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 
 const users = [{
   id: 1,
@@ -8,8 +7,8 @@ const users = [{
   confirmPassword: 'password'
 }, {
   id: 2,
-  email: 'anotherone@email.com',
-  password: 'somepassword',
+  email: 'test@we.com',
+  password: 'password',
 }];
 
 

@@ -27,23 +27,43 @@ export default class usersController {
     const {
       username, email
     } = req.body;
-
-    return User
-      .create({
-        username,
-        email,
-        password
-      })
-      .then((user) => {
-        const token = makeToken({ user });
-        res.status(201).json({
-          message: 'signup sucessful',
-          token
+    
+    User.findOne({
+      where: {
+        email
+      }
+    }).then((existing) => {
+      if (existing) {
+        return res.status(409)
+          .json({
+            status: 'fail',
+            message: 'Email already exist',
+          });
+      }
+      return db.User
+        .create({
+          username,
+          email,
+          password
+        })
+        .then((newUser) => {
+          const token = makeToken(newUser);
+          res.status(201)
+            .json({
+              status: 'success',
+              message: 'signup sucessful',
+              user: {
+                username: newUser.username,
+                email: newUser.email,
+                id: newUser.id
+              },
+              token
+            });
         });
-      })
+    })
       .catch(() => res.status(500).json({
-        status: false,
-        message: 'Internal sever Error'
+        status: 'error',
+        message: 'Internal server error'
       }));
   }
 

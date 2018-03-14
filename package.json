@@ -7,7 +7,9 @@
     "start": "nodemon --exec babel-node server/app.js",
     "build": "babel server -d server/dist --copy-files --ignore server/dist",
     "postinstall": "npm run build",
-    "test": "nyc --reporter=html --reporter=text mocha ./server/test/ --exit --compilers js:babel-register",
+    "test:server": "cross-env NODE_ENV=test npm run reset-migrate && cross-env NODE_ENV=test mocha server/test/**.spec.js --exit --require babel-register --reporter spec",
+    "migrate": "sequelize db:migrate",
+    "reset-migrate": "sequelize db:migrate:undo:all&&sequelize db:migrate",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
@@ -33,6 +35,7 @@
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "coveralls": "^3.0.0",
+    "cross-env": "^5.1.4",
     "dotenv": "^5.0.1",
     "eslint": "^4.18.1",
     "express": "^4.16.2",
@@ -46,6 +49,7 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.19.0",
     "sequelize-cli": "^3.0.0",
+    "supertest": "^3.0.0",
     "validator": "^9.4.1",
     "volleyball": "^1.4.1"
   },

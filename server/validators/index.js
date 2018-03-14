@@ -52,7 +52,7 @@ export const validateSignup = (req, res, next) => {
   if (Validator.isEmpty(password || '') ||
     Validator.isEmpty(confirmPassword || '') ||
     (confirmPassword.trim() !== password.trim())) {
-    error.password = 'Passwords do not match';
+    error.password = 'Passwords do not match or empty';
   }
 
   if (!email) {

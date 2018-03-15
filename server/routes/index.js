@@ -2,7 +2,8 @@
 import User from '../controllers/userController';
 import {
   validateSignup,
-  validateLogin
+  validateLogin,
+  verifyToken
 } from '../validators/userValidator';
 
 

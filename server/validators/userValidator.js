@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import { isEmpty } from 'lodash';
 import Validator from 'validator';
 
@@ -65,4 +66,16 @@ export const validateSignup = (req, res, next) => {
 
   if (isEmpty(error)) return next();
   return res.status(400).json({ error });
+};
+
+export const verifyToken = (req, res, next) => {
+  const token = req.body.token || req.headers.token || req.query.token;
+
+  try {
+    const verifiedToken = jwt.verify(token, process.env.MY_SECRET);
+    req.userId = verifiedToken.id;
+    return next();
+  } catch (error) {
+    return res.status(401).send({ message: 'Unauthorized.' });
+  }
 };

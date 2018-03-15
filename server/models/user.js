@@ -48,5 +48,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  User.associate = (models) => {
+    // associations defined here
+    User.hasMany(models.Profile, { foreignKey: 'userId', onDelete: 'CASCADE' });
+    User.hasMany(models.Review, { foreignKey: 'userId' });
+  };
   return User;
 };

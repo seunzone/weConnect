@@ -3,7 +3,7 @@ import User from '../controllers/userController';
 import {
   validateSignup,
   validateLogin
-} from '../validators';
+} from '../validators/userValidator';
 
 
 const routes = (app) => {

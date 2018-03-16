@@ -1,9 +1,10 @@
 // Import controllers & middlewares
 import User from '../controllers/userController';
+import Business from '../controllers/businessController';
+import authLogin from '../middleware/authorize';
 import {
   validateSignup,
   validateLogin,
-  verifyToken
 } from '../validators/userValidator';
 
 
@@ -15,6 +16,7 @@ const routes = (app) => {
 
   app.post('/api/v1/auth/signup', validateSignup, User.createUser); // Signup a new user
   app.post('/api/v1/auth/login', validateLogin, User.userLogin); // log in registered user
+  app.post('/api/v1/businesses', authLogin, Business.addProfile); // Add Business
 };
 
 export default routes;

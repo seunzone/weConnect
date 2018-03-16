@@ -39,10 +39,10 @@ export default (sequelize, DataTypes) => {
       models.User,
       { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true }
     );
-    Profile.hasMany(
-      models.Review,
-      { foreignKey: 'profileId', onDelete: 'CASCADE', hooks: true }
-    );
+    // Profile.hasMany(
+    //   models.Review,
+    //   { foreignKey: 'profileId', onDelete: 'CASCADE', hooks: true }
+    // );
   };
   return Profile;
 };

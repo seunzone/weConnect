@@ -27,7 +27,7 @@ export default class usersController {
     const {
       username, email
     } = req.body;
-    
+
     User.findOne({
       where: {
         email

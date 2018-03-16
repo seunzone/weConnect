@@ -185,5 +185,21 @@ export default class businessController {
     })
       .catch(error => res.status(404).send(error));
   }
+  /**
+   * @description - get a single profile
+   * @static
+   *
+   * @param {object} req - HTTP Request
+   * @param {object} res - HTTP Response
+   *
+   * @memberof businessController
+   *
+   * @returns {object} Class instance
+   */
+  static getAllProfile(req, res) {
+    return Profile.all()
+      .then(foundProfile => res.status(200).send(foundProfile))
+      .catch(error => res.status(400).send(error));
+  }
 }
 

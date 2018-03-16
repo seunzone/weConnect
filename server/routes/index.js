@@ -17,6 +17,7 @@ const routes = (app) => {
   app.post('/api/v1/auth/signup', validateSignup, User.createUser); // Signup a new user
   app.post('/api/v1/auth/login', validateLogin, User.userLogin); // log in registered user
   app.post('/api/v1/businesses', authLogin, Business.addProfile); // Add Business
+  app.put('/api/v1/businesses/:id', authLogin, Business.updateProfile); // Update Business
 };
 
 export default routes;

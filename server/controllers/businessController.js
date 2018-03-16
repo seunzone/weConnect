@@ -79,7 +79,7 @@ export default class businessController {
 
     Profile.findOne({
       where: {
-        id: req.params.profileId,
+        id: req.params.id,
         userId: req.userId
       }
     })
@@ -90,7 +90,7 @@ export default class businessController {
             description: description || foundProfile.description,
             image: image || foundProfile.image,
             location: location || foundProfile.location,
-            category: category || foundProfile.category
+            category: category || foundProfile.category,
           };
           foundProfile.update(update)
             .then(updatedProfile => res.status(200)
@@ -104,7 +104,7 @@ export default class businessController {
           return res.status(404)
             .json({
               status: 'fail',
-              message: `Can't find profile with id ${req.params.profileId} by you`
+              message: `Can't find recipe with id ${req.params.id} by you`
             });
         }
       })

@@ -66,3 +66,35 @@ export const validateSignup = (req, res, next) => {
   if (isEmpty(error)) return next();
   return res.status(400).json({ error });
 };
+
+export const validateUserLenght = (req, res, next) => {
+  const {
+    username, password
+  } = req.body;
+
+  // check for username characters
+  if (!Validator.isAlphanumeric(username)) {
+    res.status(406)
+      .send({
+        status: 'Fail',
+        message: 'Only alphabets and numbers are allowed.',
+      });
+  }
+  // Check for Username Lenght
+  if (!Validator.isLength(username, { min: 3, max: 15 })) {
+    res.status(406)
+      .send({
+        status: 'Fail',
+        message: 'Username can only be from 3 to 15 characters',
+      });
+  }
+  // Check for Password
+  if (!Validator.isLength(password, { min: 6, max: 50 })) {
+    res.status(406)
+      .send({
+        status: 'Fail',
+        message: 'Password can only be from 6 to 50 characters',
+      });
+  }
+  next();
+};

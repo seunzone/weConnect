@@ -10,6 +10,7 @@ import {
 import {
   validateSignup,
   validateLogin,
+  validateUserLenght
 } from '../validators/userValidator';
 
 
@@ -19,7 +20,7 @@ const routes = (app) => {
       .send('Welcome to the weConnect api');
   });
 
-  app.post('/api/v1/auth/signup', validateSignup, User.createUser); // Signup a new user
+  app.post('/api/v1/auth/signup', validateSignup, validateUserLenght, User.createUser); // Signup a new user
   app.post('/api/v1/auth/login', validateLogin, User.userLogin); // log in registered user
   app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addProfile); // Add Business
   app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateProfile); // Update Business

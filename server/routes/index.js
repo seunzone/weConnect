@@ -4,7 +4,8 @@ import Business from '../controllers/businessController';
 import authLogin from '../middleware/authorize';
 import {
   verifyInput,
-  verifyLenght
+  verifyLenght,
+  verifyId
 } from '../validators/businessValidator';
 import {
   validateSignup,
@@ -21,7 +22,8 @@ const routes = (app) => {
   app.post('/api/v1/auth/signup', validateSignup, User.createUser); // Signup a new user
   app.post('/api/v1/auth/login', validateLogin, User.userLogin); // log in registered user
   app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addProfile); // Add Business
-  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, Business.updateProfile); // Update Business
+  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateProfile); // Update Business
+  app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteProfile); // Delete Business
 };
 
 export default routes;

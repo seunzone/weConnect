@@ -84,3 +84,15 @@ export const verifyLenght = (req, res, next) => {
   next();
 };
 
+export const verifyId = (req, res, next) => {
+  const { id } = req.params;
+
+  const error = {};
+
+  if (Number.isNaN(parseInt(id, 10))) {
+    error.id = 'The Id must be a number';
+  }
+
+  if (isEmpty(error)) return next();
+  return res.status(400).json({ error });
+};

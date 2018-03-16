@@ -113,4 +113,51 @@ export default class businessController {
         message: 'Internal server error'
       }));
   }
+  /**
+   * @description - Delete a profile
+   * @static
+   *
+   * @param {object} req - HTTP Request
+   * @param {object} res - HTTP Response
+   *
+   * @memberof businessController
+   *
+   * @returns {object} Class instance
+   */
+  static deleteProfile(req, res) {
+    Profile.findOne({
+      where: {
+        id: req.params.id,
+        userId: req.userId
+      }
+    })
+      .then((foundProfile) => {
+        if (!foundProfile) {
+          return res.status(404)
+            .json({
+              status: 'fail',
+              message: `Can't find profile with id ${req.params.id} by you`
+            });
+        }
+        if (foundProfile) {
+          Profile.destroy({
+            where: {
+              id: req.params.id,
+              userId: req.userId
+            },
+            cascade: true
+          })
+            .then(() => res.status(200)
+              .json({
+                status: 'success',
+                message: 'profile deleted'
+              }));
+        }
+      })
+      .catch(() => res.status(500).json({
+        status: 'error',
+        message: 'Internal server error'
+      }));
+  }
 }
+

@@ -52,7 +52,7 @@ export default class businessController {
               .json({
                 status: 'success',
                 message: 'Profile created successfully',
-                recipe: newProfile
+                profile: newProfile
               }));
         }
       })
@@ -97,14 +97,14 @@ export default class businessController {
               .json({
                 status: 'success',
                 message: 'Update successful',
-                recipe: updatedProfile
+                profile: updatedProfile
               }));
         }
         if (!foundProfile) {
           return res.status(404)
             .json({
               status: 'fail',
-              message: `Can't find recipe with id ${req.params.id} by you`
+              message: `Can't find profile with id ${req.params.id} by you`
             });
         }
       })
@@ -158,6 +158,32 @@ export default class businessController {
         status: 'error',
         message: 'Internal server error'
       }));
+  }
+  /**
+   * @description - get a single profile
+   * @static
+   *
+   * @param {object} req - HTTP Request
+   * @param {object} res - HTTP Response
+   *
+   * @memberof businessController
+   *
+   * @returns {object} Class instance
+   */
+  static getSingleProfile(req, res) {
+    Profile.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((foundProfile) => {
+      if (!foundProfile) {
+        return res.status(404).send({
+          message: 'Business Not Found',
+        });
+      }
+      return res.status(200).send(foundProfile);
+    })
+      .catch(error => res.status(404).send(error));
   }
 }
 

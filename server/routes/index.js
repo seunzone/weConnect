@@ -24,6 +24,7 @@ const routes = (app) => {
   app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addProfile); // Add Business
   app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateProfile); // Update Business
   app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteProfile); // Delete Business
+  app.get('/api/v1/businesses/:id', Business.getSingleProfile); // Gets a single business
 };
 
 export default routes;

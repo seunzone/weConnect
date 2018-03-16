@@ -17,11 +17,11 @@ export const verifyInput = (req, res, next) => {
   }
 
   if (!description) {
-    error.description = 'Description for recipe is required';
+    error.description = 'Description for is required';
   }
 
   if (description && Validator.isEmpty(description.trim() || '')) {
-    error.description = 'Description for recipe is required';
+    error.description = 'Description for is required';
   }
 
   if (!location) {

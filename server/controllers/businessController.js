@@ -1,6 +1,6 @@
 import db from '../models';
 
-const { Profile } = db;
+const { Profile, Review, User } = db;
 
 /**
  * @class businessController
@@ -174,7 +174,17 @@ export default class businessController {
     Profile.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [
+        {
+          model: Review,
+          attributes: ['content', 'createdAt'],
+          include: [{
+            model: User,
+            attributes: ['username', 'email']
+          }]
+        }
+      ]
     }).then((foundProfile) => {
       if (!foundProfile) {
         return res.status(404).send({

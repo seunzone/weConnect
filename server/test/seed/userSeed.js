@@ -9,6 +9,11 @@ const users = [{
   id: 2,
   email: 'test@we.com',
   password: 'password',
+}, {
+  username: 'anotherone',
+  email: 'dj@khalid.com',
+  password: 'password',
+  confirmPassword: 'password'
 }];
 
 

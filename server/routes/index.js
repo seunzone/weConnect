@@ -1,11 +1,13 @@
 // Import controllers & middlewares
 import User from '../controllers/userController';
 import Business from '../controllers/businessController';
+import Reviews from '../controllers/reviewsController';
 import authLogin from '../middleware/authorize';
 import {
   verifyInput,
   verifyLenght,
-  verifyId
+  verifyId,
+  verifyReview
 } from '../validators/businessValidator';
 import {
   validateSignup,
@@ -27,6 +29,7 @@ const routes = (app) => {
   app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteProfile); // Delete Business
   app.get('/api/v1/businesses/:id', verifyId, Business.getSingleProfile); // Gets a single business
   app.get('/api/v1/businesses', Business.getAllProfile); // Gets all businesses
+  app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview); // Post review
 };
 
 export default routes;

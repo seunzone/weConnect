@@ -72,6 +72,74 @@ describe('User signup', () => {
         done();
       });
   });
+  it('Should not register with less than 3 characters', (done) => {
+    chai.request(app)
+      .post(userSignup)
+      .send({
+        username: 'sa',
+        email: 'seun@test.com',
+        password: '1234567',
+        confirmPassword: '1234567'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body).to.be.an('object');
+        expect(res.body.message)
+          .to.include('Username can only be from 3 to 15 characters');
+        done();
+      });
+  });
+  it('Should not register with more than 15 characters', (done) => {
+    chai.request(app)
+      .post(userSignup)
+      .send({
+        username: 'sajhdkdbfbirjbrjbvjdljldjldfrjbrjbrkd',
+        email: 'seun@test.com',
+        password: '1234567',
+        confirmPassword: '1234567'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body).to.be.an('object');
+        expect(res.body.message)
+          .to.include('Username can only be from 3 to 15 characters');
+        done();
+      });
+  });
+  it('Should not register with wierd characters', (done) => {
+    chai.request(app)
+      .post(userSignup)
+      .send({
+        username: '@$@%#!^!',
+        email: 'seun@test.com',
+        password: '1234567',
+        confirmPassword: '1234567'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body).to.be.an('object');
+        expect(res.body.message)
+          .to.include('Only alphabets and numbers are allowed.');
+        done();
+      });
+  });
+  it('Should not register with less than 6 password characters', (done) => {
+    chai.request(app)
+      .post(userSignup)
+      .send({
+        username: 'superuser',
+        email: 'seun@test.com',
+        password: '123',
+        confirmPassword: '123'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body).to.be.an('object');
+        expect(res.body.message)
+          .to.include('Password can only be from 6 to 50 characters');
+        done();
+      });
+  });
   it('Should not register user with an empty email field ', (done) => {
     chai.request(app)
       .post(userSignup)

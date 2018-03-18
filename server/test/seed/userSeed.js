@@ -10,8 +10,16 @@ const users = [{
   email: 'test@we.com',
   password: 'password',
 }, {
+  id: 3,
   username: 'anotherone',
   email: 'dj@khalid.com',
+  password: 'password',
+  confirmPassword: 'password'
+},
+{
+  id: 4,
+  username: 'andela',
+  email: 'seun@andela.com',
   password: 'password',
   confirmPassword: 'password'
 }];

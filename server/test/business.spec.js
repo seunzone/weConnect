@@ -236,6 +236,24 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
+    it('Should allow users to sort search by location', (done) => {
+      chai.request(app)
+        .get('/api/v1/businesses/?location=Lagos')
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body).to.be.an('object');
+          done();
+        });
+    });
+    it('Should allow users to sort search by Category', (done) => {
+      chai.request(app)
+        .get('/api/v1/businesses/?category=ict')
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body).to.be.an('object');
+          done();
+        });
+    });
     it('Should not get a particular id that is not a number', (done) => {
       chai.request(app)
         .get('/api/v1/businesses/abcdefgh')

@@ -22,14 +22,22 @@ const routes = (app) => {
       .send('Welcome to the weConnect api');
   });
 
-  app.post('/api/v1/auth/signup', validateSignup, validateUserLenght, User.createUser); // Signup a new user
-  app.post('/api/v1/auth/login', validateLogin, User.userLogin); // log in registered user
-  app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addProfile); // Add Business
-  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateProfile); // Update Business
-  app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteProfile); // Delete Business
-  app.get('/api/v1/businesses/:id', verifyId, Business.getSingleProfile); // Gets a single business
-  app.get('/api/v1/businesses', Business.getAllProfile); // Gets all businesses
-  app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview); // Post review
+  // Signup a new user
+  app.post('/api/v1/auth/signup', validateSignup, validateUserLenght, User.createUser);
+  // log in registered user
+  app.post('/api/v1/auth/login', validateLogin, User.userLogin);
+  // Add Business
+  app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addProfile);
+  // Update Business
+  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateProfile);
+  // Delete Business
+  app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteProfile);
+  // Gets a single business
+  app.get('/api/v1/businesses/:id', verifyId, Business.getSingleProfile);
+  // Gets all businesses
+  app.get('/api/v1/businesses', Business.getAllProfile);
+  // Post review
+  app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview);
 };
 
 export default routes;

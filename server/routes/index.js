@@ -3,6 +3,7 @@ import User from '../controllers/userController';
 import Business from '../controllers/businessController';
 import Reviews from '../controllers/reviewsController';
 import authLogin from '../middleware/authorize';
+import Sort from '../middleware/sort';
 import {
   verifyInput,
   verifyLenght,
@@ -35,7 +36,7 @@ const routes = (app) => {
   // Gets a single business
   app.get('/api/v1/businesses/:id', verifyId, Business.getSingleProfile);
   // Gets all businesses
-  app.get('/api/v1/businesses', Business.getAllProfile);
+  app.get('/api/v1/businesses', Sort, Business.getAllProfile);
   // Post review
   app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview);
 };

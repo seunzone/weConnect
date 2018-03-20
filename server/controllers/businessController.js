@@ -211,5 +211,65 @@ export default class businessController {
       .then(foundProfile => res.status(200).send(foundProfile))
       .catch(error => res.status(400).send(error));
   }
+  /**
+   * @description - sort user search by location and category
+   *
+   * @param  {Object} req - request
+   *
+   * @param  {object} res - response
+   *
+   * @param {Object} next - Call back function
+   *
+   * @return {null} - null
+   */
+  static sortSearch(req, res, next) {
+    const { location, category } = req.query;
+    if (location || category) {
+      if (location) {
+        Profile
+          .findAll({
+            where: {
+              location: { $iLike: `%${location}%` }
+            }
+          })
+          .then((business) => {
+          // If no businesses found, return error
+            if (business.length < 1) {
+              return res.status(404).json({
+                message: 'No business found for this location!',
+              });
+            }
+            // If business found, return business found
+            return res.status(200).json({
+              message: 'Business Found!',
+              business
+            });
+          });
+      }
+      if (category) {
+        Profile
+          .findAll({
+            where: {
+              category: { $iLike: `%${category}%` }
+            }
+          })
+          .then((business) => {
+          // If no businesses found, return error
+            if (business.length < 1) {
+              return res.status(404).json({
+                message: 'No business found for this category!',
+              });
+            }
+            // If business found, return business found
+            return res.status(200).json({
+              message: 'Business Found!',
+              business
+            });
+          });
+      }
+    } else if (!location || !category) {
+      return next();
+    }
+  }
 }
 

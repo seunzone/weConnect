@@ -37,16 +37,8 @@
                 </a>
             </div>
             <div class="start-here">
-                <div class="dropdown">
-                    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        My Profile
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="update.html">Update Business</a>
-                        <a class="dropdown-item text-rose" href="#">Logout</a>
-                    </div>
-                </div>
+                <a class="btn btn-danger" href="dashboard.html">
+                <i class="fa fa-tachometer" aria-hidden="true"></i> My dashboard</a>
             </div>
         </nav>
 
@@ -55,15 +47,18 @@
             <p>Review your customer experience.</p>
 
             <div class="select-fields">
-                <div class="form-group">
-                    <input class="form-control" placeholder="Enter keyword here">
-                </div>
-                <div class="form-group">
-                    <select class="form-control">
-                        <option>Search by</option>
-                        <option>Category</option>
-                        <option>Location</option>
-                    </select>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <input class="form-control" placeholder="Enter keyword here">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <select class="form-control">
+                            <option>Search by</option>
+                            <option>Category</option>
+                            <option>Location</option>
+                        </select>
+                    </div>
+
                 </div>
                 <button class="btn btn-warning">Search Now</button>
             </div>
@@ -76,8 +71,8 @@
     <!-- List of Businesses -->
     <div class="container-fluid px-5 my-5">
         <h1 class="display-4 text-center my-5 wow fadeInDown" style="padding: 30px 0px;">
-            <i class="ion ion-star"></i>
             Some Top Firms</h1>
+        <hr class="hr-class">
         <br>
         <div class="card-deck wow fadeIn" data-wow-duration="4s">
             <div class="card mb-3">
@@ -207,25 +202,46 @@
                 </div>
             </div>
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+        <ul class="pagination" aria-label="Pagination">
+            <li>
+                <a href="">
+                    <span>First</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span>Previous</span>
+                </a>
+            </li>
+            <li>
+                <a href="">1</a>
+            </li>
+            <li>
+                <a href="">2</a>
+            </li>
+            <li>
+                <a href="">3</a>
+            </li>
+            <li class="current">
+                <a href="">4</a>
+            </li>
+            <li>
+                <a href="">5</a>
+            </li>
+            <li>
+                <a href="">6</a>
+            </li>
+            <li>
+                <a href="">
+                    <span>Next</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span>Last</span>
+                </a>
+            </li>
+        </ul>
     </div>
 
     <!--Start of Footer -->
@@ -233,8 +249,12 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <p> &copy; 2018...
-                        <a href="https://github.com/seunzone">Seun</a>
+                    <p class="copyright footer-logo">
+                        <i class="fa fa-copyright"></i> 2018 Andela Bootcamp. Developed with
+                        <i class="fa fa-heart text-info"></i>&nbsp; by
+                        <a href="https://github.com/seunzone">
+                            <strong>Seun</strong>
+                        </a>
                     </p>
                 </div>
             </div>

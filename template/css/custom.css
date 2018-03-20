@@ -146,3 +146,48 @@ body {
 .card .btn-action :hover {
   background-color: grey;
 }
+/* -- footer -- */
+.footer {
+  width: 100%;
+  background: rgba(0, 16, 96, 0.05);
+  padding: 3.5rem 5rem 0.5rem 5rem;
+  border-top: 1px solid lightgrey;
+  margin-top: 3rem; }
+.footer .footer-sec {
+  width: 100%; }
+.footer .footer-sec h6 {
+  font-weight: 700;
+  color: black; }
+.footer .footer-sec a {
+  display: block;
+  font-size: 0.96rem;
+  padding: 2px 0; }
+.footer .footer-sec span {
+  display: block;
+  font-size: 0.9rem;
+  padding: 2px 0; }
+.footer .footer-sec form {
+  width: 100%;
+  display: flex;
+  margin-top: 0.8rem; }
+.footer .footer-sec form input {
+  flex-basis: 85%;
+  border-radius: 0;
+  box-shadow: none; }
+.footer .footer-strip {
+  border-top: 1px solid #cdcdcd;
+  padding: 1rem 0;
+  margin-top: 2.5rem; }
+.footer .footer-strip .copyright {
+  margin: 0; }
+@media (max-width: 47.5em) {
+  .footer .footer-strip .footer-logo {
+    text-align: center;
+    margin-bottom: 1rem; }
+  .footer .footer-strip .copyright {
+    text-align: center; } }
+@media (max-width: 25em) {
+  .footer {
+    padding: 3.5rem 1rem 0.5rem 1rem; } }
+
+/* -- end footer -- */

@@ -147,6 +147,12 @@ body {
 .card .btn-action :hover {
   background-color: grey;
 }
+.hr-class{
+  background-color: #fff;
+	border-top: 2px dashed #8c8b8b;
+  margin-left: 400px;
+  margin-right: 400px;
+}
 /* -- footer -- */
 .footer {
   width: 100%;

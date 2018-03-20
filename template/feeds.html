@@ -37,16 +37,8 @@
                 </a>
             </div>
             <div class="start-here">
-                <div class="dropdown">
-                    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        My Profile
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="update.html">Update Business</a>
-                        <a class="dropdown-item text-rose" href="#">Logout</a>
-                    </div>
-                </div>
+                <a class="btn btn-primary" href="dashboard.html">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i> My dashboard</a>
             </div>
         </nav>
 
@@ -55,30 +47,20 @@
             <p>Review your customer experience.</p>
 
             <div class="select-fields">
-                <div class="form-group">
-                    <input class="form-control" placeholder="Enter keyword here">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <input class="form-control" placeholder="Enter keyword here">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <select class="form-control">
+                            <option>Search by</option>
+                            <option>Category</option>
+                            <option>Location</option>
+                        </select>
+                    </div>
+
                 </div>
-                <div class="form-group">
-                    <select class="form-control">
-                        <option>Select Category</option>
-                        <option>ICT</option>
-                        <option>Oil Firm</option>
-                        <option>Corporate Firm</option>
-                        <option>Agriculture</option>
-                        <option>Entertainment</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control">
-                        <option>Select Location</option>
-                        <option>Abuja</option>
-                        <option>Lagos</option>
-                        <option>Benin City</option>
-                        <option>Ibadan</option>
-                        <option>Port Harcot</option>
-                    </select>
-                </div>
-                <button class="btn btn-warning">Search Now</button>
+                <button class="btn btn-primary">Search Now</button>
             </div>
 
         </div>
@@ -89,8 +71,8 @@
     <!-- List of Businesses -->
     <div class="container-fluid px-5 my-5">
         <h1 class="display-4 text-center my-5 wow fadeInDown" style="padding: 30px 0px;">
-            <i class="ion ion-star"></i>
             Some Top Firms</h1>
+        <hr class="hr-class">
         <br>
         <div class="card-deck wow fadeIn" data-wow-duration="4s">
             <div class="card mb-3">
@@ -110,6 +92,10 @@
                         <span class="text-muted float-right">
                             <i class="fa fa-pencil-square-o text-rose"></i>
                             2</span>
+                    </p>
+                    <p class="author">
+                        <i class="fa fa-eye text-rose"></i>
+                        <span>50</span>
                     </p>
                 </div>
             </div>
@@ -131,6 +117,10 @@
                             <i class="fa fa-pencil-square-o text-rose"></i>
                             10</span>
                     </p>
+                    <p class="author">
+                        <i class="fa fa-eye text-rose"></i>
+                        <span>50</span>
+                    </p>
                 </div>
             </div>
             <div class="card mb-3">
@@ -150,6 +140,10 @@
                         <span class="text-muted float-right">
                             <i class="fa fa-pencil-square-o text-rose"></i>
                             200</span>
+                    </p>
+                    <p class="author">
+                        <i class="fa fa-eye text-rose"></i>
+                        <span>50</span>
                     </p>
                 </div>
             </div>
@@ -177,6 +171,10 @@
                             <i class="fa fa-pencil-square-o text-rose"></i>
                             2</span>
                     </p>
+                    <p class="author">
+                        <i class="fa fa-eye text-rose"></i>
+                        <span>50</span>
+                    </p>
                 </div>
             </div>
             <div class="card mb-3">
@@ -196,6 +194,10 @@
                         <span class="text-muted float-right">
                             <i class="fa fa-pencil-square-o text-rose"></i>
                             10</span>
+                    </p>
+                    <p class="author">
+                        <i class="fa fa-eye text-rose"></i>
+                        <span>50</span>
                     </p>
                 </div>
             </div>
@@ -217,28 +219,53 @@
                             <i class="fa fa-pencil-square-o text-rose"></i>
                             200</span>
                     </p>
+                    <p class="author">
+                        <i class="fa fa-eye text-rose"></i>
+                        <span>50</span>
+                    </p>
                 </div>
             </div>
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+        <ul class="pagination" aria-label="Pagination">
+            <li>
+                <a href="">
+                    <span>First</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span>Previous</span>
+                </a>
+            </li>
+            <li>
+                <a href="">1</a>
+            </li>
+            <li>
+                <a href="">2</a>
+            </li>
+            <li>
+                <a href="">3</a>
+            </li>
+            <li class="current">
+                <a href="">4</a>
+            </li>
+            <li>
+                <a href="">5</a>
+            </li>
+            <li>
+                <a href="">6</a>
+            </li>
+            <li>
+                <a href="">
+                    <span>Next</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span>Last</span>
+                </a>
+            </li>
+        </ul>
     </div>
 
     <!--Start of Footer -->
@@ -246,8 +273,12 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <p> &copy; 2018...
-                        <a href="https://github.com/seunzone">Seun</a>
+                    <p class="copyright footer-logo">
+                        <i class="fa fa-copyright"></i> 2018 Andela Bootcamp. Developed with
+                        <i class="fa fa-heart text-info"></i>&nbsp; by
+                        <a href="https://github.com/seunzone">
+                            <strong>Seun</strong>
+                        </a>
                     </p>
                 </div>
             </div>
@@ -255,10 +286,10 @@
     </footer>
     <!-- End of Footer -->
     <!-- Github Ribbon -->
-    <a href="https://github.com/seunzone/weConnect">
+    <!-- <a href="https://github.com/seunzone/weConnect">
         <img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67"
             alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png">
-    </a>
+    </a> -->
 
     <!-- JavaScripts
     ================================================== -->

@@ -8,12 +8,12 @@ import {
   verifyLenght,
   verifyId,
   verifyReview
-} from '../validators/businessValidator';
+} from '../middleware/businessValidator';
 import {
   validateSignup,
   validateLogin,
   validateUserLenght
-} from '../validators/userValidator';
+} from '../middleware/userValidator';
 
 
 const routes = (app) => {

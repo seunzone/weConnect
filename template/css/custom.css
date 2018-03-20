@@ -89,6 +89,7 @@ body {
 
     .navbar-custom {
       opacity: 0.8;
+      background: rgba(0, 16, 96, 0.05);
   }
   /* change the brand and text color */
   .navbar-custom .navbar-brand,
@@ -149,7 +150,7 @@ body {
 /* -- footer -- */
 .footer {
   width: 100%;
-  background: rgba(0, 16, 96, 0.05);
+  background: rgba(0, 16, 96, 0.25);
   padding: 3.5rem 5rem 0.5rem 5rem;
   border-top: 1px solid lightgrey;
   margin-top: 3rem; }

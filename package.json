@@ -13,6 +13,7 @@
     "reset-migrate": "sequelize db:migrate:undo:all&&sequelize db:migrate",
     "coveralls": "nyc npm run test:server && nyc report --reporter=text-lcov | coveralls",
     "build": "npm run clean && npm run build:client && npm run build:server && cp server/index.html build && cp server/converted.json build",
+    "clean": "rm -rf build && mkdir build",
     "server:coverage": "nyc report --reporter=text-lcov | coveralls",
     "postinstall": "npm run build"
   },

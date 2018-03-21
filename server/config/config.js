@@ -9,7 +9,11 @@ const config = {
     dialect: 'postgres'
   },
   test: {
-    use_env_variable: 'DB_DATABASE_TEST'
+    username: 'postgres',
+    password: '',
+    database: 'weconnect_test',
+    host: 'localhost',
+    dialect: 'postgres'
   },
   production: {
     use_env_variable: 'DATABASE_URL',

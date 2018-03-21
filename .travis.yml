@@ -1,19 +1,18 @@
-sudo: required
 language: node_js
 node_js:
-  - "stable"
+  - "7"
+env:
+  JWT_KEY: secret
+cache:
+  directories:
+    - "node_modules"
+sudo: false
+dist: trusty
 services:
   - postgresql
 before_script:
-  - psql -c 'drop database if exists travis;' -U postgres
-  - psql -c 'create database travis;' -U postgres
-script:
-  - npm run test
-addons:
-  postgresql: "9.3"
-after_sucsess:
+  - "psql -c 'create database weconnect_test;' -U postgres"
+  - npm run test-migrate
+after_success: 
   - npm run coverage
-env:
-  global:
-  - NODE_ENV=test
-  - MY_SECRET=This is my secret
+  - npm run check-coverage

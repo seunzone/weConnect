@@ -11,3 +11,8 @@ script:
   - npm run test
 addons:
   postgresql: "9.3"
+after_sucsess:
+  - npm run coverage
+  env:
+  global:
+  - NODE_ENV=test

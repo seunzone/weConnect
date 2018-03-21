@@ -49,6 +49,7 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.19.0",
     "sequelize-cli": "^3.0.0",
+    "swagger-ui-express": "^2.0.15",
     "validator": "^9.4.1",
     "volleyball": "^1.4.1"
   },

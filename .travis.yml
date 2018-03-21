@@ -1,12 +1,13 @@
+sudo: required
 language: node_js
 node_js:
-- "stable"
-install: npm install
+  - "stable"
 services:
-- postgresql
-env:
-- NODE_ENV=test DB_USERNAME=seun DB_PASSWORD=pass DB_DATABASE=wecon MY_SECRET=This is my secret
+  - postgresql
 before_script:
-- psql -c 'create database wecon;' -U postgres
-- psql -c "CREATE USER seun WITH PASSWORD 'pass';" -U postgres
-script: npm test
+  - psql -c 'drop database if exists travis;' -U postgres
+  - psql -c 'create database travis;' -U postgres
+script:
+  - npm run test
+addons:
+  postgresql: "9.3"

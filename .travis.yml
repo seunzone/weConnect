@@ -1,12 +1,12 @@
-anguage: node_js
+language: node_js
 node_js:
 - "stable"
+install: npm install
+services:
+- postgresql
 env:
-global:
- - export NODE_ENV=test
+- NODE_ENV=test DB_USERNAME=seun DB_PASSWORD=pass DB_DATABASE=wecon MY_SECRET=This is my secret
 before_script:
-- npm install
-script:
-- npm test
-- npm run coverage
-after_success: npm run coveralls
+- psql -c 'create database wecon;' -U postgres
+- psql -c "CREATE USER seun WITH PASSWORD 'pass';" -U postgres
+script: npm test

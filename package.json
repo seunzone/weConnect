@@ -4,18 +4,12 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node server/app.js",
-    "test": "npm run test:client && npm run coveralls",
-    "build:server": "babel -d ./build ./server -s",
-    "start": "node build/app.js",
-    "test:server": "cross-env NODE_ENV=test npm run reset-migrate && cross-env NODE_ENV=test mocha server/test/**.spec.js --exit --require babel-register --reporter spec",
-    "migrate": "sequelize db:migrate",
-    "reset-migrate": "sequelize db:migrate:undo:all&&sequelize db:migrate",
-    "coveralls": "nyc npm run test:server && nyc report --reporter=text-lcov | coveralls",
-    "build": "npm run clean && npm run build:client && npm run build:server && cp server/index.html build && cp server/converted.json build",
-    "clean": "rm -rf build && mkdir build",
-    "server:coverage": "nyc report --reporter=text-lcov | coveralls",
-    "postinstall": "npm run build"
+    "test": "set NODE_ENV=test&& sequelize db:migrate:undo:all&& sequelize db:migrate&& nyc mocha server/test/**.spec.js --compilers js:babel-core/register --exit",
+    "babel-node": "babel-node server/app --presets=env",
+    "startDev": "nodemon --exec npm run babel-node -- server/app",
+    "start": "babel-node server/app",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",

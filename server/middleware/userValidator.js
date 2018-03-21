@@ -67,7 +67,7 @@ export const validateSignup = (req, res, next) => {
   return res.status(400).json({ error });
 };
 
-export const validateUserLenght = (req, res, next) => {
+export const validateUserLength = (req, res, next) => {
   const {
     username, password
   } = req.body;

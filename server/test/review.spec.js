@@ -45,7 +45,7 @@ describe('REVIEW API', () => {
   });
 
   describe('Add review', () => {
-    it('Should not allow non auth user to add a review', (done) => {
+    it('should not allow non auth user to add a review', (done) => {
       chai.request(app)
         .post(`/api/v1/businesses/${id}/review`)
         .send(review)
@@ -56,34 +56,7 @@ describe('REVIEW API', () => {
           done();
         });
     });
-    // it('Should not add review with an empty content field', (done) => {
-    //   chai.request(app)
-    //     .post(`/api/v1/businesses/${id}/review`)
-    //     .set('token', userToken)
-    //     .send({
-    //       content: ''
-    //     })
-    //     .end((err, res) => {
-    //       expect(res.status).to.equal(400);
-    //       expect(res.body).to.be.an('object');
-    //       expect(res.body.error.content)
-    //         .to.include('Review canot be empty');
-    //       done();
-    //     });
-    // });
-    // it('Should allow auth user to add a review', (done) => {
-    //   chai.request(app)
-    //     .post(`/api/v1/businesses/${id}/review`)
-    //     .set('token', userToken)
-    //     .send(review)
-    //     .end((err, res) => {
-    //       expect(res.status).to.equal(201);
-    //       expect(res.body).to.be.an('object');
-    //       expect(res.body.review.content).to.equal(review.content);
-    //       done();
-    //     });
-    // });
-    it('Should not add review for a id that is not a number', (done) => {
+    it('should not add review for a id that is not a number', (done) => {
       chai.request(app)
         .post('/api/v1/businesses/abcdefg/review')
         .set('token', userToken)

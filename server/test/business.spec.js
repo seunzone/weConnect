@@ -32,7 +32,7 @@ describe('BUSINESS CONTROLLER', () => {
       });
   });
   describe('Add Business', () => {
-    it('Should not add business with an empty name field', (done) => {
+    it('should not add business with an empty name field', (done) => {
       chai.request(app)
         .post(businessURL)
         .set('token', userToken)
@@ -51,7 +51,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not add business name with less than 3 characters', (done) => {
+    it('should not add business name with less than 3 characters', (done) => {
       chai.request(app)
         .post(businessURL)
         .set('token', userToken)
@@ -70,7 +70,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not add business with an empty description', (done) => {
+    it('should not add business with an empty description', (done) => {
       chai.request(app)
         .post(businessURL)
         .set('token', userToken)
@@ -89,7 +89,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not add business description with less than 10 characters', (done) => {
+    it('should not add business description with less than 10 characters', (done) => {
       chai.request(app)
         .post(businessURL)
         .set('token', userToken)
@@ -108,7 +108,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not add business with an empty category', (done) => {
+    it('should not add business with an empty category', (done) => {
       chai.request(app)
         .post(businessURL)
         .set('token', userToken)
@@ -127,7 +127,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not add business with an empty location', (done) => {
+    it('should not add business with an empty location', (done) => {
       chai.request(app)
         .post(businessURL)
         .set('token', userToken)
@@ -146,7 +146,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should allow auth users to add business', (done) => {
+    it('should allow auth users to add business', (done) => {
       chai.request(app)
         .post(businessURL)
         .set('token', userToken)
@@ -157,7 +157,7 @@ describe('BUSINESS CONTROLLER', () => {
         });
     });
 
-    it('Should not allow non auth user to add business', (done) => {
+    it('should not allow non auth user to add business', (done) => {
       chai.request(app)
         .post(businessURL)
         .send(profile1)
@@ -170,7 +170,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
   });
   describe('Update Business', () => {
-    it('Should not update a business', (done) => {
+    it('should not update a business', (done) => {
       chai.request(app)
         .put('/api/v1/businesses/10')
         .set('token', userToken)
@@ -182,7 +182,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not allow non auth user to update business', (done) => {
+    it('should not allow non auth user to update business', (done) => {
       chai.request(app)
         .put('/api/v1/businesses/10')
         .send(profile1)
@@ -193,7 +193,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should allow authenticated users update business', (done) => {
+    it('should allow authenticated users update business', (done) => {
       chai.request(app)
         .put('/api/v1/businesses/1')
         .set('token', userToken)
@@ -204,7 +204,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not update a particular id that is not a number', (done) => {
+    it('should not update a particular id that is not a number', (done) => {
       chai.request(app)
         .put('/api/v1/businesses/abcdefgh')
         .set('token', userToken)
@@ -219,7 +219,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
   });
   describe('Get Business', () => {
-    it('Should allow users to view all bussinesses', (done) => {
+    it('should allow users to view all bussinesses', (done) => {
       chai.request(app)
         .get(businessURL)
         .end((err, res) => {
@@ -227,7 +227,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should allow users to view a particular business', (done) => {
+    it('should allow users to view a particular business', (done) => {
       chai.request(app)
         .get('/api/v1/businesses/1')
         .end((err, res) => {
@@ -236,7 +236,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should allow users to sort search by location', (done) => {
+    it('should allow users to sort search by location', (done) => {
       chai.request(app)
         .get('/api/v1/businesses/?location=Lagos')
         .end((err, res) => {
@@ -245,7 +245,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should allow users to sort search by Category', (done) => {
+    it('should allow users to sort search by Category', (done) => {
       chai.request(app)
         .get('/api/v1/businesses/?category=ict')
         .end((err, res) => {
@@ -254,7 +254,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not get a particular id that is not a number', (done) => {
+    it('should not get a particular id that is not a number', (done) => {
       chai.request(app)
         .get('/api/v1/businesses/abcdefgh')
         .send(profile1)
@@ -268,7 +268,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
   });
   describe('Delete a business', () => {
-    it('Should not delete a business that does not exist', (done) => {
+    it('should not delete a business that does not exist', (done) => {
       chai.request(app)
         .delete('/api/v1/businesses/10')
         .set('token', userToken)
@@ -279,7 +279,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not allow a non auth user to delete a business', (done) => {
+    it('should not allow a non auth user to delete a business', (done) => {
       chai.request(app)
         .delete('/api/v1/businesses/1')
         .end((err, res) => {
@@ -289,7 +289,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should allow an authenticated user delete a business', (done) => {
+    it('should allow an authenticated user delete a business', (done) => {
       chai.request(app)
         .delete('/api/v1/businesses/1')
         .set('token', userToken)
@@ -300,7 +300,7 @@ describe('BUSINESS CONTROLLER', () => {
           done();
         });
     });
-    it('Should not delete a business without an id number', (done) => {
+    it('should not delete a business without an id number', (done) => {
       chai.request(app)
         .get('/api/v1/businesses/abcdef')
         .end((err, res) => {

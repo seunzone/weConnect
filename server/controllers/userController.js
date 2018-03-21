@@ -34,7 +34,7 @@ export default class usersController {
       }
     }).then((existing) => {
       if (existing) {
-        return res.status(409)
+        return res.status(400)
           .json({
             status: 'fail',
             message: 'Email already exist',

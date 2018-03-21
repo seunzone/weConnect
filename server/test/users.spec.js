@@ -27,18 +27,18 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should not register a new user with an already existing email', (done) => {
+  it('should not register a new user with an already existing email', (done) => {
     chai.request(app)
       .post(userSignup)
       .send(users[0])
       .end((err, res) => {
-        expect(res).to.have.status(409);
+        expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('Email already exist');
         done();
       });
   });
-  it('Should not register user with a wrong email format', (done) => {
+  it('should not register user with a wrong email format', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -55,7 +55,7 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should not register user with an empty username field ', (done) => {
+  it('should not register user with an empty username field ', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -72,7 +72,7 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should not register with less than 3 characters', (done) => {
+  it('should not register with less than 3 characters', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -89,7 +89,7 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should not register with more than 15 characters', (done) => {
+  it('should not register with more than 15 characters', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -106,7 +106,7 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should not register with wierd characters', (done) => {
+  it('should not register with wierd characters', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -123,7 +123,7 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should not register with less than 6 password characters', (done) => {
+  it('should not register with less than 6 password characters', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -140,7 +140,7 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should not register user with an empty email field ', (done) => {
+  it('should not register user with an empty email field ', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -157,7 +157,7 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should not register user with an empty password field ', (done) => {
+  it('should not register user with an empty password field ', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -174,7 +174,7 @@ describe('User signup', () => {
         done();
       });
   });
-  it('Should return error if password do not match', (done) => {
+  it('should return error if password do not match', (done) => {
     chai.request(app)
       .post(userSignup)
       .send({
@@ -194,7 +194,7 @@ describe('User signup', () => {
 });
 
 describe('User login', () => {
-  it('Should login a user with the correct details', (done) => {
+  it('should login a user with the correct details', (done) => {
     chai.request(app)
       .post(userLogin)
       .send(users[1])
@@ -209,7 +209,7 @@ describe('User login', () => {
         done();
       });
   });
-  it('Should not login user without password', (done) => {
+  it('should not login user without password', (done) => {
     chai.request(app)
       .post(userLogin)
       .send({
@@ -223,7 +223,7 @@ describe('User login', () => {
         done();
       });
   });
-  it('Should not login user without email address', (done) => {
+  it('should not login user without email address', (done) => {
     chai.request(app)
       .post(userLogin)
       .send({
@@ -237,7 +237,7 @@ describe('User login', () => {
         done();
       });
   });
-  it('Should not sign in a user with an incorrect password', (done) => {
+  it('should not sign in a user with an incorrect password', (done) => {
     chai.request(app)
       .post(userLogin)
       .send({
@@ -252,7 +252,7 @@ describe('User login', () => {
         done();
       });
   });
-  it('Should not login user with an incorrect email address', (done) => {
+  it('should not login user with an incorrect email address', (done) => {
     chai.request(app)
       .post(userLogin)
       .send({

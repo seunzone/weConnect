@@ -33,7 +33,7 @@ export default class businessController {
     })
       .then((foundProfile) => {
         if (foundProfile) {
-          return res.status(409)
+          return res.status(400)
             .json({
               status: 'fail',
               message: 'You already have this as an existing business'

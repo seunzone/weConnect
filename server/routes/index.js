@@ -1,9 +1,20 @@
 // Import controllers & middlewares
-import Profile from '../controllers';
-import Review from '../controllers/reviews';
-import Validator from '../validators';
-import Auth from '../controllers/user';
-import Middleware from '../middleware';
+import User from '../controllers/userController';
+import Business from '../controllers/businessController';
+import Reviews from '../controllers/reviewsController';
+import authLogin from '../middleware/authorize';
+import {
+  verifyInput,
+  verifyLenght,
+  verifyId,
+  verifyReview
+} from '../middleware/businessValidator';
+import {
+  validateSignup,
+  validateLogin,
+  validateUserLength
+} from '../middleware/userValidator';
+
 
 const routes = (app) => {
   app.get('/', (req, res) => {
@@ -11,15 +22,24 @@ const routes = (app) => {
       .send('Welcome to the weConnect api');
   });
 
-  app.post('/api/v1/businesses', Validator.addBusinessValidator, Profile.addProfile); // Add Business
-  app.put('/api/v1/businesses/:id', Validator.addBusinessValidator, Profile.editProfile); // Modify Business
-  app.delete('/api/v1/businesses/:id', Profile.deleteProfile); // Deletes a profile
-  app.post('/api/v1/businesses/reviews/:id', Review.addReview); // Post Review for a business
-  app.get('/api/v1/businesses/reviews/:id', Review.getReview); // See review for a business
-  app.get('/api/v1/businesses/:id', Profile.getProfileById); // See profile for a individual business
-  app.post('/api/v1/auth/signup', Auth.signUp); // Signup a new user
-  app.post('/api/v1/auth/login', Auth.login); // log in registered user
-  app.get('/api/v1/businesses', Middleware.sorter, Profile.getAllProfile); // Sort search based on user input & gets all routes
+  // Signup a new user
+  app.post('/api/v1/auth/signup', validateSignup, validateUserLength, User.createUser);
+  // log in registered user
+  app.post('/api/v1/auth/login', validateLogin, User.userLogin);
+  // Add Business
+  app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addProfile);
+  // Update Business
+  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateProfile);
+  // Delete Business
+  app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteProfile);
+  // Gets a single business
+  app.get('/api/v1/businesses/:id', verifyId, Business.getSingleProfile);
+  // Gets all businesses
+  app.get('/api/v1/businesses', Business.sortSearch, Business.getAllProfile);
+  // Post review
+  app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview);
+  // Get review
+  app.post('/api/v1/businesses/:id/review', verifyId, Business.getSingleProfile);
 };
 
 export default routes;

@@ -7,7 +7,7 @@
     "test": "set NODE_ENV=test&& sequelize db:migrate:undo:all&& sequelize db:migrate&& nyc mocha server/test/**.spec.js --compilers js:babel-core/register --exit",
     "babel-node": "babel-node server/app --presets=env",
     "startDev": "nodemon --exec npm run babel-node -- server/app",
-    "start": "babel-node server/app",
+    "start": "babel-node app",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
   },

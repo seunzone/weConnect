@@ -1,19 +1,19 @@
-language: node_js
-node_js:
-  - "7"
-env:
-  JWT_KEY: secret
-cache:
-  directories:
-    - "node_modules"
-sudo: false
-dist: trusty
-services:
-  - postgresql
-before_script:
-   - createuser seun -s -U postgres
-  - createdb database_test --username=seun
-  - sequelize db:migrate
-  - sequelize db:seed:all
-after_success: 
-  - npm run coverage
+# language: node_js
+# node_js:
+#   - "7"
+# env:
+#   JWT_KEY: secret
+# cache:
+#   directories:
+#     - "node_modules"
+# sudo: false
+# dist: trusty
+# services:
+#   - postgresql
+# before_script:
+#    - createuser seun -s -U postgres
+#   - createdb database_test --username=seun
+#   - sequelize db:migrate
+#   - sequelize db:seed:all
+# after_success: 
+#   - npm run coverage

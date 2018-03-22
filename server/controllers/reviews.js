@@ -48,17 +48,19 @@ class Review {
    * @memberof Review
    */
   getReview(req, res) {
-    for (let i = 0; i < db.reviews.length; i += 1) {
-      if (db.reviews[i].id === parseInt(req.params.id, 10)) {
+    const { id } = req.params;
+
+    db.reviews.forEach((rev) => {
+      if (parseInt(id, 10) === rev.id) {
         return res.status(200).json({
-          center: db.reviews[i],
-          message: 'success',
-          error: false
+          message: 'Success',
+          error: false,
+          review: rev,
         });
       }
-    }
-    res.status(404).json({
-      message: 'Business not found',
+    });
+    return res.status(404).json({
+      message: 'Profile Not Found',
       error: true
     });
   }

@@ -1,9 +1,8 @@
 // Import controllers & middlewares
 import Profile from '../controllers/profile';
 import Review from '../controllers/reviews';
-import Validator from '../validators';
+import Validator from '../middleware';
 import Auth from '../controllers/user';
-import Middleware from '../middleware';
 
 const routes = (app) => {
   app.get('/', (req, res) => {
@@ -19,7 +18,7 @@ const routes = (app) => {
   app.get('/api/v1/businesses/:id', Profile.getProfileById); // See profile for a individual business
   app.post('/api/v1/auth/signup', Auth.signUp); // Signup a new user
   app.post('/api/v1/auth/login', Auth.login); // log in registered user
-  app.get('/api/v1/businesses', Middleware.sorter, Profile.getAllProfile); // Sort search based on user input & gets all routes
+  app.get('/api/v1/businesses', Profile.sorter, Profile.getAllProfile); // Sort search based on user input & gets all routes
 };
 
 export default routes;

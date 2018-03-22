@@ -5,7 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production sequelize db:migrate --env production && babel-node server/dist/app.js",
-    "start:dev": "nodemon server/dist/app.js --exec babel-node",
+    "start:dev": "nodemon server/app.js --exec babel-node",
     "build": "babel server/lib -d dist && babel test -d dist/test",
     "serve": "node server/dist/app.js",
     "db-migrate": "sequelize db:migrate",
@@ -34,6 +34,7 @@
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "cors": "^2.8.4",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.4",
     "dotenv": "^5.0.1",
@@ -51,7 +52,8 @@
     "sequelize-cli": "^3.0.0",
     "swagger-ui-express": "^2.0.15",
     "validator": "^9.4.1",
-    "volleyball": "^1.4.1"
+    "volleyball": "^1.4.1",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.1",

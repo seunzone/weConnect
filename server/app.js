@@ -3,12 +3,13 @@ import volleyball from 'volleyball';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
+import cors from 'cors';
+import YAML from 'yamljs';
 import routes from './routes';
 
 
 dotenv.config();
 
-const swaggerDocument = require('../swagger.json');
 
 // Defining the Port Variable
 const port = process.env.PORT || 3000;
@@ -25,7 +26,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 routes(app);
 
-// Document API with Swagger
+// API Docs
+const swaggerDocument = YAML.load(`${process.cwd()}/swagger.yaml`);
+
+app.use(cors({ credentials: true, origin: true }));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.

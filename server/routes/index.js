@@ -1,5 +1,5 @@
 // Import controllers & middlewares
-import Profile from '../controllers';
+import Profile from '../controllers/profile';
 import Review from '../controllers/reviews';
 import Validator from '../validators';
 import Auth from '../controllers/user';

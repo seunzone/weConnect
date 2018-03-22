@@ -1,5 +1,4 @@
 import db from '../models/faker';
-
 /**
  *
  *
@@ -73,18 +72,21 @@ class Profile {
    * @memberof Profile
    */
   deleteProfile(req, res) {
-    for (let i = 0; i < db.profile.length; i += 1) {
-      if (parseInt(db.profile[i].id, 10) === parseInt(req.params.id, 10)) {
+    const { id } = req.params;
+
+    db.profile.forEach((bus, i) => {
+      if (bus.id === parseInt(id, 10)) {
         db.profile.splice(i, 1);
-        return res.status(200)
-          .json({
-            status: 'success',
-            message: 'Your business detials has been deleted'
-          });
+        return res.status(200).json({
+          message: 'Profile Deleted',
+          error: false,
+        });
       }
-    }
-    return res.status(404)
-      .send('Busines not found');
+    });
+    return res.status(404).json({
+      message: 'Profile Not Found',
+      error: true
+    });
   }
   /**
    *
@@ -109,17 +111,19 @@ class Profile {
    * @memberof profile
    */
   getProfileById(req, res) {
-    for (let i = 0; i < db.profile.length; i += 1) {
-      if (db.profile[i].id === parseInt(req.params.id, 10)) {
+    const { id } = req.params;
+
+    db.profile.forEach((busines) => {
+      if (parseInt(id, 10) === busines.id) {
         return res.status(200).json({
-          profileId: db.profile[i],
-          message: 'success',
-          error: false
+          message: 'Success',
+          error: false,
+          business: busines,
         });
       }
-    }
-    res.status(404).json({
-      message: 'Business not found',
+    });
+    return res.status(404).json({
+      message: 'Profile Not Found',
       error: true
     });
   }

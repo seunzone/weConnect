@@ -11,8 +11,9 @@ dist: trusty
 services:
   - postgresql
 before_script:
-  - "psql -c 'create database weconnect_test;' -U postgres"
-  - npm run test-migrate
+   - createuser seun -s -U postgres
+  - createdb database_test --username=seun
+  - sequelize db:migrate
+  - sequelize db:seed:all
 after_success: 
   - npm run coverage
-  - npm run check-coverage

@@ -11,8 +11,7 @@
     "db-migrate": "sequelize db:migrate",
     "test-migrate": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
     "test": "set NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && nyc mocha server/test/**.spec.js --compilers js:babel-core/register --exit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "check-coverage": "nyc check-coverage --lines 80 --per-file"
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",

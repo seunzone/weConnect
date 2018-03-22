@@ -10,7 +10,7 @@ const config = {
   },
   test: {
     username: 'postgres',
-    password: '',
+    password: 'password',
     database: 'weconnect_test',
     host: 'localhost',
     dialect: 'postgres'

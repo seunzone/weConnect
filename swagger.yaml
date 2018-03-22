@@ -1,0 +1,426 @@
+swagger: '2.0'
+info:
+  description: API for Weconnect
+  version: 1.0.0
+  title: Weconnect
+  # My Contact Info
+  contact:
+    email: darealseun@gmail.com
+basePath: /api/v1
+
+# tags are used for organizing operations
+tags:
+- name: business
+  description: Business operations
+- name: auth
+  description: Operations for user details
+- name: reviews
+  description: Operations for reviews
+
+paths:
+  /businesses:
+    get:
+      tags:
+      - business
+      summary: list all businesses
+      description: List all businesses in the application
+      produces:
+      - application/json
+      responses:
+        200:
+          description: A paged array of businesses
+          examples:
+            application/json:
+              error: false
+              business:
+              - id: 1
+                name: Andela
+                details: Brilliance is evenly distributed
+                category: Ict
+                location: Lagos
+                userId: 1
+
+              - id: 1
+                name: seunone Ontop
+                details: Move it
+                category: Engineering
+                location: Lagos
+                userId: 1
+
+    post:
+      summary: Register a business
+      tags:
+       - business
+      summary: Add business
+      description: Add business to the application
+      operationId: add-business
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: name
+        type: string
+        description: Name of business
+        required: true
+      - in: formData
+        name: details
+        type: string
+        description: Details of business
+      - in: formData
+        name: location
+        type: string
+        description: Location of business
+      - in: formData
+        name: category
+        type: string
+        description: Category of business
+      - in: formData
+        name: token
+        type: string
+        description: Token for accessing the endpoint
+        required: true
+      responses:
+        201:
+          description: Added Business Successfully
+          examples:
+            application/json:
+              error: false
+              message: Profile created successfully
+              business:
+                id: 1
+                name: Andela
+                details: Brilliance is evenly distributed
+                category: Ict
+                location: Lagos
+                token: eyJhbGciOiJIUzI1NiIdssdjR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTIxMTk0MTE0LCJleHAiOjE1MjI0MDM3MTR9.OeN-Tut9xAg8wYUvC-RPLbTqIcGXH5zZamP_o5wTZrc
+        400:
+          description: Invalid input
+          examples:
+            application/json:
+              error: true
+              message: 'Name is required'
+
+  /businesses?location={location}:
+    get:
+      tags:
+      - business
+      summary: list businesses in location
+      operationId: location
+      description: List all busnesses in a given location
+      produces:
+      - application/json
+      parameters:
+        - name: location
+          in: path
+          required: true
+          description: The location of the business to retrieve
+          type: string
+      responses:
+        200:
+          description: A paged array of businesses
+          examples:
+            application/json:
+
+  /businesses?category={category}:
+    get:
+      tags:
+      - business
+      summary: list all businesses
+      operationId: category
+      description: List all businesses in a category
+      produces:
+      - application/json
+      parameters:
+        - name: category
+          in: path
+          required: true
+          description: The category of the business to retrieve
+          type: string
+      responses:
+        200:
+          description: A paged array of businesses
+          examples:
+            application/json:
+
+  /businesses/{id}:
+    get:
+      summary: Info for a specific business
+      tags:
+        - business
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the business to retrieve
+          type: integer
+      responses:
+        200:
+          description: Success, business found
+          examples:
+            application/json:
+              message: 'Success'
+              error: false
+              business:
+                id: 3
+                name: 'HotelsNg'
+                details: 'Rent rooms'
+                location: 'Lagos'
+                category: 'ICT'
+                reviews: []
+        404:
+          description: business not found
+          examples:
+            application/json:
+              error: 'true'
+              message: 'Business not found'
+    put:
+      summary: update specific business
+      tags:
+        - business
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The id of the business to retrieve
+          type: integer
+        - in: formData
+          name: name
+          type: string
+          description: Name of business
+          required: true
+        - in: formData
+          name: details
+          type: string
+          description: Details of business
+          required: true
+        - in: formData
+          name: location
+          type: string
+          description: Location of business
+          required: true
+        - in: formData
+          name: category
+          type: string
+          description: Category of business
+          required: true
+        - in: formData
+          name: token
+          type: string
+          description: Token for accessing endpoint
+          required: true
+      responses:
+        200:
+          description: Expected response to be valid request
+          examples:
+            application/json:
+              message: 'Success'
+              error: false
+              business:
+                id: 3
+                name: 'HotelsNg'
+                details: 'Rent rooms'
+                location: 'Lagos'
+                category: 'ICT'
+                token: eyJhbGciOiJIUzI1NiIdssdjR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTIxMTk0MTE0LCJleHAiOjE1MjI0MDM3MTR9.OeN-Tut9xAg8wYUvC-RPLbTqIcGXH5zZamP_o5wTZrc
+        404:
+          description: business not found
+          examples:
+            application/json:
+              error: 'true'
+              message: 'Business not found'
+    delete:
+      summary: delete specific business
+      tags:
+        - business
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The id of the business to delete
+          type: integer
+        - in: formData
+          name: token
+          type: string
+          description: Token for accessing endpoint
+          required: true
+      responses:
+        200:
+          description: Business deleted
+          examples:
+            application/json:
+              error: false
+              message: 'Business deleted'
+        403:
+          description: Forbidden
+          examples:
+            application/json:
+              error: true
+              message: 'You do not have the priviledge to delete this business'
+        404:
+          description: business not found
+          examples:
+            application/json:
+              error: 'true'
+              message: 'Business not found'
+
+  /businesses/{id}/reviews:
+    get:
+      tags:
+      - reviews
+      summary: list reviews
+      description: List reviews of a business
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        description: id of the business to get reviews
+        in: path
+        type: integer
+        minimum: 1
+        required: true
+      responses:
+        200:
+          description: an array of reviews
+          examples:
+            application/json:
+              error: false
+              review:
+                userId: 1
+                businessId: 3
+                content: Lorem Ipsum
+                stars: 4
+        400:
+          description: Business could not be found
+          examples:
+            application/json:
+              error: true
+    post:
+      tags:
+      - reviews
+      summary: Add review
+      description: Add review of a business
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: id of the business to add review
+        type: integer
+        minimum: 1
+        required: true
+      - name: content
+        in: formData
+        description: Content of the review
+        type: string
+        required: true
+      - name: stars
+        in: formData
+        description: Amount of stars given
+        type: integer
+        minimum: 1
+        maximum: 5
+        required: true
+      - in: formData
+        name: token
+        type: string
+        description: Token for accessing endpoint
+        required: true
+
+      responses:
+        200:
+          description: Review Added
+          examples:
+            application/json:
+              error: false
+              review:
+                content: Amazing service
+                stars: 5
+                token: eyJhbGciOiJIUzI1NiIdssdjR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTIxMTk0MTE0LCJleHAiOjE1MjI0MDM3MTR9.OeN-Tut9xAg8wYUvC-RPLbTqIcGXH5zZamP_o5wTZrc
+        400:
+          description: Business could not be found
+          examples:
+            application/json:
+              error: true
+
+  /auth/login:
+    post:
+      tags:
+      - auth
+      summary: login a user
+      description: Log in a user to the application
+      produces:
+      - application/json
+      parameters:
+      - name: email
+        in: formData
+        description: email of the user
+        type: string
+        required: true
+      - name: password
+        in: formData
+        description: password of the user
+        type: string
+        required: true
+      responses:
+        200:
+          description: Success, user is logged in
+          examples:
+            application/json:
+              error: false
+              message: 'logged in successfully'
+        400:
+          description: Invalid Input
+          examples:
+            application/json:
+              error: true
+              message: Unable to login
+
+  /auth/signup:
+    post:
+      tags:
+      - auth
+      summary: Signup a user
+      description: Signup user into the application
+      produces:
+      - application/json
+      parameters:
+      - name: email
+        in: formData
+        description: email of the user
+        type: string
+        required: true
+      - name: password
+        in: formData
+        description: password of the user
+        type: string
+        required: true
+      - name: firstName
+        in: formData
+        description: User First Name
+        type: string
+        required: true
+      - name: lastName
+        in: formData
+        description: User Last name
+        type: string
+        required: true
+
+      responses:
+        200:
+          description: Success, user is signed up
+          examples:
+            application/json:
+              error: false
+              message: 'signup in successfully'
+        400:
+          description: Invalid Input
+          examples:
+            application/json:
+              error: true
+              message: Unable to login

@@ -14,6 +14,6 @@ before_script:
    - createuser seun -s -U postgres
   - createdb database_test --username=seun
   - sequelize db:migrate
-  - sequelize db:seed:all
+  - sequelize db:seed:all 
 after_success: 
   - npm run coverage

@@ -17,6 +17,16 @@ const config = {
   },
   production: {
     use_env_variable: 'DATABASE_URL'
+  },
+  heroku: {
+    use_env_variable: 'DATABASE_URL',
+    dialect: 'postgres',
+    ssl: true,
+    dialectOptions: {
+      ssl: {
+        require: true
+      }
+    }
   }
 };
 

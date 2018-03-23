@@ -61,9 +61,10 @@ export default class usersController {
             });
         });
     })
-      .catch(() => res.status(500).json({
+      .catch(error => res.status(500).json({
         status: 'error',
-        message: 'Internal server error'
+        message: 'Internal server error',
+        error
       }));
   }
 
@@ -114,9 +115,10 @@ export default class usersController {
             }
           });
       })
-      .catch(() => res.status(500).json({
+      .catch(error => res.status(500).json({
         status: 'error',
-        message: 'Internal server error'
+        message: 'Internal server error',
+        error
       }));
   }
 }

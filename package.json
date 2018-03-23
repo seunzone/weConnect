@@ -4,14 +4,15 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production sequelize db:migrate --env production && babel-node server/dist/app.js",
+    "start": "cross-env NODE_ENV=production sequelize db:migrate --env production && babel-node server/lib/app.js",
     "start:dev": "nodemon server/app.js --exec babel-node",
     "build": "babel server/lib -d dist && babel test -d dist/test",
     "serve": "node server/dist/app.js",
     "db-migrate": "sequelize db:migrate",
     "test-migrate": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
     "test": "set NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && nyc mocha server/test/**.spec.js --compilers js:babel-core/register --exit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",

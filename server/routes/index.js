@@ -17,11 +17,7 @@ import {
 
 
 const routes = (app) => {
-  app.get('/', (req, res) => {
-    res.status(200)
-      .send('Welcome to the weConnect api');
-  });
-
+  
   // Signup a new user
   app.post('/api/v1/auth/signup', validateSignup, validateUserLength, User.createUser);
   // log in registered user
@@ -40,6 +36,12 @@ const routes = (app) => {
   app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview);
   // Get review
   app.post('/api/v1/businesses/:id/review', verifyId, Business.getSingleProfile);
+
+  app.get('/', (req, res) => {
+    res.status(200)
+      .send('Welcome to the weConnect api');
+  });
+
 };
 
 export default routes;

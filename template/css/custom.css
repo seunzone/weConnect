@@ -283,3 +283,8 @@ body {
   cursor: default;
   pointer-events: none;
 }
+
+.err {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 150px;
+}

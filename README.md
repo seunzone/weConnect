@@ -90,8 +90,6 @@ npm run start:dev
 
 <tr><td>GET</td> <td>api/v1/businesses?category=category</td> <td>Get businesses in a particular category</td></tr>
 
-<tr><td>GET</td> <td>api/v1/businesses?location=location&category=category</td> <td>Get businesses by location and category</td></tr>
-
 <tr><td>POST</td> <td>api/v1/auth/signup</td> <td>Create a user</td></tr>
 
 <tr><td>POST</td> <td>api/v1/auth/login</td> <td>Sign in a user</td></tr>

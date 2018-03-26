@@ -9,10 +9,10 @@ const config = {
     dialect: 'postgres'
   },
   test: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: 'weconnect_test',
-    host: process.env.DB_HOST,
+    username: 'seun',
+    password: 'password',
+    database: 'database_test',
+    host: '127.0.0.1',
     dialect: 'postgres'
   },
   production: {

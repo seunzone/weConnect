@@ -11,9 +11,10 @@ dist: trusty
 services:
   - postgresql
 before_script:
-  - createuser seun -s -U postgres
-  - createdb database_test --username=seun
-  - sequelize db:migrate
+  - psql -c 'create database database_test;' -U postgres
+  - psql -c "CREATE USER seun WITH PASSWORD 'password';" -U postgres
   - sequelize db:seed:all
+script:
+  - npm run test
 after_success: 
   - npm run coverage

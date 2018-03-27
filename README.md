@@ -70,7 +70,7 @@ npm run start:dev
 5. Install postman to test all endpoints
 
 ## Testing
-- run test using `npm run test:server`    
+- run test using `npm run test`    
 
 ## API Routes
 

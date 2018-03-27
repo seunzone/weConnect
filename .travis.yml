@@ -1,19 +1,14 @@
+sudo: required
 language: node_js
 node_js:
-  - "7"
-env:
-  - MY_SECRET=This
-cache:
-  directories:
-    - "node_modules"
-sudo: false
-dist: trusty
+  - "6"
 services:
   - postgresql
 before_script:
-  - psql -c 'create database database_test;' -U postgres
-  - psql -c "CREATE USER seun WITH PASSWORD 'password';" -U postgres
+  - psql -c 'drop database if exists travis;' -U postgres
+  - psql -c 'create database travis;' -U postgres
 script:
   - npm run test
-after_success: 
   - npm run coverage
+addons:
+  postgresql: "9.3"

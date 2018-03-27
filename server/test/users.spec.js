@@ -13,7 +13,7 @@ const userLogin = '/api/v1/auth/login';
 describe('User signup', () => {
   it('It Should create user with right signup credentials', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send(users[0])
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -29,7 +29,7 @@ describe('User signup', () => {
   });
   it('should not register a new user with an already existing email', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send(users[0])
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -40,7 +40,7 @@ describe('User signup', () => {
   });
   it('should not register user with a wrong email format', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: 'tobi',
         email: 'teeboy.com',
@@ -57,7 +57,7 @@ describe('User signup', () => {
   });
   it('should not register user with an empty username field ', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: '',
         email: 'seun@test.com',
@@ -74,7 +74,7 @@ describe('User signup', () => {
   });
   it('should not register with less than 3 characters', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: 'sa',
         email: 'seun@test.com',
@@ -91,7 +91,7 @@ describe('User signup', () => {
   });
   it('should not register with more than 15 characters', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: 'sajhdkdbfbirjbrjbvjdljldjldfrjbrjbrkd',
         email: 'seun@test.com',
@@ -108,7 +108,7 @@ describe('User signup', () => {
   });
   it('should not register with wierd characters', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: '@$@%#!^!',
         email: 'seun@test.com',
@@ -125,7 +125,7 @@ describe('User signup', () => {
   });
   it('should not register with less than 6 password characters', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: 'superuser',
         email: 'seun@test.com',
@@ -142,7 +142,7 @@ describe('User signup', () => {
   });
   it('should not register user with an empty email field ', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: 'superuser',
         email: '',
@@ -159,7 +159,7 @@ describe('User signup', () => {
   });
   it('should not register user with an empty password field ', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: 'superuser',
         email: 'user@email.com',
@@ -176,7 +176,7 @@ describe('User signup', () => {
   });
   it('should return error if password do not match', (done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send({
         username: 'superuser',
         email: 'user@email.com',
@@ -196,7 +196,7 @@ describe('User signup', () => {
 describe('User login', () => {
   it('should login a user with the correct details', (done) => {
     chai.request(app)
-      .post(userLogin)
+      .post(`${userLogin}`)
       .send(users[1])
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -211,7 +211,7 @@ describe('User login', () => {
   });
   it('should not login user without password', (done) => {
     chai.request(app)
-      .post(userLogin)
+      .post(`${userLogin}`)
       .send({
         email: 'test@we.com',
         password: '',
@@ -225,7 +225,7 @@ describe('User login', () => {
   });
   it('should not login user without email address', (done) => {
     chai.request(app)
-      .post(userLogin)
+      .post(`${userLogin}`)
       .send({
         email: '',
         password: 'password',
@@ -239,7 +239,7 @@ describe('User login', () => {
   });
   it('should not sign in a user with an incorrect password', (done) => {
     chai.request(app)
-      .post(userLogin)
+      .post(`${userLogin}`)
       .send({
         email: 'test@we.com',
         password: 'wrongpassword',
@@ -254,7 +254,7 @@ describe('User login', () => {
   });
   it('should not login user with an incorrect email address', (done) => {
     chai.request(app)
-      .post(userLogin)
+      .post(`${userLogin}`)
       .send({
         email: 'wrong@email.com',
         password: 'test@we.com',

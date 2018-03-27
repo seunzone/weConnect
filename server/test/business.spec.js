@@ -24,7 +24,7 @@ const profile1 = {
 describe('BUSINESS CONTROLLER', () => {
   before((done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send(users[2])
       .end((err, res) => {
         userToken = res.body.token;
@@ -34,7 +34,7 @@ describe('BUSINESS CONTROLLER', () => {
   describe('Add Business', () => {
     it('should not add business with an empty name field', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: '',
@@ -53,7 +53,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business name with less than 3 characters', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'An',
@@ -72,7 +72,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business with an empty description', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'Andela Nigeria',
@@ -91,7 +91,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business description with less than 10 characters', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'Andela Naija',
@@ -110,7 +110,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business with an empty category', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'Andela Nigeria',
@@ -129,7 +129,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business with an empty location', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'Andela Nigeria',
@@ -148,7 +148,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should allow auth users to add business', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send(profile1)
         .end((err, res) => {
@@ -159,7 +159,7 @@ describe('BUSINESS CONTROLLER', () => {
 
     it('should not allow non auth user to add business', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .send(profile1)
         .end((err, res) => {
           expect(res.status).to.equal(401);
@@ -221,7 +221,7 @@ describe('BUSINESS CONTROLLER', () => {
   describe('Get Business', () => {
     it('should allow users to view all bussinesses', (done) => {
       chai.request(app)
-        .get(businessURL)
+        .get(`${businessURL}`)
         .end((err, res) => {
           expect(res).to.have.status(200);
           done();

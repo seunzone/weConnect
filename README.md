@@ -59,11 +59,15 @@ git clone https://github.com/seunzone/weConnect.git
 ```
 npm install
 ```
-4. Start the application by running
+3. Start the application by running
 ```
 npm run start:dev
 ```
-4. Install postman to test all endpoints
+4. Create a `.env` file in the root of your project and insert
+    See a sample in the `.env.sample`
+    Fill in the sample data with your prefared parameters
+
+5. Install postman to test all endpoints
 
 ## Testing
 - run test using `npm run test:server`    

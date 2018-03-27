@@ -1,17 +1,14 @@
 language: node_js
 node_js:
-  - "7"
-env:
- MY_SECRET: This
-cache:
-  directories:
-    - "node_modules"
-sudo: false
-dist: trusty
+  - 9.5.0
 services:
   - postgresql
-before_script:
-  - "psql -c 'create database wecon;' -U postgres"
-  - npm run test-migrate
-after_success: 
+
+script:
+  - npm run test
+
+after_success:
   - npm run coverage
+
+env:
+  global:

@@ -4,7 +4,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    profileId: {
+    businessId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -20,8 +20,8 @@ export default (sequelize, DataTypes) => {
       { foreignKey: 'userId', onDelete: 'CASCADE' }
     );
     Review.belongsTo(
-      models.Profile,
-      { foreignKey: 'profileId', onDelete: 'CASCADE' }
+      models.Business,
+      { foreignKey: 'businessId', onDelete: 'CASCADE' }
     );
   };
   return Review;

@@ -56,8 +56,10 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "nodemon": "^1.17.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.9.0"
+    "eslint-plugin-import": "^2.9.0",
+    "nodemon": "^1.17.1",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.13"
   }
 }

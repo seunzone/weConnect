@@ -1,6 +1,6 @@
 import db from '../models';
 
-const { Profile, Review, User } = db;
+const { Business, Review, User } = db;
 
 /**
  * @class businessController
@@ -20,27 +20,27 @@ export default class businessController {
    *
    * @returns {object} Class instance
    */
-  static addProfile(req, res) {
+  static addBusiness(req, res) {
     const {
       name, description, image, location, category
     } = req.body;
 
-    Profile.findOne({
+    Business.findOne({
       where: {
         name,
         userId: req.userId
       }
     })
-      .then((foundProfile) => {
-        if (foundProfile) {
+      .then((foundBusiness) => {
+        if (foundBusiness) {
           return res.status(400)
             .json({
               status: 'fail',
               message: 'You already have this as an existing business'
             });
         }
-        if (!foundProfile) {
-          Profile.create({
+        if (!foundBusiness) {
+          Business.create({
             name,
             userId: req.userId,
             description,
@@ -48,11 +48,11 @@ export default class businessController {
             location,
             category
           })
-            .then(newProfile => res.status(201)
+            .then(newBusiness => res.status(201)
               .json({
                 status: 'success',
-                message: 'Profile created successfully',
-                profile: newProfile
+                message: 'Business created successfully',
+                Business: newBusiness
               }));
         }
       })
@@ -72,39 +72,39 @@ export default class businessController {
    *
    * @returns {object} Class instance
    */
-  static updateProfile(req, res) {
+  static updateBusiness(req, res) {
     const {
       name, description, image, location, category
     } = req.body;
 
-    Profile.findOne({
+    Business.findOne({
       where: {
         id: req.params.id,
         userId: req.userId
       }
     })
-      .then((foundProfile) => {
-        if (foundProfile) {
+      .then((foundBusiness) => {
+        if (foundBusiness) {
           const update = {
-            name: name || foundProfile.name,
-            description: description || foundProfile.description,
-            image: image || foundProfile.image,
-            location: location || foundProfile.location,
-            category: category || foundProfile.category,
+            name: name || foundBusiness.name,
+            description: description || foundBusiness.description,
+            image: image || foundBusiness.image,
+            location: location || foundBusiness.location,
+            category: category || foundBusiness.category,
           };
-          foundProfile.update(update)
-            .then(updatedProfile => res.status(200)
+          foundBusiness.update(update)
+            .then(updatedBusiness => res.status(200)
               .json({
                 status: 'success',
                 message: 'Update successful',
-                profile: updatedProfile
+                Business: updatedBusiness
               }));
         }
-        if (!foundProfile) {
+        if (!foundBusiness) {
           return res.status(404)
             .json({
               status: 'fail',
-              message: `Can't find profile with id ${req.params.id} by you`
+              message: `Can't find Business with id ${req.params.id} by you`
             });
         }
       })
@@ -114,7 +114,7 @@ export default class businessController {
       }));
   }
   /**
-   * @description - Delete a profile
+   * @description - Delete a Business
    * @static
    *
    * @param {object} req - HTTP Request
@@ -124,23 +124,23 @@ export default class businessController {
    *
    * @returns {object} Class instance
    */
-  static deleteProfile(req, res) {
-    Profile.findOne({
+  static deleteBusiness(req, res) {
+    Business.findOne({
       where: {
         id: req.params.id,
         userId: req.userId
       }
     })
-      .then((foundProfile) => {
-        if (!foundProfile) {
+      .then((foundBusiness) => {
+        if (!foundBusiness) {
           return res.status(404)
             .json({
               status: 'fail',
-              message: `Can't find profile with id ${req.params.id} by you`
+              message: `Can't find Business with id ${req.params.id} by you`
             });
         }
-        if (foundProfile) {
-          Profile.destroy({
+        if (foundBusiness) {
+          Business.destroy({
             where: {
               id: req.params.id,
               userId: req.userId
@@ -150,7 +150,7 @@ export default class businessController {
             .then(() => res.status(200)
               .json({
                 status: 'success',
-                message: 'profile deleted'
+                message: 'Business deleted'
               }));
         }
       })
@@ -160,7 +160,7 @@ export default class businessController {
       }));
   }
   /**
-   * @description - get a single profile
+   * @description - get a single Business
    * @static
    *
    * @param {object} req - HTTP Request
@@ -170,8 +170,8 @@ export default class businessController {
    *
    * @returns {object} Class instance
    */
-  static getSingleProfile(req, res) {
-    Profile.findOne({
+  static getSingleBusiness(req, res) {
+    Business.findOne({
       where: {
         id: req.params.id
       },
@@ -185,18 +185,18 @@ export default class businessController {
           }]
         }
       ]
-    }).then((foundProfile) => {
-      if (!foundProfile) {
+    }).then((foundBusiness) => {
+      if (!foundBusiness) {
         return res.status(404).send({
           message: 'Business Not Found',
         });
       }
-      return res.status(200).send(foundProfile);
+      return res.status(200).send(foundBusiness);
     })
       .catch(error => res.status(404).send(error));
   }
   /**
-   * @description - get a single profile
+   * @description - get a single Business
    * @static
    *
    * @param {object} req - HTTP Request
@@ -206,9 +206,9 @@ export default class businessController {
    *
    * @returns {object} Class instance
    */
-  static getAllProfile(req, res) {
-    return Profile.all()
-      .then(foundProfile => res.status(200).send(foundProfile))
+  static getAllBusiness(req, res) {
+    return Business.all()
+      .then(foundBusiness => res.status(200).send(foundBusiness))
       .catch(error => res.status(400).send(error));
   }
   /**
@@ -226,7 +226,7 @@ export default class businessController {
     const { location, category } = req.query;
     if (location || category) {
       if (location) {
-        Profile
+        Business
           .findAll({
             where: {
               location: { $iLike: `%${location}%` }
@@ -247,7 +247,7 @@ export default class businessController {
           });
       }
       if (category) {
-        Profile
+        Business
           .findAll({
             where: {
               category: { $iLike: `%${category}%` }

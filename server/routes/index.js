@@ -23,19 +23,19 @@ const routes = (app) => {
   // log in registered user
   app.post('/api/v1/auth/login', validateLogin, User.userLogin);
   // Add Business
-  app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addProfile);
+  app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addBusiness);
   // Update Business
-  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateProfile);
+  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateBusiness);
   // Delete Business
-  app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteProfile);
+  app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteBusiness);
   // Gets a single business
-  app.get('/api/v1/businesses/:id', verifyId, Business.getSingleProfile);
+  app.get('/api/v1/businesses/:id', verifyId, Business.getSingleBusiness);
   // Gets all businesses
-  app.get('/api/v1/businesses', Business.sortSearch, Business.getAllProfile);
+  app.get('/api/v1/businesses', Business.sortSearch, Business.getAllBusiness);
   // Post review
   app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview);
   // Get review
-  app.post('/api/v1/businesses/:id/review', verifyId, Business.getSingleProfile);
+  app.post('/api/v1/businesses/:id/review', verifyId, Business.getSingleBusiness);
 
   app.get('/', (req, res) => {
     res.status(200)

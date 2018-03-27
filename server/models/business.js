@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Profile = sequelize.define('Profile', {
+  const Business = sequelize.define('Business', {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -33,16 +33,16 @@ export default (sequelize, DataTypes) => {
 
   });
 
-  Profile.associate = (models) => {
+  Business.associate = (models) => {
     // associations defined here
-    Profile.belongsTo(
+    Business.belongsTo(
       models.User,
       { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true }
     );
-    Profile.hasMany(
+    Business.hasMany(
       models.Review,
-      { foreignKey: 'profileId', onDelete: 'CASCADE', hooks: true }
+      { foreignKey: 'businessId', onDelete: 'CASCADE', hooks: true }
     );
   };
-  return Profile;
+  return Business;
 };

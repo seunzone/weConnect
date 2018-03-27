@@ -1,14 +1,17 @@
-sudo: required
 language: node_js
 node_js:
-  - "6"
+  - "7"
+env:
+ MY_SECRET: secret
+cache:
+  directories:
+    - "node_modules"
+sudo: false
+dist: trusty
 services:
   - postgresql
 before_script:
-  - psql -c 'drop database if exists travis;' -U postgres
-  - psql -c 'create database travis;' -U postgres
-script:
-  - npm run test
+  - "psql -c 'create database wecon;' -U postgres"
+  - npm run test-migrate
+after_success: 
   - npm run coverage
-addons:
-  postgresql: "9.3"

@@ -48,12 +48,14 @@ export default class businessController {
             location,
             category
           })
-            .then(newBusiness => res.status(201)
-              .json({
-                status: 'success',
-                message: 'Business created successfully',
-                Business: newBusiness
-              }));
+            .then((newBusiness) => {
+              return res.status(201)
+                .json({
+                  status: 'success',
+                  message: 'Business created successfully',
+                  Business: newBusiness
+                });
+            });
         }
       })
       .catch(() => res.status(500).json({

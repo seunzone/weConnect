@@ -34,7 +34,7 @@ const routes = (app) => {
   // Post review
   app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview);
   // Get review
-  app.post('/api/v1/businesses/:id/review', verifyId, Business.getSingleBusiness);
+  app.get('/api/v1/businesses/:id/review', verifyId, Business.getSingleBusiness);
 
   app.get('/', (req, res) => {
     res.status(200)

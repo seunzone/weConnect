@@ -39,4 +39,7 @@ app.get('*', (req, res) => res.status(404).send({
 
 app.listen(port);
 
+// Console message
+console.log(`Magic happens at http://localhost:${port}`);
+
 export default app;

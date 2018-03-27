@@ -17,7 +17,6 @@ import {
 
 
 const routes = (app) => {
-  
   // Signup a new user
   app.post('/api/v1/auth/signup', validateSignup, validateUserLength, User.createUser);
   // log in registered user
@@ -41,7 +40,6 @@ const routes = (app) => {
     res.status(200)
       .send('Welcome to the weConnect api');
   });
-
 };
 
 export default routes;

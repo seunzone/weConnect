@@ -9,7 +9,7 @@
     "build": "babel server -d server/dist",
     "db-migrate": "sequelize db:migrate",
     "test-migrate": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
-    "test": "set NODE_ENV=test && npm run test-migrate && nyc mocha server/test/**.spec.js --compilers js:babel-core/register --exit",
+    "test": "set NODE_ENV=test && npm run test-migrate && nyc mocha server/test/**.spec.js --timeout 15000 --compilers js:babel-core/register --exit",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "postinstall": "npm run build"

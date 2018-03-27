@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "7"
 env:
- MY_SECRET: This is my secret
+ MY_SECRET: This
 cache:
   directories:
     - "node_modules"

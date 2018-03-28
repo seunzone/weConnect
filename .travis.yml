@@ -1,31 +1,18 @@
-# sudo: required
-# language: node_js
-# node_js:
-#   - "stable"
-# services:
-#   - postgresql
-# before_script:
-#   - psql -c 'drop database if exists travis;' -U postgres
-#   - psql -c 'create database travis;' -U postgres
-# script:
-#   - npm run test
-# addons:
-#   postgresql: "9.3"
-# after_success:
-#   - npm run coverage
-# env:
-#   global:
+sudo: false
+dist: trusty
 language: node_js
 node_js:
-  - 8.10.0
+  - "stable"
 services:
   - postgresql
-
+before_script:
+  - psql -c 'drop database if exists travis;' -U postgres
+  - psql -c 'create database travis;' -U postgres
 script:
   - npm run test
-
+addons:
+  postgresql: "9.3"
 after_success:
   - npm run coverage
-
 env:
   global:

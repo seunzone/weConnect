@@ -18,7 +18,8 @@ const profile1 = {
   description: 'Brilliance is evenly distributed, opprotunity is not',
   image: 'Some random image URL',
   category: 'ICT',
-  location: 'Lagos Nigeria'
+  location: 'Lagos Nigeria',
+  token: userToken
 };
 
 describe('BUSINESS CONTROLLER', () => {
@@ -41,7 +42,8 @@ describe('BUSINESS CONTROLLER', () => {
           description: 'Brilliance is evenly distributed, opprotunity is not',
           image: 'Some random image URL',
           category: 'ICT',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -60,7 +62,8 @@ describe('BUSINESS CONTROLLER', () => {
           description: 'Brilliance is evenly distributed, opprotunity is not',
           image: 'Some random image URL',
           category: 'ICT',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(406);
@@ -79,7 +82,8 @@ describe('BUSINESS CONTROLLER', () => {
           description: '',
           image: 'Some random image URL',
           category: 'ICT',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -98,7 +102,8 @@ describe('BUSINESS CONTROLLER', () => {
           description: 'Brillia',
           image: 'Some random image URL',
           category: 'ICT',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(406);
@@ -117,7 +122,8 @@ describe('BUSINESS CONTROLLER', () => {
           description: 'Brilliance is evenly distributed, opportunity is not',
           image: 'Some random image URL',
           category: '',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -136,7 +142,8 @@ describe('BUSINESS CONTROLLER', () => {
           description: 'Brilliance is evenly distributed, opportunity is not',
           image: 'Some random image URL',
           category: 'ICT',
-          location: ''
+          location: '',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -272,6 +279,9 @@ describe('BUSINESS CONTROLLER', () => {
       chai.request(app)
         .delete('/api/v1/businesses/10')
         .set('token', userToken)
+        .send({
+          token: userToken
+        })
         .end((err, res) => {
           expect(res.status).to.equal(404);
           expect(res.body).to.be.an('object');
@@ -293,6 +303,9 @@ describe('BUSINESS CONTROLLER', () => {
       chai.request(app)
         .delete('/api/v1/businesses/1')
         .set('token', userToken)
+        .send({
+          token: userToken
+        })
         .end((err, res) => {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.an('object');

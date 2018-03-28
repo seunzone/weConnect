@@ -51,7 +51,7 @@ export const verifyLenght = (req, res, next) => {
 
   // Check for Lenght
   if (!Validator.isLength(name, { min: 3, max: 30 })) {
-    res.status(406)
+    return res.status(406)
       .send({
         status: 'Fail',
         message: 'Business name should be between 3 to 30 characters',
@@ -59,7 +59,7 @@ export const verifyLenght = (req, res, next) => {
   }
   // Check for Lenght
   if (!Validator.isLength(description, { min: 10, max: 200 })) {
-    res.status(406)
+    return res.status(406)
       .send({
         status: 'Fail',
         message: 'Description must be between 10 to 200 characters',
@@ -75,7 +75,7 @@ export const verifyLenght = (req, res, next) => {
   }
   // Check for Lenght
   if (!Validator.isLength(category, { min: 3, max: 30 })) {
-    res.status(406)
+    return res.status(406)
       .send({
         status: 'Fail',
         message: 'Category should be between 3 to 30 characters',

@@ -1,19 +1,17 @@
-language: node_js
-node_js:
-  - "7"
-env:
-  - MY_SECRET=This
-cache:
-  directories:
-    - "node_modules"
 sudo: false
 dist: trusty
+language: node_js
+node_js:
+  - "stable"
 services:
   - postgresql
-before_script:
-  - psql -c 'create database database_test;' -U postgres
+before_script: 
+  - npm install
+  - psql -c 'CREATE DATABASE travis;' -U postgres
   - psql -c "CREATE USER seun WITH PASSWORD 'password';" -U postgres
 script:
   - npm run test
-after_success: 
+after_success:
   - npm run coverage
+env:
+  global:

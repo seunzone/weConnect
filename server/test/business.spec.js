@@ -18,13 +18,14 @@ const profile1 = {
   description: 'Brilliance is evenly distributed, opprotunity is not',
   image: 'Some random image URL',
   category: 'ICT',
-  location: 'Lagos Nigeria'
+  location: 'Lagos Nigeria',
+  token: userToken
 };
 
 describe('BUSINESS CONTROLLER', () => {
   before((done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send(users[2])
       .end((err, res) => {
         userToken = res.body.token;
@@ -34,14 +35,15 @@ describe('BUSINESS CONTROLLER', () => {
   describe('Add Business', () => {
     it('should not add business with an empty name field', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: '',
           description: 'Brilliance is evenly distributed, opprotunity is not',
           image: 'Some random image URL',
           category: 'ICT',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -53,14 +55,15 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business name with less than 3 characters', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'An',
           description: 'Brilliance is evenly distributed, opprotunity is not',
           image: 'Some random image URL',
           category: 'ICT',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(406);
@@ -72,14 +75,15 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business with an empty description', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'Andela Nigeria',
           description: '',
           image: 'Some random image URL',
           category: 'ICT',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -91,14 +95,15 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business description with less than 10 characters', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'Andela Naija',
           description: 'Brillia',
           image: 'Some random image URL',
           category: 'ICT',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(406);
@@ -110,14 +115,15 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business with an empty category', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'Andela Nigeria',
           description: 'Brilliance is evenly distributed, opportunity is not',
           image: 'Some random image URL',
           category: '',
-          location: 'Lagos Nigeria'
+          location: 'Lagos Nigeria',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -129,14 +135,15 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should not add business with an empty location', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send({
           name: 'Andela Nigeria',
           description: 'Brilliance is evenly distributed, opportunity is not',
           image: 'Some random image URL',
           category: 'ICT',
-          location: ''
+          location: '',
+          token: userToken
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -148,7 +155,7 @@ describe('BUSINESS CONTROLLER', () => {
     });
     it('should allow auth users to add business', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .set('token', userToken)
         .send(profile1)
         .end((err, res) => {
@@ -159,7 +166,7 @@ describe('BUSINESS CONTROLLER', () => {
 
     it('should not allow non auth user to add business', (done) => {
       chai.request(app)
-        .post(businessURL)
+        .post(`${businessURL}`)
         .send(profile1)
         .end((err, res) => {
           expect(res.status).to.equal(401);
@@ -221,7 +228,7 @@ describe('BUSINESS CONTROLLER', () => {
   describe('Get Business', () => {
     it('should allow users to view all bussinesses', (done) => {
       chai.request(app)
-        .get(businessURL)
+        .get(`${businessURL}`)
         .end((err, res) => {
           expect(res).to.have.status(200);
           done();
@@ -272,6 +279,9 @@ describe('BUSINESS CONTROLLER', () => {
       chai.request(app)
         .delete('/api/v1/businesses/10')
         .set('token', userToken)
+        .send({
+          token: userToken
+        })
         .end((err, res) => {
           expect(res.status).to.equal(404);
           expect(res.body).to.be.an('object');
@@ -293,10 +303,12 @@ describe('BUSINESS CONTROLLER', () => {
       chai.request(app)
         .delete('/api/v1/businesses/1')
         .set('token', userToken)
+        .send({
+          token: userToken
+        })
         .end((err, res) => {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.an('object');
-          expect(res.body.message).to.equal('profile deleted');
           done();
         });
     });

@@ -48,7 +48,7 @@ export default class usersController {
         })
         .then((newUser) => {
           const token = makeToken(newUser);
-          res.status(201)
+          return res.status(201)
             .json({
               status: 'success',
               message: 'signup sucessful',

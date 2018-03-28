@@ -6,7 +6,7 @@
 ## Application Description
 WeConnect provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with
  <br/><b> View UI Template:</b> https://seunzone.github.io/weConnect/template
- <br/><b> Test API Endpoint Here: </b> https://weconnect007.herokuapp.com/
+ <br/><b> Test API Endpoint Here: </b> https://blooming-retreat-26061.herokuapp.com/
 ## Table of Content
 
  [Features](#features)
@@ -59,14 +59,18 @@ git clone https://github.com/seunzone/weConnect.git
 ```
 npm install
 ```
-4. Start the application by running
+3. Start the application by running
 ```
 npm run start:dev
 ```
-4. Install postman to test all endpoints
+4. Create a `.env` file in the root of your project and insert
+    See a sample in the `.env.sample`
+    Fill in the sample data with your prefared parameters
+
+5. Install postman to test all endpoints
 
 ## Testing
-- run test using `npm run test:server`    
+- run test using `npm run test`    
 
 ## API Routes
 

@@ -74,7 +74,7 @@ export const validateUserLength = (req, res, next) => {
 
   // check for username characters
   if (!Validator.isAlphanumeric(username)) {
-    res.status(406)
+    return res.status(406)
       .send({
         status: 'Fail',
         message: 'Only alphabets and numbers are allowed.',
@@ -82,7 +82,7 @@ export const validateUserLength = (req, res, next) => {
   }
   // Check for Username Lenght
   if (!Validator.isLength(username, { min: 3, max: 15 })) {
-    res.status(406)
+    return res.status(406)
       .send({
         status: 'Fail',
         message: 'Username can only be from 3 to 15 characters',
@@ -90,7 +90,7 @@ export const validateUserLength = (req, res, next) => {
   }
   // Check for Password
   if (!Validator.isLength(password, { min: 6, max: 50 })) {
-    res.status(406)
+    return res.status(406)
       .send({
         status: 'Fail',
         message: 'Password can only be from 6 to 50 characters',

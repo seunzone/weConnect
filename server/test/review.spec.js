@@ -25,7 +25,7 @@ const review = {
 describe('REVIEW API', () => {
   before((done) => {
     chai.request(app)
-      .post(userSignup)
+      .post(`${userSignup}`)
       .send(users[3])
       .end((err, res) => {
         userToken = res.body.token;
@@ -35,7 +35,7 @@ describe('REVIEW API', () => {
 
   before((done) => {
     chai.request(app)
-      .post(businessURL)
+      .post(`${businessURL}`)
       .set('token', userToken)
       .send(profile)
       .end((err, res) => {

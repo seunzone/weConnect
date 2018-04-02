@@ -3,7 +3,6 @@ import User from '../controllers/userController';
 import Business from '../controllers/businessController';
 import Reviews from '../controllers/reviewsController';
 import authLogin from '../middleware/authorize';
-import isUser from '../middleware/user';
 import {
   verifyInput,
   verifyLenght,
@@ -25,9 +24,9 @@ const routes = (app) => {
   // Add Business
   app.post('/api/v1/businesses', authLogin, verifyInput, verifyLenght, Business.addBusiness);
   // Update Business
-  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, isUser, Business.updateBusiness);
+  app.put('/api/v1/businesses/:id', authLogin, verifyInput, verifyLenght, verifyId, Business.updateBusiness);
   // Delete Business
-  app.delete('/api/v1/businesses/:id', authLogin, verifyId, isUser, Business.deleteBusiness);
+  app.delete('/api/v1/businesses/:id', authLogin, verifyId, Business.deleteBusiness);
   // Gets a single business
   app.get('/api/v1/businesses/:id', verifyId, Business.getSingleBusiness);
   // Gets all businesses

@@ -5,7 +5,7 @@ body {
 
 .landing-banner {
     width: 100%;
-    min-height: 550px;
+    min-height: 350px;
     background: linear-gradient(to bottom, rgba(0, 16, 96, 0.3), rgba(0, 16, 96, 0.3)), url("../img/banner.png") center bottom;
     position: relative; }
   @media(min-width: 1360px){
@@ -49,7 +49,6 @@ body {
   
   .banner-content {
     position: absolute;
-    top: 75px;
     left: 0;
     width: 70%;
     margin: 0 15%;

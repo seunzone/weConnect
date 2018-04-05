@@ -55,26 +55,10 @@
         <div class="row justify-content-center">
             <h1 class="text-center my-5 header-color">Update Business Profile</h1>
         </div>
-        <hr class="hr-class">
         <div class="row justify-content-center">
 
             <div class="col-lg-10 col-md-10">
                 <div class="card">
-                    <!-- Upload image -->
-                    <div class="upload-img">
-                        <div class="row justify-content-center">
-                            <div class="col-12">
-                                <p class="text-center">
-                                    <span class="h2">
-                                        <i class="fa fa-camera" aria-hidden="true"></i>
-                                    </span>
-                                    <br> Click to upload image
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End upload image -->
-                    <hr>
 
                     <!-- Create form -->
                     <div class="card-body">
@@ -107,7 +91,17 @@
                                     </select>
                                 </div>
                             </div>
+                        </div><br>
+                        <label>Upload Image</label>
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                              Browse…
+                              <input type="file" id="imgInp">
+                            </span>
+                          </span>
                         </div>
+                        <br>
                         <label>Details</label>
                         <textarea placeholder="Lorem Ipsum Dolor" cols="3" rows="3" class="form-control"></textarea>
                         <hr>

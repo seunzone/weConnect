@@ -8,7 +8,7 @@ const SRC_DIR = path.resolve(__dirname, 'client/src');
 
 module.exports = {
   mode: 'development',
-  entry: './client/src/index.jsx',
+  entry: './client/src/index.js',
   output: {
     path: DIST_DIR,
     filename: 'bundle.js',

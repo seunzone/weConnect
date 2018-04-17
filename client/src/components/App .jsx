@@ -1,9 +1,9 @@
 import React from 'react';
 
 const App = () => (
-    <div>
-      Hello
-    </div>
+  <div>
+    Hello React
+  </div>
 );
 
 export default App;

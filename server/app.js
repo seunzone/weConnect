@@ -27,7 +27,7 @@ const compiler = webpack(config);
 app.use((webpackDevMiddleware)(compiler));
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.use(express.static(path.join(__dirname, './client/src/public')));
+app.use(express.static(path.join(__dirname, '../client/src')));
 
 // Log requests to the console.
 app.use(volleyball);
@@ -52,6 +52,10 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('*', (req, res) => res.status(404).send({
   message: 'A beast ate this page, durh',
 }));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.listen(port);
 

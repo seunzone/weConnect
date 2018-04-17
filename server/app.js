@@ -1,7 +1,6 @@
-import webpack from 'webpack';
-import webpackMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
 import express from 'express';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
 import path from 'path';
 import volleyball from 'volleyball';
 import bodyParser from 'body-parser';
@@ -10,7 +9,7 @@ import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 import YAML from 'yamljs';
 import routes from './routes';
-import webpackDev from '../webpack.dev';
+import config from '../webpack.config.dev';
 
 
 dotenv.config();
@@ -21,6 +20,14 @@ const port = process.env.PORT || 3000;
 
 // Set up the express app
 const app = express();
+
+
+const compiler = webpack(config);
+
+app.use((webpackDevMiddleware)(compiler));
+app.use(require('webpack-hot-middleware')(compiler));
+
+app.use(express.static(path.join(__dirname, './client/src/public')));
 
 // Log requests to the console.
 app.use(volleyball);
@@ -34,17 +41,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 routes(app);
-
-
-if (process.env.NODE_ENV === 'development') {
-  const compiler = webpack(webpackDev);
-  app.use(webpackMiddleware(compiler, {
-    publicPath: webpackDev.output.publicPath,
-    noInfo: true
-  }));
-
-  app.use(webpackHotMiddleware(compiler));
-}
 
 // API Docs
 const swaggerDocument = YAML.load(`${process.cwd()}/swagger.yaml`);

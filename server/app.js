@@ -1,4 +1,8 @@
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 import express from 'express';
+import path from 'path';
 import volleyball from 'volleyball';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
@@ -6,6 +10,7 @@ import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 import YAML from 'yamljs';
 import routes from './routes';
+import webpackDev from '../webpack.dev';
 
 
 dotenv.config();
@@ -20,11 +25,26 @@ const app = express();
 // Log requests to the console.
 app.use(volleyball);
 
+const publicPath = express.static(path.join(__dirname, '../build'));
+
+app.use('/', publicPath);
+
 // Parse incoming requests data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 routes(app);
+
+
+if (process.env.NODE_ENV === 'development') {
+  const compiler = webpack(webpackDev);
+  app.use(webpackMiddleware(compiler, {
+    publicPath: webpackDev.output.publicPath,
+    noInfo: true
+  }));
+
+  app.use(webpackHotMiddleware(compiler));
+}
 
 // API Docs
 const swaggerDocument = YAML.load(`${process.cwd()}/swagger.yaml`);

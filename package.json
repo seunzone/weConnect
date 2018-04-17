@@ -12,7 +12,8 @@
     "test": "set NODE_ENV=test && npm run test-migrate && nyc mocha server/test/**.spec.js --timeout 15000 --compilers js:babel-core/register --exit",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "webpack": "webpack-dev-server -d --config ./webpack.config.dev.js --hot"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,10 @@
   "homepage": "https://github.com/seunzone/weConnect#readme",
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -35,12 +38,15 @@
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "clean-webpack-plugin": "^0.1.19",
     "cors": "^2.8.4",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.4",
     "dotenv": "^4.0.0",
     "eslint": "^4.18.1",
+    "eventsource-polyfill": "^0.9.6",
     "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^3.0.2",
     "istanbul": "^0.4.5",
     "jsonwebtoken": "^8.2.0",
     "lodash": "^4.17.5",
@@ -49,18 +55,27 @@
     "nyc": "^11.4.1",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "sequelize": "^4.19.0",
     "sequelize-cli": "^3.0.0",
     "swagger-ui-express": "^2.0.15",
+    "transfer-webpack-plugin": "^0.1.4",
     "validator": "^9.4.1",
     "volleyball": "^1.4.1",
+    "webpack": "^3.8.1",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-middleware": "^3.1.2",
+    "webpack-dev-server": "^3.1.1",
+    "webpack-hot-middleware": "^2.21.2",
+    "webpack-merge": "^4.1.2",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
-    "nodemon": "^1.17.1",
-    "webpack": "^4.2.0",
-    "webpack-cli": "^2.0.13"
+    "nodemon": "^1.17.1"
   }
 }

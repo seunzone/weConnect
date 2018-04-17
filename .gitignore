@@ -7,3 +7,6 @@ coverage/
 server/dist/
 
 .env
+
+client/dist
+build

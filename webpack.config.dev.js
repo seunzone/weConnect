@@ -2,20 +2,20 @@ const webpack = require('webpack');
 const path = require('path');
 
 
-const DIST_DIR = path.resolve(__dirname, 'dist');
-const SRC_DIR = path.resolve(__dirname, 'client/src');
+const DIST = path.resolve(__dirname, 'dist');
+const SRC = path.resolve(__dirname, 'client');
 
 
 module.exports = {
   mode: 'development',
-  entry: './client/src/index.js',
+  entry: './client/index.js',
   output: {
-    path: DIST_DIR,
+    path: DIST,
     filename: 'bundle.js',
     publicPath: '/'
   },
   devServer: {
-    contentBase: SRC_DIR
+    contentBase: SRC
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -27,7 +27,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        include: SRC_DIR,
+        include: SRC,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {

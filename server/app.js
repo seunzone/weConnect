@@ -27,14 +27,10 @@ const compiler = webpack(config);
 app.use((webpackDevMiddleware)(compiler));
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.use(express.static(path.join(__dirname, '../client/src')));
+app.use(express.static(path.join(__dirname, '../client')));
 
 // Log requests to the console.
 app.use(volleyball);
-
-const publicPath = express.static(path.join(__dirname, '../build'));
-
-app.use('/', publicPath);
 
 // Parse incoming requests data
 app.use(bodyParser.json());

@@ -19,7 +19,7 @@ const Home = props => {
                 alt=""
               />
 
-              <h1 className="cover-heading typo" />
+              <h1 className="cover-heading">Welcome To WeConnect </h1>
               <br />
               <p className="lead">
                 <a href="#" className="btn btn-warning btn-lg">

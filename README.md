@@ -45,6 +45,13 @@ Visit [here](https://expressjs.com) for more information
 
 Postgresql: This is an open source Object-Relational Model (ORM) database.
 
+React: React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes
+Visit [here](https://reactjs.org/) for more information
+
+Webpack: webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
+Visit [here](https://webpack.js.org/) for more information
+
+
 Sequelize: This a promise-based ORM (Object Relational Mapper) for Node.js v4 and up. It supports the dialects PostgreSQL, MySQL, SQLite and MSSQL and features solid transaction support, relations, read replication and more.
 Visit [here](https://docs.sequelizejs.com) for more information
 

@@ -10,7 +10,7 @@ import EditBusiness from '../businesses/EditBusiness';
 export const Main = () => (
     <div>
       <Switch>
-        <Route exact path="/" component={ EditBusiness } />
+        <Route exact path="/" component={ SingleBusiness } />
         {/* <Route path="/business" exact component={ Business } />
         <Route path="/business/view/:id" exact component={ SingleBusiness } />
         <Route path="/businesses/add" exact component={ AddNewBusiness } />

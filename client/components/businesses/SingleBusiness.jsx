@@ -1,5 +1,9 @@
 import React from "react";
 
+//import components
+import AddReview from '../reviews/AddReviews';
+import GetReview from '../reviews/GetReviews';
+
 const SingleBusiness = () => {
   return (
     <div className="container my-5">
@@ -33,34 +37,8 @@ const SingleBusiness = () => {
                 </span>
               </p>
               <hr />
-              <div className="container my-4">
-                <div className="row justify-content-center">
-                  <div className="col-10">
-                    <div className="media">
-                      <small className="text-primary">Chioma </small> &nbsp;
-                      <div className="media-body">
-                        <em>
-                          And the company of the year award goes to you, thanks
-                          for your contribution to the community.
-                        </em>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <h3 className="mb-3 mt-3 text-muted">Leave a review</h3>
-              <input className="form-control" placeholder="Your name" />
-              <br />
-              <textarea
-                cols="5"
-                rows="5"
-                className="form-control"
-                placeholder="Leave your review here"
-              />
-              <button className="btn btn-primary btn-sm mt-3 float-right">
-                Save review
-              </button>
+              <GetReview/>
+              <AddReview/>
             </div>
           </div>
         </div>

@@ -11,13 +11,13 @@ import Dashboard from '../user/UserDashboard';
 export const Main = () => (
     <div>
       <Switch>
-        <Route exact path="/" component={ Dashboard } />
-        {/* <Route path="/business" exact component={ Business } />
+        <Route exact path="/" component={ ConnectHome } />
+        <Route path="/business" exact component={ Business } />
         <Route path="/business/view/:id" exact component={ SingleBusiness } />
         <Route path="/businesses/add" exact component={ AddNewBusiness } />
         <Route path="/businesses/edit/:id" exact component={ EditBusiness } />
         <Route path="/Dashboard" exact component={ Dashboard } />
-        <Route component={NotFound} /> */}
+        <Route component={NotFound} />
       </Switch>
     </div>
   );

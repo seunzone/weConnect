@@ -44,13 +44,8 @@ const swaggerDocument = YAML.load(`${process.cwd()}/swagger.yaml`);
 app.use(cors({ credentials: true, origin: true }));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('*', (req, res) => res.status(404).send({
-  message: 'A beast ate this page, durh',
-}));
-
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 app.listen(port);

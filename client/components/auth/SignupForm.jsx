@@ -1,5 +1,8 @@
 import React from "react";
 
+// validations
+import signupValidator from '../../validation/singupValidation';
+
 class SignupForm extends React.Component {
     constructor(props){
         super(props);

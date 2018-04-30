@@ -66,9 +66,9 @@ git clone https://github.com/seunzone/weConnect.git
 ```
 npm install
 ```
-3. Start the application by running
+3. Start the development application by running
 ```
-npm run start:dev
+npm run dev
 ```
 4. Create a `.env` file in the root of your project and insert
     See a sample in the `.env.sample`

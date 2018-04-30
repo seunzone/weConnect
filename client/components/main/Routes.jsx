@@ -7,6 +7,7 @@ import SingleBusiness from '../businesses/SingleBusiness';
 import AddNewBusiness from '../businesses/AddBusiness';
 import EditBusiness from '../businesses/EditBusiness';
 import Dashboard from '../user/UserDashboard';
+import Signin from '../auth/Singin';
 
 export const Main = () => (
     <div>
@@ -16,7 +17,8 @@ export const Main = () => (
         <Route path="/business/view/:id" exact component={ SingleBusiness } />
         <Route path="/businesses/add" exact component={ AddNewBusiness } />
         <Route path="/businesses/edit/:id" exact component={ EditBusiness } />
-        <Route path="/Dashboard" exact component={ Dashboard } />
+        <Route path="/dashboard" exact component={ Dashboard } />
+        <Route path="/signin" exact component={ Signin } />
         <Route component={NotFound} />
       </Switch>
     </div>

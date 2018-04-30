@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const WebpackBar = require('webpackbar');
 const path = require('path');
 
 
@@ -19,6 +20,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new WebpackBar()
   ],
   resolve: {
     extensions: ['*', '.js', '.jsx']

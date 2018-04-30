@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { classnames } from 'classnames';
 
 // validations
-// import signupValidator from '../../validation/singupValidation';
+import signupValidator from '../../validation/singupValidation';
 
 // actions
 import { getUsers } from '../../actions/signup';
@@ -86,15 +86,15 @@ class SignupForm extends React.Component {
    *
    * @returns {boolean} true or false
    */
-    //   isValid() {
-    //     const { isValid, errors } = signupValidator(this.state);
-    //     if (!isValid) {
-    //       this.setState({ errors });
-    //     } else {
-    //       this.setState({ errors: {} });
-    //       return isValid;
-    //     }
-    //   }
+      isValid() {
+        const { isValid, errors } = signupValidator(this.state);
+        if (!isValid) {
+          this.setState({ errors });
+        } else {
+          this.setState({ errors: {} });
+          return isValid;
+        }
+      }
     /**
      * @description Render react component
      *

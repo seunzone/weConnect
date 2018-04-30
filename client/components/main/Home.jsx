@@ -1,40 +1,54 @@
-import React from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { getUsers } from '../../actions/signup';
+
 import TopBusiness from "../businesses/TopBusiness";
-import SignupForm from "../auth/SignupForm";
+import SignupForm  from "../auth/SignupForm";
 
-const Home = props => {
-  const divStyle = {
-    color: "white"
-  };
-  return (
-    <div>
-      <div id="jumbotron" className="jumbotron text-center">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8" style={divStyle}>
-              <br />
-              <br />
-              <img
-                src="../../public/images/icon.png"
-                className="jumbotron-logo-img mr-2"
-                alt=""
-              />
+class Home extends React.Component {
+  render() {
+    const { getUsers } = this.props;
 
-              <h1 className="cover-heading">Welcome To WeConnect </h1>
-              <br />
-              <p className="lead">
-                <a href="#" className="btn btn-warning btn-lg">
-                  View Catalogue
+    const divStyle = {
+      color: "white"
+    };
+    return (
+      <div>
+        <div id="jumbotron" className="jumbotron text-center">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8" style={divStyle}>
+                <br />
+                <br />
+                <img
+                  src="../../public/images/icon.png"
+                  className="jumbotron-logo-img mr-2"
+                  alt=""
+                />
+
+                <h1 className="cover-heading">Welcome To WeConnect </h1>
+                <br />
+                <p className="lead">
+                  <a href="#" className="btn btn-warning btn-lg">
+                    View Catalogue
                 </a>
-              </p> 
+                </p>
+              </div>
+              <SignupForm getUsers={getUsers} />
             </div>
-            <SignupForm/>
           </div>
         </div>
+        <TopBusiness />
       </div>
-      <TopBusiness />
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default Home;
+Home.propTypes = {
+  getUsers: PropTypes.func.isRequired
+}
+  
+
+
+export default connect((state) =>  { return {}}, { getUsers })(Home);

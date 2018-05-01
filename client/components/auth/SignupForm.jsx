@@ -36,7 +36,7 @@ class SignupForm extends React.Component {
             email: '',
             password: '',
             passwordConfrim: '',
-            errors: [],
+            errors: {},
             isLoading: false
         }
         this.onChange = this.onChange.bind(this);
@@ -57,6 +57,24 @@ class SignupForm extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
     /**
+   * @description Validates user's data before making post request
+   *
+   * @method isValid
+   *
+   * @memberof Signup
+   *
+   * @returns {boolean} true or false
+   */
+    isValid() {
+        const { isValid, errors } = signupValidator(this.state);
+        if (!isValid) {
+            this.setState({ errors });
+        } else {
+            this.setState({ errors: {} });
+            return isValid;
+        }
+    }
+    /**
   * @description Handles Form Submission
   *
   * @method onSubmit
@@ -69,13 +87,19 @@ class SignupForm extends React.Component {
   */
     onSubmit(e) {
         e.preventDefault();
-        this.setState({ errors: [], isLoading: true });
-        this.props.getUsers(this.state).then(
-            () => {
-                this.context.router.history.push('/business')
-            },
-            ({ res }) => this.setState({ errors: 'Hello' })
-        );
+        if (this.isValid()) {
+            this.setState({ errors: {}, isLoading: true });
+            this.props.signUpUsers(this.state).then(
+                () => {
+                    this.props.addFlashMessage({
+                        type: 'success',
+                        text: 'You signed up successfully. Welcome!'
+                    });
+                    this.context.router.push('/business');
+                },
+                (err) => this.setState({ errors: err.response.data, isLoading: false })
+            );
+        }
     }
     /**
    * @description Validate user data before making request
@@ -86,15 +110,15 @@ class SignupForm extends React.Component {
    *
    * @returns {boolean} true or false
    */
-      isValid() {
-        const { isValid, errors } = signupValidator(this.state);
-        if (!isValid) {
-          this.setState({ errors });
-        } else {
-          this.setState({ errors: {} });
-          return isValid;
-        }
-      }
+    //   isValid() {
+    //     const { isValid, errors } = signupValidator(this.state);
+    //     if (!isValid) {
+    //       this.setState({ errors });
+    //     } else {
+    //       this.setState({ errors: {} });
+    //       return isValid;
+    //     }
+    //   }
     /**
      * @description Render react component
      *
@@ -125,6 +149,7 @@ class SignupForm extends React.Component {
                                     value={this.state.username}
                                     onChange={this.onChange}
                                 />
+                                {errors.username && <span className="help-block">{errors.username}</span>}
                             </div>
                             <div className="form-group">
                                 <input
@@ -135,6 +160,7 @@ class SignupForm extends React.Component {
                                     value={this.state.email}
                                     onChange={this.onChange}
                                 />
+                                {errors.email && <span className="help-block">{errors.email}</span>}
                             </div>
 
                             <div className="form-group">
@@ -146,6 +172,7 @@ class SignupForm extends React.Component {
                                     value={this.state.password}
                                     onChange={this.onChange}
                                 />
+                                {errors.password && <span className="help-block">{errors.password}</span>}
                             </div>
 
                             <div className="form-group">
@@ -157,6 +184,7 @@ class SignupForm extends React.Component {
                                     value={this.state.passwordConfrim}
                                     onChange={this.onChange}
                                 />
+                                {errors.passwordConfrim && <span className="help-block">{errors.passwordConfrim}</span>}
                             </div>
 
                             <button className="btn btn-warning btn-block">

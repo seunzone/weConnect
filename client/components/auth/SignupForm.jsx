@@ -2,6 +2,7 @@ import React from "react";
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { classnames } from 'classnames';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 // validations
 import signupValidator from '../../validation/singupValidation';
@@ -102,24 +103,6 @@ class SignupForm extends React.Component {
         }
     }
     /**
-   * @description Validate user data before making request
-   *
-   * @method isValid
-   *
-   * @memberof SignupForm
-   *
-   * @returns {boolean} true or false
-   */
-    //   isValid() {
-    //     const { isValid, errors } = signupValidator(this.state);
-    //     if (!isValid) {
-    //       this.setState({ errors });
-    //     } else {
-    //       this.setState({ errors: {} });
-    //       return isValid;
-    //     }
-    //   }
-    /**
      * @description Render react component
      *
      * @method render
@@ -140,7 +123,7 @@ class SignupForm extends React.Component {
                             Create an account
                       </h6>
                         <form onSubmit={this.onSubmit}>
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <input
                                     type="text"
                                     className="form-control form-control-sm"
@@ -185,8 +168,42 @@ class SignupForm extends React.Component {
                                     onChange={this.onChange}
                                 />
                                 {errors.passwordConfrim && <span className="help-block">{errors.passwordConfrim}</span>}
-                            </div>
+                            </div> */}
 
+                            <TextFieldGroup
+                                type="text"
+                                placeholder="username"
+                                field="username"
+                                errors={errors.username}
+                                value={this.state.username}
+                                onChange={this.onChange}
+                            />
+                            <TextFieldGroup
+                                type="email"
+                                placeholder="email"
+                                field="email"
+                                errors={errors.email}
+                                value={this.state.email}
+                                onChange={this.onChange}
+                            />
+                            <TextFieldGroup
+                                type="password"
+                                placeholder="password"
+                                field="password"
+                                errors={errors.password}
+                                value={this.state.password}
+                                onChange={this.onChange}
+                            />
+                            <TextFieldGroup
+                                type="password"
+                                placeholder="confirm password"
+                                field="confrim password"
+                                errors={errors.passwordConfrim}
+                                value={this.state.passwordConfrim}
+                                onChange={this.onChange}
+                            />
+
+                           
                             <button className="btn btn-warning btn-block">
                                 <i className="fa fa-user-plus" aria-hidden="true" /> Sign
                           Up

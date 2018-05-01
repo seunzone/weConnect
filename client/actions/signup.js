@@ -9,7 +9,7 @@ export const currentUser = user => ({
   isAuthenticated: true
 });
 
-export const getUsers = userCredentials => dispatch =>
+export const signUpUsers = userCredentials => dispatch =>
   axios.post('api/v1/auth/signup', userCredentials)
     .then((res) => {
       const { token } = res.data;

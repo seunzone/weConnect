@@ -7,7 +7,7 @@ import { classnames } from 'classnames';
 import signupValidator from '../../validation/singupValidation';
 
 // actions
-import { getUsers } from '../../actions/signup';
+import { signUpUsers } from '../../actions/signup';
 
 
 /**
@@ -179,7 +179,7 @@ class SignupForm extends React.Component {
 };
 
 SignupForm.propTypes = {
-    getUsers: PropTypes.func.isRequired
+    signUpUsers: PropTypes.func.isRequired
 }
 SignupForm.contextTypes = {
     router: PropTypes.object.isRequired

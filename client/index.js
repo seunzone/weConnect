@@ -19,12 +19,10 @@ const store = createStore(
 
 
 ReactDOM.render(
-  <div>
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
-    </BrowserRouter>
-  </div>,
+    </BrowserRouter>,
   document.getElementById('root')
 );

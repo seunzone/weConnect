@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { getUsers } from '../../actions/signup';
+import { signUpUsers } from '../../actions/signup';
 
 import TopBusiness from "../businesses/TopBusiness";
 import SignupForm  from "../auth/SignupForm";
 
 class Home extends React.Component {
   render() {
-    const { getUsers } = this.props;
+    const { signUpUsers } = this.props;
 
     const divStyle = {
       color: "white"
@@ -35,7 +35,7 @@ class Home extends React.Component {
                 </a>
                 </p>
               </div>
-              <SignupForm getUsers={getUsers} />
+              <SignupForm signUpUsers={signUpUsers} />
             </div>
           </div>
         </div>
@@ -46,9 +46,9 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  getUsers: PropTypes.func.isRequired
+  signUpUsers: PropTypes.func.isRequired
 }
   
 
 
-export default connect((state) =>  { return {}}, { getUsers })(Home);
+export default connect((state) =>  { return {}}, { signUpUsers })(Home);

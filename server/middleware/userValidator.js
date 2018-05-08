@@ -4,67 +4,67 @@ import Validator from 'validator';
 
 export const validateLogin = (req, res, next) => {
   const { email, password } = req.body;
-  const errors = {};
+  const error = {};
 
   if (!password) {
-    errors.password = 'Password is required';
+    error.password = 'Password is required';
   }
 
   if (password && Validator.isEmpty(password.trim() || '')) {
-    errors.password = 'Password is required';
+    error.password = 'Password is required';
   }
 
   if (!email) {
-    errors.email = 'Email is required';
+    error.email = 'Email is required';
   }
 
   if (email && !Validator.isEmail(email.trim() || '')) {
-    errors.email = 'Please provide a valid email address';
+    error.email = 'Please provide a valid email address';
   }
 
-  if (isEmpty(errors)) return next();
-  return res.status(400).json({ errors });
+  if (isEmpty(error)) return next();
+  return res.status(400).json({ error });
 };
 
 
 export const validateSignup = (req, res, next) => {
   const {
-    username, email, password, passwordConfirm
+    username, email, password, confirmPassword
   } = req.body;
-  const errors = {};
+  const error = {};
 
   if (!username) {
-    errors.username = 'Username is required';
+    error.username = 'Username is required';
   }
 
   if (username && Validator.isEmpty(username.trim() || '')) {
-    errors.username = 'Username is required';
+    error.username = 'Username is required';
   }
 
   if (!password) {
-    errors.password = 'Password is required';
+    error.password = 'Password is required';
   }
 
-  if (!passwordConfirm) {
-    errors.password = 'Please confirm your password';
+  if (!confirmPassword) {
+    error.password = 'Please confirm your password';
   }
 
   if (Validator.isEmpty(password || '') ||
-    Validator.isEmpty(passwordConfirm || '') ||
-    (passwordConfirmm.trim() !== password.trim())) {
-    errors.password = 'Passwords do not match or empty';
+    Validator.isEmpty(confirmPassword || '') ||
+    (confirmPassword.trim() !== password.trim())) {
+    error.password = 'Passwords do not match or empty';
   }
 
   if (!email) {
-    errors.email = 'Email is required';
+    error.email = 'Email is required';
   }
 
   if (email && !Validator.isEmail(email.trim() || '')) {
-    errors.email = 'Email address is empty or invalid';
+    error.email = 'Email address is empty or invalid';
   }
 
-  if (isEmpty(errors)) return next();
-  return res.status(400).json({ errors });
+  if (isEmpty(error)) return next();
+  return res.status(400).json({ error });
 };
 
 export const validateUserLength = (req, res, next) => {

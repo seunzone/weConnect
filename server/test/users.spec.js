@@ -45,7 +45,7 @@ describe('User signup', () => {
         username: 'tobi',
         email: 'teeboy.com',
         password: '1234567890',
-        passwordConfirm: '1234567890'
+        confirmPassword: '1234567890'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -62,7 +62,7 @@ describe('User signup', () => {
         username: '',
         email: 'seun@test.com',
         password: '1234567',
-        passwordConfirm: '1234567'
+        confirmPassword: '1234567'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -79,7 +79,7 @@ describe('User signup', () => {
         username: 'sa',
         email: 'seun@test.com',
         password: '1234567',
-        passwordConfirm: '1234567'
+        confirmPassword: '1234567'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -96,7 +96,7 @@ describe('User signup', () => {
         username: 'sajhdkdbfbirjbrjbvjdljldjldfrjbrjbrkd',
         email: 'seun@test.com',
         password: '1234567',
-        passwordConfirm: '1234567'
+        confirmPassword: '1234567'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -113,7 +113,7 @@ describe('User signup', () => {
         username: '@$@%#!^!',
         email: 'seun@test.com',
         password: '1234567',
-        passwordConfirm: '1234567'
+        confirmPassword: '1234567'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -130,7 +130,7 @@ describe('User signup', () => {
         username: 'superuser',
         email: 'seun@test.com',
         password: '123',
-        passwordConfirm: '123'
+        confirmPassword: '123'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -147,7 +147,7 @@ describe('User signup', () => {
         username: 'superuser',
         email: '',
         password: '1234567',
-        passwordConfirm: '1234567'
+        confirmPassword: '1234567'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -164,7 +164,7 @@ describe('User signup', () => {
         username: 'superuser',
         email: 'user@email.com',
         password: '',
-        passwordConfirm: '43453'
+        confirmPassword: '43453'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -181,7 +181,7 @@ describe('User signup', () => {
         username: 'superuser',
         email: 'user@email.com',
         password: '5454',
-        passwordConfirm: '43453'
+        confirmPassword: '43453'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);

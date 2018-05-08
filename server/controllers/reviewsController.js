@@ -35,7 +35,7 @@ export default class reviewsController {
         const newReview = {
           content,
           userId: req.userId,
-          businessId: req.params.id
+          BusinessId: req.params.id
         };
         return Review.create(newReview)
           .then(createdReview => Review.findById(createdReview.id, {

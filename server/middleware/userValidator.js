@@ -29,7 +29,7 @@ export const validateLogin = (req, res, next) => {
 
 export const validateSignup = (req, res, next) => {
   const {
-    username, email, password, passwordConfrim
+    username, email, password, passwordConfirm
   } = req.body;
   const errors = {};
 
@@ -45,13 +45,13 @@ export const validateSignup = (req, res, next) => {
     errors.password = 'Password is required';
   }
 
-  if (!passwordConfrim) {
+  if (!passwordConfirm) {
     errors.password = 'Please confirm your password';
   }
 
   if (Validator.isEmpty(password || '') ||
-    Validator.isEmpty(passwordConfrim || '') ||
-    (passwordConfrim.trim() !== password.trim())) {
+    Validator.isEmpty(passwordConfirm || '') ||
+    (passwordConfirmm.trim() !== password.trim())) {
     errors.password = 'Passwords do not match or empty';
   }
 

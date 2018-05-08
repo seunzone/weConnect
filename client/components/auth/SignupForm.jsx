@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { classnames } from 'classnames';
 import TextFieldGroup from '../common/TextFieldGroup';
+import { browserHistory } from 'react-router';
 
 // validations
 import signupValidator from '../../validation/singupValidation';
@@ -36,7 +37,7 @@ class SignupForm extends React.Component {
             username: '',
             email: '',
             password: '',
-            passwordConfrim: '',
+            passwordConfirm: '',
             errors: {},
             isLoading: false
         }
@@ -86,19 +87,19 @@ class SignupForm extends React.Component {
   *
   * @returns {void}
   */
-    onSubmit(e) {
-        e.preventDefault();
+    onSubmit(event) {
+        event.preventDefault();
         if (this.isValid()) {
             this.setState({ errors: {}, isLoading: true });
             this.props.signUpUsers(this.state).then(
                 () => {
-                    this.props.addFlashMessage({
-                        type: 'success',
-                        text: 'You signed up successfully. Welcome!'
-                    });
-                    this.context.router.push('/business');
+                    // this.props.addFlashMessage({
+                    //     type: 'success',
+                    //     text: 'You signed up successfully. Welcome!'
+                    // });
+                    browserHistory.push('/business');
                 },
-                (err) => this.setState({ errors: err.response.data, isLoading: false })
+                (res) => this.setState({ errors: res.data, isLoading: false })
             );
         }
     }
@@ -123,53 +124,6 @@ class SignupForm extends React.Component {
                             Create an account
                       </h6>
                         <form onSubmit={this.onSubmit}>
-                            {/* <div className="form-group">
-                                <input
-                                    type="text"
-                                    className="form-control form-control-sm"
-                                    placeholder="Username"
-                                    name="username"
-                                    value={this.state.username}
-                                    onChange={this.onChange}
-                                />
-                                {errors.username && <span className="help-block">{errors.username}</span>}
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="email"
-                                    className="form-control form-control-sm"
-                                    placeholder="email address"
-                                    name="email"
-                                    value={this.state.email}
-                                    onChange={this.onChange}
-                                />
-                                {errors.email && <span className="help-block">{errors.email}</span>}
-                            </div>
-
-                            <div className="form-group">
-                                <input
-                                    type="password"
-                                    className="form-control form-control-sm"
-                                    placeholder="Password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.onChange}
-                                />
-                                {errors.password && <span className="help-block">{errors.password}</span>}
-                            </div>
-
-                            <div className="form-group">
-                                <input
-                                    type="password"
-                                    className="form-control form-control-sm"
-                                    placeholder="Confirm Password"
-                                    name="passwordConfrim"
-                                    value={this.state.passwordConfrim}
-                                    onChange={this.onChange}
-                                />
-                                {errors.passwordConfrim && <span className="help-block">{errors.passwordConfrim}</span>}
-                            </div> */}
-
                             <TextFieldGroup
                                 type="text"
                                 placeholder="username"
@@ -197,9 +151,9 @@ class SignupForm extends React.Component {
                             <TextFieldGroup
                                 type="password"
                                 placeholder="confirm password"
-                                field="confrim password"
-                                errors={errors.passwordConfrim}
-                                value={this.state.passwordConfrim}
+                                field="passwordConfirm"
+                                errors={errors.passwordConfirm}
+                                value={this.state.passwordConfirm}
                                 onChange={this.onChange}
                             />
 
@@ -226,8 +180,6 @@ class SignupForm extends React.Component {
 SignupForm.propTypes = {
     signUpUsers: PropTypes.func.isRequired
 }
-SignupForm.contextTypes = {
-    router: PropTypes.object.isRequired
-}
+
 
 export default SignupForm;

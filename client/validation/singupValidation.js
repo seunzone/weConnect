@@ -26,12 +26,12 @@ const signupvalidator = (data) => {
     errors.password = 'Password should be at least 6 characters';
   }
 
-  if (validator.isEmpty(data.passwordConfrim)) {
-    errors.passwordConfrim = 'Please confirm your password';
+  if (validator.isEmpty(data.passwordConfirm)) {
+    errors.passwordConfirm = 'Please confirm your password';
   }
 
-  if (!validator.equals(data.password, data.passwordConfrim)) {
-    errors.passwordConfrim = 'Passwords do not match';
+  if (!validator.equals(data.password, data.passwordConfirm)) {
+    errors.passwordConfirm = 'Passwords do not match';
   }
   return {
     errors,

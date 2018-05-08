@@ -10,3 +10,5 @@ server/dist/
 
 client/dist
 build
+
+.DS_Store

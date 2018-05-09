@@ -1,7 +1,7 @@
 import React from "react";
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import { classnames } from 'classnames';
+import classnames  from 'classnames';
 import TextFieldGroup from '../common/TextFieldGroup';
 import { browserHistory } from 'react-router';
 
@@ -37,7 +37,7 @@ class SignupForm extends React.Component {
             username: '',
             email: '',
             password: '',
-            passwordConfirm: '',
+            confirmPassword: '',
             errors: {},
             isLoading: false
         }
@@ -128,7 +128,7 @@ class SignupForm extends React.Component {
                                 type="text"
                                 placeholder="username"
                                 field="username"
-                                errors={errors.username}
+                                error={errors.username}
                                 value={this.state.username}
                                 onChange={this.onChange}
                             />
@@ -136,7 +136,7 @@ class SignupForm extends React.Component {
                                 type="email"
                                 placeholder="email"
                                 field="email"
-                                errors={errors.email}
+                                error={errors.email}
                                 value={this.state.email}
                                 onChange={this.onChange}
                             />
@@ -144,21 +144,21 @@ class SignupForm extends React.Component {
                                 type="password"
                                 placeholder="password"
                                 field="password"
-                                errors={errors.password}
+                                error={errors.password}
                                 value={this.state.password}
                                 onChange={this.onChange}
                             />
                             <TextFieldGroup
                                 type="password"
                                 placeholder="confirm password"
-                                field="passwordConfirm"
-                                errors={errors.passwordConfirm}
+                                field="confirmPassword"
+                                error={errors.confirmPassword}
                                 value={this.state.passwordConfirm}
                                 onChange={this.onChange}
                             />
 
                            
-                            <button className="btn btn-warning btn-block">
+                            <button disabled={this.state.isLoading}  className="btn btn-warning btn-block">
                                 <i className="fa fa-user-plus" aria-hidden="true" /> Sign
                           Up
                         </button>

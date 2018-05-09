@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const TextFieldGroup = ({ field, value, type, placeholder, errors, onChange }) => {
+const TextFieldGroup = ({ field, value, type, placeholder, error, onChange }) => {
     return (
-        <div className={classnames('form-group', { 'has-error': errors })}>
+        <div className={classnames('form-group', { 'has-error': error })}>
             <input
                 className="form-control form-control-sm"
                 type={type}
@@ -12,8 +12,9 @@ const TextFieldGroup = ({ field, value, type, placeholder, errors, onChange }) =
                 onChange={onChange}
                 placeholder={placeholder}
             />
-            {errors && <span className="help-block">{errors}</span>}
+            {error && <span className="help-block">{error }</span>}
         </div>);
 }
+  
 
 export default TextFieldGroup;

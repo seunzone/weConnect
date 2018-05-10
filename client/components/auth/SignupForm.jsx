@@ -2,7 +2,6 @@ import React from "react";
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import TextFieldGroup from '../common/TextFieldGroup';
-// import { browserHistory } from 'react-router';
 import classnames from 'classnames';
 // validations
 import signupValidator from '../../validation/singupValidation';
@@ -92,12 +91,10 @@ class SignupForm extends React.Component {
             this.setState({ errors: {}, isLoading: true });
             this.props.signUpUsers(this.state).then(
                 () => {
-                    // this.props.addFlashMessage({
-                    //     type: 'success',
-                    //     text: 'You signed up successfully. Welcome!'
-                    // });
-                    // console.log(this.props)
-                    // browserHistory.push('/business');
+                    this.props.addFlashMessage({
+                        type: 'success',
+                        text: 'You signed up successfully. Welcome!'
+                    });
                     this.context.router.history.push('/business')
                 },
                (res) => this.setState({ errors: res.data, isLoading: false })

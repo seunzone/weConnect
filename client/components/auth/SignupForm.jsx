@@ -100,7 +100,7 @@ class SignupForm extends React.Component {
                     // browserHistory.push('/business');
                     this.context.router.history.push('/business')
                 },
-                // (res) => this.setState({ errors: res.data, isLoading: false })
+               (res) => this.setState({ errors: res.data, isLoading: false })
             );
         }
     }

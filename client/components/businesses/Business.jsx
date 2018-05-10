@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 
 const Businesses = () => {
   const DivStyle = {
-    padding: "padding: 30px 0px;"
+    padding: "padding: 30px 0px"
   };
   return (
     <div>

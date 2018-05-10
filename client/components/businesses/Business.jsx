@@ -4,6 +4,7 @@ import React from "react";
 import BusinessCard from "../cards/BusinessCards";
 import SearchBusiness from "./SearchBusiness";
 import Pagination from "./Pagination";
+import FlashMessagesList from '../flash/FlashMessagesList';
 
 const Businesses = () => {
   const DivStyle = {
@@ -11,6 +12,7 @@ const Businesses = () => {
   };
   return (
     <div>
+      <FlashMessagesList/>
       <SearchBusiness />
       <div className="container-fluid px-5 my-5">
         <h1

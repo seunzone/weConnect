@@ -1,10 +1,9 @@
 import React from "react";
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import classnames  from 'classnames';
 import TextFieldGroup from '../common/TextFieldGroup';
-import { browserHistory } from 'react-router';
-
+// import { browserHistory } from 'react-router';
+import classnames from 'classnames';
 // validations
 import signupValidator from '../../validation/singupValidation';
 
@@ -97,9 +96,11 @@ class SignupForm extends React.Component {
                     //     type: 'success',
                     //     text: 'You signed up successfully. Welcome!'
                     // });
-                    browserHistory.push('/business');
+                    // console.log(this.props)
+                    // browserHistory.push('/business');
+                    this.context.router.history.push('/business')
                 },
-                (res) => this.setState({ errors: res.data, isLoading: false })
+                // (res) => this.setState({ errors: res.data, isLoading: false })
             );
         }
     }
@@ -157,8 +158,8 @@ class SignupForm extends React.Component {
                                 onChange={this.onChange}
                             />
 
-                           
-                            <button disabled={this.state.isLoading}  className="btn btn-warning btn-block">
+
+                            <button disabled={this.state.isLoading} className="btn btn-warning btn-block">
                                 <i className="fa fa-user-plus" aria-hidden="true" /> Sign
                           Up
                         </button>
@@ -178,7 +179,12 @@ class SignupForm extends React.Component {
 };
 
 SignupForm.propTypes = {
-    signUpUsers: PropTypes.func.isRequired
+    signUpUsers: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired
+}
+
+SignupForm.contextTypes = {
+    router: PropTypes.object.isRequired
 }
 
 

@@ -1,14 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { signUpUsers } from '../../actions/signup';
 
+// actions
+import { signUpUsers } from '../../actions/signup';
+import { addFlashMessage } from '../../actions/flashMessages';
+// components
 import TopBusiness from "../businesses/TopBusiness";
 import SignupForm  from "../auth/SignupForm";
 
 class Home extends React.Component {
   render() {
-    const { signUpUsers } = this.props;
+    const { signUpUsers, addFlashMessage } = this.props;
 
     const divStyle = {
       color: "white"
@@ -35,7 +38,7 @@ class Home extends React.Component {
                 </a>
                 </p>
               </div>
-              <SignupForm signUpUsers={signUpUsers} />
+              <SignupForm signUpUsers={signUpUsers} addFlashMessage={addFlashMessage}/>
             </div>
           </div>
         </div>
@@ -46,9 +49,10 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  signUpUsers: PropTypes.func.isRequired
+  signUpUsers: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
 }
   
 
 
-export default connect((state) =>  { return {}}, { signUpUsers })(Home);
+export default connect((state) =>  { return {}}, { signUpUsers, addFlashMessage })(Home);

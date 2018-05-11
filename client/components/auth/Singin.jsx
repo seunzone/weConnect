@@ -1,4 +1,5 @@
 import React from "react";
+import TextFieldGroup from '../common/TextFieldGroup';
 
 const SigninForm = () => {
     return (
@@ -13,14 +14,16 @@ const SigninForm = () => {
                                 <h3 className="text-white">Sign In</h3>
                                 <h6 className="font-weight-light text-white">Enter your login details</h6>
                                 <form>
-                                    <div className="form-group">
-                                        <input type="text" className="form-control form-control-sm" placeholder="Username" />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <input type="password" className="form-control form-control-sm" placeholder="Password" />
-                                    </div>
-
+                                    <TextFieldGroup
+                                        type="text"
+                                        placeholder="username"
+                                        field="username"
+                                    />
+                                    <TextFieldGroup
+                                        type="password"
+                                        placeholder="password"
+                                        field="password"
+                                    />
                                     <button className="btn btn-warning btn-block">
                                         <i className="fa fa-sign-in" aria-hidden="true"></i> Sign In</button>
                                 </form>

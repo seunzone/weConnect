@@ -7,7 +7,7 @@ import SingleBusiness from '../businesses/SingleBusiness';
 import AddNewBusiness from '../businesses/AddBusiness';
 import EditBusiness from '../businesses/EditBusiness';
 import Dashboard from '../user/UserDashboard';
-import Signin from '../auth/Singin';
+import Signin from '../auth/Signin';
 
 export const Main = () => (
     <div>

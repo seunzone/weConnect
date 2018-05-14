@@ -69,18 +69,5 @@ describe('REVIEW API', () => {
           done();
         });
     });
-    it('should not add review with empty content', (done) => {
-      chai.request(app)
-        .post(`/api/v1/businesses/${id}/review`)
-        .set('token', userToken)
-        .send({
-          content: ''
-        })
-        .end((err, res) => {
-          expect(res.status).to.equal(400);
-          expect(res.body).to.be.an('object');
-          done();
-        });
-    });
   });
 });

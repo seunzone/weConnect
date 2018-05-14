@@ -1,13 +1,13 @@
 import React from "react";
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import { classnames } from 'classnames';
-
+import TextFieldGroup from '../common/TextFieldGroup';
+import classnames from 'classnames';
 // validations
 import signupValidator from '../../validation/singupValidation';
 
 // actions
-import { getUsers } from '../../actions/signup';
+import { signUpUsers } from '../../actions/auth';
 
 
 /**
@@ -35,8 +35,9 @@ class SignupForm extends React.Component {
             username: '',
             email: '',
             password: '',
-            passwordConfrim: '',
-            errors: [],
+            confirmPassword: '',
+            errors: {},
+            err: [],
             isLoading: false
         }
         this.onChange = this.onChange.bind(this);
@@ -57,6 +58,24 @@ class SignupForm extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
     /**
+   * @description Validates user's data before making post request
+   *
+   * @method isValid
+   *
+   * @memberof Signup
+   *
+   * @returns {boolean} true or false
+   */
+    isValid() {
+        const { isValid, errors } = signupValidator(this.state);
+        if (!isValid) {
+            this.setState({ errors });
+        } else {
+            this.setState({ errors: {} });
+            return isValid;
+        }
+    }
+    /**
   * @description Handles Form Submission
   *
   * @method onSubmit
@@ -67,34 +86,22 @@ class SignupForm extends React.Component {
   *
   * @returns {void}
   */
-    onSubmit(e) {
-        e.preventDefault();
-        this.setState({ errors: [], isLoading: true });
-        this.props.getUsers(this.state).then(
-            () => {
-                this.context.router.history.push('/business')
-            },
-            ({ res }) => this.setState({ errors: 'Hello' })
-        );
-    }
-    /**
-   * @description Validate user data before making request
-   *
-   * @method isValid
-   *
-   * @memberof SignupForm
-   *
-   * @returns {boolean} true or false
-   */
-      isValid() {
-        const { isValid, errors } = signupValidator(this.state);
-        if (!isValid) {
-          this.setState({ errors });
-        } else {
-          this.setState({ errors: {} });
-          return isValid;
+    onSubmit(event) {
+        event.preventDefault();
+        if (this.isValid()) {
+            this.setState({ errors: {}, isLoading: true });
+            this.props.signUpUsers(this.state).then(
+                () => {
+                    this.props.addFlashMessage({
+                        type: 'success',
+                        text: 'You signed up successfully. Welcome!'
+                    });
+                    this.context.router.history.push('/business')
+                },
+               (res) => this.setState({ err: res.data.message, isLoading: false })
+            );
         }
-      }
+    }
     /**
      * @description Render react component
      *
@@ -106,7 +113,7 @@ class SignupForm extends React.Component {
      *
      */
     render() {
-        const { errors } = this.state;
+        const { errors, err } = this.state;
         return (
             <div className="col-lg-4">
                 <div className="card bg-primary text-center card-form">
@@ -114,52 +121,48 @@ class SignupForm extends React.Component {
                         <h3 className="text-white">Sign Up</h3>
                         <h6 className="font-weight-light text-white">
                             Create an account
+            
+                            
                       </h6>
                         <form onSubmit={this.onSubmit}>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    className="form-control form-control-sm"
-                                    placeholder="Username"
-                                    name="username"
-                                    value={this.state.username}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="email"
-                                    className="form-control form-control-sm"
-                                    placeholder="email address"
-                                    name="email"
-                                    value={this.state.email}
-                                    onChange={this.onChange}
-                                />
-                            </div>
+                            <TextFieldGroup
+                                type="text"
+                                placeholder="username"
+                                field="username"
+                                error={errors.username}
+                                value={this.state.username}
+                                onChange={this.onChange}
+                                err={err}
+            
+                                
+                            />
+                            <TextFieldGroup
+                                type="email"
+                                placeholder="email"
+                                field="email"
+                                error={errors.email}
+                                value={this.state.email}
+                                onChange={this.onChange}
+                            />
+                            <TextFieldGroup
+                                type="password"
+                                placeholder="password"
+                                field="password"
+                                error={errors.password}
+                                value={this.state.password}
+                                onChange={this.onChange}
+                            />
+                            <TextFieldGroup
+                                type="password"
+                                placeholder="confirm password"
+                                field="confirmPassword"
+                                error={errors.confirmPassword}
+                                value={this.state.passwordConfirm}
+                                onChange={this.onChange}
+                            />
 
-                            <div className="form-group">
-                                <input
-                                    type="password"
-                                    className="form-control form-control-sm"
-                                    placeholder="Password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.onChange}
-                                />
-                            </div>
 
-                            <div className="form-group">
-                                <input
-                                    type="password"
-                                    className="form-control form-control-sm"
-                                    placeholder="Confirm Password"
-                                    name="passwordConfrim"
-                                    value={this.state.passwordConfrim}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-
-                            <button className="btn btn-warning btn-block">
+                            <button disabled={this.state.isLoading} className="btn btn-warning btn-block">
                                 <i className="fa fa-user-plus" aria-hidden="true" /> Sign
                           Up
                         </button>
@@ -179,10 +182,13 @@ class SignupForm extends React.Component {
 };
 
 SignupForm.propTypes = {
-    getUsers: PropTypes.func.isRequired
+    signUpUsers: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired
 }
+
 SignupForm.contextTypes = {
     router: PropTypes.object.isRequired
 }
+
 
 export default SignupForm;

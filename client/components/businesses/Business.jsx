@@ -4,13 +4,15 @@ import React from "react";
 import BusinessCard from "../cards/BusinessCards";
 import SearchBusiness from "./SearchBusiness";
 import Pagination from "./Pagination";
+import FlashMessagesList from '../flash/FlashMessagesList';
 
 const Businesses = () => {
   const DivStyle = {
-    padding: "padding: 30px 0px;"
+    padding: "padding: 30px 0px"
   };
   return (
     <div>
+      <FlashMessagesList/>
       <SearchBusiness />
       <div className="container-fluid px-5 my-5">
         <h1
@@ -19,7 +21,6 @@ const Businesses = () => {
         >
           Some Top Firms
         </h1>
-        <hr className="hr-class" />
         <br />
         <div className="card-deck wow fadeIn" />
         <BusinessCard />

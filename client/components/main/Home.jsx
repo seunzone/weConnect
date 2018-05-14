@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
 // actions
-import { signUpUsers } from '../../actions/signup';
+import { signUpUsers } from '../../actions/auth';
 import { addFlashMessage } from '../../actions/flashMessages';
 // components
 import TopBusiness from "../businesses/TopBusiness";

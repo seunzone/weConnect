@@ -5,7 +5,7 @@ import SigninForm from './SinginForm';
 
 
 // actions
-import { signInUsers } from '../../actions/signin';
+import { signInUsers } from '../../actions/auth';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 class Signin extends React.Component {

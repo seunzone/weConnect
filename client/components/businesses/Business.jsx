@@ -21,7 +21,6 @@ const Businesses = () => {
         >
           Some Top Firms
         </h1>
-        <hr className="hr-class" />
         <br />
         <div className="card-deck wow fadeIn" />
         <BusinessCard />

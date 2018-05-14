@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import signupValidator from '../../validation/singupValidation';
 
 // actions
-import { signUpUsers } from '../../actions/signup';
+import { signUpUsers } from '../../actions/auth';
 
 
 /**
@@ -37,6 +37,7 @@ class SignupForm extends React.Component {
             password: '',
             confirmPassword: '',
             errors: {},
+            err: [],
             isLoading: false
         }
         this.onChange = this.onChange.bind(this);
@@ -97,7 +98,7 @@ class SignupForm extends React.Component {
                     });
                     this.context.router.history.push('/business')
                 },
-               (res) => this.setState({ errors: res.data, isLoading: false })
+               (res) => this.setState({ err: res.data.message, isLoading: false })
             );
         }
     }
@@ -112,7 +113,7 @@ class SignupForm extends React.Component {
      *
      */
     render() {
-        const { errors } = this.state;
+        const { errors, err } = this.state;
         return (
             <div className="col-lg-4">
                 <div className="card bg-primary text-center card-form">
@@ -120,6 +121,8 @@ class SignupForm extends React.Component {
                         <h3 className="text-white">Sign Up</h3>
                         <h6 className="font-weight-light text-white">
                             Create an account
+            
+                            
                       </h6>
                         <form onSubmit={this.onSubmit}>
                             <TextFieldGroup
@@ -129,6 +132,9 @@ class SignupForm extends React.Component {
                                 error={errors.username}
                                 value={this.state.username}
                                 onChange={this.onChange}
+                                err={err}
+            
+                                
                             />
                             <TextFieldGroup
                                 type="email"

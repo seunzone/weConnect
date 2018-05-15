@@ -17,7 +17,7 @@ class UserDashboard extends React.Component {
                 <span className="h6">Reviews</span>
               </p>
               <Link to="/businesses/add" className="btn btn-info text-white">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Business
+                <i className="fa fa-plus-circle" aria-hidden="true"></i> Add New Business
               </Link>
             </div>
           </div>

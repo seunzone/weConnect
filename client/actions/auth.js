@@ -22,11 +22,11 @@ export const signInUsers = userCredentials => dispatch =>
   axios.post('api/v1/auth/login', userCredentials)
     .then((res) => {
       const { token } = res.data;
-      console.log(token);
       window.localStorage.setItem('makeToken', token);
       authenticateUser(token);
       const user = decode(token);
       dispatch(currentUser(user));
+      return res.data.msg;
     });
 
 export const signUpUsers = userCredentials => dispatch =>
@@ -38,4 +38,5 @@ export const signUpUsers = userCredentials => dispatch =>
       window.localStorage.setItem('makeToken', token);
       const user = decode(token);
       dispatch(currentUser(user));
+      return res.data.msg;
     });

@@ -1,5 +1,6 @@
 import React from "react";
 import UserBusinesses from './UserBusinesses';
+import { Link } from "react-router-dom";
 
 
 const UserDashboard = () => {
@@ -18,10 +19,13 @@ const UserDashboard = () => {
               <span className="mr-3 h2 header-color"> 531 </span>
               <span className="h6">Reviews</span>
             </p>
+            <Link to="/businesses/add" className="btn btn-info text-white">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Business
+            </Link>
           </div>
         </div>
       </div>
-      <UserBusinesses/>
+      <UserBusinesses />
     </div>
   );
 };

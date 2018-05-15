@@ -14,8 +14,14 @@ class Header extends React.Component {
     const { isAuthenticated } = this.props.auth;
 
     const userLinks = (
-      <a className="nav-link btn-danger text-white" href="#"
-      onClick={this.logout.bind(this)}>Logout</a>
+      <div>
+        <Link to="/dashboard" className="nav-link btn-info text-white">
+        <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard
+       </Link>
+        <a className="nav-link btn-danger text-white" href="#"
+          onClick={this.logout.bind(this)}>
+          <i className="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+      </div>
     );
 
     const guestLinks = (
@@ -46,8 +52,9 @@ class Header extends React.Component {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto" >
+         
             <li className="nav-item">
-            
+
               {isAuthenticated ? userLinks : guestLinks}
             </li>
           </ul>

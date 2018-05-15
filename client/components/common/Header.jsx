@@ -17,7 +17,7 @@ class Header extends React.Component {
       <div>
         <Link to="/dashboard" className="nav-link btn-info text-white">
         <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard
-       </Link>
+       </Link>&nbsp;
         <a className="nav-link btn-danger text-white" href="#"
           onClick={this.logout.bind(this)}>
           <i className="fa fa-sign-in" aria-hidden="true"></i> Logout</a>

@@ -36,7 +36,7 @@ const UserBusinesses = () => {
                   <a href="#" class="btn btn-outline-primary">
                     <i className="fa fa-pencil-square-o" aria-hidden="true" />{" "}
                     Edit
-                  </a>
+                  </a>&nbsp;
                   <a
                     data-toggle="modal"
                     data-target="#exampleModal"

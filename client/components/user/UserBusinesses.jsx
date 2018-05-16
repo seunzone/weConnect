@@ -7,7 +7,7 @@ const UserBusinesses = () => {
       <section className="container text-center">
         <h3>My Businesses</h3>
       </section>
-      <section class="container home_details">
+      <section className="container home_details">
         <div className="row card-deck">
           <div className="col-md-3">
             <div className="card">
@@ -33,16 +33,16 @@ const UserBusinesses = () => {
                   <span>50 Reviews</span>
                 </p>
                 <div className="seeButton">
-                  <a href="#" class="btn btn-outline-primary">
+                  <a href="#" className="btn btn-outline-primary">
                     <i className="fa fa-pencil-square-o" aria-hidden="true" />{" "}
                     Edit
                   </a>&nbsp;
                   <a
                     data-toggle="modal"
                     data-target="#exampleModal"
-                    class="btn btn-outline-danger"
+                    className="btn btn-outline-danger"
                   >
-                    <i class="fa fa-trash-o" aria-hidden="true" /> Delete
+                    <i className="fa fa-trash-o" aria-hidden="true" /> Delete
                   </a>
                 </div>
               </div>

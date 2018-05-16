@@ -1,6 +1,8 @@
 import React from "react";
 import UserBusinesses from './UserBusinesses';
 import { Link } from "react-router-dom";
+import FlashMessagesList from '../flash/FlashMessagesList';
+
 
 class UserDashboard extends React.Component {
   render() {
@@ -9,6 +11,7 @@ class UserDashboard extends React.Component {
         <div className="container my-5">
           <div className="row justify-content-center">
             <div className="col-lg-8 col-md-8 text-center">
+            <FlashMessagesList/>
               <h1 className="text-center header-color"><small>Welcome </small>username</h1>
               <p className="text-center my-4">
                 <span className="mr-3 h2 header-color"> 51 </span>

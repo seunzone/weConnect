@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import TextTruncate from 'react-text-truncate';
 
-const BusinessCard = () => {
-  const Style = {
-    height: "250px"
-  };
+
+const BusinessCard = ({ name, description, category, id }) => {
+
+  const Style = { height: "250px" };
   return (
-    <div className="row">
+   
       <div className="card mb-3 col-md-4">
         <div className="img-zoom">
           <img
@@ -17,22 +19,21 @@ const BusinessCard = () => {
         </div>
         <div className="card-body">
           <h5 className="card-title text-center">
-            <a href="#">Lorem Ipsum Dolor</a>
+            <Link to={`/business/view/${id}`}>{name}</Link>
           </h5>
           <br />
           <h6>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus,
-            inventore.
-          </h6>
+          <TextTruncate text={description} lines={2}/>
+            </h6>
           <hr />
           <p className="text-sm mb-5">
             <small>
-              <span className="text-muted">Added by</span> 3 mins ago
-            </small>
+              <span className="text-muted">Category</span> {category}
+              </small>
             <span className="text-muted float-right">
               <i className="fa fa-pencil-square-o text-rose" />
               2
-            </span>
+              </span>
           </p>
           <p className="author">
             <i className="fa fa-eye text-rose" />
@@ -40,8 +41,8 @@ const BusinessCard = () => {
           </p>
         </div>
       </div>
-    </div>
   );
 };
+
 
 export default BusinessCard;

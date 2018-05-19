@@ -1,9 +1,10 @@
 import { GET_ALL_BUSINESS } from '../actions/actionType';
 
-export default function all_businesses(state = [], action = {}) {
+export default function allBusinesses(state = [], action = {}) {
     switch (action.type) {
         case GET_ALL_BUSINESS:
-        return action.allBusiness
+            return action.allBusinesses
+
         default:
             return state;
     }

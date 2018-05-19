@@ -1,17 +1,22 @@
 import axios from 'axios';
-import { POST_BUSINESS } from './actionType';
+import { POST_BUSINESS, GET_SINGLE_BUSINESS } from './actionType';
 
 export function createBusiness(business) {
     return {
         type: 'POST_BUSINESS',
-        business
+        allBusiness: business
     };
 }
 
-export const addBusiness = business => (dispatch) => {
+export const addBusiness = business => dispatch => {
     return axios.post('/api/v1/businesses', business)
-      .then((res) => {
-        dispatch(createBusiness(res.data.business));
-      });
-  };
-  
+        .then((res) => {
+            dispatch(createBusiness(res.data.business));
+        });
+};
+
+export const getAllBusiness = business => dispatch =>
+    axios.get('api/v1/businesses', business)
+        .then((res) => {
+            dispatch(createBusiness(res.data.business));
+        });

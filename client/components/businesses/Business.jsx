@@ -18,6 +18,7 @@ class Businesses extends React.Component{
   componentDidMount() {
     this.props.getAllBusiness()
   }
+  
   render() {
     const allBusinesses = this.props.business;
     const showBusiness = allBusinesses.map((business) => {
@@ -68,3 +69,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { getAllBusiness })(Businesses);
+

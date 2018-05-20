@@ -11,6 +11,7 @@ class Header extends React.Component {
     this.props.logout();
   }
   render() {
+    //console.log(this.props.auth)  
     const { isAuthenticated } = this.props.auth;
 
     const userLinks = (
@@ -49,12 +50,9 @@ class Header extends React.Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto" >
-         
             <li className="nav-item">
-
               {isAuthenticated ? userLinks : guestLinks}
             </li>
           </ul>

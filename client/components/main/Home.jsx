@@ -13,10 +13,7 @@ import SignupForm  from "../auth/SignupForm";
 class Home extends React.Component {
   render() {
     const { signUpUsers, addFlashMessage } = this.props;
-
-    const divStyle = {
-      color: "white"
-    };
+    const divStyle = { color: "white" };
     return (
       <div>
         <div id="jumbotron" className="jumbotron text-center">

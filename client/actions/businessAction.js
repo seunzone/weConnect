@@ -1,10 +1,22 @@
 import axios from 'axios';
-import { GET_ALL_BUSINESS, SAVE_IMAGE_SUCCESSFUL, SAVE_IMAGE_FAILED } from './actionType';
+import { 
+  GET_ALL_BUSINESS, 
+  SAVE_IMAGE_SUCCESSFUL, 
+  SAVE_IMAGE_FAILED, 
+  GET_SINGLE_BUSINESS 
+} from './actionType';
 
 export function allBusiness(business) {
   return {
     type: GET_ALL_BUSINESS,
     allBusinesses: business
+  };
+}
+
+export function oneBusiness(business) {
+  return {
+    type: GET_SINGLE_BUSINESS,
+    oneBusiness: business
   };
 }
 
@@ -17,6 +29,12 @@ export const getAllBusiness = () => dispatch =>
   axios.get('api/v1/businesses')
     .then((res) => {
       dispatch(allBusiness(res.data.business));
+    });
+
+export const getOneBusiness = id => dispatch =>
+  axios.get('/api/v1/businesses/' + id)
+    .then((res) => {
+      dispatch(oneBusiness(res.data));
     });
 
 export function saveImageSuccessful(image) {

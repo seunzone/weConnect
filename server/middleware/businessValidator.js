@@ -65,11 +65,11 @@ export const verifyLenght = (req, res, next) => {
       });
   }
   // Check for Lenght
-  if (!Validator.isLength(description, { min: 10, max: 200 })) {
+  if (!Validator.isLength(description, { min: 10, max: 2000 })) {
     return res.status(406)
       .send({
         status: 'Fail',
-        message: 'Description must be between 10 to 200 characters',
+        message: 'Description must be between 10 to 2000 characters',
       });
   }
   // Check for Lenght

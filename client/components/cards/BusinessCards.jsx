@@ -4,7 +4,9 @@ import TextTruncate from 'react-text-truncate';
 
 
 const BusinessCard = ({ name, image, description, category, id }) => {
-
+ 
+ // console.log('auth state is ' + this.props.auth)
+ // const { isAuthenticated } = this.props.auth;
   const Style = { height: "250px" };
   return (
    
@@ -35,14 +37,10 @@ const BusinessCard = ({ name, image, description, category, id }) => {
               2
               </span>
           </p>
-          <p className="author">
-            <i className="fa fa-eye text-rose" />
-            <span>50</span>
-          </p>
+          <Link align="center" className="btn btn-primary" to={`/business/view/${id}`}>View Details</Link>
         </div>
       </div>
   );
 };
-
 
 export default BusinessCard;

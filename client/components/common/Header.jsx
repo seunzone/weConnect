@@ -11,11 +11,18 @@ class Header extends React.Component {
     this.props.logout();
   }
   render() {
+    //console.log(this.props.auth)  
     const { isAuthenticated } = this.props.auth;
 
     const userLinks = (
-      <a className="nav-link btn-danger text-white" href="#"
-      onClick={this.logout.bind(this)}>Logout</a>
+      <div>
+        <Link to="/dashboard" className="nav-link btn-info text-white">
+        <i className="fa fa-tachometer" aria-hidden="true"></i> My Dashboard
+       </Link>&nbsp;
+        <a className="nav-link btn-danger text-white" href="#"
+          onClick={this.logout.bind(this)}>
+          <i className="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+      </div>
     );
 
     const guestLinks = (
@@ -43,11 +50,9 @@ class Header extends React.Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto" >
             <li className="nav-item">
-            
               {isAuthenticated ? userLinks : guestLinks}
             </li>
           </ul>

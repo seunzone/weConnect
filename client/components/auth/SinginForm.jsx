@@ -36,7 +36,7 @@ class SigninForm extends React.Component {
                     })
                     this.context.router.history.push('/business')
                 },
-                (res) => this.setState({ errors: res.data.msg, isLoading: false })
+                 (res) => this.setState({ errors: res.data.msg, isLoading: false })
             );
     }
 

@@ -210,7 +210,12 @@ export default class businessController {
    */
   static getAllBusiness(req, res) {
     return Business.all()
-      .then(foundBusiness => res.status(200).send(foundBusiness))
+      // .then(foundBusiness => res.status(200).send(foundBusiness))
+      .then(foundBusiness => {
+        res.status(200).json({
+          business: foundBusiness
+        })
+      })
       .catch(error => res.status(400).send(error));
   }
   /**

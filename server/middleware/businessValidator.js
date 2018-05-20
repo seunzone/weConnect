@@ -3,7 +3,7 @@ import Validator from 'validator';
 
 export const verifyInput = (req, res, next) => {
   const {
-    name, description, location, category
+    name, description, image, location, category
   } = req.body;
 
   const error = {};
@@ -24,12 +24,19 @@ export const verifyInput = (req, res, next) => {
     error.description = 'Description is required';
   }
 
+  if (!image) {
+    error.image = 'Image is required';
+  }
+
+  if (image && Validator.isEmpty(location.trim() || '')) {
+    error.image = 'Image is required';
+  }
   if (!location) {
     error.location = 'Location is required';
   }
 
   if (location && Validator.isEmpty(location.trim() || '')) {
-    error.ingredients = 'Location is required';
+    error.location = 'Location is required';
   }
 
   if (!category) {
@@ -58,11 +65,11 @@ export const verifyLenght = (req, res, next) => {
       });
   }
   // Check for Lenght
-  if (!Validator.isLength(description, { min: 10, max: 200 })) {
+  if (!Validator.isLength(description, { min: 10, max: 2000 })) {
     return res.status(406)
       .send({
         status: 'Fail',
-        message: 'Description must be between 10 to 200 characters',
+        message: 'Description must be between 10 to 2000 characters',
       });
   }
   // Check for Lenght

@@ -109,7 +109,7 @@ describe('BUSINESS CONTROLLER', () => {
           expect(res.status).to.equal(406);
           expect(res.body).to.be.an('object');
           expect(res.body.message)
-            .to.include('Description must be between 10 to 200 characters');
+            .to.include('Description must be between 10 to 2000 characters');
           done();
         });
     });

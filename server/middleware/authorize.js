@@ -16,7 +16,7 @@ const key = process.env.MY_SECRET;
    * @return {null} - null
    */
 const isLoggedIn = (req, res, next) => {
-  const token = req.body.token || req.headers.token || req.query.token;
+  const token = req.body.token || req.headers.token || req.query.token || req.headers.authorization;
 
   try {
     const verifiedToken = jwt.verify(token, key);

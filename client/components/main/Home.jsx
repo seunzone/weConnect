@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // actions
 import { signUpUsers } from '../../actions/auth';
@@ -12,10 +13,7 @@ import SignupForm  from "../auth/SignupForm";
 class Home extends React.Component {
   render() {
     const { signUpUsers, addFlashMessage } = this.props;
-
-    const divStyle = {
-      color: "white"
-    };
+    const divStyle = { color: "white" };
     return (
       <div>
         <div id="jumbotron" className="jumbotron text-center">
@@ -33,9 +31,9 @@ class Home extends React.Component {
                 <h1 className="cover-heading">Welcome To WeConnect </h1>
                 <br />
                 <p className="lead">
-                  <a href="#" className="btn btn-warning btn-lg">
+                  <Link to={`/business`} className="btn btn-warning btn-lg">
                     View Catalogue
-                </a>
+                </Link>
                 </p>
               </div>
               <SignupForm signUpUsers={signUpUsers} addFlashMessage={addFlashMessage}/>

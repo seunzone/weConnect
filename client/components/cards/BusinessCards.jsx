@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
 
 
-const BusinessCard = ({ name, description, category, id }) => {
+const BusinessCard = ({ name, image, description, category, id }) => {
 
   const Style = { height: "250px" };
   return (
@@ -13,7 +13,7 @@ const BusinessCard = ({ name, description, category, id }) => {
           <img
             className="card-img-top"
             style={Style}
-            src="../../public/images/biz1.jpg"
+            src={image}
             alt="Card image cap"
           />
         </div>

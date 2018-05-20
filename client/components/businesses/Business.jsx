@@ -26,6 +26,7 @@ class Businesses extends React.Component{
           Key={business}
           id={business.id}
           name={business.name}
+          image={business.image}
           description={business.description}
           category={business.category}
         />

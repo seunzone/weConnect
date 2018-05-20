@@ -1,20 +1,51 @@
 import axios from 'axios';
-import { GET_ALL_BUSINESS } from './actionType';
+import { GET_ALL_BUSINESS, SAVE_IMAGE_SUCCESSFUL, SAVE_IMAGE_FAILED } from './actionType';
 
 export function allBusiness(business) {
-    return {
-        type: GET_ALL_BUSINESS,
-        allBusinesses: business
-    };
+  return {
+    type: GET_ALL_BUSINESS,
+    allBusinesses: business
+  };
 }
 
 export const addBusiness = business => dispatch => {
-    return axios.post('/api/v1/businesses', business)
-        .then(res => res.data.business);
+  return axios.post('/api/v1/businesses', business)
+    .then(res => res.data.business);
 };
 
-export const getAllBusiness = () => dispatch => 
-    axios.get('api/v1/businesses')
-        .then((res) => {
-            dispatch(allBusiness(res.data.business));
-        });
+export const getAllBusiness = () => dispatch =>
+  axios.get('api/v1/businesses')
+    .then((res) => {
+      dispatch(allBusiness(res.data.business));
+    });
+
+export function saveImageSuccessful(image) {
+  return {
+    type: SAVE_IMAGE_SUCCESSFUL,
+    image
+  };
+}
+
+export function saveImageFailed(error) {
+  return {
+    type: SAVE_IMAGE_FAILED,
+    error
+  };
+}
+
+export function saveImageCloudinary(image) {
+  const data = new FormData();
+  data.append('file', image);
+  data.append('upload_preset', 'yp3s3k5n');
+  delete axios.defaults.headers.common.Authorization;
+  return dispatch => axios.post('https://api.cloudinary.com/v1_1/dtlziutcq/image/upload', data)
+    .then(({ data }) => {
+      const token = localStorage.getItem('makeToken');
+      //console.log(token);
+      axios.defaults.headers.common.Authorization = token;
+      //console.log(data.secure_url);
+      dispatch(saveImageSuccessful(data.secure_url));
+    }).catch(() => {
+      dispatch(saveImageFailed('Sorry, your image failed to upload'));
+    });
+}

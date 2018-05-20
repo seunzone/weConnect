@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import classnames from 'classnames';
 
 // actions
-import { addBusiness } from '../../actions/businessAction';
+import { addBusiness, saveImageCloudinary } from '../../actions/businessAction';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 class AddNewBusiness extends React.Component {
@@ -13,6 +14,7 @@ class AddNewBusiness extends React.Component {
         name: '',
         category: '',
         location: '',
+        newImage: '',
         image: '',
         description: '',
         errors: {},
@@ -20,16 +22,31 @@ class AddNewBusiness extends React.Component {
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
+    this.submitImage = this.submitImage.bind(this);
 };
 
-onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
 }
 
+handleImageChange(event){
+  event.preventDefault();
+  this.setState({ newImage: event.target.files[0] });
+}
+
+submitImage(event){
+  event.preventDefault();
+  this.props.saveImageCloudinary(this.state.newImage).then(()=> {
+    this.setState({image: this.props.imageInfo.imageData});
+  });
+}
 
 onSubmit(event) {
     event.preventDefault();
-        this.setState({ errors: {}, isLoading: true });
+    const { hasSaved, imageData } = this.props.imageInfo;
+    if(imageData && hasSaved){    
+      this.setState({ image: imageData, errors: {}, isLoading: true });
         this.props.addBusiness(this.state).then(
             () => {
                 this.props.addFlashMessage({
@@ -40,6 +57,8 @@ onSubmit(event) {
             },
              (res) => this.setState({ errors: res.response.data.error, isLoading: false })
         );
+    }
+        
 }
   render() {
     const { errors } = this.state;
@@ -110,20 +129,22 @@ onSubmit(event) {
                   <br />
                   <label>Upload Image</label>
                   <div className="input-group">
-                    {/* <span className="input-group-btn">
+                    <span className="input-group-btn">
                       <span className="btn btn-default btn-file">
                         Browse…
-                    <input type="file" id="imgInp" />
+                    <input type="file" id="imgInp"
+                    onChange={this.handleImageChange} 
+                    />
                       </span>
-                    </span> */}
-                    <input
+                    </span> <button onClick={this.submitImage}>Uplaod Image</button>
+                    {/* <input
                         value={this.state.image}
                         onChange={this.onChange}
                         name="image"
                         type="text"
                         className="form-control"
                         placeholder="image URL"
-                      />
+                      /> */}
                       {errors && <span className="help-block">{errors.image}</span>}
                   </div>
                   <br />
@@ -164,4 +185,8 @@ AddNewBusiness.propTypes = {
 AddNewBusiness.contextTypes = {
   router: PropTypes.object.isRequired
 }
-export default AddNewBusiness;
+
+const mapStateToProps = state => ({
+  imageInfo: state.imageUrl
+})
+export default connect(mapStateToProps, { saveImageCloudinary })(AddNewBusiness);

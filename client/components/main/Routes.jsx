@@ -5,7 +5,7 @@ import NotFound from '../common/NotFound';
 import Business from '../businesses/Business';
 import SingleBusiness from '../businesses/SingleBusiness';
 import AddNewBusiness from '../businesses/AddBusinessParent';
-import EditBusiness from '../businesses/EditBusiness';
+import EditBusiness from '../businesses/EditBusinessParent';
 import Dashboard from '../user/UserDashboard';
 import Signin from '../auth/Signin';
 

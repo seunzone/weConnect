@@ -40,7 +40,7 @@ const BusinessCard = ({ name, image, description, createdAt, category, id }) => 
               </span>
           </p>
           <Link align="center" className="btn btn-primary" to={`/business/view/${id}`}>View Details</Link>
-          { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons /> : ''}
+          { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} /> : ''}
         </div>
       </div>
   );

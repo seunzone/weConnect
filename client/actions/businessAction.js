@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { 
-  GET_ALL_BUSINESS, 
-  SAVE_IMAGE_SUCCESSFUL, 
-  SAVE_IMAGE_FAILED, 
-  GET_SINGLE_BUSINESS 
+import {
+  GET_ALL_BUSINESS,
+  SAVE_IMAGE_SUCCESSFUL,
+  SAVE_IMAGE_FAILED,
+  GET_SINGLE_BUSINESS,
+  EDIT_FAILED,
+  EDIT_SUCCESSFUL
 } from './actionType';
 
 export function allBusiness(business) {
@@ -17,6 +19,20 @@ export function oneBusiness(business) {
   return {
     type: GET_SINGLE_BUSINESS,
     oneBusiness: business
+  };
+}
+
+export function editSuccessful(business) {
+  return {
+    type: EDIT_SUCCESSFUL,
+    business
+  };
+}
+
+export function editFailed(error) {
+  return {
+    type: EDIT_FAILED,
+    error
   };
 }
 
@@ -36,6 +52,19 @@ export const getOneBusiness = id => dispatch =>
     .then((res) => {
       dispatch(oneBusiness(res.data));
     });
+
+export const editBusiness = (id, business) => dispatch =>
+  axios.put('/api/v1/businesses/' + id, business)
+    .then(() => {
+      dispatch(editSuccessful(' Business Sucessfully Updated'));
+    })
+    .catch(() => {
+      dispatch(editFailed('Business failed to update'));
+    });
+// export const editBusiness = (id, business) => {
+//   return axios.put(`/api/v1/businesses/${id}`, business)
+//   .then(res => res.data.business)
+//  }
 
 export function saveImageSuccessful(image) {
   return {

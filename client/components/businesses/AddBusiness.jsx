@@ -55,7 +55,7 @@ onSubmit(event) {
                 })
                 this.context.router.history.push('/dashboard')
             },
-             (res) => this.setState({ errors: res.response.data.error, isLoading: false })
+             (res) => this.setState({ errors: res.res.data.error, isLoading: false })
         );
     }
         
@@ -137,14 +137,6 @@ onSubmit(event) {
                     />
                       </span>
                     </span> <button onClick={this.submitImage}>Uplaod Image</button>
-                    {/* <input
-                        value={this.state.image}
-                        onChange={this.onChange}
-                        name="image"
-                        type="text"
-                        className="form-control"
-                        placeholder="image URL"
-                      /> */}
                       {errors && <span className="help-block">{errors.image}</span>}
                   </div>
                   <br />

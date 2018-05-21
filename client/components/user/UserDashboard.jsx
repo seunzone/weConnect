@@ -30,13 +30,13 @@ class UserDashboard extends React.Component {
     )
 
     const authbusiness = allBusinesses && allBusinesses.filter(business => {
-      return business.userId === authId;
+      return business.userId === authId.id;
+      
     });
-    
     const showBusiness = authbusiness.map((business) => {
       return (
         <BusinessCard
-          Key={business}
+          Key={Math.random() * 10}
           id={business.id}
           name={business.name}
           image={business.image}
@@ -45,8 +45,8 @@ class UserDashboard extends React.Component {
         />
       )
     })
-    console.log(allBusinesses)
-    console.log('all the biz lenght is ' +  allBusinesses.length)
+    // console.log(allBusinesses)
+    // console.log('all the biz lenght is ' +  allBusinesses.length)
     
     return (
       <div>
@@ -54,9 +54,9 @@ class UserDashboard extends React.Component {
           <div className="row justify-content-center">
             <div className="col-lg-8 col-md-8 text-center">
               <FlashMessagesList />
-              <h1 className="text-center header-color"><small>Welcome </small>username</h1>
+              <h1 className="text-center header-color"><small>Welcome </small></h1>
               <p className="text-center my-4">
-                <span className="mr-3 h2 header-color"> 51 </span>
+                <span className="mr-3 h2 header-color">{authbusiness.length}</span>
                 <span className="h6 mr-3">Businesses Created</span>
                 <span className="mr-3 h2 header-color"> 531 </span>
                 <span className="h6">Reviews</span>
@@ -80,9 +80,12 @@ class UserDashboard extends React.Component {
 UserDashboard.propTypes = {
   getAllBusiness: PropTypes.func.isRequired
 }
-const mapStateToProps = state => ({
-  business: state.allBusinesses,
-  authId: state.auth.user.id
-})
+const mapStateToProps = state => {
+  return {
+    business: state.allBusinesses,
+    authId: state.auth.user
+  }
+  
+}
 
 export default connect(mapStateToProps, { getAllBusiness })(UserDashboard);

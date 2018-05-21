@@ -25,6 +25,7 @@ export const signInUsers = userCredentials => dispatch =>
       window.localStorage.setItem('makeToken', token);
       authenticateUser(token);
       const user = decode(token);
+      //console.log(user);
       dispatch(currentUser(user));
       return res.data.msg;
     });

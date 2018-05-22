@@ -32,7 +32,7 @@ componentWillMount() {
 }
 
 componentWillReceiveProps(nextProps) {
-    console.log(nextProps); 
+    //console.log(nextProps); 
     this.setState({
         name: nextProps.oneBusiness.name,
         category: nextProps.oneBusiness.category,

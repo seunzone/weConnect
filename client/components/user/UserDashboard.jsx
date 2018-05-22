@@ -1,5 +1,4 @@
 import React from "react";
-import UserBusinesses from './UserBusinesses';
 import { Link } from "react-router-dom";
 import FlashMessagesList from '../flash/FlashMessagesList';
 import PropTypes from 'prop-types';
@@ -9,7 +8,7 @@ import { connect } from 'react-redux';
 import BusinessCard from "../cards/BusinessCards";
 
 // import actions
-import { getAllBusiness } from '../../actions/businessAction';
+import { getAllBusiness, deleteBusiness } from '../../actions/businessAction';
 
 class UserDashboard extends React.Component {
   constructor(props) {
@@ -34,20 +33,22 @@ class UserDashboard extends React.Component {
       
     });
     const showBusiness = authbusiness.map((business) => {
+      
       return (
         <BusinessCard
-          Key={Math.random() * 10}
+          Key={business.id}
           id={business.id}
           name={business.name}
           image={business.image}
           description={business.description}
           category={business.category}
+          deleteBusiness={this.props.deleteBusiness}
         />
       )
     })
-    // console.log(allBusinesses)
-    // console.log('all the biz lenght is ' +  allBusinesses.length)
-    
+    if(!this.props.business){
+      return <div>loading</div>
+    }
     return (
       <div>
         <div className="container my-5">
@@ -68,8 +69,7 @@ class UserDashboard extends React.Component {
           </div>
         </div>
         <div className="row">
-          {/* {allBusinesses.length == 0 ? showBusiness : emptyMessage} */}
-          { allBusinesses && showBusiness }
+          {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
 
       </div>
@@ -78,8 +78,10 @@ class UserDashboard extends React.Component {
 };
 
 UserDashboard.propTypes = {
-  getAllBusiness: PropTypes.func.isRequired
+  getAllBusiness: PropTypes.func.isRequired,
+  deleteBusiness: PropTypes.func.isRequired,
 }
+
 const mapStateToProps = state => {
   return {
     business: state.allBusinesses,
@@ -88,4 +90,4 @@ const mapStateToProps = state => {
   
 }
 
-export default connect(mapStateToProps, { getAllBusiness })(UserDashboard);
+export default connect(mapStateToProps, { getAllBusiness, deleteBusiness })(UserDashboard);

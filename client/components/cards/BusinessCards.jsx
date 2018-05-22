@@ -7,7 +7,7 @@ import moment from 'moment';
 
 
 
-const BusinessCard = ({ name, image, description, createdAt, category, id }) => {
+const BusinessCard = ({ name, image, description, createdAt, category, id, deleteBusiness }) => {
  
   const Style = { height: "250px" };
   return (
@@ -40,7 +40,7 @@ const BusinessCard = ({ name, image, description, createdAt, category, id }) => 
               </span>
           </p>
           <Link align="center" className="btn btn-primary" to={`/business/view/${id}`}>View Details</Link>
-          { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} /> : ''}
+          { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} deleteBusiness={deleteBusiness} /> : ''}
         </div>
       </div>
   );

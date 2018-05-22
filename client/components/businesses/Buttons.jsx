@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // import actions
-import { getOneBusiness } from '../../actions/businessAction';
+// import { getOneBusiness } from '../../actions/businessAction';
 
 class Buttons extends Component {
     
@@ -16,8 +16,12 @@ class Buttons extends Component {
             <br/>
                 <Link to= {`/businesses/edit/${id}`}  className="btn btn-outline-primary">
                     <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</Link>&nbsp;&nbsp;
-                <a className="btn btn-outline-danger">
-                    <i className="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                <button 
+                    className="btn btn-outline-danger"
+                    onClick={() => this.props.deleteBusiness(id)}
+                >
+                    <i className="fa fa-trash-o" aria-hidden="true" /> Delete
+                </button>
             </div>
         )
     }

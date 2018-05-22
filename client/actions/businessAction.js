@@ -6,8 +6,9 @@ import {
   GET_SINGLE_BUSINESS,
   EDIT_FAILED,
   EDIT_SUCCESSFUL,
-  BUSINESS_DELETE_FAILED,
-  BUSINESS_DELETE_SUCCESSFUL
+  // BUSINESS_DELETE_FAILED,
+  // BUSINESS_DELETE_SUCCESSFUL
+  DELETE_BUSINESS
 } from './actionType';
 
 export function allBusiness(business) {
@@ -38,19 +39,24 @@ export function editFailed(error) {
   };
 }
 
-export function deleteSuccessful(message) {
-  return {
-    type: BUSINESS_DELETE_SUCCESSFUL,
-    message
-  };
-}
+// export function deleteSuccessful(message) {
+//   return {
+//     type: BUSINESS_DELETE_SUCCESSFUL,
+//     message
+//   };
+// }
 
-export function deleteFailed(err) {
-  return {
-    type: BUSINESS_DELETE_FAILED,
-    err
-  };
-}
+// export function deleteFailed(err) {
+//   return {
+//     type: BUSINESS_DELETE_FAILED,
+//     err
+//   };
+// }
+
+const businessToBeDeleted = businessId => ({
+  type: DELETE_BUSINESS,
+  businessId
+ });
 
 export const addBusiness = business => dispatch => {
   return axios.post('/api/v1/businesses', business)
@@ -78,14 +84,19 @@ export const editBusiness = (id, business) => dispatch =>
       dispatch(editFailed('Business failed to update'));
     });
 
-export const deleteBusiness = id => dispatch =>
-  axios.delete('/api/v1/businesses/' + id)
-    .then((res) => {
-      dispatch(deleteSuccessful(res.data.message));
-    })
-    .catch((err) => {
-      dispatch(deleteFailed(err.res.data.message));
-    });
+// export const deleteBusiness = id => dispatch =>
+//   axios.delete('/api/v1/businesses/' + id)
+//     .then((res) => {
+//       dispatch(deleteSuccessful(res.data.message));
+//     })
+//     .catch((err) => {
+//       dispatch(deleteFailed(err.res.data.message));
+//     });
+
+export const deleteBusiness = id => dispatch => axios.delete('/api/v1/businesses/' + id)
+ .then(() => {
+   dispatch(businessToBeDeleted(id));
+ });
 
 export function saveImageSuccessful(image) {
   return {

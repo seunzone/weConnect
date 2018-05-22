@@ -27,7 +27,7 @@ export const signInUsers = userCredentials => dispatch =>
       const user = decode(token);
       //console.log(user);
       dispatch(currentUser(user));
-      return res.data.msg;
+      return res.data.message;
     });
 
 export const signUpUsers = userCredentials => dispatch =>

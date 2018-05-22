@@ -22,52 +22,6 @@ export default class usersController {
      *
      * @returns {object} Class instance
      */
-  // static createUser(req, res) {
-  //   const password = bcrypt.hashSync(req.body.password, 10);
-  //   const {
-  //     username, email
-  //   } = req.body;
-
-  //   User.findOne({
-  //     where: {
-  //       email
-  //     }
-  //   }).then((existing) => {
-  //     if (existing) {
-  //       return res.status(400)
-  //         .json({
-  //           status: 'fail',
-  //           message: 'Email already exist',
-  //         });
-  //     }
-  //     return db.User
-  //       .create({
-  //         username,
-  //         email,
-  //         password
-  //       })
-  //       .then((newUser) => {
-  //         const token = makeToken(newUser);
-  //         return res.status(201)
-  //           .json({
-  //             status: 'success',
-  //             message: 'signup sucessful',
-  //             user: {
-  //               username: newUser.username,
-  //               email: newUser.email,
-  //               id: newUser.id
-  //             },
-  //             token
-  //           });
-  //       });
-  //   })
-  //     .catch(error => res.status(500).json({
-  //       status: 'error',
-  //       message: 'Internal server error',
-  //       error
-  //     }));
-  // }
-
   static createUser(req, res) {
     const password = bcrypt.hashSync(req.body.password, 10);
     const {

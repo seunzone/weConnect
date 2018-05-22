@@ -5,7 +5,9 @@ import {
   SAVE_IMAGE_FAILED,
   GET_SINGLE_BUSINESS,
   EDIT_FAILED,
-  EDIT_SUCCESSFUL
+  EDIT_SUCCESSFUL,
+  BUSINESS_DELETE_FAILED,
+  BUSINESS_DELETE_SUCCESSFUL
 } from './actionType';
 
 export function allBusiness(business) {
@@ -36,6 +38,20 @@ export function editFailed(error) {
   };
 }
 
+export function deleteSuccessful(message) {
+  return {
+    type: BUSINESS_DELETE_SUCCESSFUL,
+    message
+  };
+}
+
+export function deleteFailed(err) {
+  return {
+    type: BUSINESS_DELETE_FAILED,
+    err
+  };
+}
+
 export const addBusiness = business => dispatch => {
   return axios.post('/api/v1/businesses', business)
     .then(res => res.data.business);
@@ -61,10 +77,15 @@ export const editBusiness = (id, business) => dispatch =>
     .catch(() => {
       dispatch(editFailed('Business failed to update'));
     });
-// export const editBusiness = (id, business) => {
-//   return axios.put(`/api/v1/businesses/${id}`, business)
-//   .then(res => res.data.business)
-//  }
+
+export const deleteBusiness = id => dispatch =>
+  axios.delete('/api/v1/businesses/' + id)
+    .then((res) => {
+      dispatch(deleteSuccessful(res.data.message));
+    })
+    .catch((err) => {
+      dispatch(deleteFailed(err.res.data.message));
+    });
 
 export function saveImageSuccessful(image) {
   return {

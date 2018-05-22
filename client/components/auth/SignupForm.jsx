@@ -37,7 +37,6 @@ class SignupForm extends React.Component {
             password: '',
             confirmPassword: '',
             errors: {},
-            err: [],
             isLoading: false
         }
         this.onChange = this.onChange.bind(this);
@@ -98,7 +97,8 @@ class SignupForm extends React.Component {
                     });
                     this.context.router.history.push('/business')
                 },
-               (res) => this.setState({ err: res.data.message, isLoading: false })
+            //    (res) => this.setState({ err: res.data.message, isLoading: false }),
+               (error) => this.setState({ errors: error.response.data, isLoading: false }),
             );
         }
     }
@@ -130,6 +130,7 @@ class SignupForm extends React.Component {
                                 placeholder="username"
                                 field="username"
                                 error={errors.username}
+                                error={errors.usernameConflict}
                                 value={this.state.username}
                                 onChange={this.onChange}
                                 err={err}
@@ -141,6 +142,7 @@ class SignupForm extends React.Component {
                                 placeholder="email"
                                 field="email"
                                 error={errors.email}
+                                error={errors.emailConflict}
                                 value={this.state.email}
                                 onChange={this.onChange}
                             />

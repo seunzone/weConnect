@@ -39,5 +39,5 @@ export const signUpUsers = userCredentials => dispatch =>
       window.localStorage.setItem('makeToken', token);
       const user = decode(token);
       dispatch(currentUser(user));
-      return res.data.msg;
+      return res.data.message;
     });

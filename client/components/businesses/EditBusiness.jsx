@@ -12,7 +12,7 @@ class EditBusiness extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        name: this.props.business.name,
+        name: this.props.oneBusiness ? this.props.oneBusiness.name : "",
         category: this.props.business.category,
         location: this.props.business.location,
         newImage: this.props.business.newImage,
@@ -26,6 +26,22 @@ class EditBusiness extends React.Component {
     this.handleImageChange = this.handleImageChange.bind(this);
     this.submitImage = this.submitImage.bind(this);
 };
+
+componentWillMount() {
+    this.props.getOneBusiness(this.props.params.id);
+}
+
+componentWillReceiveProps(nextProps) {
+    console.log(nextProps); 
+    this.setState({
+        name: nextProps.oneBusiness.name,
+        category: nextProps.oneBusiness.category,
+        location: nextProps.oneBusiness.location,
+        newImage: nextProps.oneBusiness.newImage,
+        image: nextProps.oneBusiness.image,
+        description: nextProps.oneBusiness.description,
+    })
+}
 
 onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -77,7 +93,7 @@ onSubmit(event) {
     // if(!this.props.business){
     //     return<h3>Loading...</h3>;
     // }
-    // console.log(this.props.business)
+
     const { errors } = this.state;
     return (
       <div className="container my-5">
@@ -199,4 +215,5 @@ const mapStateToProps = state => ({
   imageInfo: state.imageUrl,
   business: state.singleBusiness
 })
+
 export default connect(mapStateToProps, { getOneBusiness, saveImageCloudinary, editBusiness, addFlashMessage })(EditBusiness);

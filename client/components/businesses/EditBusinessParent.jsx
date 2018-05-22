@@ -13,9 +13,15 @@ class EditBusinessParent extends React.Component {
         this.props.getOneBusiness(this.props.match.params.id); 
     }
   render() {
-    const { getOneBusiness, addFlashMessage } = this.props;
+    const { getOneBusiness, addFlashMessage, oneBusiness, params } = this.props;
+    
     return (
-      <EditBusiness getOneBusiness={ getOneBusiness } addFlashMessage={addFlashMessage} />
+        <EditBusiness 
+            oneBusiness={ oneBusiness } 
+            addFlashMessage={addFlashMessage} 
+            getOneBusiness={ getOneBusiness }
+            params={ params }
+        />
     );
   }
 }
@@ -25,7 +31,13 @@ EditBusinessParent.propTypes = {
   addFlashMessage: PropTypes.func.isRequired
 }
 
+const mapStateToProps = (state, props) => ({
+    oneBusiness: state.singleBusiness,
+    params: props.match.params
+})
 
-export default connect((state) => {return {}} , { getOneBusiness, saveImageCloudinary, editBusiness, addFlashMessage })(EditBusinessParent);
+
+export default connect(mapStateToProps, { getOneBusiness, saveImageCloudinary, editBusiness, addFlashMessage })(EditBusinessParent);
 
   
+// (state) => {return {}}

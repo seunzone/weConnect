@@ -5,7 +5,7 @@ import AddBusiness from './AddBusiness';
 
 
 // actions
-import { addBusiness } from '../../actions/businessAction';
+import { addBusiness } from '../../actions/addBusinessAction';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 class AddBusinessParent extends React.Component {

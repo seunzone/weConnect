@@ -5,7 +5,10 @@ import { PropTypes } from 'prop-types';
 import classnames from 'classnames';
 
 // actions
-import { getOneBusiness, editBusiness, saveImageCloudinary } from '../../actions/businessAction';
+import { getOneBusiness } from '../../actions/businessAction';
+import { editBusiness } from '../../actions/editBusinessAction';
+import { saveImageCloudinary } from '../../actions/uploadImageAction';
+
 import { addFlashMessage } from '../../actions/flashMessages';
 
 class EditBusiness extends React.Component {

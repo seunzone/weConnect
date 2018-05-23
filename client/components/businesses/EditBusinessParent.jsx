@@ -5,7 +5,9 @@ import EditBusiness from './EditBusiness';
 
 
 // actions
-import { getOneBusiness, saveImageCloudinary, editBusiness } from '../../actions/businessAction';
+import { getOneBusiness } from '../../actions/businessAction';
+import { editBusiness } from '../../actions/editBusinessAction';
+import { saveImageCloudinary } from '../../actions/uploadImageAction';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 class EditBusinessParent extends React.Component {

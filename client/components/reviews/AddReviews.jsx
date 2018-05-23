@@ -4,7 +4,7 @@ const AddReviews = () => {
   return (
     <form>
       <h3 className="mb-3 mt-3 text-muted">Leave a review</h3>
-      <input className="form-control" placeholder="Your name" />
+      {/* <input className="form-control" placeholder="Your name" /> */}
       <br />
       <textarea
         cols="5"

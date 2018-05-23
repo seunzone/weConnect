@@ -16,24 +16,30 @@ class SingleBusiness extends React.Component {
     this.props.getOneBusiness(this.props.match.params.id)
   }
   render() {
-    // const { business } = this.props;
     const { singleBusiness } = this.props;
-    console.log(singleBusiness.Reviews)
-    const emptyMessage = (
-      <div className="alert alert-dark" role="alert">
-        No reviews for this business
-        </div>)
-    const showReviews = (
-      <div className="media">
-      <small className="text-primary">Chioma </small> &nbsp;
-        <div className="media-body">
-        <em>
-          And the company of the year award goes to you, thanks for your
-          contribution to the community.
-        </em>
+    
+    if(!singleBusiness.Reviews){
+      return <h2>loading...</h2>
+    }
+    const noReviews = (
+      <div className="alert alert-danger" role="alert">
+        There are no reviews for this business
       </div>
-    </div>
     )
+
+    const showReviews = singleBusiness.Reviews.map((review) => (
+      <div className="media"> 
+        <div className="media-body">
+          <em>
+            {review.content}
+        </em>
+        </div>
+        <small>
+       <span className="text-danger">{review.User.username}</span> commented on:&nbsp;
+        {moment(review.createdAt).format('Do MMMM YYYY HH:mm')}</small> &nbsp;
+      </div>
+    ))
+
     return (
       <div className="container my-5">
         <div className="row justify-content-center">
@@ -62,8 +68,8 @@ class SingleBusiness extends React.Component {
                 <hr />
                 <p className="text-muted h6 text-center my-4">
                   <span className="mr-3 h3">
-                    <i className="ion ion-happy-outline" /> 1
-                    {/* {singleBusiness.Reviews.length} */}
+                    <i className="ion ion-happy-outline" />
+                    {singleBusiness.Reviews.length}
                     <small>Review(s)</small>
                   </span>
                 </p>
@@ -71,7 +77,7 @@ class SingleBusiness extends React.Component {
                 <div className="container my-4">
                   <div className="row justify-content-center">
                     <div className="col-10">
-                      {showReviews}
+                      {showReviews.length === 0 ? noReviews : showReviews }
                     </div>
                   </div>
                 </div>

@@ -5,7 +5,6 @@ import auth from './auth';
 import imageUrl from './imageUploader';
 import singleBusiness from './getSingleBusiness';
 import editBusiness from './editBusiness';
-import deleteBusiness from './deleteBusiness';
 
 export default combineReducers({
   flashMessages,
@@ -13,6 +12,5 @@ export default combineReducers({
   auth,
   imageUrl,
   singleBusiness,
-  editBusiness,
-  deleteBusiness
+  editBusiness
 });

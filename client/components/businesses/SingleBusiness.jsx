@@ -69,7 +69,7 @@ class SingleBusiness extends React.Component {
     return (
       <div className="container my-5">
         <div className="row justify-content-center">
-          <div className="col-8">
+          <div className="col-10">
             <div className="card">
               <img
                 className="card-img-top detail-img"

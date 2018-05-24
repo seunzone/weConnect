@@ -6,13 +6,37 @@ import { Link } from 'react-router-dom';
 // actions
 import { signUpUsers } from '../../actions/auth';
 import { addFlashMessage } from '../../actions/flashMessages';
+import { getAllBusiness } from '../../actions/businessAction';
+
 // components
-import TopBusiness from "../businesses/TopBusiness";
-import SignupForm  from "../auth/SignupForm";
+import BusinessCard from '../cards/BusinessCards';
+import SignupForm from "../auth/SignupForm";
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.getAllBusiness()
+  }
+
   render() {
+    const allBusinesses = this.props.business;
     const { signUpUsers, addFlashMessage } = this.props;
+    const someBusiness = allBusinesses.map((business, i) => {
+      if (i < 3) {
+        return (
+          <BusinessCard
+            Key={+business.id}
+            id={business.id}
+            name={business.name}
+            image={business.image}
+            description={business.description}
+            category={business.category}
+          />
+        )
+      }
+    })
     const divStyle = { color: "white" };
     return (
       <div>
@@ -36,11 +60,18 @@ class Home extends React.Component {
                 </Link>
                 </p>
               </div>
-              <SignupForm signUpUsers={signUpUsers} addFlashMessage={addFlashMessage}/>
+              <SignupForm signUpUsers={signUpUsers} addFlashMessage={addFlashMessage} />
             </div>
           </div>
         </div>
-        <TopBusiness />
+        <section className="container text-center">
+          <h3>Some Businesses in Lagos</h3>
+        </section>
+        <section className="container home_details">
+          <div className="row card-deck">
+            {someBusiness}
+          </div>
+        </section>
       </div>
     );
   }
@@ -48,9 +79,11 @@ class Home extends React.Component {
 
 Home.propTypes = {
   signUpUsers: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired
+  addFlashMessage: PropTypes.func.isRequired,
+  getAllBusiness: PropTypes.func.isRequired
 }
-  
+const mapStateToProps = state => ({
+  business: state.allBusinesses,
+})
 
-
-export default connect((state) =>  { return {}}, { signUpUsers, addFlashMessage })(Home);
+export default connect(mapStateToProps, { signUpUsers, addFlashMessage, getAllBusiness })(Home);

@@ -57,10 +57,7 @@ class UserDashboard extends React.Component {
               <FlashMessagesList />
               <h1 className="text-center header-color"><small>Welcome </small></h1>
               <p className="text-center my-4">
-                <span className="mr-3 h2 header-color">{authbusiness.length}</span>
-                <span className="h6 mr-3">Businesses Created</span>
-                <span className="mr-3 h2 header-color"> 531 </span>
-                <span className="h6">Reviews</span>
+                <span className="h6 mr-3">You have created {authbusiness.length} Business(es) Created</span>
               </p>
               <Link to="/businesses/add" className="btn btn-info text-white">
                 <i className="fa fa-plus-circle" aria-hidden="true"></i> Add New Business

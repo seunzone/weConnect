@@ -5,20 +5,21 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 //import components
-import AddReview from '../reviews/AddReviews';
-//import GetReview from '../reviews/GetReviews';
+import AddReviews from '../reviews/AddReviews';
 
 // import actions
 import { getOneBusiness } from '../../actions/businessAction';
+import { addBusinessReview } from '../../actions/addReviewAction';
+
 
 class SingleBusiness extends React.Component {
   componentDidMount() {
     this.props.getOneBusiness(this.props.match.params.id)
   }
   render() {
-    const { singleBusiness } = this.props;
-    
-    if(!singleBusiness.Reviews){
+    const { singleBusiness, addBusinessReview, params } = this.props;
+
+    if (!singleBusiness.Reviews) {
       return <h2>loading...</h2>
     }
     const noReviews = (
@@ -28,15 +29,19 @@ class SingleBusiness extends React.Component {
     )
 
     const showReviews = singleBusiness.Reviews.map((review) => (
-      <div className="media"> 
-        <div className="media-body">
-          <em>
-            {review.content}
-        </em>
-        </div>
-        <small>
-       <span className="text-danger">{review.User.username}</span> commented on:&nbsp;
-        {moment(review.createdAt).format('Do MMMM YYYY HH:mm')}</small> &nbsp;
+      <div>
+        <span className="text-danger">{review.User.username}</span> &nbsp; 
+        <span className="text-muted">
+        <i className="fa fa-clock-o" aria-hidden="true"></i>&nbsp;
+        {moment(review.createdAt).format('Do MMMM YYYY HH:mm')}</span>
+        <br />
+        <div className="media">
+          <div className="media-body">
+            <em>
+              {review.content}
+            </em>
+          </div>
+        </div><hr/>
       </div>
     ))
 
@@ -77,11 +82,11 @@ class SingleBusiness extends React.Component {
                 <div className="container my-4">
                   <div className="row justify-content-center">
                     <div className="col-10">
-                      {showReviews.length === 0 ? noReviews : showReviews }
+                      {showReviews.length === 0 ? noReviews : showReviews}
                     </div>
                   </div>
                 </div>
-                <AddReview />
+                <AddReviews addBusinessReview={ addBusinessReview } params={ params } />
               </div>
             </div>
           </div>
@@ -92,8 +97,13 @@ class SingleBusiness extends React.Component {
 
 };
 
-const mapStateToProps = state => ({
-  singleBusiness: state.singleBusiness
+SingleBusiness.propTypes = {
+  addBusinessReview: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state, props) => ({
+  singleBusiness: state.singleBusiness,
+  params: props.match.params
 })
 
-export default connect(mapStateToProps, { getOneBusiness })(SingleBusiness);
+export default connect(mapStateToProps, { getOneBusiness, addBusinessReview })(SingleBusiness);

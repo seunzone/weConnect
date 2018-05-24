@@ -109,10 +109,6 @@ export const verifyReview = (req, res, next) => {
 
   const error = {};
 
-  // if (!content) {
-  //   error.content = 'Review canot be empty';
-  // }
-
   if (!content || Validator.isEmpty(content.trim() || '')) {
     error.content = 'Please add a review';
   }

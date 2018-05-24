@@ -1,7 +1,11 @@
 import React from "react";
 import { PropTypes } from 'prop-types';
-import { addBusinessReview } from '../../actions/addReviewAction';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
+// actions
+import { addBusinessReview } from '../../actions/addReviewAction';
+import { getOneBusiness } from '../../actions/businessAction';
+import { addFlashMessage } from '../../actions/flashMessages';
 
 class AddReviews extends React.Component {
   constructor(props) {
@@ -21,6 +25,11 @@ class AddReviews extends React.Component {
     event.preventDefault();
     this.props.addBusinessReview(this.props.params.id, this.state).then(
       () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Thanks for your review'
+        })
+        this.props.getOneBusiness(this.props.params.id)
       },
       (error) => this.setState({ errors: error.response.data, isLoading: false })
     );
@@ -51,4 +60,14 @@ class AddReviews extends React.Component {
   }
 };
 
+AddReviews.propTypes = {
+  getOneBusiness: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
+}
+
+AddReviews.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 export default AddReviews;
+

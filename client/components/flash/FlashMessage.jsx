@@ -13,12 +13,15 @@ class FlashMessage extends React.Component {
     }
     render() {
         const { id, type, text } = this.props.message;
+        setTimeout(() => {
+            document.getElementById('close').click();
+        }, 3000);
         return (
             <div className={classnames('alert', {
                 'alert-success': type === 'success',
                 'alert-danger': type === 'error'
             })} >
-            <button onClick={this.onClick} className="close"><span>&times;</span></button>
+            <button onClick={this.onClick} className="close" id="close"><span>&times;</span></button>
             {text}
               </div>
         );

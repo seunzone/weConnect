@@ -21,6 +21,7 @@ class Home extends React.Component {
   }
 
   render() {
+    const { isAuthenticated } = this.props.auth;    
     const allBusinesses = this.props.business;
     const { signUpUsers, addFlashMessage } = this.props;
     const someBusiness = allBusinesses.map((business, i) => {
@@ -80,10 +81,12 @@ class Home extends React.Component {
 Home.propTypes = {
   signUpUsers: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
-  getAllBusiness: PropTypes.func.isRequired
+  getAllBusiness: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,  
 }
 const mapStateToProps = state => ({
   business: state.allBusinesses,
+  auth: state.auth  
 })
 
 export default connect(mapStateToProps, { signUpUsers, addFlashMessage, getAllBusiness })(Home);

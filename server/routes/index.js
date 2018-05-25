@@ -32,7 +32,7 @@ const routes = (app) => {
   // Gets all businesses
   app.get('/api/v1/businesses', Business.sortSearch, Business.getAllBusiness);
   // Post review
-  app.post('/api/v1/businesses/:id/review', authLogin, verifyId, verifyReview, Reviews.addReview);
+  app.post('/api/v1/businesses/:id/review', authLogin, verifyReview, Reviews.addReview);
   // Get review
   app.get('/api/v1/businesses/:id/review', verifyId, Business.getSingleBusiness);
 

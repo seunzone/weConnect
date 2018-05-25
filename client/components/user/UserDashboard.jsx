@@ -1,5 +1,4 @@
 import React from "react";
-import UserBusinesses from './UserBusinesses';
 import { Link } from "react-router-dom";
 import FlashMessagesList from '../flash/FlashMessagesList';
 import PropTypes from 'prop-types';
@@ -9,7 +8,7 @@ import { connect } from 'react-redux';
 import BusinessCard from "../cards/BusinessCards";
 
 // import actions
-import { getAllBusiness } from '../../actions/businessAction';
+import { getAllBusiness, deleteBusiness } from '../../actions/businessAction';
 
 class UserDashboard extends React.Component {
   constructor(props) {
@@ -30,36 +29,35 @@ class UserDashboard extends React.Component {
     )
 
     const authbusiness = allBusinesses && allBusinesses.filter(business => {
-      return business.userId === authId;
+      return business.userId === authId.id;
+      
     });
-    
     const showBusiness = authbusiness.map((business) => {
+      
       return (
         <BusinessCard
-          Key={business}
+          Key={business.id}
           id={business.id}
           name={business.name}
           image={business.image}
           description={business.description}
           category={business.category}
+          deleteBusiness={this.props.deleteBusiness}
         />
       )
     })
-    console.log(allBusinesses)
-    console.log('all the biz lenght is ' +  allBusinesses.length)
-    
+    if(!this.props.business){
+      return <div>loading</div>
+    }
     return (
       <div>
         <div className="container my-5">
           <div className="row justify-content-center">
             <div className="col-lg-8 col-md-8 text-center">
               <FlashMessagesList />
-              <h1 className="text-center header-color"><small>Welcome </small>username</h1>
+              <h1 className="text-center header-color"><small>Welcome </small></h1>
               <p className="text-center my-4">
-                <span className="mr-3 h2 header-color"> 51 </span>
-                <span className="h6 mr-3">Businesses Created</span>
-                <span className="mr-3 h2 header-color"> 531 </span>
-                <span className="h6">Reviews</span>
+                <span className="h6 mr-3">You have created {authbusiness.length} Business(es) Created</span>
               </p>
               <Link to="/businesses/add" className="btn btn-info text-white">
                 <i className="fa fa-plus-circle" aria-hidden="true"></i> Add New Business
@@ -68,8 +66,7 @@ class UserDashboard extends React.Component {
           </div>
         </div>
         <div className="row">
-          {/* {allBusinesses.length == 0 ? showBusiness : emptyMessage} */}
-          { allBusinesses && showBusiness }
+          {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
 
       </div>
@@ -78,11 +75,16 @@ class UserDashboard extends React.Component {
 };
 
 UserDashboard.propTypes = {
-  getAllBusiness: PropTypes.func.isRequired
+  getAllBusiness: PropTypes.func.isRequired,
+  deleteBusiness: PropTypes.func.isRequired,
 }
-const mapStateToProps = state => ({
-  business: state.allBusinesses,
-  authId: state.auth.user.id
-})
 
-export default connect(mapStateToProps, { getAllBusiness })(UserDashboard);
+const mapStateToProps = state => {
+  return {
+    business: state.allBusinesses,
+    authId: state.auth.user
+  }
+  
+}
+
+export default connect(mapStateToProps, { getAllBusiness, deleteBusiness })(UserDashboard);

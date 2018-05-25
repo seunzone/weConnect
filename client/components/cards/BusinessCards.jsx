@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
+import Buttons from '../businesses/Buttons';
+import moment from 'moment';
 
 
-const BusinessCard = ({ name, image, description, category, id }) => {
+
+
+const BusinessCard = ({ name, image, description, createdAt, category, id, deleteBusiness }) => {
  
- // console.log('auth state is ' + this.props.auth)
- // const { isAuthenticated } = this.props.auth;
   const Style = { height: "250px" };
   return (
    
@@ -33,11 +35,12 @@ const BusinessCard = ({ name, image, description, category, id }) => {
               <span className="text-muted">Category</span> {category}
               </small>
             <span className="text-muted float-right">
-              <i className="fa fa-pencil-square-o text-rose" />
-              2
+              Added: &nbsp;
+              {moment(createdAt).format('Do MMMM YYYY')}
               </span>
           </p>
           <Link align="center" className="btn btn-primary" to={`/business/view/${id}`}>View Details</Link>
+          { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} deleteBusiness={deleteBusiness} /> : ''}
         </div>
       </div>
   );

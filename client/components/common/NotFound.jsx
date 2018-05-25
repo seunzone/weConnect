@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 
 const NotFound = () => (
   <div className="container my-5">
@@ -6,7 +8,8 @@ const NotFound = () => (
       <div className="col-md-4 col-lg-4 col-xs-4">
         <h1>404</h1>
         <h2>Page Not Found</h2>
-        <a href="#">Go back home</a>
+        <h3>A beast ate this page, durh</h3>
+        <Link to="/">Go back home</Link>
       </div>
     </div>
   </div>

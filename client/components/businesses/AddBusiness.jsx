@@ -4,7 +4,8 @@ import { PropTypes } from 'prop-types';
 import classnames from 'classnames';
 
 // actions
-import { addBusiness, saveImageCloudinary } from '../../actions/businessAction';
+import { addBusiness } from '../../actions/addBusinessAction';
+import { saveImageCloudinary } from '../../actions/uploadImageAction';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 class AddNewBusiness extends React.Component {
@@ -55,7 +56,7 @@ onSubmit(event) {
                 })
                 this.context.router.history.push('/dashboard')
             },
-             (res) => this.setState({ errors: res.response.data.error, isLoading: false })
+             (res) => this.setState({ errors: res.res.data.error, isLoading: false })
         );
     }
         
@@ -137,14 +138,6 @@ onSubmit(event) {
                     />
                       </span>
                     </span> <button onClick={this.submitImage}>Uplaod Image</button>
-                    {/* <input
-                        value={this.state.image}
-                        onChange={this.onChange}
-                        name="image"
-                        type="text"
-                        className="form-control"
-                        placeholder="image URL"
-                      /> */}
                       {errors && <span className="help-block">{errors.image}</span>}
                   </div>
                   <br />

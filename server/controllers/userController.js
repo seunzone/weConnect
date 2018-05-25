@@ -28,19 +28,9 @@ export default class usersController {
       username, email
     } = req.body;
 
-    User.findOne({
-      where: {
-        email
-      }
-    }).then((existing) => {
-      if (existing) {
-        return res.status(400)
-          .json({
-            status: 'fail',
-            message: 'Email already exist',
-          });
-      }
-      return db.User
+    const conflict = {};
+    
+      return User
         .create({
           username,
           email,
@@ -59,13 +49,18 @@ export default class usersController {
               },
               token
             });
-        });
-    })
-      .catch(error => res.status(500).json({
-        status: 'error',
-        message: 'Internal server error',
-        error
-      }));
+        })
+      .catch(error => {
+          if(error.errors[0].path === 'username') {
+            conflict.usernameConflict = error.errors[0].message
+          }
+
+          if(error.errors[0].path === 'email') {
+            conflict.emailConflict = error.errors[0].message
+          }
+          
+          return res.status(409).json(conflict)
+      });
   }
 
 

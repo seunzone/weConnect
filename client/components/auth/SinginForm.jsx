@@ -36,12 +36,13 @@ class SigninForm extends React.Component {
                     })
                     this.context.router.history.push('/business')
                 },
-                 (res) => this.setState({ errors: res.data.msg, isLoading: false })
+               (error) => this.setState({ errors: error.response.data, isLoading: false })                 
             );
     }
 
     render() {
         const { errors } = this.state;
+        console.log(errors.error)
         return (
             <div>
                 <br />
@@ -59,7 +60,7 @@ class SigninForm extends React.Component {
                                             placeholder="email"
                                             field="email"
                                             value={this.state.email}
-                                            error={errors.email}
+                                            error={errors.error ? errors.error.email : ''}
                                             onChange={this.onChange}
                                         />
                                         <TextFieldGroup
@@ -67,7 +68,7 @@ class SigninForm extends React.Component {
                                             placeholder="password"
                                             field="password"
                                             value={this.state.password}
-                                            error={errors.password}
+                                            error={errors.error ? errors.error.password : ''}
                                             onChange={this.onChange}
                                         />
                                         <button className="btn btn-warning btn-block">

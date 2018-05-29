@@ -54,7 +54,11 @@ class SingleBusiness extends React.Component {
           <span className="text-danger">{review.User.username}</span> &nbsp; 
           <span className="text-muted">
           <i className="fa fa-clock-o" aria-hidden="true"></i>&nbsp;
-          {moment(review.createdAt).format('Do MMMM YYYY HH:mm')}</span>
+          {moment(review.createdAt).format('Do MMMM YYYY HH:mm')}</span>&nbsp;
+          <i className="fa fa-star" aria-hidden="true"></i>
+          <i className="fa fa-star" aria-hidden="true"></i>
+          <i className="fa fa-star" aria-hidden="true"></i>
+                    
           <br />
           <div className="media">
             <div className="media-body">
@@ -87,7 +91,12 @@ class SingleBusiness extends React.Component {
                 <p className="alert alert-info text-center my-4">
                   Category: <b>{singleBusiness.category}</b>&nbsp; &nbsp; &nbsp; &nbsp;
                   Location: <b>{singleBusiness.location}</b>
-                </p>
+                </p>   
+                <p className="text-center my-4">
+                <i className="fa fa-star" fa-lg></i> 
+                <i className="fa fa-star" fa-lg></i> 
+                <i className="fa fa-star" fa-lg></i> 
+                </p>                             
                 <p className="text-center my-4">
                   {singleBusiness.description}
                 </p>

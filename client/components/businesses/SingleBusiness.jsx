@@ -94,11 +94,6 @@ class SingleBusiness extends React.Component {
                   Category: <b>{singleBusiness.category}</b>&nbsp; &nbsp; &nbsp;
                   &nbsp; Location: <b>{singleBusiness.location}</b>
                 </p>
-                <p className="text-center my-4">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </p>
                 <p className="text-center my-4">{singleBusiness.description}</p>
                 <hr />
                 <p className="text-muted h6 text-center my-4">

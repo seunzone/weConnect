@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { PropTypes } from 'prop-types';
-import { connect } from 'react-redux';
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 //action
-import { logout } from '../../actions/auth';
+import { logout } from "../../actions/auth";
 
 class Header extends React.Component {
   logout(e) {
@@ -11,28 +11,42 @@ class Header extends React.Component {
     this.props.logout();
   }
   render() {
-    //console.log(this.props.auth)  
     const { isAuthenticated } = this.props.auth;
-
     const userLinks = (
-      <div>
-        <Link to="/dashboard" className="nav-link btn-info text-white">
-        <i className="fa fa-tachometer" aria-hidden="true"></i> My Dashboard
-       </Link>&nbsp;
-        <Link to="/" className="nav-link btn-danger text-white"
-          onClick={this.logout.bind(this)}>
-          <i className="fa fa-sign-in" aria-hidden="true"></i> Logout</Link>
-      </div>
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <Link to="/businesses/add" className="nav-link text-secondary">
+            Create Business
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/business" className="nav-link text-secondary">
+            See All Businesses
+          </Link>
+        </li>
+        <li className="nav-item mr-3">
+          <Link to="/dashboard" className="nav-link btn-info text-white">
+            <i className="fa fa-tachometer" aria-hidden="true" /> My Dashboard
+          </Link>
+        </li>
+        <Link
+          to="/"
+          className="nav-link text-white btn-danger"
+          onClick={this.logout.bind(this)}
+        >
+          <i className="fa fa-sign-in" aria-hidden="true" /> Logout
+        </Link>
+      </ul>
     );
 
     const guestLinks = (
       <Link to="signin" className="nav-link btn-primary text-white">
-        <i className="fa fa-sign-in" aria-hidden="true"></i> Sign In
-                </Link>
+        <i className="fa fa-sign-in" aria-hidden="true" /> Sign In
+      </Link>
     );
     return (
       <nav className="navbar navbar-expand-lg navbar-custom">
-        <Link to='/' className="navbar-brand" href="#">
+        <Link to="/" className="navbar-brand" href="#">
           <img
             src="../../public/images/logo.png"
             className="navbar-logo-img mr-2"
@@ -51,11 +65,8 @@ class Header extends React.Component {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto" >
-            <li className="nav-item">
-              {isAuthenticated ? userLinks : guestLinks}
-            </li>
-          </ul>
+          <ul className="navbar-nav mr-auto" />
+          {isAuthenticated ? userLinks : guestLinks}
         </div>
       </nav>
     );
@@ -65,7 +76,7 @@ class Header extends React.Component {
 Header.propTypes = {
   auth: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired
-}
+};
 
 function mapStateToProps(state) {
   return {

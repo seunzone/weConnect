@@ -44,7 +44,7 @@ class AddReviews extends React.Component {
         onSubmit={this.onSubmit}
         className={classnames("form-group", { "has-error": errors })}
       >
-        <h3 className="mb-3 mt-3 text-muted">Leave a review</h3>
+        <h2 className="mb-3 mt-3 text-muted">Rate and leave a review</h2>
         <br />
         <fieldset
           className="rating"

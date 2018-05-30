@@ -318,9 +318,12 @@ body {
 
 .rating > input:checked ~ label, 
 .rating:not(:checked) > label:hover, 
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } 
+.rating:not(:checked) > label:hover ~ label { color: #DAA520;  } 
 
 .rating > input:checked + label:hover, 
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, 
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+.rating > input:checked ~ label:hover ~ label { color: #DAA520;  } 
+.fa-star{
+  color: #DAA520;
+}

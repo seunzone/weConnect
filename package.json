@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production sequelize db:migrate --env production && babel-node server/dist/app.js",
+    "start": "babel-node server/app.js",
     "dev": "nodemon server/app.js --exec babel-node",
     "build": "babel server -d server/dist",
     "db-migrate": "sequelize db:migrate",

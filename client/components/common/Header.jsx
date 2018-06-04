@@ -45,7 +45,7 @@ class Header extends React.Component {
       </Link>
     );
     return (
-      <nav className="navbar navbar-expand-lg navbar-custom">
+      <nav className="navbar navbar-expand-lg navbar-custom navbar-light">
         <Link to="/" className="navbar-brand" href="#">
           <img
             src="../../public/images/logo.png"
@@ -61,6 +61,7 @@ class Header extends React.Component {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          id="toggle-me"
         >
           <span className="navbar-toggler-icon" />
         </button>

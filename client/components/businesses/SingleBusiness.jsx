@@ -60,6 +60,7 @@ class SingleBusiness extends React.Component {
           {moment(review.createdAt).format("Do MMMM YYYY HH:mm")}
         </span>&nbsp;&nbsp;
        {rating(review.rating)}
+      
         <br />
         <div className="media">
           <div className="media-body">

@@ -180,7 +180,7 @@ export default class businessController {
       include: [
         {
           model: Review,
-          attributes: ['content', 'createdAt'],
+          attributes: ['content', 'rating', 'createdAt'],
           include: [{
             model: User,
             attributes: ['username', 'email']

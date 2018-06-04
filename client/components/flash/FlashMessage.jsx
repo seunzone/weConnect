@@ -15,7 +15,7 @@ class FlashMessage extends React.Component {
         const { id, type, text } = this.props.message;
         setTimeout(() => {
             document.getElementById('close').click();
-        }, 3000);
+        }, 5000);
         return (
             <div className={classnames('alert', {
                 'alert-success': type === 'success',

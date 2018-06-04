@@ -21,7 +21,7 @@ export default class reviewsController {
      * @returns {object} Class instance
      */
   static addReview(req, res) {
-    const { content } = req.body;
+    const { content, rating } = req.body;
 
     return Business.findById(req.params.id)
       .then((foundBusiness) => {
@@ -34,6 +34,7 @@ export default class reviewsController {
         }
         const newReview = {
           content,
+          rating,
           userId: req.userId,
           businessId: req.params.id
         };

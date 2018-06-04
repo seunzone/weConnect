@@ -12,6 +12,11 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: { min: 1, max: 5}
+    },
   });
   Review.associate = (models) => {
     // associations defined here

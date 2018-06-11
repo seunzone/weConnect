@@ -64,7 +64,7 @@ onSubmit(event) {
   render() {
     const { errors } = this.state;
     return (
-      <div className="container my-5">
+      <div className="container my-5" onSubmit={this.onSubmit}>
         <div className="row justify-content-center">
           <h1 className="text-center my-5 header-color">
             Add New Business Profile
@@ -136,8 +136,13 @@ onSubmit(event) {
                     <input type="file" id="imgInp"
                     onChange={this.handleImageChange} 
                     />
+                    <button onClick={this.submitImage}>
+                    <i className="fa fa-cloud-upload"></i>
+                    Uplaod Image</button>
                       </span>
-                    </span> <button onClick={this.submitImage}>Uplaod Image</button>
+                    </span> 
+                    <img src={this.state.image} alt="image preview" height="150" width="250" />
+
                       {errors && <span className="help-block">{errors.image}</span>}
                   </div>
                   <br />

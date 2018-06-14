@@ -38,7 +38,6 @@ class SingleBusiness extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.singleBusiness);
 
     const { Reviews } = nextProps.singleBusiness;
 
@@ -54,7 +53,8 @@ class SingleBusiness extends React.Component {
       params,
       addFlashMessage
     } = this.props;
-    const shareUrl = 'www.facebook.com';
+    const shareUrl = `https://weconnect-seunzone.herokuapp.com/${singleBusiness.id}`;
+    const shareTitle = 'We connect with thy business';
     if (!singleBusiness.Reviews) {
       return <h2>loading...</h2>;
     }
@@ -113,31 +113,39 @@ class SingleBusiness extends React.Component {
                 <div className="share-div">
                     <FacebookShareButton
                         url={shareUrl}
-                        // quote={title}
+                        quote={shareTitle}
                         className="share-btn">
                         <FacebookIcon size={32} round />
                     </FacebookShareButton>
                   </div>
                 <div className="share-div">
-                  <WhatsappShareButton url={shareUrl}
+                  <WhatsappShareButton 
+                    url={shareUrl}
+                    title={shareTitle}
                     className="share-btn">
                     <WhatsappIcon size={32} round />
                   </WhatsappShareButton>
                 </div>
                 <div className="share-div">
-                  <LinkedinShareButton url={shareUrl}
+                  <LinkedinShareButton 
+                    url={shareUrl}
+                    title={shareTitle}
                     className="share-btn">
                     <LinkedinIcon size={32} round />
                   </LinkedinShareButton>
                 </div>
                 <div className="share-div">
-                  <GooglePlusShareButton url={shareUrl}
+                  <GooglePlusShareButton 
+                    url={shareUrl}
+                    title={shareTitle}
                     className="share-btn">
                     <GooglePlusIcon size={32} round />
                   </GooglePlusShareButton>
                 </div>
                 <div className="share-div">
-                  <TwitterShareButton url={shareUrl}
+                  <TwitterShareButton 
+                    url={shareUrl}
+                    title={shareTitle}
                     className="share-btn">
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>

@@ -3,19 +3,6 @@ import React from "react";
 const SearchBusiness = () => {
   return (
     <div className="landing-banner">
-      {/* <nav className="banner-menu">
-        <div className="banner-logo">
-          <a href="#">
-            <img src="../../public/images/logo.png" />
-          </a>
-        </div>
-        <div className="start-here">
-          <a className="btn btn-primary" href="#">
-            <i className="fa fa-tachometer" aria-hidden="true" /> My dashboard
-          </a>
-        </div>
-      </nav> */}
-
       <div className="banner-content">
         <h1 className="banner-title">Search for a Business Today</h1>
         <p>Review your customer experience.</p>

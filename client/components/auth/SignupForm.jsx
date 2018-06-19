@@ -1,11 +1,8 @@
 import React from "react";
 import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
 import TextFieldGroup from '../common/TextFieldGroup';
-import classnames from 'classnames';
 // validations
 import signupValidator from '../../validation/singupValidation';
-
 // actions
 import { signUpUsers } from '../../actions/auth';
 
@@ -112,7 +109,7 @@ class SignupForm extends React.Component {
      *
      */
     render() {
-        const { errors, err } = this.state;
+        const { errors } = this.state;
         return (
             <div className="col-lg-4">
                 <div className="card bg-primary text-center card-form">
@@ -120,9 +117,7 @@ class SignupForm extends React.Component {
                         <h3 className="text-white">Sign Up</h3>
                         <h6 className="font-weight-light text-white">
                             Create an account
-            
-                            
-                      </h6>
+                        </h6>
                         <form onSubmit={this.onSubmit}>
                             <TextFieldGroup
                                 type="text"

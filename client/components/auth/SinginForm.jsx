@@ -72,7 +72,7 @@ class SigninForm extends React.Component {
         });
         this.context.router.history.push("/business");
       },
-      error => this.setState({ errors: error.response.data, isLoading: false })
+      (error) => this.setState({ errors: error.response.data, isLoading: false }),
     );
   }
   /**
@@ -86,7 +86,9 @@ class SigninForm extends React.Component {
    *
    */
   render() {
+
     const { errors } = this.state;
+    console.log(errors)
     return (
       <div>
         <br />
@@ -106,6 +108,7 @@ class SigninForm extends React.Component {
                       placeholder="email"
                       field="email"
                       value={this.state.email}
+        
                       error={errors.error ? errors.error.email : ""}
                       onChange={this.onChange}
                     />
@@ -120,14 +123,7 @@ class SigninForm extends React.Component {
                     <button className="btn btn-warning btn-block">
                       <i className="fa fa-sign-in" aria-hidden="true" /> Sign In
                     </button>
-                  </form>
-                  <hr />
-                  <h6 className="text-white">
-                    Forgotten your password?
-                    <a className="text-white" href="#">
-                      Recover it
-                    </a>
-                  </h6>
+                  </form><hr />
                 </div>
               </div>
             </div>

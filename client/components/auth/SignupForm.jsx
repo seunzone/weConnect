@@ -53,8 +53,8 @@ class SignupForm extends React.Component {
   *
   * @returns {void}
   */
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
+    onChange(event) {
+        this.setState({ [event.target.name]: event.target.value })
     }
     /**
    * @description Validates user's data before making post request
@@ -128,20 +128,15 @@ class SignupForm extends React.Component {
                                 type="text"
                                 placeholder="username"
                                 field="username"
-                                error={errors.username}
-                                error={errors.usernameConflict}
+                                error={errors.username || errors.usernameConflict}
                                 value={this.state.username}
-                                onChange={this.onChange}
-                                err={err}
-            
-                                
+                                onChange={this.onChange}        
                             />
                             <TextFieldGroup
                                 type="email"
                                 placeholder="email"
                                 field="email"
-                                error={errors.email}
-                                error={errors.emailConflict}
+                                error={errors.email || errors.emailConflict}
                                 value={this.state.email}
                                 onChange={this.onChange}
                             />

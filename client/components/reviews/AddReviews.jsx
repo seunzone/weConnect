@@ -1,11 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
 import classnames from "classnames";
-// actions
-import { addBusinessReview } from "../../actions/addReviewAction";
-import { getOneBusiness } from "../../actions/businessAction";
-import { addFlashMessage } from "../../actions/flashMessages";
 
 class AddReviews extends React.Component {
   constructor(props) {

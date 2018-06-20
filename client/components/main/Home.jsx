@@ -53,7 +53,7 @@ class Home extends React.Component {
                   alt=""
                 />
 
-                 <h1 className="typo" id="cover-heading"></h1>
+                 <h1>WeConnect</h1>
                 <br />
                 <p className="lead">
                   <Link to={`/business`} className="btn btn-warning btn-lg">

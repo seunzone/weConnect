@@ -123,7 +123,7 @@ class SignupForm extends React.Component {
                                 type="text"
                                 placeholder="username"
                                 field="username"
-                                error={errors.username || errors.usernameConflict}
+                                error={errors.username}
                                 value={this.state.username}
                                 onChange={this.onChange}        
                             />

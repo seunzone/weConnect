@@ -17,7 +17,7 @@ import { addFlashMessage } from '../../actions/flashMessages';
  */
 class AddNewBusiness extends React.Component {
   /**
-   * @description Creates an instance of SignupFrom
+   * @description Creates an instance of AddBusiness
    *
    * @constructor
    *
@@ -49,7 +49,7 @@ class AddNewBusiness extends React.Component {
   *
   * @method onChange
   *
-  * @memberof SignupForm
+  * @memberof AddBusiness
   *
   * @param {any} event
   *

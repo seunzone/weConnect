@@ -91,12 +91,13 @@ class SigninForm extends React.Component {
       <div>
         <br />
         <br />
+        <br />
         <div className="container my-5">
           <div className="row justify-content-center">
             <div className="col-md-4 col-lg-4 col-xs-4">
               <div className="card bg-primary text-center card-form">
                 <div className="card-body">
-                  <h3 className="text-white">Sign In</h3>
+                  <h3 className="text-white">Sign In</h3><hr />
                   <h6 className="font-weight-light text-white">
                     Enter your login details
                   </h6>

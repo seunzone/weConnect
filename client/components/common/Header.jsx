@@ -25,7 +25,7 @@ class Header extends React.Component {
           </Link>
         </li>
         <li className="nav-item mr-3">
-          <Link to="/dashboard" className="nav-link btn-info text-white">
+          <Link to="/dashboard" className="nav-link btn-primary text-white">
             <i className="fa fa-tachometer" aria-hidden="true" /> My Dashboard
           </Link>
         </li>

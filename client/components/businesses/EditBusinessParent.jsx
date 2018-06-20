@@ -40,6 +40,3 @@ const mapStateToProps = (state, props) => ({
 
 
 export default connect(mapStateToProps, { getOneBusiness, saveImageCloudinary, editBusiness, addFlashMessage })(EditBusinessParent);
-
-  
-// (state) => {return {}}

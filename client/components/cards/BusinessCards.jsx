@@ -12,7 +12,8 @@ const BusinessCard = ({ name, image, description, createdAt, category, id, delet
   const Style = { height: "250px" };
   return (
    
-      <div className="card mb-3 col-md-4">
+      <div className="col-md-4">
+      <div className="card">
         <div className="img-zoom">
           <img
             className="card-img-top"
@@ -42,6 +43,7 @@ const BusinessCard = ({ name, image, description, createdAt, category, id, delet
           <Link align="center" className="btn btn-primary" to={`/business/view/${id}`}>View Details</Link>
           { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} deleteBusiness={deleteBusiness} /> : ''}
         </div>
+      </div>
       </div>
   );
 };

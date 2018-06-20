@@ -10,8 +10,25 @@ import { editBusiness } from '../../actions/editBusinessAction';
 import { saveImageCloudinary } from '../../actions/uploadImageAction';
 
 import { addFlashMessage } from '../../actions/flashMessages';
-
+/**
+ * @description Edits Business
+ *
+ * @class EditBusiness
+ *
+ * @extends {React.Component}
+ */
 class EditBusiness extends React.Component {
+   /**
+   * @description Creates an instance of Edit Business
+   *
+   * @constructor
+   *
+   * @param {any} props
+   *
+   * @memberof AddNewBusiness
+   *
+   * @returns {void}
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -28,14 +45,31 @@ class EditBusiness extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.submitImage = this.submitImage.bind(this);
-};
-
+}
+/**
+   * @description Before component mounts
+   *
+   * @method isValid
+   *
+   * @memberof EditBusiness
+   *
+   * @returns {void}
+   */
 componentWillMount() {
     this.props.getOneBusiness(this.props.params.id);
 }
-
+/**
+   * @description Component Will recieve props
+   *
+   * @constructor
+   *
+   * @param {void}
+   *
+   * @memberof AddNewBusiness
+   *
+   * @returns {void}
+   */
 componentWillReceiveProps(nextProps) {
-    //console.log(nextProps); 
     this.setState({
         name: nextProps.oneBusiness.name,
         category: nextProps.oneBusiness.category,
@@ -45,26 +79,66 @@ componentWillReceiveProps(nextProps) {
         description: nextProps.oneBusiness.description,
     })
 }
-
+/**
+  * @description Bind the value of the inputs to state
+  *
+  * @method onChange
+  *
+  * @memberof EditBusiness
+  *
+  * @param {any} event
+  *
+  * @returns {void}
+  */
 onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
 }
-
+/**
+  * @description Handles change image event
+  *
+  * @method handleImageChange
+  *
+  * @memberof EditBusiness
+  *
+  * @param {any} event
+  *
+  * @returns {void}
+  */
 handleImageChange(event){
   event.preventDefault();
   this.setState({ newImage: event.target.files[0] });
 }
-
+/**
+  * @description Saves Image to cloudinary
+  *
+  * @method submitImage
+  *
+  * @memberof EditBusiness
+  *
+  * @param {any} event
+  *
+  * @returns {void}
+  */
 submitImage(event){
   event.preventDefault();
   this.props.saveImageCloudinary(this.state.newImage).then(()=> {
     this.setState({image: this.props.imageInfo.imageData});
   });
 }
-
+/**
+  * @description Handles Form Submission
+  *
+  * @method onSubmit
+  *
+  * @param {object} event
+  *
+  * @memberof AddNewBusiness
+  *
+  * @returns {void}
+  */
 onSubmit(event) {
     event.preventDefault();
-    const { hasSaved, imageData } = this.props.imageInfo;
+    //const { hasSaved, imageData } = this.props.imageInfo;
     this.props.editBusiness(this.props.business.id, this.state).then(
             () => {
                 this.props.addFlashMessage({
@@ -75,27 +149,19 @@ onSubmit(event) {
             },
              (res) => this.setState({ errors: res.res.data.error, isLoading: false })
         );
-    // if(!imageData && !hasSaved){   
-    // console.log('hello');
-         
-    //   this.setState({ image: imageData, errors: {}, isLoading: true });
-    //     this.props.editBusiness(this.props.business.id, this.state).then(
-    //         () => {
-    //             this.props.addFlashMessage({
-    //                 type: 'success',
-    //                 text: 'Business Edited'
-    //             })
-    //             this.context.router.history.push('/dashboard')
-    //         },
-    //          (res) => this.setState({ errors: res.res.data.error, isLoading: false })
-    //     );
-    // }
         
 }
+/**
+     * @description Render react component
+     *
+     * @method render
+     *
+     * @memberof EditBusiness
+     *
+     * @returns {void}
+     *
+     */
   render() {
-    // if(!this.props.business){
-    //     return<h3>Loading...</h3>;
-    // }
 
     const { errors } = this.state;
     return (

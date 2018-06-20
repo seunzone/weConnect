@@ -89,6 +89,7 @@ class SigninForm extends React.Component {
 
     const { errors } = this.state;
     console.log(errors)
+    
     return (
       <div>
         <br />
@@ -102,6 +103,7 @@ class SigninForm extends React.Component {
                   <h6 className="font-weight-light text-white">
                     Enter your login details
                   </h6>
+                  <p className="help-block">{errors ? errors.message : null}</p>
                   <form onSubmit={this.onSubmit}>
                     <TextFieldGroup
                       type="text"

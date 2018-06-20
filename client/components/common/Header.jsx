@@ -30,8 +30,8 @@ class Header extends React.Component {
           </Link>
         </li>
         <Link
-          to="/"
           className="nav-link text-white btn-danger"
+          to="/"
           onClick={this.logout.bind(this)}
         >
           <i className="fa fa-sign-in" aria-hidden="true" /> Logout

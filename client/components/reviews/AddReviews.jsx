@@ -1,8 +1,25 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import classnames from "classnames";
-
+/**
+ * @description Creates Business Review
+ *
+ * @class AddReviews
+ *
+ * @extends {React.Component}
+ */
 class AddReviews extends React.Component {
+   /**
+   * @description Creates an instance of AddReview
+   *
+   * @constructor
+   *
+   * @param {any} props
+   *
+   * @memberof AddReview
+   *
+   * @returns {void}
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +30,31 @@ class AddReviews extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+ /**
+  * @description Bind the value of the inputs to state
+  *
+  * @method onChange
+  *
+  * @memberof AddReview
+  *
+  * @param {any} event
+  *
+  * @returns {void}
+  */
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
+  /**
+  * @description Handles Form Submission for Review
+  *
+  * @method onSubmit
+  *
+  * @param {object} event
+  *
+  * @memberof AddReview
+  *
+  * @returns {void}
+  */
   onSubmit(event) {
     event.preventDefault();
     this.props.addBusinessReview(this.props.params.id, this.state).then(
@@ -30,7 +68,16 @@ class AddReviews extends React.Component {
       error => this.setState({ errors: error.response.data, isLoading: false })
     );
   }
-
+ /**
+     * @description Render react component
+     *
+     * @method render
+     *
+     * @memberof AddReview
+     *
+     * @returns {void}
+     *
+     */
   render() {
     const { errors } = this.state;
 
@@ -61,6 +108,7 @@ class AddReviews extends React.Component {
           <input type="radio" id="star1" name="rating" value={1} />
           <label htmlFor="star1" />
         </fieldset>
+        {errors && <span className="help-block">{errors.rating}</span>}
         <textarea
           value={this.state.content}
           onChange={this.onChange}

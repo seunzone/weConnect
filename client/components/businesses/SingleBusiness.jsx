@@ -24,28 +24,60 @@ import AddReviews from "../reviews/AddReviews";
 // import actions
 import { getOneBusiness } from "../../actions/businessAction";
 import { addBusinessReview } from "../../actions/addReviewAction";
-
+/**
+ * @description Shows details of a business
+ *
+ * @class SingleBusiness
+ *
+ * @extends {React.Component}
+ */
 class SingleBusiness extends React.Component {
+  /**
+   * @description shows instance of single business
+   *
+   * @constructor
+   *
+   * @param {any} props
+   *
+   * @memberof SingleBusiness
+   *
+   * @returns {void}
+   */
   constructor(props) {
     super(props);
-
     this.state = {
       reviews: []
     };
   }
+  /**
+   * @description Before component mounts
+   *
+   * @method isValid
+   *
+   * @memberof SingleBusiness
+   *
+   * @returns {void}
+   */
   componentDidMount() {
     this.props.getOneBusiness(this.props.match.params.id);
   }
 
   componentWillReceiveProps(nextProps) {
-
     const { Reviews } = nextProps.singleBusiness;
-
     this.setState({
       reviews: Reviews
     });
   }
-
+/**
+     * @description Render react component
+     *
+     * @method render
+     *
+     * @memberof AddNewBusiness
+     *
+     * @returns {void}
+     *
+     */
   render() {
     const {
       singleBusiness,
@@ -71,8 +103,7 @@ class SingleBusiness extends React.Component {
           <i className="fa fa-clock-o" aria-hidden="true" />&nbsp;
           {moment(review.createdAt).format("Do MMMM YYYY HH:mm")}
         </span>&nbsp;&nbsp;
-       {rating(review.rating)}
-      
+        {rating(review.rating)}
         <br />
         <div className="media">
           <div className="media-body">
@@ -89,6 +120,7 @@ class SingleBusiness extends React.Component {
           <div className="col-10">
             <div className="card">
               <img
+                alt=""
                 className="card-img-top detail-img"
                 src={singleBusiness.image}
               />
@@ -109,20 +141,22 @@ class SingleBusiness extends React.Component {
                 </p>
                 <p className="text-center my-4">{singleBusiness.description}</p>
                 <hr />
-                Share On:<br/> 
+                Share On:<br /> 
                 <div className="share-div">
-                    <FacebookShareButton
-                        url={shareUrl}
-                        quote={shareTitle}
-                        className="share-btn">
-                        <FacebookIcon size={32} round />
-                    </FacebookShareButton>
-                  </div>
+                  <FacebookShareButton
+                    url={shareUrl}
+                    quote={shareTitle}
+                    className="share-btn"
+                  >
+                    <FacebookIcon size={32} round />
+                  </FacebookShareButton>
+                </div>
                 <div className="share-div">
                   <WhatsappShareButton 
                     url={shareUrl}
                     title={shareTitle}
-                    className="share-btn">
+                    className="share-btn"
+                  >
                     <WhatsappIcon size={32} round />
                   </WhatsappShareButton>
                 </div>
@@ -130,7 +164,8 @@ class SingleBusiness extends React.Component {
                   <LinkedinShareButton 
                     url={shareUrl}
                     title={shareTitle}
-                    className="share-btn">
+                    className="share-btn"
+                  >
                     <LinkedinIcon size={32} round />
                   </LinkedinShareButton>
                 </div>
@@ -138,7 +173,8 @@ class SingleBusiness extends React.Component {
                   <GooglePlusShareButton 
                     url={shareUrl}
                     title={shareTitle}
-                    className="share-btn">
+                    className="share-btn"
+                  >
                     <GooglePlusIcon size={32} round />
                   </GooglePlusShareButton>
                 </div>
@@ -146,7 +182,8 @@ class SingleBusiness extends React.Component {
                   <TwitterShareButton 
                     url={shareUrl}
                     title={shareTitle}
-                    className="share-btn">
+                    className="share-btn"
+                  >
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
                 </div>

@@ -25,13 +25,13 @@ class Header extends React.Component {
           </Link>
         </li>
         <li className="nav-item mr-3">
-          <Link to="/dashboard" className="nav-link btn-info text-white">
+          <Link to="/dashboard" className="nav-link btn-primary text-white">
             <i className="fa fa-tachometer" aria-hidden="true" /> My Dashboard
           </Link>
         </li>
         <Link
-          to="/"
           className="nav-link text-white btn-danger"
+          to="/"
           onClick={this.logout.bind(this)}
         >
           <i className="fa fa-sign-in" aria-hidden="true" /> Logout

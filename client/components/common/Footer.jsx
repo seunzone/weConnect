@@ -1,5 +1,5 @@
 import React from "react";
-import { link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,9 +8,9 @@ const Footer = () => {
         <p className="copyright footer-logo">
           <i className="fa fa-copyright" /> 2018 Andela Bootcamp. Developed with
           <i className="fa fa-heart text-info" />&nbsp; by
-          <a href="https://github.com/seunzone">
+          <Link to="https://seunzone.github.io">
             <strong>Seun</strong>
-          </a>
+          </Link>
         </p>
       </div>
     </footer>

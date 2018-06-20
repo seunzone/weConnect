@@ -1,11 +1,8 @@
 import React from "react";
 import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
 import TextFieldGroup from '../common/TextFieldGroup';
-import classnames from 'classnames';
 // validations
 import signupValidator from '../../validation/singupValidation';
-
 // actions
 import { signUpUsers } from '../../actions/auth';
 
@@ -53,8 +50,8 @@ class SignupForm extends React.Component {
   *
   * @returns {void}
   */
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
+    onChange(event) {
+        this.setState({ [event.target.name]: event.target.value })
     }
     /**
    * @description Validates user's data before making post request
@@ -112,7 +109,7 @@ class SignupForm extends React.Component {
      *
      */
     render() {
-        const { errors, err } = this.state;
+        const { errors } = this.state;
         return (
             <div className="col-lg-4">
                 <div className="card bg-primary text-center card-form">
@@ -120,28 +117,21 @@ class SignupForm extends React.Component {
                         <h3 className="text-white">Sign Up</h3>
                         <h6 className="font-weight-light text-white">
                             Create an account
-            
-                            
-                      </h6>
+                        </h6>
                         <form onSubmit={this.onSubmit}>
                             <TextFieldGroup
                                 type="text"
                                 placeholder="username"
                                 field="username"
                                 error={errors.username}
-                                error={errors.usernameConflict}
                                 value={this.state.username}
-                                onChange={this.onChange}
-                                err={err}
-            
-                                
+                                onChange={this.onChange}        
                             />
                             <TextFieldGroup
                                 type="email"
                                 placeholder="email"
                                 field="email"
-                                error={errors.email}
-                                error={errors.emailConflict}
+                                error={errors.email || errors.emailConflict}
                                 value={this.state.email}
                                 onChange={this.onChange}
                             />

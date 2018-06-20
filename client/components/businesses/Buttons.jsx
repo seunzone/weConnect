@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-// import actions
-// import { getOneBusiness } from '../../actions/businessAction';
-
+/**
+ * @description Buttons for BusinessCards
+ *
+ * @class Buttons
+ *
+ * @extends {React.Component}
+ */
 class Buttons extends Component {
-    
 
     render() {
        const { id } = this.props

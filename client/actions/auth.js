@@ -25,7 +25,6 @@ export const signInUsers = userCredentials => dispatch =>
       window.localStorage.setItem('makeToken', token);
       authenticateUser(token);
       const user = decode(token);
-      //console.log(user);
       dispatch(currentUser(user));
       return res.data.message;
     });
@@ -35,7 +34,6 @@ export const signUpUsers = userCredentials => dispatch =>
     .then((res) => {
       const { token } = res.data;
       authenticateUser(token);
-      // console.log(token)
       window.localStorage.setItem('makeToken', token);
       const user = decode(token);
       dispatch(currentUser(user));

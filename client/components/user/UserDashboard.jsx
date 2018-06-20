@@ -59,7 +59,7 @@ class UserDashboard extends React.Component {
               <p className="text-center my-4">
                 <span className="h6 mr-3">You have created {authbusiness.length} Business(es) Created</span>
               </p>
-              <Link to="/businesses/add" className="btn btn-info text-white">
+              <Link to="/businesses/add" className="btn btn-primary text-white">
                 <i className="fa fa-plus-circle" aria-hidden="true"></i> Add New Business
               </Link>
             </div>
@@ -68,7 +68,6 @@ class UserDashboard extends React.Component {
         <div className="row">
           {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
-
       </div>
     );
   }

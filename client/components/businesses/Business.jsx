@@ -30,8 +30,10 @@ class Businesses extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      current: 1,
-    };
+      currentPage: 1,
+      count: 0,
+      limit: 0
+   };
     this.onChange = this.onChange.bind(this);
   }
   /**
@@ -44,13 +46,29 @@ class Businesses extends React.Component{
    * @returns {void}
    */
   componentDidMount() {
+    // const page = this.state.currentPage; 
     this.props.getAllBusiness()
+    .then(() => {
+      const { count, currentPage, limit } = this.props.paginate;
+      this.setState({ count, currentPage, limit });
+    });
   }
 
+  /**
+   * @description 
+   *
+   * @method isValid
+   *
+   * @memberof Home
+   *
+   * @returns {void}
+   */
   onChange(page) {
-    this.setState({
-      current: page,
-    });
+    this.props.getAllBusiness(page)
+      .then(() => {
+        const { count, currentPage, limit } = this.props.paginate;
+        this.setState({ count, currentPage, limit });
+      });
   }
 
   /**
@@ -65,7 +83,7 @@ class Businesses extends React.Component{
      */
   render() {
     const allBusinesses = this.props.business;
-    const { paginate } = this.props;
+    const { count, currentPage, limit } = this.state;
     const showBusiness = allBusinesses.map((business) => {
       return (
         <BusinessCard
@@ -98,13 +116,15 @@ class Businesses extends React.Component{
             <div className="row">
               {allBusinesses && showBusiness}
             </div>
-            <Pagination
-              showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`}
-              total={paginate.count}
-              pageSize={paginate.pageSize}
-              current={this.state.current}
-              onChange={this.onChange}
-            />
+            <div className="d-flex justify-content-center mt-5">
+              <Pagination
+                showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`}
+                total={count}
+                pageSize={limit}
+                current={currentPage}
+                onChange={this.onChange}
+              />
+            </div>
           </div>
         </div>
       );

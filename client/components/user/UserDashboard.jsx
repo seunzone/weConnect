@@ -80,7 +80,7 @@ UserDashboard.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    business: state.allBusinesses,
+    business: state.allBusinesses.business,
     authId: state.auth.user
   }
   

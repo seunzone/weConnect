@@ -118,7 +118,7 @@ Home.propTypes = {
   auth: PropTypes.object.isRequired,  
 }
 const mapStateToProps = state => ({
-  business: state.allBusinesses,
+  business: state.allBusinesses.business,
   auth: state.auth  
 })
 

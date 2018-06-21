@@ -34,8 +34,8 @@ const businessToBeDeleted = businessId => ({
  });
 
 
-export const getAllBusiness = () => dispatch =>
-  axios.get('api/v1/businesses')
+export const getAllBusiness = (page) => dispatch =>
+  axios.get(`api/v1/businesses?page=${page || 1}`)
     .then((res) => {
       dispatch(allBusiness(res.data.business));
       dispatch(paginatedBusiness(res.data.paginate));

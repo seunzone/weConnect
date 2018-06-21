@@ -2,13 +2,21 @@ import axios from 'axios';
 import {
   GET_ALL_BUSINESS,
   GET_SINGLE_BUSINESS,
-  DELETE_BUSINESS
+  DELETE_BUSINESS,
+  PAGINATED_BUSINESS
 } from './actionType';
 
 export function allBusiness(business) {
   return {
       type: GET_ALL_BUSINESS,
       allBusinesses: business
+  };
+}
+
+export function paginatedBusiness(paginate) {
+  return {
+      type: PAGINATED_BUSINESS,
+      paginate
   };
 }
 
@@ -26,10 +34,11 @@ const businessToBeDeleted = businessId => ({
  });
 
 
-export const getAllBusiness = () => dispatch =>
-  axios.get('api/v1/businesses')
+export const getAllBusiness = (page) => dispatch =>
+  axios.get(`api/v1/businesses?page=${page || 1}`)
     .then((res) => {
       dispatch(allBusiness(res.data.business));
+      dispatch(paginatedBusiness(res.data.paginate));
     });
 
 export const getOneBusiness = id => dispatch =>

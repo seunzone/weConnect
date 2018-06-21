@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Pagination from 'rc-pagination';
 // import components
 import BusinessCard from "../cards/BusinessCards";
 import SearchBusiness from "./SearchBusiness";
-import Pagination from "./Pagination";
 import FlashMessagesList from '../flash/FlashMessagesList';
 // import actions
 import { getAllBusiness } from '../../actions/businessAction';
@@ -29,19 +29,47 @@ class Businesses extends React.Component{
    */
   constructor(props) {
     super(props);
+    this.state = {
+      currentPage: 1,
+      count: 0,
+      limit: 0
+   };
+    this.onChange = this.onChange.bind(this);
   }
   /**
    * @description Before component mounts
    *
    * @method isValid
    *
-   * @memberof Home
+   * @memberof Business
    *
    * @returns {void}
    */
   componentDidMount() {
+    // const page = this.state.currentPage; 
     this.props.getAllBusiness()
+    .then(() => {
+      const { count, currentPage, limit } = this.props.paginate;
+      this.setState({ count, currentPage, limit });
+    });
   }
+
+  /**
+   * @description 
+   *
+   *
+   * @memberof Business
+   *
+   * @returns {void}
+   */
+  onChange(page) {
+    this.props.getAllBusiness(page)
+      .then(() => {
+        const { count, currentPage, limit } = this.props.paginate;
+        this.setState({ count, currentPage, limit });
+      });
+  }
+
   /**
      * @description Render react component
      *
@@ -54,6 +82,7 @@ class Businesses extends React.Component{
      */
   render() {
     const allBusinesses = this.props.business;
+    const { count, currentPage, limit } = this.state;
     const showBusiness = allBusinesses.map((business) => {
       return (
         <BusinessCard
@@ -86,7 +115,15 @@ class Businesses extends React.Component{
             <div className="row">
               {allBusinesses && showBusiness}
             </div>
-            <Pagination />
+            <div className="d-flex justify-content-center mt-5">
+              <Pagination
+                showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`}
+                total={count}
+                pageSize={limit}
+                current={currentPage}
+                onChange={this.onChange}
+              />
+            </div>
           </div>
         </div>
       );
@@ -96,10 +133,12 @@ class Businesses extends React.Component{
 
 Businesses.propTypes = {
   getAllBusiness: PropTypes.func.isRequired
-}
+};
+
 const mapStateToProps = state => ({
-  business: state.allBusinesses,
-})
+  business: state.allBusinesses.business,
+  paginate: state.allBusinesses.paginate
+});
 
 export default connect(mapStateToProps, { getAllBusiness })(Businesses);
 

@@ -1,31 +1,88 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FlashMessagesList from '../flash/FlashMessagesList';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Pagination from 'rc-pagination';
+import FlashMessagesList from '../flash/FlashMessagesList';
+
 
 // import components
 import BusinessCard from "../cards/BusinessCards";
 
 // import actions
 import { getAllBusiness, deleteBusiness } from '../../actions/businessAction';
-
+/**
+ * @description Userdashboard
+ *
+ * @class UserDAshboard
+ *
+ * @extends {React.Component}
+ */
 class UserDashboard extends React.Component {
+  /**
+   * @description Instance of UserDashboard
+   *
+   * @constructor
+   *
+   * @param {any} props
+   *
+   * @memberof UserDashboard
+   *
+   * @returns {void}
+   */
   constructor(props) {
     super(props);
+    this.state = {
+      currentPage: 1,
+      count: 0,
+      limit: 0
+   };
+    this.onChange = this.onChange.bind(this);
   }
+  /**
+   * @description Before component mounts
+   *
+   * @method isValid
+   *
+   * @memberof UserDashboard
+   *
+   * @returns {void}
+   */
   componentDidMount() {
     this.props.getAllBusiness()
+    .then(() => {
+      const { count, currentPage, limit } = this.props.paginate;
+      this.setState({ count, currentPage, limit });
+    });
   }
+
+  onChange(page) {
+    this.props.getAllBusiness(page)
+      .then(() => {
+        const { count, currentPage, limit } = this.props.paginate;
+        this.setState({ count, currentPage, limit });
+      });
+  }
+  /**
+     * @description Render react component
+     *
+     * @method render
+     *
+     * @memberof UserDashboard
+     *
+     * @returns {void}
+     *
+     */
   render() {
     const allBusinesses = this.props.business;
+    const { count, currentPage, limit } = this.state;
 
     const { authId } = this.props;
 
     const emptyMessage = (
       <div className="alert alert-dark" role="alert">
         You are yet to add a business
-        </div>
+      </div>
     )
 
     const authbusiness = allBusinesses && allBusinesses.filter(business => {
@@ -68,6 +125,15 @@ class UserDashboard extends React.Component {
         <div className="row">
           {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
+        <div className="d-flex justify-content-center mt-5">
+              <Pagination
+                showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`}
+                total={count}
+                pageSize={limit}
+                current={currentPage}
+                onChange={this.onChange}
+              />
+            </div>
       </div>
     );
   }
@@ -81,7 +147,9 @@ UserDashboard.propTypes = {
 const mapStateToProps = state => {
   return {
     business: state.allBusinesses.business,
-    authId: state.auth.user
+    authId: state.auth.user,
+    paginate: state.allBusinesses.paginate
+
   }
   
 }

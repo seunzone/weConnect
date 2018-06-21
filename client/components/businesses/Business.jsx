@@ -41,7 +41,7 @@ class Businesses extends React.Component{
    *
    * @method isValid
    *
-   * @memberof Home
+   * @memberof Business
    *
    * @returns {void}
    */
@@ -57,9 +57,8 @@ class Businesses extends React.Component{
   /**
    * @description 
    *
-   * @method isValid
    *
-   * @memberof Home
+   * @memberof Business
    *
    * @returns {void}
    */

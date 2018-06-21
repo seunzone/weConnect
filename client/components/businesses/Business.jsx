@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Pagination from 'rc-pagination';
 // import components
 import BusinessCard from "../cards/BusinessCards";
 import SearchBusiness from "./SearchBusiness";
-import Pagination from "./Pagination";
 import FlashMessagesList from '../flash/FlashMessagesList';
 // import actions
 import { getAllBusiness } from '../../actions/businessAction';
@@ -29,6 +29,10 @@ class Businesses extends React.Component{
    */
   constructor(props) {
     super(props);
+    this.state = {
+      current: 1,
+    };
+    this.onChange = this.onChange.bind(this);
   }
   /**
    * @description Before component mounts
@@ -42,6 +46,13 @@ class Businesses extends React.Component{
   componentDidMount() {
     this.props.getAllBusiness()
   }
+
+  onChange(page) {
+    this.setState({
+      current: page,
+    });
+  }
+
   /**
      * @description Render react component
      *
@@ -54,6 +65,7 @@ class Businesses extends React.Component{
      */
   render() {
     const allBusinesses = this.props.business;
+    const { paginate } = this.props;
     const showBusiness = allBusinesses.map((business) => {
       return (
         <BusinessCard
@@ -86,7 +98,13 @@ class Businesses extends React.Component{
             <div className="row">
               {allBusinesses && showBusiness}
             </div>
-            <Pagination />
+            <Pagination
+              showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`}
+              total={paginate.count}
+              pageSize={paginate.pageSize}
+              current={this.state.current}
+              onChange={this.onChange}
+            />
           </div>
         </div>
       );
@@ -96,10 +114,12 @@ class Businesses extends React.Component{
 
 Businesses.propTypes = {
   getAllBusiness: PropTypes.func.isRequired
-}
+};
+
 const mapStateToProps = state => ({
-  business: state.allBusinesses,
-})
+  business: state.allBusinesses.business,
+  paginate: state.allBusinesses.paginate
+});
 
 export default connect(mapStateToProps, { getAllBusiness })(Businesses);
 

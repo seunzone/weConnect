@@ -65,6 +65,7 @@
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.6.1",
+    "rc-pagination": "^1.16.4",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",

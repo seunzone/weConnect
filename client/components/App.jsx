@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import 'rc-pagination/assets/index.css';
 import Header  from './common/Header';
 import { Router } from './main/Routes';
 import Footer from './common/Footer';

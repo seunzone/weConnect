@@ -209,12 +209,30 @@ export default class businessController {
    * @returns {object} Class instance
    */
   static getAllBusiness(req, res) {
-    return Business.all()
-      // .then(foundBusiness => res.status(200).send(foundBusiness))
-      .then(foundBusiness => {
-        res.status(200).json({
-          business: foundBusiness
-        })
+    const limit = 6;
+    const page = req.query.page || 1;
+    const offset = limit * (page - 1);
+
+    return Business.findAndCountAll({
+        limit,
+        offset,
+        order: [['createdAt', 'DESC']]
+      })
+      .then((foundBusiness) => {
+        const { count, rows } = foundBusiness;
+        const pages = Math.ceil(count / limit);
+        const currentPage = Math.floor(offset / limit) + 1;
+
+        return res.status(200).json({
+          business: rows,
+          paginate: {
+            count,
+            pages,
+            currentPage,
+            pageSize: foundBusiness.rows.length,
+            limit
+          }
+        });
       })
       .catch(error => res.status(400).send(error));
   }

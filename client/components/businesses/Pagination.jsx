@@ -3,11 +3,7 @@ import React from "react";
 const Pagination = () => {
   return (
     <ul className="pagination" aria-label="Pagination">
-      <li>
-        <a href="">
-          <span>First</span>
-        </a>
-      </li>
+      
       <li>
         <a href="">
           <span>Previous</span>
@@ -28,11 +24,6 @@ const Pagination = () => {
       <li>
         <a href="">
           <span>Next</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <span>Last</span>
         </a>
       </li>
     </ul>

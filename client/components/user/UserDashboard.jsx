@@ -93,7 +93,7 @@ class UserDashboard extends React.Component {
       
       return (
         <BusinessCard
-          Key={business.id}
+          key={business.id}
           id={business.id}
           name={business.name}
           image={business.image}

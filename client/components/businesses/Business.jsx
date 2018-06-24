@@ -86,7 +86,7 @@ class Businesses extends React.Component{
     const showBusiness = allBusinesses.map((business) => {
       return (
         <BusinessCard
-          Key={business.id}
+          key={business.id}
           id={business.id}
           name={business.name}
           image={business.image}

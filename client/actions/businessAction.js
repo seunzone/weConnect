@@ -41,6 +41,7 @@ export const getAllBusiness = page => dispatch =>
 export const getBusinessSearchAction = (searchKeyType, keyValue) => dispatch =>
   axios.get(`api/v1/businesses?${searchKeyType}=${keyValue}`).then(res => {
     dispatch(allBusiness(res.data.business));
+    return res.data.message;
   });
 
 export const getOneBusiness = id => dispatch =>

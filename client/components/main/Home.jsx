@@ -2,11 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-// actions
 import { signUpUsers } from '../../actions/auth';
 import { addFlashMessage } from '../../actions/flashMessages';
 import { getAllBusiness } from '../../actions/businessAction';
-// components
 import BusinessCard from '../cards/BusinessCards';
 import SignupForm from "../auth/SignupForm";
 
@@ -61,7 +59,7 @@ class Home extends React.Component {
       if (i < 3) {
         return (
           <BusinessCard
-            Key={business.id}
+            key={business.id}
             id={business.id}
             name={business.name}
             image={business.image}

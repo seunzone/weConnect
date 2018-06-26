@@ -26,7 +26,7 @@ export default class reviewsController {
     return Business.findById(req.params.id)
       .then((foundBusiness) => {
         if (!foundBusiness) {
-          return res.status(404)
+          return res.status(400)
             .json({
               status: 'fail',
               message: `No Business with id ${req.params.id} was found`

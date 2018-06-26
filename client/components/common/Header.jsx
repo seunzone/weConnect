@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-//action
 import { logout } from "../../actions/auth";
 
 class Header extends React.Component {
-  logout(e) {
-    e.preventDefault();
+  logout(event) {
+    event.preventDefault();
     this.props.logout();
+    this.context.router.history.push('/signin');
   }
   render() {
     const { isAuthenticated } = this.props.auth;
@@ -31,7 +31,7 @@ class Header extends React.Component {
         </li>
         <Link
           className="nav-link text-white btn-danger"
-          to="/"
+          to="/signin"
           onClick={this.logout.bind(this)}
         >
           <i className="fa fa-sign-in" aria-hidden="true" /> Logout
@@ -79,10 +79,12 @@ Header.propTypes = {
   logout: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
-  return {
-    auth: state.auth
-  };
+Header.contextTypes = {
+  router: PropTypes.object.isRequired
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
 
 export default connect(mapStateToProps, { logout })(Header);

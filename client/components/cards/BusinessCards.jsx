@@ -12,8 +12,8 @@ const BusinessCard = ({ name, image, description, createdAt, category, id, delet
   const Style = { height: "250px" };
   return (
    
-      <div className="col-md-4">
-      <div className="card">
+    <div className="col-md-4">
+        <div className="card">
         <div className="img-zoom">
           <img
             className="card-img-top"
@@ -28,17 +28,17 @@ const BusinessCard = ({ name, image, description, createdAt, category, id, delet
           </h5>
           <br />
           <h6>
-          <TextTruncate text={description} lines={2}/>
-            </h6>
+            <TextTruncate text={description} lines={2} />
+          </h6>
           <hr />
           <p className="text-sm mb-5">
             <small>
               <span className="text-muted">Category</span> {category}
-              </small>
+            </small>
             <span className="text-muted float-right">
               Added: &nbsp;
               {moment(createdAt).format('Do MMMM YYYY')}
-              </span>
+            </span>
           </p>
           <Link align="center" className="btn btn-primary" to={`/business/view/${id}`}>View Details</Link>
           { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} deleteBusiness={deleteBusiness} /> : ''}

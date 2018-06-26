@@ -38,10 +38,10 @@ export const getAllBusiness = page => dispatch =>
     dispatch(paginatedBusiness(res.data.paginate));
   });
 
-export const getBusinessSearchAction = (searchKeyType, keyValue) => dispatch =>
-  axios.get(`api/v1/businesses?${searchKeyType}=${keyValue}`).then(res => {
+export const getBusinessSearchAction = (searchKeyType, keyValue, page) => dispatch =>
+  axios.get(`api/v1/businesses?${searchKeyType}=${keyValue}&page=${page || 1}`).then(res => {
     dispatch(allBusiness(res.data.business));
-    return res.data.message;
+    dispatch(paginatedBusiness(res.data.paginate));
   });
 
 export const getOneBusiness = id => dispatch =>

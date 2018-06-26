@@ -90,9 +90,11 @@ class Businesses extends React.Component {
     if (!searchKeyType || !keyValue) {
       this.props.getAllBusiness();
     }
-    this.props.getBusinessSearchAction(searchKeyType.toLowerCase(), keyValue);
+    this.props.getBusinessSearchAction(searchKeyType.toLowerCase(), keyValue).then(() => {
+      const { count, currentPage, limit } = this.props.paginate;
+      this.setState({ count, currentPage, limit });
+    });
   }
-
   /**
    * @description Render react component
    *

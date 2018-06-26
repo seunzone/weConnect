@@ -108,6 +108,19 @@ class Businesses extends React.Component {
   render() {
     const allBusinesses = this.props.business;
     const { count, currentPage, limit } = this.state;
+    const emptyMessage = (
+      <div className="alert alert-light col-md-offset-4" role="alert">
+        <img
+          src="../../public/images/ops.gif"
+          alt=""
+          className="emojis"
+        /><br />
+        <span className="text-danger">
+          Ops!!! You seem to have searched for what does not exist on this platfrom.<br />
+          Please try again. Thanks
+        </span>
+      </div>
+    )
     const showBusiness = allBusinesses.map(business => {
       return (
         <BusinessCard
@@ -164,7 +177,9 @@ class Businesses extends React.Component {
             </h1>
             <br />
             <div className="card-deck wow fadeIn" />
-            <div className="row">{allBusinesses && showBusiness}</div>
+            <div className="row">
+              {showBusiness.length === 0 ? emptyMessage  : allBusinesses && showBusiness}
+            </div>
             <div className="d-flex justify-content-center mt-5">
               <Pagination
                 showTotal={(total, range) =>

@@ -173,7 +173,7 @@ class Businesses extends React.Component {
               className="display-4 text-center my-5 wow fadeInDown"
               style={DivStyle}
             >
-              Some Top Firms
+              Business Listings
             </h1>
             <br />
             <div className="card-deck wow fadeIn" />

@@ -84,7 +84,7 @@ class Home extends React.Component {
                   alt=""
                 />
 
-                <h1>WeConnect</h1>
+                <h1 className="we_class">This is WeConnect</h1>
                 <br />
                 <p className="lead">
                   <Link to="/business" className="btn btn-warning btn-lg">

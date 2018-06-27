@@ -88,14 +88,14 @@ export default class usersController {
           return res.status(404)
             .json({
               status: 'fail',
-              message: 'user does not exist',
+              message: 'username or password is incorrect',
             });
         }
         if (!bcrypt.compareSync(password, findUser.password)) {
           return res.status(401)
             .json({
               status: 'fail',
-              message: 'You entered a wrong password'
+              message: 'username or password is incorrect'
             });
         }
         const token = makeToken(findUser);

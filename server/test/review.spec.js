@@ -13,7 +13,7 @@ const businessURL = '/api/v1/businesses';
 const profile = {
   name: 'Andela Nigeria',
   description: 'Brilliance is evenly distributed, opprotunity is not',
-  image: 'Some random image URL',
+  image: 'https://images.pexels.com/photos/1023953/pexels-photo-1023953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   category: 'ICT',
   location: 'Lagos Nigeria'
 };

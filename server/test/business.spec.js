@@ -16,7 +16,7 @@ const userSignup = '/api/v1/auth/signup';
 const profile1 = {
   name: 'Andela Nigeria',
   description: 'Brilliance is evenly distributed, opprotunity is not',
-  image: 'Some random image URL',
+  image: 'https://images.pexels.com/photos/1023953/pexels-photo-1023953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   category: 'ICT',
   location: 'Lagos Nigeria',
   token: userToken
@@ -40,7 +40,7 @@ describe('BUSINESS CONTROLLER', () => {
         .send({
           name: '',
           description: 'Brilliance is evenly distributed, opprotunity is not',
-          image: 'Some random image URL',
+          image: 'https://images.pexels.com/photos/1023953/pexels-photo-1023953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           category: 'ICT',
           location: 'Lagos Nigeria',
           token: userToken
@@ -60,7 +60,7 @@ describe('BUSINESS CONTROLLER', () => {
         .send({
           name: 'An',
           description: 'Brilliance is evenly distributed, opprotunity is not',
-          image: 'Some random image URL',
+          image: 'https://images.pexels.com/photos/1023953/pexels-photo-1023953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           category: 'ICT',
           location: 'Lagos Nigeria',
           token: userToken
@@ -80,7 +80,7 @@ describe('BUSINESS CONTROLLER', () => {
         .send({
           name: 'Andela Nigeria',
           description: '',
-          image: 'Some random image URL',
+          image: 'https://images.pexels.com/photos/1023953/pexels-photo-1023953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           category: 'ICT',
           location: 'Lagos Nigeria',
           token: userToken
@@ -100,7 +100,7 @@ describe('BUSINESS CONTROLLER', () => {
         .send({
           name: 'Andela Naija',
           description: 'Brillia',
-          image: 'Some random image URL',
+          image: 'https://images.pexels.com/photos/1023953/pexels-photo-1023953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           category: 'ICT',
           location: 'Lagos Nigeria',
           token: userToken
@@ -120,7 +120,7 @@ describe('BUSINESS CONTROLLER', () => {
         .send({
           name: 'Andela Nigeria',
           description: 'Brilliance is evenly distributed, opportunity is not',
-          image: 'Some random image URL',
+          image: 'https://images.pexels.com/photos/1023953/pexels-photo-1023953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           category: '',
           location: 'Lagos Nigeria',
           token: userToken
@@ -140,7 +140,7 @@ describe('BUSINESS CONTROLLER', () => {
         .send({
           name: 'Andela Nigeria',
           description: 'Brilliance is evenly distributed, opportunity is not',
-          image: 'Some random image URL',
+          image: 'https://images.pexels.com/photos/1023953/pexels-photo-1023953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           category: 'ICT',
           location: '',
           token: userToken

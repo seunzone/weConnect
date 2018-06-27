@@ -90,7 +90,7 @@ body {
       }
   
       .navbar-custom {
-        // opacity: 0.8;
+        opacity: 0.8;
         background: black;
     }
     /* change the brand and text color */
@@ -347,4 +347,48 @@ background-color:#2196F3;
 .emojis{
   height: 80px;
   width: 80px;
+}
+.mastfoot{
+  background-color: black;
+  color: white;
+}
+.home_footer{
+  background-color: black;
+  padding: 0 0 30px 0;
+  color: #eee;
+  font-size: 14px;
+  padding: 60px 0 30px 0;
+}
+ .footer-info h3 {
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 10px;
+  line-height: 1;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  border-left: 4px solid #E53935;
+}
+.a__link{
+  text-decoration: none;
+  color:black;
+}
+.social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #333;
+  color: #eee;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  background: #E53935;
+  color: #fff;
 }

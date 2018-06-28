@@ -351,6 +351,9 @@ background-color:#2196F3;
 .mastfoot{
   background-color: black;
   color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 .home_footer{
   background-color: black;
@@ -367,7 +370,7 @@ background-color:#2196F3;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   letter-spacing: 3px;
-  border-left: 4px solid #E53935;
+  border-left: 4px solid #007bff;
 }
 .a__link{
   text-decoration: none;
@@ -389,6 +392,23 @@ background-color:#2196F3;
 }
 
 .social-links a:hover {
-  background: #E53935;
+  background: #007bff;
   color: #fff;
 }
+.rc-pagination-item {
+  background-color: #007bff !important;
+  color: white;
+  border: none !important;
+ }
+ 
+ .rc-pagination-item-active {
+  background-color: #007bff !important;
+  color: white;
+  border: none !important;
+ }
+ 
+ .rc-pagination-item:hover {
+  background-color: #007bff !important;
+  color: white;
+  border: none !important;
+ }

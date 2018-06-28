@@ -11,11 +11,7 @@ const HomeFooter = () => {
             creates awareness for businesses and gives the users the ability to write reviews about the
             businesses they have interacted with. This is an Andela Developer Checkpoint App.
             </p>
-            <img
-              src="../../public/images/logo.png"
-              className="navbar-logo-img mr-2"
-              alt=""
-            />
+            
           </div>
 
           <div className="col-lg-3 col-md-6 footer-info">
@@ -37,18 +33,23 @@ const HomeFooter = () => {
             
           </div>
 
-        <div className="col-lg-3 col-md-6 footer-info">
+          <div className="col-lg-3 col-md-6 footer-info">
             <h3>Web Developer</h3>
             <p>
             <strong><i className="fa fa-mobile" /></strong> +2347031229501<br />
             <strong><i className="fa fa-envelope-o" /></strong> faluyi.seun@andela.com<br />
-            </p>  
+          </p>  
             <div className="social-links">
-              <a href="https://twitter.com/seunzone"><i className="fa fa-twitter" /></a>
-              <a href="https://www.facebook.com/darealseun"><i className="fa fa-facebook" /></a>
-              <a href="https://twitter.com/seunzone"><i className="fa fa-instagram" /></a>
-              <a href="https://www.linkedin.com/in/darealseun/"><i className="fa fa-linkedin" /></a>
-            </div>  
+            <a href="https://twitter.com/seunzone"><i className="fa fa-twitter" /></a>
+            <a href="https://www.facebook.com/darealseun"><i className="fa fa-facebook" /></a>
+            <a href="https://twitter.com/seunzone"><i className="fa fa-instagram" /></a>
+            <a href="https://www.linkedin.com/in/darealseun/"><i className="fa fa-linkedin" /></a>
+          </div>  
+            <img
+            src="../../public/images/logo.png"
+            className="navbar-logo-img mr-2"
+            alt=""
+          />
           </div>
 
         </div>

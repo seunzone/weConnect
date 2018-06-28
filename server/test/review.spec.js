@@ -52,7 +52,7 @@ describe('REVIEW API', () => {
         .end((err, res) => {
           expect(res.status).to.equal(401);
           expect(res.body).to.be.an('object');
-          expect(res.body.message).to.equal('Unauthorized.');
+          expect(res.body.message).to.equal('You must be logged in to perform this action.');
           done();
         });
     });

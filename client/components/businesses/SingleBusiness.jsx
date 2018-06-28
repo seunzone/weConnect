@@ -16,7 +16,7 @@ import {
 } from 'react-share';
 import rating from "../../utils/rating"
 import { addFlashMessage } from "../../actions/flashMessages";
-
+import gif from '../../public/images/loader.gif';
 
 //import components
 import AddReviews from "../reviews/AddReviews";
@@ -88,7 +88,7 @@ class SingleBusiness extends React.Component {
     const shareUrl = `https://weconnect-seunzone.herokuapp.com/${singleBusiness.id}`;
     const shareTitle = 'We connect with thy business';
     if (!singleBusiness.Reviews) {
-      return <h2>loading...</h2>;
+      return <img src={gif} alt='loading...' />;
     }
     const noReviews = (
       <div className="alert alert-danger" role="alert">

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FlashMessagesList from '../flash/FlashMessagesList';
+import gif from '../../public/images/loader.gif';
 
 
 // import components
@@ -103,7 +104,7 @@ class UserDashboard extends React.Component {
       )
     })
     if(!this.props.business){
-      return <div>loading</div>
+      return <div><img src={gif} alt='loading...' /></div>
     }
     return (
       <div>

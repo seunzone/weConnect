@@ -5,8 +5,6 @@
 
 ## Application Description
 WeConnect provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with
- <br/><b> View UI Template:</b> https://seunzone.github.io/weConnect/template
- <br/><b> Test API Endpoint Here: </b> https://blooming-retreat-26061.herokuapp.com/
  <br/><b> See Application here: </b> https://weconnect-seunzone.herokuapp.com/
 ## Table of Content
 
@@ -57,6 +55,13 @@ Sequelize: This a promise-based ORM (Object Relational Mapper) for Node.js v4 an
 Visit [here](https://docs.sequelizejs.com) for more information
 
 Codes are written in accordance with Airbnb JavaScript style guide, see [here](https://github.com/airbnb/javascript) for details.
+
+## Other helpful resources
+Pexels: Free stock photos you can use everywhere. ✓ Free for commercial use ✓ No attribution required.
+Visit [here](https://www.pexels.com) to get started
+
+Hero Patterns: A collection of repeatable SVG background patterns for you to use on your web projects.
+Visit [here](http://www.heropatterns.com/) to get started
 
 ## Installation
 1. Clone this repository into your local machine:

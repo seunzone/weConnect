@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Pagination from 'rc-pagination';
 import FlashMessagesList from '../flash/FlashMessagesList';
+import gif from '../../public/images/loader.gif';
 
 
 // import components
@@ -104,7 +104,7 @@ class UserDashboard extends React.Component {
       )
     })
     if(!this.props.business){
-      return <div>loading</div>
+      return <div><img src={gif} alt='loading...' /></div>
     }
     return (
       <div>
@@ -125,15 +125,6 @@ class UserDashboard extends React.Component {
         <div className="row">
           {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
-        <div className="d-flex justify-content-center mt-5">
-              <Pagination
-                showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`}
-                total={count}
-                pageSize={limit}
-                current={currentPage}
-                onChange={this.onChange}
-              />
-            </div>
       </div>
     );
   }

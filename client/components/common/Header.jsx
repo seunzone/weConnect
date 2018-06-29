@@ -8,7 +8,7 @@ class Header extends React.Component {
   logout(event) {
     event.preventDefault();
     this.props.logout();
-    this.context.router.history.push('/signin');
+    this.context.router.history.push("/signin");
   }
   render() {
     const { isAuthenticated } = this.props.auth;
@@ -40,9 +40,16 @@ class Header extends React.Component {
     );
 
     const guestLinks = (
-      <Link to="signin" className="nav-link btn-primary text-white">
-        <i className="fa fa-sign-in" aria-hidden="true" /> Sign In
-      </Link>
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <Link to="/business" className="nav-link text-secondary">
+            See All Businesses
+          </Link>
+        </li>
+        <Link to="signin" className="nav-link btn-primary text-white">
+          <i className="fa fa-sign-in" aria-hidden="true" /> Sign In
+        </Link>
+      </ul>
     );
     return (
       <nav className="navbar navbar-expand-lg navbar-custom navbar-light">
@@ -81,10 +88,13 @@ Header.propTypes = {
 
 Header.contextTypes = {
   router: PropTypes.object.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   auth: state.auth
-})
+});
 
-export default connect(mapStateToProps, { logout })(Header);
+export default connect(
+  mapStateToProps,
+  { logout }
+)(Header);

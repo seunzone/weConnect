@@ -23,7 +23,7 @@ const isLoggedIn = (req, res, next) => {
     req.userId = verifiedToken.id;
     return next();
   } catch (error) {
-    return res.status(401).send({ message: 'Unauthorized.' });
+    return res.status(401).send({ message: 'You must be logged in to perform this action.' });
   }
 };
 

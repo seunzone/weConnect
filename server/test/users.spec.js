@@ -248,7 +248,7 @@ describe('User login', () => {
         expect(res).to.have.status(401);
         expect(res.body).to.be.an('object');
         expect(res.body.message)
-          .to.equal('You entered a wrong password');
+          .to.equal('username or password is incorrect');
         done();
       });
   });
@@ -263,7 +263,7 @@ describe('User login', () => {
         expect(res).to.have.status(404);
         expect(res.body).to.be.an('object');
         expect(res.body.message)
-          .to.equal('user does not exist');
+          .to.equal('username or password is incorrect');
         done();
       });
   });

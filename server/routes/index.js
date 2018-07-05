@@ -18,7 +18,7 @@ import {
 
 const routes = (app) => {
   // Signup a new user
-  app.post('/api/v1/auth/signup', validateSignup, validateUserLength,  User.createUser);
+  app.post('/api/v1/auth/signup', validateSignup, validateUserLength, User.createUser);
   // log in registered user
   app.post('/api/v1/auth/login', validateLogin, User.userLogin);
   // Add Business

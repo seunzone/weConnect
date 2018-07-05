@@ -1,4 +1,4 @@
-import db from "../models";
+import db from '../models';
 
 const { Business, Review, User } = db;
 
@@ -21,7 +21,9 @@ export default class businessController {
    * @returns {object} Class instance
    */
   static addBusiness(req, res) {
-    const { name, description, image, location, category } = req.body;
+    const {
+      name, description, image, location, category
+    } = req.body;
 
     Business.findOne({
       where: {
@@ -29,11 +31,11 @@ export default class businessController {
         userId: req.userId
       }
     })
-      .then(foundBusiness => {
+      .then((foundBusiness) => {
         if (foundBusiness) {
           return res.status(400).json({
-            status: "fail",
-            message: "You already have this as an existing business"
+            status: 'fail',
+            message: 'You already have this as an existing business'
           });
         }
         if (!foundBusiness) {
@@ -44,21 +46,18 @@ export default class businessController {
             image,
             location,
             category
-          }).then(newBusiness => {
-            return res.status(201).json({
-              status: "success",
-              message: "Business created successfully",
-              Business: newBusiness
-            });
-          });
+          }).then(newBusiness => res.status(201).json({
+            status: 'success',
+            message: 'Business created successfully',
+            Business: newBusiness
+          }));
         }
       })
       .catch(() =>
         res.status(500).json({
-          status: "error",
-          message: "Internal server error"
-        })
-      );
+          status: 'error',
+          message: 'Internal server error'
+        }));
   }
   /**
    * @description - Update a business
@@ -72,7 +71,9 @@ export default class businessController {
    * @returns {object} Class instance
    */
   static updateBusiness(req, res) {
-    const { name, description, image, location, category } = req.body;
+    const {
+      name, description, image, location, category
+    } = req.body;
 
     Business.findOne({
       where: {
@@ -80,7 +81,7 @@ export default class businessController {
         userId: req.userId
       }
     })
-      .then(foundBusiness => {
+      .then((foundBusiness) => {
         if (foundBusiness) {
           const update = {
             name: name || foundBusiness.name,
@@ -91,25 +92,23 @@ export default class businessController {
           };
           foundBusiness.update(update).then(updatedBusiness =>
             res.status(200).json({
-              status: "success",
-              message: "Update successful",
+              status: 'success',
+              message: 'Update successful',
               Business: updatedBusiness
-            })
-          );
+            }));
         }
         if (!foundBusiness) {
           return res.status(404).json({
-            status: "fail",
+            status: 'fail',
             message: `Can't find Business with id ${req.params.id} by you`
           });
         }
       })
       .catch(() =>
         res.status(500).json({
-          status: "error",
-          message: "Internal server error"
-        })
-      );
+          status: 'error',
+          message: 'Internal server error'
+        }));
   }
   /**
    * @description - Delete a Business
@@ -129,10 +128,10 @@ export default class businessController {
         userId: req.userId
       }
     })
-      .then(foundBusiness => {
+      .then((foundBusiness) => {
         if (!foundBusiness) {
           return res.status(404).json({
-            status: "fail",
+            status: 'fail',
             message: `Can't find Business with id ${req.params.id} by you`
           });
         }
@@ -145,18 +144,16 @@ export default class businessController {
             cascade: true
           }).then(() =>
             res.status(200).json({
-              status: "success",
-              message: "Business deleted"
-            })
-          );
+              status: 'success',
+              message: 'Business deleted'
+            }));
         }
       })
       .catch(() =>
         res.status(500).json({
-          status: "error",
-          message: "Internal server error"
-        })
-      );
+          status: 'error',
+          message: 'Internal server error'
+        }));
   }
   /**
    * @description - get a single Business
@@ -177,20 +174,20 @@ export default class businessController {
       include: [
         {
           model: Review,
-          attributes: ["content", "rating", "createdAt"],
+          attributes: ['content', 'rating', 'createdAt'],
           include: [
             {
               model: User,
-              attributes: ["username", "email"]
+              attributes: ['username', 'email']
             }
           ]
         }
       ]
     })
-      .then(foundBusiness => {
+      .then((foundBusiness) => {
         if (!foundBusiness) {
           return res.status(404).send({
-            message: "Business Not Found"
+            message: 'Business Not Found'
           });
         }
         return res.status(200).send(foundBusiness);
@@ -216,9 +213,9 @@ export default class businessController {
     return Business.findAndCountAll({
       limit,
       offset,
-      order: [["createdAt", "DESC"]]
+      order: [['createdAt', 'DESC']]
     })
-      .then(foundBusiness => {
+      .then((foundBusiness) => {
         const { count, rows } = foundBusiness;
         const pages = Math.ceil(count / limit);
         const currentPage = Math.floor(offset / limit) + 1;
@@ -258,23 +255,23 @@ export default class businessController {
         Business.findAndCountAll({
           limit,
           offset,
-          order: [["createdAt", "DESC"]],
+          order: [['createdAt', 'DESC']],
           where: {
             location: { $iLike: `%${location}%` }
           }
-        }).then(business => {
+        }).then((business) => {
           const { count } = business;
           const pages = Math.ceil(count / limit);
           const currentPage = Math.floor(offset / limit) + 1;
           // If no businesses found, return error
           if (business.length < 1) {
             return res.status(404).json({
-              message: "No business found for this location!"
+              message: 'No business found for this location!'
             });
           }
           // If business found, return business found
           return res.status(200).json({
-            message: "Business Found!",
+            message: 'Business Found!',
             business: business.rows,
             paginate: {
               count,
@@ -290,23 +287,23 @@ export default class businessController {
         Business.findAndCountAll({
           limit,
           offset,
-          order: [["createdAt", "DESC"]],
+          order: [['createdAt', 'DESC']],
           where: {
             category: { $iLike: `%${category}%` }
           }
-        }).then(business => {
+        }).then((business) => {
           const { count } = business;
           const pages = Math.ceil(count / limit);
           const currentPage = Math.floor(offset / limit) + 1;
           // If no businesses found, return error
           if (business.length < 1) {
             return res.status(404).json({
-              message: "No business found for this category!"
+              message: 'No business found for this category!'
             });
           }
           // If business found, return business found
           return res.status(200).json({
-            message: "Business Found!",
+            message: 'Business Found!',
             business: business.rows,
             paginate: {
               count,

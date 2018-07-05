@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FlashMessagesList from '../flash/FlashMessagesList';
@@ -7,7 +7,7 @@ import gif from '../../public/images/loader.gif';
 
 
 // import components
-import BusinessCard from "../cards/BusinessCards";
+import BusinessCard from '../cards/BusinessCards.jsx';
 
 // import actions
 import { getAllBusiness, deleteBusiness } from '../../actions/businessAction';

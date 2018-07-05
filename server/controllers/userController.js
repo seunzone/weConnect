@@ -29,37 +29,36 @@ export default class usersController {
     } = req.body;
 
     const conflict = {};
-    
-      return User
-        .create({
-          username,
-          email,
-          password
-        })
-        .then((newUser) => {
-          const token = makeToken(newUser);
-          return res.status(201)
-            .json({
-              status: 'success',
-              message: 'signup sucessful',
-              user: {
-                username: newUser.username,
-                email: newUser.email,
-                id: newUser.id
-              },
-              token
-            });
-        })
-      .catch(error => {
-          if(error.errors[0].path === 'username') {
-            conflict.usernameConflict = error.errors[0].message
-          }
+    return User
+      .create({
+        username,
+        email,
+        password
+      })
+      .then((newUser) => {
+        const token = makeToken(newUser);
+        return res.status(201)
+          .json({
+            status: 'success',
+            message: 'signup sucessful',
+            user: {
+              username: newUser.username,
+              email: newUser.email,
+              id: newUser.id
+            },
+            token
+          });
+      })
+      .catch((error) => {
+        if (error.errors[0].path === 'username') {
+          conflict.usernameConflict = error.errors[0].message;
+        }
 
-          if(error.errors[0].path === 'email') {
-            conflict.emailConflict = error.errors[0].message
-          }
-          
-          return res.status(409).json(conflict)
+        if (error.errors[0].path === 'email') {
+          conflict.emailConflict = error.errors[0].message;
+        }
+
+        return res.status(409).json(conflict);
       });
   }
 

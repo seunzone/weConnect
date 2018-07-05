@@ -1,5 +1,6 @@
-import React from "react";
-const rating = numb => {
+import React from 'react';
+
+const rating = (numb) => {
   const arr = [];
   for (let i = 0; i < numb; i++) {
     arr.push(i);

@@ -10,6 +10,10 @@ export const currentUser = (user) => {
   }
 };
 
+/**
+ * @description - Removes token from local storage
+ * @returns {*} object
+ */
 export function logout() {
   return (dispatch) => {
     localStorage.removeItem('makeToken');

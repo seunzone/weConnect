@@ -22,7 +22,7 @@ const store = createStore(
 const localToken = localStorage.makeToken;
 if (localToken) {
   setAuth(localToken);
- store.dispatch(currentUser(jwt.decode(localToken)));
+  store.dispatch(currentUser(jwt.decode(localToken)));
 }
 
 ReactDOM.render(

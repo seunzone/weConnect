@@ -30,21 +30,21 @@ class AddNewBusiness extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        name: '',
-        category: '',
-        location: '',
-        newImage: '',
-        image: '',
-        description: '',
-        errors: {},
-        isLoading: false
-    }
+      name: '',
+      category: '',
+      location: '',
+      newImage: '',
+      image: '',
+      description: '',
+      errors: {},
+      isLoading: false
+    };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.submitImage = this.submitImage.bind(this);
-}
-/**
+  }
+  /**
   * @description Bind the value of the inputs to state
   *
   * @method onChange
@@ -55,10 +55,10 @@ class AddNewBusiness extends React.Component {
   *
   * @returns {void}
   */
-onChange(event) {
+  onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-}
-/**
+  }
+  /**
   * @description Handles change image event
   *
   * @method handleImageChange
@@ -69,11 +69,11 @@ onChange(event) {
   *
   * @returns {void}
   */
-handleImageChange(event){
-  event.preventDefault();
-  this.setState({ newImage: event.target.files[0] });
-}
-/**
+  handleImageChange(event) {
+    event.preventDefault();
+    this.setState({ newImage: event.target.files[0] });
+  }
+  /**
   * @description Saves Image to cloudinary
   *
   * @method submitImage
@@ -84,13 +84,13 @@ handleImageChange(event){
   *
   * @returns {void}
   */
-submitImage(event){
-  event.preventDefault();
-  this.props.saveImageCloudinary(this.state.newImage).then(()=> {
-    this.setState({image: this.props.imageInfo.imageData});
-  });
-}
-/**
+  submitImage(event) {
+    event.preventDefault();
+    this.props.saveImageCloudinary(this.state.newImage).then(() => {
+      this.setState({ image: this.props.imageInfo.imageData });
+    });
+  }
+  /**
   * @description Handles Form Submission
   *
   * @method onSubmit
@@ -101,22 +101,22 @@ submitImage(event){
   *
   * @returns {void}
   */
-onSubmit(event) {
+  onSubmit(event) {
     event.preventDefault();
-    const { imageData } = this.props.imageInfo; 
-      this.setState({ image: imageData, errors: {}, isLoading: true });
-        this.props.addBusiness(this.state).then(
-            () => {
-                this.props.addFlashMessage({
-                    type: 'success',
-                    text: 'Business Created'
-                })
-                this.context.router.history.push('/dashboard')
-            },
-             (err) => this.setState({ errors: err.response.data.error, isLoading: false }) 
-        );
-}
-/**
+    const { imageData } = this.props.imageInfo;
+    this.setState({ image: imageData, errors: {}, isLoading: true });
+    this.props.addBusiness(this.state).then(
+      () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Business Created'
+        });
+        this.context.router.history.push('/dashboard');
+      },
+      err => this.setState({ errors: err.response.data.error, isLoading: false })
+    );
+  }
+  /**
      * @description Render react component
      *
      * @method render
@@ -210,7 +210,7 @@ onSubmit(event) {
                     Uplaod Image
                         </button>
                       </span>
-                    </span> 
+                    </span>
                     <img src={this.state.image} alt="preview pic" height="150" width="250" />
                     {errors && <span className="help-block">{errors.image}</span>}
                   </div>
@@ -241,19 +241,18 @@ onSubmit(event) {
       </div>
     );
   }
-
 }
 
 AddNewBusiness.propTypes = {
   addBusiness: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
-}
+};
 
 AddNewBusiness.contextTypes = {
   router: PropTypes.object.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   imageInfo: state.imageUrl
-})
+});
 export default connect(mapStateToProps, { saveImageCloudinary })(AddNewBusiness);

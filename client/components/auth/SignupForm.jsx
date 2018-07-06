@@ -15,7 +15,7 @@ import { signUpUsers } from '../../actions/auth';
  * @extends {React.Component}
  */
 class SignupForm extends React.Component {
-    /**
+  /**
    * @description Creates an instance of SignupFrom
    *
    * @constructor
@@ -26,20 +26,20 @@ class SignupForm extends React.Component {
    *
    * @returns {void}
    */
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            errors: {},
-            isLoading: false
-        }
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
-    /**
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      errors: {},
+      isLoading: false
+    };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  /**
   * @description Bind the value of the inputs to state
   *
   * @method onChange
@@ -50,10 +50,10 @@ class SignupForm extends React.Component {
   *
   * @returns {void}
   */
-    onChange(event) {
-        this.setState({ [event.target.name]: event.target.value })
-    }
-    /**
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  /**
    * @description Validates user's data before making post request
    *
    * @method isValid
@@ -62,16 +62,16 @@ class SignupForm extends React.Component {
    *
    * @returns {boolean} true or false
    */
-    isValid() {
-        const { isValid, errors } = signupValidator(this.state);
-        if (!isValid) {
-            this.setState({ errors });
-        } else {
-            this.setState({ errors: {} });
-            return isValid;
-        }
+  isValid() {
+    const { isValid, errors } = signupValidator(this.state);
+    if (!isValid) {
+      this.setState({ errors });
+    } else {
+      this.setState({ errors: {} });
+      return isValid;
     }
-    /**
+  }
+  /**
   * @description Handles Form Submission
   *
   * @method onSubmit
@@ -82,23 +82,23 @@ class SignupForm extends React.Component {
   *
   * @returns {void}
   */
-    onSubmit(event) {
-        event.preventDefault();
-        if (this.isValid()) {
-            this.setState({ errors: {}, isLoading: true });
-            this.props.signUpUsers(this.state).then(
-                () => {
-                    this.props.addFlashMessage({
-                        type: 'success',
-                        text: 'You signed up successfully. Welcome!'
-                    });
-                    this.context.router.history.push('/business')
-                },
-               (error) => this.setState({ errors: error.response.data, isLoading: false }),
-            );
-        }
+  onSubmit(event) {
+    event.preventDefault();
+    if (this.isValid()) {
+      this.setState({ errors: {}, isLoading: true });
+      this.props.signUpUsers(this.state).then(
+        () => {
+          this.props.addFlashMessage({
+            type: 'success',
+            text: 'You signed up successfully. Welcome!'
+          });
+          this.context.router.history.push('/business');
+        },
+        error => this.setState({ errors: error.response.data, isLoading: false }),
+      );
     }
-    /**
+  }
+  /**
      * @description Render react component
      *
      * @method render
@@ -108,9 +108,9 @@ class SignupForm extends React.Component {
      * @returns {void}
      *
      */
-    render() {
-        const { errors } = this.state;
-        return (
+  render() {
+    const { errors } = this.state;
+    return (
             <div className="col-lg-4">
                 <div className="card bg-primary text-center card-form">
                     <div className="card-body">
@@ -125,7 +125,7 @@ class SignupForm extends React.Component {
                                 field="username"
                                 error={errors.username}
                                 value={this.state.username}
-                                onChange={this.onChange}        
+                                onChange={this.onChange}
                             />
                             <TextFieldGroup
                                 type="email"
@@ -168,18 +168,18 @@ class SignupForm extends React.Component {
                     </div>
                 </div>
             </div>
-        );
-    }
-};
+    );
+  }
+}
 
 SignupForm.propTypes = {
-    signUpUsers: PropTypes.func.isRequired,
-    addFlashMessage: PropTypes.func.isRequired
-}
+  signUpUsers: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
+};
 
 SignupForm.contextTypes = {
-    router: PropTypes.object.isRequired
-}
+  router: PropTypes.object.isRequired
+};
 
 
 export default SignupForm;

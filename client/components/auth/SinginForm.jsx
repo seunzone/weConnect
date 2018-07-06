@@ -3,8 +3,8 @@ import { PropTypes } from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 
 // actions
-import { signInUsers } from "../../actions/auth";
-import { addFlashMessage } from "../../actions/flashMessages";
+import { signInUsers } from '../../actions/auth';
+import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
  * @description Signs in user
@@ -28,8 +28,8 @@ class SigninForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       errors: {},
       isLoading: false
     };
@@ -67,12 +67,12 @@ class SigninForm extends React.Component {
     this.props.signInUsers(this.state).then(
       () => {
         this.props.addFlashMessage({
-          type: "success",
-          text: "Login successful!"
+          type: 'success',
+          text: 'Login successful!'
         });
-        this.context.router.history.push("/business");
+        this.context.router.history.push('/business');
       },
-      (error) => this.setState({ errors: error.response.data, isLoading: false }),
+      error => this.setState({ errors: error.response.data, isLoading: false }),
     );
   }
   /**
@@ -86,7 +86,7 @@ class SigninForm extends React.Component {
    *
    */
   render() {
-    const { errors } = this.state;  
+    const { errors } = this.state;
     return (
       <div>
         <br />
@@ -104,12 +104,11 @@ class SigninForm extends React.Component {
                   <p className="help-block">{errors ? errors.message : null}</p>
                   <form onSubmit={this.onSubmit}>
                     <TextFieldGroup
-                      type="text"
-                      placeholder="email"
-                      field="email"
+                      type='text'
+                      placeholder='email'
+                      field='email'
                       value={this.state.email}
-        
-                      error={errors.error ? errors.error.email : ""}
+                      error={errors.error ? errors.error.email : ''}
                       onChange={this.onChange}
                     />
                     <TextFieldGroup
@@ -117,7 +116,7 @@ class SigninForm extends React.Component {
                       placeholder="password"
                       field="password"
                       value={this.state.password}
-                      error={errors.error ? errors.error.password : ""}
+                      error={errors.error ? errors.error.password : ''}
                       onChange={this.onChange}
                     />
                     <button className="btn btn-warning btn-block">

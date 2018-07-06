@@ -82,6 +82,7 @@ export default class usersController {
         email
       }
     })
+    // return error message if user does not exist
       .then((findUser) => {
         if (!findUser) {
           return res.status(404)
@@ -90,6 +91,7 @@ export default class usersController {
               message: 'username or password is incorrect',
             });
         }
+        // return error message if user does not sync with password
         if (!bcrypt.compareSync(password, findUser.password)) {
           return res.status(401)
             .json({

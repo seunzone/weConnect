@@ -6,8 +6,8 @@ import { signUpUsers } from '../../actions/auth';
 import { addFlashMessage } from '../../actions/flashMessages';
 import { getAllBusiness } from '../../actions/businessAction';
 import BusinessCard from '../cards/BusinessCards';
-import HomeFooter from "../extras/HomeFooter";
-import SignupForm from "../auth/SignupForm";
+import HomeFooter from '../extras/HomeFooter';
+import SignupForm from '../auth/SignupForm';
 
 /**
  * @description Home Page

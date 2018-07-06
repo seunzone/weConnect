@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Pagination from "rc-pagination";
-import BusinessCard from "../cards/BusinessCards";
-import FlashMessagesList from "../flash/FlashMessagesList";
-import { getAllBusiness, getBusinessSearchAction } from "../../actions/businessAction";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Pagination from 'rc-pagination';
+import BusinessCard from '../cards/BusinessCards';
+import FlashMessagesList from '../flash/FlashMessagesList';
+import { getAllBusiness, getBusinessSearchAction } from '../../actions/businessAction';
 /**
  * @description Business Cards
  *

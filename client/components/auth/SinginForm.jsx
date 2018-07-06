@@ -1,6 +1,6 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import TextFieldGroup from "../common/TextFieldGroup";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 // actions
 import { signInUsers } from "../../actions/auth";

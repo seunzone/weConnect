@@ -1,14 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { logout } from "../../actions/auth";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/auth';
 
+/**
+ * @description Navbar for the App
+ *
+ * @class Header
+ *
+ * @extends {React.Component}
+ */
 class Header extends React.Component {
   logout(event) {
     event.preventDefault();
     this.props.logout();
-    this.context.router.history.push("/signin");
+    this.context.router.history.push('/signin');
   }
   render() {
     const { isAuthenticated } = this.props.auth;

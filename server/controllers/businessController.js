@@ -24,7 +24,7 @@ export default class businessController {
     const {
       name, description, image, location, category
     } = req.body;
-
+    // Find if user has existing business name and return error message
     Business.findOne({
       where: {
         name,
@@ -39,6 +39,7 @@ export default class businessController {
           });
         }
         if (!foundBusiness) {
+          // If no error, Create the business
           Business.create({
             name,
             userId: req.userId,
@@ -74,7 +75,7 @@ export default class businessController {
     const {
       name, description, image, location, category
     } = req.body;
-
+    // Find the business
     Business.findOne({
       where: {
         id: req.params.id,
@@ -97,6 +98,7 @@ export default class businessController {
               Business: updatedBusiness
             }));
         }
+        // User should only update the business that they created
         if (!foundBusiness) {
           return res.status(404).json({
             status: 'fail',
@@ -122,6 +124,7 @@ export default class businessController {
    * @returns {object} Class instance
    */
   static deleteBusiness(req, res) {
+    // Find is business was created by user
     Business.findOne({
       where: {
         id: req.params.id,
@@ -135,6 +138,7 @@ export default class businessController {
             message: `Can't find Business with id ${req.params.id} by you`
           });
         }
+        // If business exists for such users then perform delete action
         if (foundBusiness) {
           Business.destroy({
             where: {
@@ -168,6 +172,7 @@ export default class businessController {
    */
   static getSingleBusiness(req, res) {
     Business.findOne({
+      // Get id of busiess
       where: {
         id: req.params.id
       },

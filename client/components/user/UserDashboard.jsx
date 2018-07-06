@@ -122,7 +122,7 @@ class UserDashboard extends React.Component {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row my-6">
           {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
       </div>

@@ -35,7 +35,7 @@ const routes = (app) => {
   app.post('/api/v1/businesses/:id/review', authLogin, verifyReview, Reviews.addReview);
   // Get review
   app.get('/api/v1/businesses/:id/review', verifyId, Business.getSingleBusiness);
-
+  // Home Route
   app.get('/', (req, res) => {
     res.status(200)
       .send('Welcome to the weConnect api');

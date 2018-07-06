@@ -1,13 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import classnames from "classnames";
+import React from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import classnames from 'classnames';
 // actions
-import { getOneBusiness } from "../../actions/businessAction";
-import { editBusiness } from "../../actions/editBusinessAction";
-import { saveImageCloudinary } from "../../actions/uploadImageAction";
+import { getOneBusiness } from '../../actions/businessAction';
+import { editBusiness } from '../../actions/editBusinessAction';
+import { saveImageCloudinary } from '../../actions/uploadImageAction';
 
-import { addFlashMessage } from "../../actions/flashMessages";
+import { addFlashMessage } from '../../actions/flashMessages';
 /**
  * @description Edits Business
  *
@@ -30,7 +30,7 @@ class EditBusiness extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.oneBusiness ? this.props.oneBusiness.name : "",
+      name: this.props.oneBusiness ? this.props.oneBusiness.name : '',
       category: this.props.business.category,
       location: this.props.business.location,
       newImage: this.props.business.newImage,

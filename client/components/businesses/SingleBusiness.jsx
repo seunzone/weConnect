@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import moment from "moment";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import moment from 'moment';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -14,16 +14,16 @@ import {
   LinkedinShareButton,
   LinkedinIcon
 } from 'react-share';
-import rating from "../../utils/rating"
-import { addFlashMessage } from "../../actions/flashMessages";
+import rating from '../../utils/rating';
+import { addFlashMessage } from '../../actions/flashMessages';
 import gif from '../../public/images/loader.gif';
 
 //import components
-import AddReviews from "../reviews/AddReviews";
+import AddReviews from '../reviews/AddReviews';
 
 // import actions
-import { getOneBusiness } from "../../actions/businessAction";
-import { addBusinessReview } from "../../actions/addReviewAction";
+import { getOneBusiness } from '../../actions/businessAction';
+import { addBusinessReview } from '../../actions/addReviewAction';
 /**
  * @description Shows details of a business
  *

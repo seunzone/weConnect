@@ -1,17 +1,15 @@
-import React from "react";
+import React from 'react';
 import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
 import Buttons from '../businesses/Buttons';
 import moment from 'moment';
 
 
-
-
-const BusinessCard = ({ name, image, description, createdAt, category, id, deleteBusiness }) => {
- 
-  const Style = { height: "250px" };
+const BusinessCard = ({
+ name, image, description, createdAt, category, id, deleteBusiness 
+}) => {
+  const Style = { height: '250px' };
   return (
-   
     <div className="col-md-4">
         <div className="card">
         <div className="img-zoom">

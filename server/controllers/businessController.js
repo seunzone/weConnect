@@ -250,12 +250,13 @@ export default class businessController {
    * @return {null} - null
    */
   static sortSearch(req, res, next) {
-    const { location, category } = req.query;
+    const { location, category, name } = req.query;
     const limit = 6;
     const page = req.query.page || 1;
     const offset = limit * (page - 1);
 
-    if (location || category) {
+    if (location || category || name) {
+    // search by location
       if (location) {
         Business.findAndCountAll({
           limit,
@@ -288,6 +289,40 @@ export default class businessController {
           });
         });
       }
+      // search by name
+      if (name) {
+        Business.findAndCountAll({
+          limit,
+          offset,
+          order: [['createdAt', 'DESC']],
+          where: {
+            name: { $iLike: `%${name}%` }
+          }
+        }).then((business) => {
+          const { count } = business;
+          const pages = Math.ceil(count / limit);
+          const currentPage = Math.floor(offset / limit) + 1;
+          // If no businesses found, return error
+          if (business.length < 1) {
+            return res.status(404).json({
+              message: 'No business found for this name!'
+            });
+          }
+          // If business found, return business found
+          return res.status(200).json({
+            message: 'Business Found!',
+            business: business.rows,
+            paginate: {
+              count,
+              pages,
+              currentPage,
+              pageSize: business.rows.length,
+              limit
+            }
+          });
+        });
+      }
+      // search by category
       if (category) {
         Business.findAndCountAll({
           limit,

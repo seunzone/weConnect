@@ -32,8 +32,8 @@ class Businesses extends React.Component {
       currentPage: 1,
       count: 0,
       limit: 0,
-      searchKeyType: "",
-      keyValue: ""
+      searchKeyType: '',
+      keyValue: ''
     };
     this.onChange = this.onChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
@@ -108,6 +108,7 @@ class Businesses extends React.Component {
    *
    */
   render() {
+    console.log(this.state)
     const allBusinesses = this.props.business;
     const { count, currentPage, limit } = this.state;
     const emptyMessage = (
@@ -153,13 +154,15 @@ class Businesses extends React.Component {
                       <input
                         className="form-control"
                         placeholder="Enter keyword here"
-                        name="keyValue" 
+                        name='keyValue'
                         onChange={this.onChangeThis}
+                        required
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <select className="form-control" name="searchKeyType" onChange={this.onChangeThis}>
-                        <option>Search by</option>
+                      <select className="form-control" name="searchKeyType" onChange={this.onChangeThis} required>
+                        <option value="" selected="true" disabled="disabled">Search By</option>
+                        <option value={this.state.name}>Name</option>
                         <option value={this.state.category}>Category</option>
                         <option value={this.state.location}>Location</option>
                       </select>

@@ -4,9 +4,9 @@ import { PropTypes } from 'prop-types';
 import classnames from 'classnames';
 
 // actions
-import { addBusiness } from '../../actions/addBusinessAction';
+// import { addBusiness } from '../../actions/addBusinessAction';
 import { saveImageCloudinary } from '../../actions/uploadImageAction';
-import { addFlashMessage } from '../../actions/flashMessages';
+// import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
  * @description Creates New Business
@@ -127,7 +127,9 @@ class AddNewBusiness extends React.Component {
      *
      */
   render() {
-    const { errors } = this.state;
+    const {
+      errors, name, category, location, image, description
+    } = this.state;
     return (
       <div className="container my-5">
         <div className="row justify-content-center">
@@ -144,7 +146,7 @@ class AddNewBusiness extends React.Component {
                     <div className="col-sm-4">
                       <label>Name:</label>
                       <input
-                        value={this.state.name}
+                        value={ name }
                         onChange={this.onChange}
                         name="name"
                         type="text"
@@ -160,7 +162,7 @@ class AddNewBusiness extends React.Component {
                           className="form-control"
                           type="select"
                           name="category"
-                          value={this.state.category}
+                          value={ category }
                           onChange={this.onChange}
                         >
                           <option value="" disabled>Choose Category</option>
@@ -180,7 +182,7 @@ class AddNewBusiness extends React.Component {
                           className="form-control"
                           type="select"
                           name="location"
-                          value={this.state.location}
+                          value={ location }
                           onChange={this.onChange}
                         >
                           <option value="" disabled>Choose Location</option>
@@ -211,13 +213,13 @@ class AddNewBusiness extends React.Component {
                         </button>
                       </span>
                     </span>
-                    <img src={this.state.image} alt="preview pic" height="150" width="250" />
+                    <img src={ image } alt="preview pic" height="150" width="250" />
                     {errors && <span className="help-block">{errors.image}</span>}
                   </div>
                   <br />
                   <label>Details</label>
                   <textarea
-                    value={this.state.description}
+                    value={ description }
                     onChange={this.onChange}
                     name="description"
                     placeholder="Put Business details here..."

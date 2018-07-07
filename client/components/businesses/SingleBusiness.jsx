@@ -18,7 +18,7 @@ import rating from '../../utils/rating';
 import { addFlashMessage } from '../../actions/flashMessages';
 import gif from '../../public/images/loader.gif';
 
-//import components
+// import components
 import AddReviews from '../reviews/AddReviews';
 
 // import actions
@@ -68,7 +68,7 @@ class SingleBusiness extends React.Component {
       reviews: Reviews
     });
   }
-/**
+  /**
      * @description Render react component
      *
      * @method render
@@ -101,7 +101,7 @@ class SingleBusiness extends React.Component {
         <span className="text-danger">{review.User.username}</span> &nbsp;
         <span className="text-muted">
           <i className="fa fa-clock-o" aria-hidden="true" />&nbsp;
-          {moment(review.createdAt).format("Do MMMM YYYY HH:mm")}
+          {moment(review.createdAt).format('Do MMMM YYYY HH:mm')}
         </span>&nbsp;&nbsp;
         {rating(review.rating)}
         <br />
@@ -113,7 +113,10 @@ class SingleBusiness extends React.Component {
         <hr />
       </div>
     ));
-
+    // console.log(this.props.singleBusiness);
+    const {
+      image, name, createdAt, category, location, description, Reviews
+    } = this.props.singleBusiness;
     return (
       <div className="container my-5">
         <div className="row justify-content-center">
@@ -122,26 +125,24 @@ class SingleBusiness extends React.Component {
               <img
                 alt=""
                 className="card-img-top detail-img"
-                src={singleBusiness.image}
+                src={ image }
               />
               <div className="card-body">
                 <h1 className="card-title text-center h4 mb-4">
-                  {singleBusiness.name}&nbsp; &nbsp;
+                  { name }&nbsp; &nbsp;
                   <small className="text-muted">
                     <i className="fa fa-clock-o" aria-hidden="true" />
                     &nbsp; &nbsp;
-                    {moment(singleBusiness.createdAt).format(
-                      "Do MMMM YYYY HH:mm"
-                    )}
+                    {moment(createdAt).format('Do MMMM YYYY HH:mm')}
                   </small>
                 </h1>
                 <p className="alert alert-info text-center my-4">
-                  Category: <b>{singleBusiness.category}</b>&nbsp; &nbsp; &nbsp;
-                  &nbsp; Location: <b>{singleBusiness.location}</b>
+                  Category: <b>{category}</b>&nbsp; &nbsp; &nbsp;
+                  &nbsp; Location: <b>{location}</b>
                 </p>
-                <p className="text-center my-4">{singleBusiness.description}</p>
+                <p className="text-center my-4">{description}</p>
                 <hr />
-                Share On:<br /> 
+                Share On:<br />
                 <div className="share-div">
                   <FacebookShareButton
                     url={shareUrl}
@@ -152,7 +153,7 @@ class SingleBusiness extends React.Component {
                   </FacebookShareButton>
                 </div>
                 <div className="share-div">
-                  <WhatsappShareButton 
+                  <WhatsappShareButton
                     url={shareUrl}
                     title={shareTitle}
                     className="share-btn"
@@ -161,7 +162,7 @@ class SingleBusiness extends React.Component {
                   </WhatsappShareButton>
                 </div>
                 <div className="share-div">
-                  <LinkedinShareButton 
+                  <LinkedinShareButton
                     url={shareUrl}
                     title={shareTitle}
                     className="share-btn"
@@ -170,7 +171,7 @@ class SingleBusiness extends React.Component {
                   </LinkedinShareButton>
                 </div>
                 <div className="share-div">
-                  <GooglePlusShareButton 
+                  <GooglePlusShareButton
                     url={shareUrl}
                     title={shareTitle}
                     className="share-btn"
@@ -179,7 +180,7 @@ class SingleBusiness extends React.Component {
                   </GooglePlusShareButton>
                 </div>
                 <div className="share-div">
-                  <TwitterShareButton 
+                  <TwitterShareButton
                     url={shareUrl}
                     title={shareTitle}
                     className="share-btn"
@@ -190,9 +191,9 @@ class SingleBusiness extends React.Component {
                 <p className="text-muted h6 text-center my-4">
                   <span className="mr-3 h3">
                     <i className="ion ion-happy-outline" />
-                    {singleBusiness.Reviews.length}
+                    {Reviews.length}
                     <small>Review(s)</small>
-                    
+
                   </span>
                 </p>
                 <hr />

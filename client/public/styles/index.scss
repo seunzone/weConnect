@@ -396,13 +396,7 @@ background-color:#2196F3;
 .social-links a:hover {
   background: #007bff;
   color: #fff;
-}
-.rc-pagination-item {
-  background-color: #007bff !important;
-  color: white;
-  border: none !important;
- }
- 
+} 
  .rc-pagination-item-active {
   background-color: #007bff !important;
   color: white;
@@ -413,4 +407,7 @@ background-color:#2196F3;
   background-color: #007bff !important;
   color: white;
   border: none !important;
+ }
+ .not-found{
+  margin-bottom: 220px; 
  }

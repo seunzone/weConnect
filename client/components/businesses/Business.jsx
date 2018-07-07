@@ -5,6 +5,8 @@ import Pagination from 'rc-pagination';
 import BusinessCard from '../cards/BusinessCards';
 import FlashMessagesList from '../flash/FlashMessagesList';
 import { getAllBusiness, getBusinessSearchAction } from '../../actions/businessAction';
+import HomeFooter from '../extras/HomeFooter';
+
 /**
  * @description Business Cards
  *
@@ -192,6 +194,7 @@ class Businesses extends React.Component {
               />
             </div>
           </div>
+          <HomeFooter />
         </div>
       );
     }

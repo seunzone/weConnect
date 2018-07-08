@@ -2,10 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 
-// actions
-import { signInUsers } from '../../actions/auth';
-import { addFlashMessage } from '../../actions/flashMessages';
-
 /**
  * @description Signs in user
  *

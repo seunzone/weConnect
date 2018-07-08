@@ -3,8 +3,6 @@ import { PropTypes } from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 // validations
 import signupValidator from '../../validation/singupValidation';
-// actions
-import { signUpUsers } from '../../actions/auth';
 
 
 /**

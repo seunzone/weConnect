@@ -17,7 +17,7 @@ import SignupForm from '../auth/SignupForm';
  * @extends {React.Component}
  */
 class Home extends React.Component {
-   /**
+  /**
    *
    * @constructor
    *
@@ -30,7 +30,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
   }
-   /**
+  /**
    * @description Before component mounts
    *
    * @method isValid
@@ -40,9 +40,9 @@ class Home extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
-    this.props.getAllBusiness()
+    this.props.getAllBusiness();
   }
-   /**
+  /**
      * @description Render react component
      *
      * @method render
@@ -53,7 +53,7 @@ class Home extends React.Component {
      *
      */
   render() {
-    const { isAuthenticated } = this.props.auth;    
+    const { isAuthenticated } = this.props.auth;
     const allBusinesses = this.props.business;
     const { signUpUsers, addFlashMessage } = this.props;
     const someBusiness = allBusinesses.map((business, i) => {
@@ -67,10 +67,10 @@ class Home extends React.Component {
             description={business.description}
             category={business.category}
           />
-        )
+        );
       }
-    })
-    const divStyle = { color: "white" };
+    });
+    const divStyle = { color: 'white' };
     return (
       <div>
         <div id="jumbotron" className="jumbotron text-center">
@@ -115,11 +115,11 @@ Home.propTypes = {
   signUpUsers: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
   getAllBusiness: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,  
-}
+  auth: PropTypes.object.isRequired,
+};
 const mapStateToProps = state => ({
   business: state.allBusinesses.business,
-  auth: state.auth  
-})
+  auth: state.auth
+});
 
 export default connect(mapStateToProps, { signUpUsers, addFlashMessage, getAllBusiness })(Home);

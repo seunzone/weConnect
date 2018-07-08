@@ -2,8 +2,8 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
-import Buttons from '../businesses/Buttons';
 import moment from 'moment';
+import Buttons from '../businesses/Buttons';
 
 
 const BusinessCard = ({

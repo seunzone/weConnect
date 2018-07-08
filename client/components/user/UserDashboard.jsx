@@ -36,7 +36,7 @@ class UserDashboard extends React.Component {
       currentPage: 1,
       count: 0,
       limit: 0
-   };
+    };
     this.onChange = this.onChange.bind(this);
   }
   /**
@@ -50,10 +50,10 @@ class UserDashboard extends React.Component {
    */
   componentDidMount() {
     this.props.getAllBusiness()
-    .then(() => {
-      const { count, currentPage, limit } = this.props.paginate;
-      this.setState({ count, currentPage, limit });
-    });
+      .then(() => {
+        const { count, currentPage, limit } = this.props.paginate;
+        this.setState({ count, currentPage, limit });
+      });
   }
 
   onChange(page) {
@@ -83,15 +83,10 @@ class UserDashboard extends React.Component {
       <div className="alert alert-dark" role="alert">
         You are yet to add a business
       </div>
-    )
+    );
 
-    const authbusiness = allBusinesses && allBusinesses.filter(business => {
-      return business.userId === authId.id;
-      
-    });
-    const showBusiness = authbusiness.map((business) => {
-      
-      return (
+    const authbusiness = allBusinesses && allBusinesses.filter((business) => business.userId === authId.id);
+    const showBusiness = authbusiness.map((business) => (
         <BusinessCard
           key={business.id}
           id={business.id}
@@ -101,10 +96,9 @@ class UserDashboard extends React.Component {
           category={business.category}
           deleteBusiness={this.props.deleteBusiness}
         />
-      )
-    })
-    if(!this.props.business){
-      return <div><img src={gif} alt='loading...' /></div>
+      ));
+    if (!this.props.business) {
+      return <div><img src={gif} alt='loading...' /></div>;
     }
     return (
       <div>
@@ -128,21 +122,18 @@ class UserDashboard extends React.Component {
       </div>
     );
   }
-};
+}
 
 UserDashboard.propTypes = {
   getAllBusiness: PropTypes.func.isRequired,
   deleteBusiness: PropTypes.func.isRequired,
-}
+};
 
-const mapStateToProps = state => {
-  return {
+const mapStateToProps = (state) => ({
     business: state.allBusinesses.business,
     authId: state.auth.user,
     paginate: state.allBusinesses.paginate
 
-  }
-  
-}
+  });
 
 export default connect(mapStateToProps, { getAllBusiness, deleteBusiness })(UserDashboard);

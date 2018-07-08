@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import moment from "moment";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import moment from 'moment';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -13,18 +13,18 @@ import {
   GooglePlusShareButton,
   LinkedinShareButton,
   LinkedinIcon
-} from "react-share";
-import rating from "../../utils/rating";
-import { addFlashMessage } from "../../actions/flashMessages";
-import gif from "../../public/images/loader.gif";
-import HomeFooter from "../extras/HomeFooter";
+} from 'react-share';
+import rating from '../../utils/rating';
+import { addFlashMessage } from '../../actions/flashMessages';
+import gif from '../../public/images/loader.gif';
+import HomeFooter from '../extras/HomeFooter';
 
 // import components
-import AddReviews from "../reviews/AddReviews";
+import AddReviews from '../reviews/AddReviews';
 
 // import actions
-import { getOneBusiness } from "../../actions/businessAction";
-import { addBusinessReview } from "../../actions/addReviewAction";
+import { getOneBusiness } from '../../actions/businessAction';
+import { addBusinessReview } from '../../actions/addReviewAction';
 /**
  * @description Shows details of a business
  *
@@ -116,7 +116,6 @@ class SingleBusiness extends React.Component {
         <hr />
       </div>
     ));
-    // console.log(this.props.singleBusiness);
     const {
       image,
       name,
@@ -139,7 +138,7 @@ class SingleBusiness extends React.Component {
                     <small className="text-muted">
                       <i className="fa fa-clock-o" aria-hidden="true" />
                       &nbsp; &nbsp;
-                      {moment(createdAt).format("Do MMMM YYYY HH:mm")}
+                      {moment(createdAt).format('Do MMMM YYYY HH:mm')}
                     </small>
                   </h1>
                   <p className="alert alert-info text-center my-4">

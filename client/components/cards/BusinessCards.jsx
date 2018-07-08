@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
 import Buttons from '../businesses/Buttons';
@@ -6,7 +7,7 @@ import moment from 'moment';
 
 
 const BusinessCard = ({
- name, image, description, createdAt, category, id, deleteBusiness 
+  name, image, description, createdAt, category, id, deleteBusiness
 }) => {
   const Style = { height: '250px' };
   return (
@@ -44,6 +45,16 @@ const BusinessCard = ({
       </div>
       </div>
   );
+};
+
+BusinessCard.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  deleteBusiness: PropTypes.func
 };
 
 export default BusinessCard;

@@ -20,6 +20,6 @@ class AddBusinessParent extends React.Component {
 AddBusinessParent.propTypes = {
   addBusiness: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
-}
+};
 
 export default connect((state) => {return {}} , {addBusiness, addFlashMessage })(AddBusinessParent);

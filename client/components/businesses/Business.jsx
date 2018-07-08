@@ -108,7 +108,6 @@ class Businesses extends React.Component {
    *
    */
   render() {
-    console.log(this.state)
     const allBusinesses = this.props.business;
     const { count, currentPage, limit } = this.state;
     const emptyMessage = (
@@ -205,7 +204,10 @@ class Businesses extends React.Component {
 }
 
 Businesses.propTypes = {
-  getAllBusiness: PropTypes.func.isRequired
+  getAllBusiness: PropTypes.func.isRequired,
+  paginate: PropTypes.object.isRequired,
+  getBusinessSearchAction: PropTypes.func.isRequired,
+  business: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({

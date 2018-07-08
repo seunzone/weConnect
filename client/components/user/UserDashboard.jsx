@@ -75,8 +75,9 @@ class UserDashboard extends React.Component {
      */
   render() {
     const allBusinesses = this.props.business;
+    // const { id } = this.props.business;
     const { count, currentPage, limit } = this.state;
-
+    // console.log(this.props.business);
     const { authId } = this.props;
 
     const emptyMessage = (
@@ -85,8 +86,8 @@ class UserDashboard extends React.Component {
       </div>
     );
 
-    const authbusiness = allBusinesses && allBusinesses.filter((business) => business.userId === authId.id);
-    const showBusiness = authbusiness.map((business) => (
+    const authbusiness = allBusinesses && allBusinesses.filter(business => business.userId === authId.id);
+    const showBusiness = authbusiness.map(business => (
         <BusinessCard
           key={business.id}
           id={business.id}
@@ -96,7 +97,7 @@ class UserDashboard extends React.Component {
           category={business.category}
           deleteBusiness={this.props.deleteBusiness}
         />
-      ));
+    ));
     if (!this.props.business) {
       return <div><img src={gif} alt='loading...' /></div>;
     }
@@ -119,6 +120,26 @@ class UserDashboard extends React.Component {
         <div className="row my-6">
           {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
+        {/* modal starts here */}
+          <div className="modal fade" id="deleteModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                      <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLabel">Delete Business</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div className="modal-body">
+                          Are you sure you want to delete your profile?
+                      </div>
+                      <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                          <button onClick={() => this.props.deleteBusiness(window.businessId).then(() => this.props.getAllBusiness())} type="button" className="btn btn-danger" data-dismiss="modal">Agree</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
     );
   }
@@ -129,11 +150,11 @@ UserDashboard.propTypes = {
   deleteBusiness: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-    business: state.allBusinesses.business,
-    authId: state.auth.user,
-    paginate: state.allBusinesses.paginate
+const mapStateToProps = state => ({
+  business: state.allBusinesses.business,
+  authId: state.auth.user,
+  paginate: state.allBusinesses.paginate
 
-  });
+});
 
 export default connect(mapStateToProps, { getAllBusiness, deleteBusiness })(UserDashboard);

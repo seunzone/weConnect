@@ -48,11 +48,11 @@ const BusinessCard = ({
 };
 
 BusinessCard.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
+  createdAt: PropTypes.string,
   category: PropTypes.string.isRequired,
   deleteBusiness: PropTypes.func
 };

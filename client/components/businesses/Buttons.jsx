@@ -17,7 +17,8 @@ class Buttons extends Component {
                     <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</Link>&nbsp;&nbsp;
                 <button
                     className="btn btn-outline-danger"
-                    onClick={() => this.props.deleteBusiness(id)}
+                    data-toggle="modal" data-target="#deleteModal"
+                    onClick={() => window.businessId=id}
                 >
                     <i className="fa fa-trash-o" aria-hidden="true" /> Delete
                 </button>

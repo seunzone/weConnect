@@ -71,11 +71,11 @@ class Businesses extends React.Component {
   *
   * @returns {void}
   */
-  onChangeThis(event){
+  onChangeThis(event) {
     event.preventDefault();
     this.setState({ [event.target.name]: event.target.value });
   }
-   /**
+  /**
    * @description use value for search
    *
    * @method onChange
@@ -122,22 +122,20 @@ class Businesses extends React.Component {
           Please try again. Thanks
         </span>
       </div>
-    )
-    const showBusiness = allBusinesses.map(business => {
-      return (
-        <BusinessCard
-          key={business.id}
-          id={business.id}
-          name={business.name}
-          image={business.image}
-          description={business.description}
-          category={business.category}
-        />
-      );
-    });
+    );
+    const showBusiness = allBusinesses.map(business => (
+      <BusinessCard
+        key={business.id}
+        id={business.id}
+        name={business.name}
+        image={business.image}
+        description={business.description}
+        category={business.category}
+      />
+    ));
     {
       const DivStyle = {
-        padding: "padding: 30px 0px"
+        padding: 'padding: 30px 0px'
       };
       return (
         <div>
@@ -153,7 +151,7 @@ class Businesses extends React.Component {
                       <input
                         className="form-control"
                         placeholder="Enter keyword here"
-                        name='keyValue'
+                        name="keyValue"
                         onChange={this.onChangeThis}
                         required
                       />
@@ -182,7 +180,7 @@ class Businesses extends React.Component {
             <br />
             <div className="card-deck wow fadeIn" />
             <div className="row">
-              {showBusiness.length === 0 ? emptyMessage  : allBusinesses && showBusiness}
+              {showBusiness.length === 0 ? emptyMessage : allBusinesses && showBusiness}
             </div>
             <div className="d-flex justify-content-center mt-5">
               <Pagination

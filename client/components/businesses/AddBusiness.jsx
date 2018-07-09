@@ -244,7 +244,7 @@ class AddNewBusiness extends React.Component {
 }
 
 AddNewBusiness.propTypes = {
-  addBusiness: PropTypes.func.isRequired,
+  addBusiness: PropTypes.func,
   addFlashMessage: PropTypes.func.isRequired,
   saveImageCloudinary: PropTypes.func.isRequired
 };

@@ -1,4 +1,4 @@
-import { GET_ALL_BUSINESS, DELETE_BUSINESS, PAGINATED_BUSINESS } from '../actions/actionType';
+import { GET_ALL_BUSINESS, PAGINATED_BUSINESS } from '../actions/actionType';
 
 const initialState = {
   business: [],

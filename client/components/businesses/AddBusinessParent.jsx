@@ -5,7 +5,7 @@ import AddBusiness from './AddBusiness';
 
 
 // actions
-import { addBusiness } from '../../actions/addBusinessAction';
+import { addBusiness } from '../../actions/businessAction';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 class AddBusinessParent extends React.Component {
@@ -18,7 +18,7 @@ class AddBusinessParent extends React.Component {
 }
 
 AddBusinessParent.propTypes = {
-  addBusiness: PropTypes.func.isRequired,
+  addBusiness: PropTypes.func,
   addFlashMessage: PropTypes.func.isRequired
 };
 

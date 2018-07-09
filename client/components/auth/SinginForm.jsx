@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
-
 /**
  * @description Signs in user
  *

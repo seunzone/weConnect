@@ -7,7 +7,7 @@ import gif from '../../public/images/loader.gif';
 
 
 // import components
-import BusinessCard from '../cards/BusinessCards.jsx';
+import BusinessCard from '../cards/BusinessCards';
 
 // import actions
 import { getAllBusiness, deleteBusiness } from '../../actions/businessAction';
@@ -75,9 +75,7 @@ class UserDashboard extends React.Component {
      */
   render() {
     const allBusinesses = this.props.business;
-    // const { id } = this.props.business;
     const { count, currentPage, limit } = this.state;
-    // console.log(this.props.business);
     const { authId } = this.props;
 
     const emptyMessage = (
@@ -86,20 +84,21 @@ class UserDashboard extends React.Component {
       </div>
     );
 
-    const authbusiness = allBusinesses && allBusinesses.filter(business => business.userId === authId.id);
+    const authbusiness = allBusinesses &&
+    allBusinesses.filter(business => business.userId === authId.id);
     const showBusiness = authbusiness.map(business => (
-        <BusinessCard
-          key={business.id}
-          id={business.id}
-          name={business.name}
-          image={business.image}
-          description={business.description}
-          category={business.category}
-          deleteBusiness={this.props.deleteBusiness}
-        />
+      <BusinessCard
+        key={business.id}
+        id={business.id}
+        name={business.name}
+        image={business.image}
+        description={business.description}
+        category={business.category}
+        deleteBusiness={this.props.deleteBusiness}
+      />
     ));
     if (!this.props.business) {
-      return <div><img src={gif} alt='loading...' /></div>;
+      return <div><img src={gif} alt="loading..." /></div>;
     }
     return (
       <div>
@@ -112,7 +111,7 @@ class UserDashboard extends React.Component {
                 <span className="h6 mr-3">You have created {authbusiness.length} Business(es) Created</span>
               </p>
               <Link to="/businesses/add" className="btn btn-primary text-white">
-                <i className="fa fa-plus-circle" aria-hidden="true"></i> Add New Business
+                <i className="fa fa-plus-circle" aria-hidden="true" /> Add New Business
               </Link>
             </div>
           </div>
@@ -121,25 +120,25 @@ class UserDashboard extends React.Component {
           {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
         {/* modal starts here */}
-          <div className="modal fade" id="deleteModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div className="modal-dialog" role="document">
-                  <div className="modal-content">
-                      <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLabel">Delete Business</h5>
-                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div className="modal-body">
-                          Are you sure you want to delete your profile?
-                      </div>
-                      <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                          <button onClick={() => this.props.deleteBusiness(window.businessId).then(() => this.props.getAllBusiness())} type="button" className="btn btn-danger" data-dismiss="modal">Agree</button>
-                      </div>
-                  </div>
+        <div className="modal fade" id="deleteModal" role="dialog" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Delete Business</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+              <div className="modal-body">
+                          Are you sure you want to delete your profile?
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button onClick={() => this.props.deleteBusiness(window.businessId).then(() => this.props.getAllBusiness())} type="button" className="btn btn-danger" data-dismiss="modal">Agree</button>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
     );
   }

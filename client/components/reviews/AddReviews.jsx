@@ -130,7 +130,8 @@ class AddReviews extends React.Component {
 
 AddReviews.propTypes = {
   getOneBusiness: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired
+  addFlashMessage: PropTypes.func.isRequired,
+  addBusinessReview: PropTypes.func.isRequired
 };
 
 AddReviews.contextTypes = {

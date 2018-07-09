@@ -18,19 +18,6 @@ import SignupForm from '../auth/SignupForm';
  */
 class Home extends React.Component {
   /**
-   *
-   * @constructor
-   *
-   * @param {any} props
-   *
-   * @memberof Home
-   *
-   * @returns {void}
-   */
-  constructor(props) {
-    super(props);
-  }
-  /**
    * @description Before component mounts
    *
    * @method isValid
@@ -53,9 +40,7 @@ class Home extends React.Component {
      *
      */
   render() {
-    const { isAuthenticated } = this.props.auth;
     const allBusinesses = this.props.business;
-    const { signUpUsers, addFlashMessage } = this.props;
     const someBusiness = allBusinesses.map((business, i) => {
       if (i < 3) {
         return (
@@ -93,7 +78,10 @@ class Home extends React.Component {
                   </Link>
                 </p>
               </div>
-              <SignupForm signUpUsers={signUpUsers} addFlashMessage={addFlashMessage} />
+              <SignupForm
+                signUpUsers={this.props.signUpUsers}
+                addFlashMessage={this.props.addFlashMessage}
+              />
             </div>
           </div>
         </div>
@@ -115,7 +103,6 @@ Home.propTypes = {
   signUpUsers: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
   getAllBusiness: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
   business: state.allBusinesses.business,

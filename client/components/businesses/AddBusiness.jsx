@@ -56,6 +56,34 @@ class AddNewBusiness extends React.Component {
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
+
+
+  /**
+  * @description Handles Form Submission
+  *
+  * @method onSubmit
+  *
+  * @param {object} event
+  *
+  * @memberof AddNewBusiness
+  *
+  * @returns {void}
+  */
+  onSubmit(event) {
+    event.preventDefault();
+    const { imageData } = this.props.imageInfo;
+    this.setState({ image: imageData, errors: {}, isLoading: true });
+    this.props.addBusiness(this.state).then(
+      () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Business Created'
+        });
+        this.context.router.history.push('/dashboard');
+      },
+      err => this.setState({ errors: err.response.data.error, isLoading: false })
+    );
+  }
   /**
   * @description Handles change image event
   *
@@ -89,32 +117,6 @@ class AddNewBusiness extends React.Component {
     });
   }
   /**
-  * @description Handles Form Submission
-  *
-  * @method onSubmit
-  *
-  * @param {object} event
-  *
-  * @memberof AddNewBusiness
-  *
-  * @returns {void}
-  */
-  onSubmit(event) {
-    event.preventDefault();
-    const { imageData } = this.props.imageInfo;
-    this.setState({ image: imageData, errors: {}, isLoading: true });
-    this.props.addBusiness(this.state).then(
-      () => {
-        this.props.addFlashMessage({
-          type: 'success',
-          text: 'Business Created'
-        });
-        this.context.router.history.push('/dashboard');
-      },
-      err => this.setState({ errors: err.response.data.error, isLoading: false })
-    );
-  }
-  /**
      * @description Render react component
      *
      * @method render
@@ -144,7 +146,7 @@ class AddNewBusiness extends React.Component {
                     <div className="col-sm-4">
                       <label>Name:</label>
                       <input
-                        value={ name }
+                        value={name}
                         onChange={this.onChange}
                         name="name"
                         type="text"
@@ -160,7 +162,7 @@ class AddNewBusiness extends React.Component {
                           className="form-control"
                           type="select"
                           name="category"
-                          value={ category }
+                          value={category}
                           onChange={this.onChange}
                         >
                           <option value="" disabled>Choose Category</option>
@@ -180,7 +182,7 @@ class AddNewBusiness extends React.Component {
                           className="form-control"
                           type="select"
                           name="location"
-                          value={ location }
+                          value={location}
                           onChange={this.onChange}
                         >
                           <option value="" disabled>Choose Location</option>
@@ -211,13 +213,13 @@ class AddNewBusiness extends React.Component {
                         </button>
                       </span>
                     </span>
-                    <img src={ image } alt="preview pic" height="150" width="250" />
+                    <img src={image} alt="preview pic" height="150" width="250" />
                     {errors && <span className="help-block">{errors.image}</span>}
                   </div>
                   <br />
                   <label>Details</label>
                   <textarea
-                    value={ description }
+                    value={description}
                     onChange={this.onChange}
                     name="description"
                     placeholder="Put Business details here..."
@@ -244,7 +246,7 @@ class AddNewBusiness extends React.Component {
 }
 
 AddNewBusiness.propTypes = {
-  addBusiness: PropTypes.func,
+  addBusiness: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
   saveImageCloudinary: PropTypes.func.isRequired
 };

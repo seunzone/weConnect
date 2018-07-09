@@ -18,7 +18,9 @@ const addReview = review => ({
  * @param {*} content
  * @returns { review } - Action
  */
-export const addBusinessReview = (id, content) => dispatch => axios.post(`/api/v1/businesses/${id}/review`, content)
+const addBusinessReview = (id, content) => dispatch => axios.post(`/api/v1/businesses/${id}/review`, content)
   .then((res) => {
     dispatch(addReview(res.data.review));
   });
+
+export default addBusinessReview;

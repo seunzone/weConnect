@@ -47,8 +47,9 @@ const businessToBeDeleted = businessId => ({
   businessId
 });
 
-export const addBusiness = business => dispatch => axios.post('/api/v1/businesses', business)
-  .then(res => res.data.business);
+export const addBusiness = business => dispatch =>
+  axios.post('/api/v1/businesses', business)
+    .then(res => res.data.business);
 
 export const getAllBusiness = page => dispatch =>
   axios.get(`api/v1/businesses?page=${page || 1}`).then((res) => {

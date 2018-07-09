@@ -1,6 +1,6 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import classnames from "classnames";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import classnames from 'classnames';
 /**
  * @description Creates Business Review
  *
@@ -9,7 +9,7 @@ import classnames from "classnames";
  * @extends {React.Component}
  */
 class AddReviews extends React.Component {
-   /**
+  /**
    * @description Creates an instance of AddReview
    *
    * @constructor
@@ -23,14 +23,14 @@ class AddReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: "",
-      rating: "",
+      content: '',
+      rating: '',
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
- /**
+  /**
   * @description Bind the value of the inputs to state
   *
   * @method onChange
@@ -60,15 +60,15 @@ class AddReviews extends React.Component {
     this.props.addBusinessReview(this.props.params.id, this.state).then(
       () => {
         this.props.addFlashMessage({
-          type: "success",
-          text: "Thanks for your review"
+          type: 'success',
+          text: 'Thanks for your review'
         });
         this.props.getOneBusiness(this.props.params.id);
       },
       error => this.setState({ errors: error.response.data, isLoading: false })
     );
   }
- /**
+  /**
      * @description Render react component
      *
      * @method render
@@ -84,7 +84,7 @@ class AddReviews extends React.Component {
     return (
       <form
         onSubmit={this.onSubmit}
-        className={classnames("form-group", { "has-error": errors })}
+        className={classnames('form-group', { 'has-error': errors })}
       >
         <h3 className="help-block">{errors ? errors.message : null}</h3>
         <h2 className="mb-3 mt-3 text-muted">Rate and leave a review</h2>

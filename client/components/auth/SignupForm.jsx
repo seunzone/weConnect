@@ -52,24 +52,6 @@ class SignupForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-   * @description Validates user's data before making post request
-   *
-   * @method isValid
-   *
-   * @memberof Signup
-   *
-   * @returns {boolean} true or false
-   */
-  isValid() {
-    const { isValid, errors } = signupValidator(this.state);
-    if (!isValid) {
-      this.setState({ errors });
-    } else {
-      this.setState({ errors: {} });
-      return isValid;
-    }
-  }
-  /**
   * @description Handles Form Submission
   *
   * @method onSubmit
@@ -97,6 +79,24 @@ class SignupForm extends React.Component {
     }
   }
   /**
+   * @description Validates user's data before making post request
+   *
+   * @method isValid
+   *
+   * @memberof Signup
+   *
+   * @returns {boolean} true or false
+   */
+  isValid() {
+    const { isValid, errors } = signupValidator(this.state);
+    if (!isValid) {
+      this.setState({ errors });
+    } else {
+      this.setState({ errors: {} });
+      return isValid;
+    }
+  }
+  /**
      * @description Render react component
      *
      * @method render
@@ -109,63 +109,57 @@ class SignupForm extends React.Component {
   render() {
     const { errors } = this.state;
     return (
-            <div className="col-lg-4">
-                <div className="card bg-primary text-center card-form">
-                    <div className="card-body">
-                        <h3 className="text-white">Sign Up</h3>
-                        <h6 className="font-weight-light text-white">
-                            Create an account
-                        </h6>
-                        <form onSubmit={this.onSubmit}>
-                            <TextFieldGroup
-                                type="text"
-                                placeholder="username"
-                                field="username"
-                                error={errors.username}
-                                value={this.state.username}
-                                onChange={this.onChange}
-                            />
-                            <TextFieldGroup
-                                type="email"
-                                placeholder="email"
-                                field="email"
-                                error={errors.email || errors.emailConflict}
-                                value={this.state.email}
-                                onChange={this.onChange}
-                            />
-                            <TextFieldGroup
-                                type="password"
-                                placeholder="password"
-                                field="password"
-                                error={errors.password}
-                                value={this.state.password}
-                                onChange={this.onChange}
-                            />
-                            <TextFieldGroup
-                                type="password"
-                                placeholder="confirm password"
-                                field="confirmPassword"
-                                error={errors.confirmPassword}
-                                value={this.state.passwordConfirm}
-                                onChange={this.onChange}
-                            />
+      <div className="col-lg-4">
+        <div className="card bg-primary text-center card-form">
+          <div className="card-body">
+            <h3 className="text-white">Sign Up</h3>
+            <h6 className="font-weight-light text-white">
+                      Create an account
+            </h6>
+            <form onSubmit={this.onSubmit}>
+              <TextFieldGroup
+                type="text"
+                placeholder="username"
+                field="username"
+                error={errors.username}
+                value={this.state.username}
+                onChange={this.onChange}
+              />
+              <TextFieldGroup
+                type="email"
+                placeholder="email"
+                field="email"
+                error={errors.email || errors.emailConflict}
+                value={this.state.email}
+                onChange={this.onChange}
+              />
+              <TextFieldGroup
+                type="password"
+                placeholder="password"
+                field="password"
+                error={errors.password}
+                value={this.state.password}
+                onChange={this.onChange}
+              />
+              <TextFieldGroup
+                type="password"
+                placeholder="confirm password"
+                field="confirmPassword"
+                error={errors.confirmPassword}
+                value={this.state.passwordConfirm}
+                onChange={this.onChange}
+              />
 
 
-                            <button disabled={this.state.isLoading} className="btn btn-warning btn-block">
-                                <i className="fa fa-user-plus" aria-hidden="true" /> Sign
-                          Up
-                        </button>
-                        </form>
-                        <hr />
-                        <h6 className="text-white">
-                            Forgotten your password?
-                        <a className="text-white" href="#">
-                                Recover it
-                        </a>
-                        </h6>
-                    </div>
-                </div>
-            </div>
+              <button disabled={this.state.isLoading} className="btn btn-warning btn-block">
+                <i className="fa fa-user-plus" aria-hidden="true" /> Sign
+                    Up
+              </button>
+            </form>
+            <hr />
+          </div>
+        </div>
+      </div>
     );
   }
 }

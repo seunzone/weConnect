@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import jwt from 'jsonwebtoken';
 import { createStore, applyMiddleware, compose } from 'redux';
 import App from './components/App';
 import rootReducer from './reducers/rootReducer';
-import jwt from 'jsonwebtoken';
 import setAuth from './utils/auth';
 import { currentUser } from './actions/auth';
 

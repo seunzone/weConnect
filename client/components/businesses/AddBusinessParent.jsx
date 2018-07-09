@@ -18,7 +18,7 @@ class AddBusinessParent extends React.Component {
 }
 
 AddBusinessParent.propTypes = {
-  addBusiness: PropTypes.func,
+  addBusiness: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
 };
 

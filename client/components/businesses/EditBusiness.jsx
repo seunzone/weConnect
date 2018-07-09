@@ -136,14 +136,13 @@ class EditBusiness extends React.Component {
    */
   onSubmit(event) {
     event.preventDefault();
-    //const { hasSaved, imageData } = this.props.imageInfo;
     this.props.editBusiness(this.props.business.id, this.state).then(
       () => {
         this.props.addFlashMessage({
-          type: "success",
-          text: "Business Edited"
+          type: 'success',
+          text: 'Business Edited'
         });
-        this.context.router.history.push("/dashboard");
+        this.context.router.history.push('/dashboard');
       },
       res => this.setState({ errors: res.res.data.error, isLoading: false })
     );
@@ -169,7 +168,7 @@ class EditBusiness extends React.Component {
         </div>
         <form
           onSubmit={this.onSubmit}
-          className={classnames("form-group", { "has-error": errors })}
+          className={classnames('form-group', { 'has-error': errors })}
         >
           <div className="row justify-content-center">
             <div className="col-lg-10 col-md-10">
@@ -251,7 +250,7 @@ class EditBusiness extends React.Component {
                           onChange={this.handleImageChange}
                         />
                       </span>
-                    </span>{" "}
+                    </span>{' '}
                     <button onClick={this.submitImage}>Uplaod Image</button>
                     {errors && (
                       <span className="help-block">{errors.image}</span>
@@ -274,7 +273,7 @@ class EditBusiness extends React.Component {
                   <hr />
                   <div className="text-center">
                     <button className="btn btn-primary">
-                      <i className="fa fa-plus-circle" aria-hidden="true" />{" "}
+                      <i className="fa fa-plus-circle" aria-hidden="true" />{' '}
                       Update Business
                     </button>
                   </div>
@@ -304,5 +303,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getOneBusiness, saveImageCloudinary, editBusiness, addFlashMessage }
+  {
+    getOneBusiness, saveImageCloudinary, editBusiness, addFlashMessage
+  }
 )(EditBusiness);

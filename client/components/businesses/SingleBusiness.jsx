@@ -24,7 +24,7 @@ import AddReviews from '../reviews/AddReviews';
 
 // import actions
 import { getOneBusiness } from '../../actions/businessAction';
-import { addBusinessReview } from '../../actions/addReviewAction';
+import addBusinessReview from '../../actions/addReviewAction';
 /**
  * @description Shows details of a business
  *

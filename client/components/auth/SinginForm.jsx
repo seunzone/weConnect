@@ -100,9 +100,9 @@ class SigninForm extends React.Component {
                   <p className="help-block">{errors ? errors.message : null}</p>
                   <form onSubmit={this.onSubmit}>
                     <TextFieldGroup
-                      type='text'
-                      placeholder='email'
-                      field='email'
+                      type="text"
+                      placeholder="email"
+                      field="email"
                       value={this.state.email}
                       error={errors.error ? errors.error.email : ''}
                       onChange={this.onChange}

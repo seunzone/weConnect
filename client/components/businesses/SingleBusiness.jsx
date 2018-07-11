@@ -25,6 +25,7 @@ import AddReviews from '../reviews/AddReviews';
 // import actions
 import { getOneBusiness } from '../../actions/businessAction';
 import addBusinessReview from '../../actions/addReviewAction';
+import Business from './Business';
 /**
  * @description Shows details of a business
  *
@@ -62,7 +63,11 @@ class SingleBusiness extends React.Component {
   componentDidMount() {
     this.props.getOneBusiness(this.props.match.params.id);
   }
-
+  /**
+   * @return {null} new state
+   * @param {object} nextProps
+   * @memberof SingleBusiness
+   */
   componentWillReceiveProps(nextProps) {
     const { Reviews } = nextProps.singleBusiness;
     this.setState({
@@ -89,7 +94,7 @@ class SingleBusiness extends React.Component {
     const shareUrl = `https://weconnect-seunzone.herokuapp.com/${
       singleBusiness.id
     }`;
-    const shareTitle = "We connect with thy business";
+    const shareTitle = 'We connect with thy business';
     if (!singleBusiness.Reviews) {
       return <img src={gif} alt="loading..." />;
     }
@@ -100,11 +105,11 @@ class SingleBusiness extends React.Component {
     );
 
     const showReviews = singleBusiness.Reviews.map(review => (
-      <div>
+      <div key={Business.id}>
         <span className="text-danger">{review.User.username}</span> &nbsp;
         <span className="text-muted">
           <i className="fa fa-clock-o" aria-hidden="true" />&nbsp;
-          {moment(review.createdAt).format("Do MMMM YYYY HH:mm")}
+          {moment(review.createdAt).format('Do MMMM YYYY HH:mm')}
         </span>&nbsp;&nbsp;
         {rating(review.rating)}
         <br />
@@ -228,7 +233,10 @@ class SingleBusiness extends React.Component {
 SingleBusiness.propTypes = {
   addBusinessReview: PropTypes.func.isRequired,
   getOneBusiness: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired
+  addFlashMessage: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  singleBusiness: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state, props) => ({

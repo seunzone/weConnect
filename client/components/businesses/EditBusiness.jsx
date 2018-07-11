@@ -58,15 +58,9 @@ class EditBusiness extends React.Component {
     this.props.getOneBusiness(this.props.params.id);
   }
   /**
-   * @description Component Will recieve props
-   *
-   * @constructor
-   *
-   * @param {void}
-   *
-   * @memberof AddNewBusiness
-   *
-   * @returns {void}
+   * @return {null} new state
+   * @param {object} nextProps
+   * @memberof EditBusiness
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -93,38 +87,6 @@ class EditBusiness extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-   * @description Handles change image event
-   *
-   * @method handleImageChange
-   *
-   * @memberof EditBusiness
-   *
-   * @param {any} event
-   *
-   * @returns {void}
-   */
-  handleImageChange(event) {
-    event.preventDefault();
-    this.setState({ newImage: event.target.files[0] });
-  }
-  /**
-   * @description Saves Image to cloudinary
-   *
-   * @method submitImage
-   *
-   * @memberof EditBusiness
-   *
-   * @param {any} event
-   *
-   * @returns {void}
-   */
-  submitImage(event) {
-    event.preventDefault();
-    this.props.saveImageCloudinary(this.state.newImage).then(() => {
-      this.setState({ image: this.props.imageInfo.imageData });
-    });
-  }
-  /**
    * @description Handles Form Submission
    *
    * @method onSubmit
@@ -147,6 +109,38 @@ class EditBusiness extends React.Component {
       },
       res => this.setState({ errors: res.res.data.error, isLoading: false })
     );
+  }
+  /**
+   * @description Saves Image to cloudinary
+   *
+   * @method submitImage
+   *
+   * @memberof EditBusiness
+   *
+   * @param {any} event
+   *
+   * @returns {void}
+   */
+  submitImage(event) {
+    event.preventDefault();
+    this.props.saveImageCloudinary(this.state.newImage).then(() => {
+      this.setState({ image: this.props.imageInfo.imageData });
+    });
+  }
+  /**
+   * @description Handles change image event
+   *
+   * @method handleImageChange
+   *
+   * @memberof EditBusiness
+   *
+   * @param {any} event
+   *
+   * @returns {void}
+   */
+  handleImageChange(event) {
+    event.preventDefault();
+    this.setState({ newImage: event.target.files[0] });
   }
   /**
    * @description Render react component
@@ -294,7 +288,11 @@ EditBusiness.propTypes = {
   editBusiness: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
   business: PropTypes.object.isRequired,
-  oneBusiness: PropTypes.object.isRequired
+  oneBusiness: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
+  getOneBusiness: PropTypes.func.isRequired,
+  imageInfo: PropTypes.object.isRequired,
+  saveImageCloudinary: PropTypes.func.isRequired
 };
 
 EditBusiness.contextTypes = {

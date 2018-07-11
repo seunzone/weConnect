@@ -8,12 +8,10 @@ import authenticateUser from '../utils/auth';
  * @param {*} user
  * @returns {Object} user
  */
-export const currentUser = (user) => {
-  return {
-    type: CURRENT_USER,
-    user
-  };
-};
+export const currentUser = user => ({
+  type: CURRENT_USER,
+  user
+});
 
 /**
  * @description - Removes token from local storage

@@ -54,7 +54,7 @@ BusinessCard.propTypes = {
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string,
   category: PropTypes.string.isRequired,
-  deleteBusiness: PropTypes.func.isRequired
+  deleteBusiness: PropTypes.func
 };
 
 BusinessCard.defaultProps = {

@@ -29,13 +29,14 @@ class EditBusiness extends React.Component {
    */
   constructor(props) {
     super(props);
+    const { oneBusiness, business } = this.props;
     this.state = {
-      name: this.props.oneBusiness ? this.props.oneBusiness.name : '',
-      category: this.props.business.category,
-      location: this.props.business.location,
-      newImage: this.props.business.newImage,
-      image: this.props.business.image,
-      description: this.props.business.description,
+      name: oneBusiness ? oneBusiness.name : '',
+      category: business.category,
+      location: business.location,
+      newImage: business.newImage,
+      image: business.image,
+      description: business.description,
       errors: {},
       isLoading: false
     };
@@ -158,7 +159,9 @@ class EditBusiness extends React.Component {
    *
    */
   render() {
-    const { errors } = this.state;
+    const {
+      errors, name, category, description, location
+    } = this.state;
     return (
       <div className="container my-5">
         <div className="row justify-content-center">
@@ -178,7 +181,7 @@ class EditBusiness extends React.Component {
                     <div className="col-sm-4">
                       <label>Name:</label>
                       <input
-                        value={this.state.name}
+                        value={name}
                         onChange={this.onChange}
                         name="name"
                         type="text"
@@ -196,7 +199,7 @@ class EditBusiness extends React.Component {
                           className="form-control"
                           type="select"
                           name="category"
-                          value={this.state.category}
+                          value={category}
                           onChange={this.onChange}
                         >
                           <option value="" disabled>
@@ -220,7 +223,7 @@ class EditBusiness extends React.Component {
                           className="form-control"
                           type="select"
                           name="location"
-                          value={this.state.location}
+                          value={location}
                           onChange={this.onChange}
                         >
                           <option value="" disabled>
@@ -259,7 +262,7 @@ class EditBusiness extends React.Component {
                   <br />
                   <label>Details</label>
                   <textarea
-                    value={this.state.description}
+                    value={description}
                     onChange={this.onChange}
                     name="description"
                     placeholder="Put Business details here..."
@@ -289,7 +292,9 @@ class EditBusiness extends React.Component {
 
 EditBusiness.propTypes = {
   editBusiness: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired
+  addFlashMessage: PropTypes.func.isRequired,
+  business: PropTypes.object.isRequired,
+  oneBusiness: PropTypes.object.isRequired
 };
 
 EditBusiness.contextTypes = {

@@ -54,6 +54,17 @@ class Businesses extends React.Component {
       this.setState({ count, currentPage, limit });
     });
   }
+  /**
+  * @description Bind the value of the inputs to state
+  *
+  * @method onChange
+  *
+  * @memberof Business
+  *
+  * @param {any} page
+  *
+  * @returns {void}
+  */
   onChange(page) {
     this.props.getAllBusiness(page).then(() => {
       const { count, currentPage, limit } = this.props.paginate;

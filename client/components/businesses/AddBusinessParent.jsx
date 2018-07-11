@@ -7,12 +7,18 @@ import AddBusiness from './AddBusiness';
 // actions
 import { addBusiness } from '../../actions/businessAction';
 import { addFlashMessage } from '../../actions/flashMessages';
-
+/**
+ * @description Parent of addBusiness Class
+ *
+ * @class AddNewBusinessParent
+ *
+ * @extends {React.Component}
+ */
 class AddBusinessParent extends React.Component {
   render() {
     const { addBusiness, addFlashMessage } = this.props;
     return (
-      <AddBusiness addBusiness={ addBusiness } addFlashMessage={addFlashMessage} />
+      <AddBusiness addBusiness={addBusiness} addFlashMessage={addFlashMessage} />
     );
   }
 }
@@ -22,4 +28,4 @@ AddBusinessParent.propTypes = {
   addFlashMessage: PropTypes.func.isRequired
 };
 
-export default connect((state) => {return {}} , {addBusiness, addFlashMessage })(AddBusinessParent);
+export default connect(() => ({}), { addBusiness, addFlashMessage })(AddBusinessParent);

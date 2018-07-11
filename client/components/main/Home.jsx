@@ -103,6 +103,7 @@ Home.propTypes = {
   signUpUsers: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
   getAllBusiness: PropTypes.func.isRequired,
+  business: PropTypes.array.isRequired
 };
 const mapStateToProps = state => ({
   business: state.allBusinesses.business,

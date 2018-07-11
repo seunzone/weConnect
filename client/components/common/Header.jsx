@@ -12,16 +12,33 @@ import { logout } from '../../actions/auth';
  * @extends {React.Component}
  */
 class Header extends React.Component {
+  /**
+   *
+   * @description removes user token
+   * @return {null} new state
+   * @param {object} event
+   * @memberof Header
+   */
   logout(event) {
     event.preventDefault();
     this.props.logout();
-    this.context.router.history.push("/signin");
+    this.context.router.history.push('/signin');
   }
+  /**
+     * @description Render react component
+     *
+     * @method render
+     *
+     * @memberof Header
+     *
+     * @returns {void}
+     *
+     */
   render() {
     const { isAuthenticated } = this.props.auth;
     const userLinks = (
       <nav className="navbar navbar-expand-lg navbar-custom navbar-light">
-        <Link to="/business" className="navbar-brand" href="#">
+        <Link to="/business" className="navbar-brand">
           <img
             src="../../public/images/logo.png"
             className="navbar-logo-img mr-2"
@@ -33,7 +50,6 @@ class Header extends React.Component {
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
           id="toggle-me"
@@ -73,7 +89,7 @@ class Header extends React.Component {
 
     const guestLinks = (
       <nav className="navbar navbar-expand-lg navbar-custom navbar-light">
-        <Link to="/" className="navbar-brand" href="#">
+        <Link to="/" className="navbar-brand">
           <img
             src="../../public/images/logo.png"
             className="navbar-logo-img mr-2"
@@ -85,7 +101,6 @@ class Header extends React.Component {
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
           id="toggle-me"

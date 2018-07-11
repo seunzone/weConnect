@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Pagination from 'rc-pagination';
 import FlashMessagesList from '../flash/FlashMessagesList';
 import gif from '../../public/images/loader.gif';
-
 
 // import components
 import BusinessCard from '../cards/BusinessCards';
@@ -55,7 +55,17 @@ class UserDashboard extends React.Component {
         this.setState({ count, currentPage, limit });
       });
   }
-
+  /**
+  * @description Bind the value of the inputs to state
+  *
+  * @method onChange
+  *
+  * @memberof SignupForm
+  *
+  * @param {any} page
+  *
+  * @returns {void}
+  */
   onChange(page) {
     this.props.getAllBusiness(page)
       .then(() => {
@@ -101,7 +111,7 @@ class UserDashboard extends React.Component {
       return <div><img src={gif} alt="loading..." /></div>;
     }
     return (
-      <div>
+      <div className="user-dashboard-container">
         <div className="container my-5">
           <div className="row justify-content-center">
             <div className="col-lg-8 col-md-8 text-center">
@@ -119,7 +129,6 @@ class UserDashboard extends React.Component {
         <div className="row my-6">
           {authbusiness.length === 0 ? emptyMessage : showBusiness }
         </div>
-        {/* modal starts here */}
         <div className="modal fade" id="deleteModal" role="dialog" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
@@ -139,6 +148,17 @@ class UserDashboard extends React.Component {
             </div>
           </div>
         </div>
+        <div className="d-flex justify-content-center mt-5">
+          <Pagination
+            showTotal={(total, range) =>
+                  `${range[0]} - ${range[1]} of ${total} items`
+                }
+            total={count}
+            pageSize={limit}
+            current={currentPage}
+            onChange={this.onChange}
+          />
+        </div>
       </div>
     );
   }
@@ -147,6 +167,9 @@ class UserDashboard extends React.Component {
 UserDashboard.propTypes = {
   getAllBusiness: PropTypes.func.isRequired,
   deleteBusiness: PropTypes.func.isRequired,
+  business: PropTypes.array.isRequired,
+  authId: PropTypes.object.isRequired,
+  paginate: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

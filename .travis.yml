@@ -7,7 +7,7 @@ services:
   - postgresql
 before_script: 
   - npm install
-  - psql -c 'CREATE DATABASE weconnect;' -U postgres
+  - psql -c 'CREATE DATABASE travis;' -U postgres
   - psql -c "CREATE USER seun WITH PASSWORD 'password';" -U postgres
 script:
   - npm run test

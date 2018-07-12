@@ -248,7 +248,8 @@ class AddNewBusiness extends React.Component {
 AddNewBusiness.propTypes = {
   addBusiness: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
-  saveImageCloudinary: PropTypes.func.isRequired
+  saveImageCloudinary: PropTypes.func.isRequired,
+  imageInfo: PropTypes.object.isRequired
 };
 
 AddNewBusiness.contextTypes = {

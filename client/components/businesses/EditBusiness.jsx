@@ -1,13 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import classnames from "classnames";
+import React from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import classnames from 'classnames';
 // actions
-import { getOneBusiness } from "../../actions/businessAction";
-import { editBusiness } from "../../actions/editBusinessAction";
-import { saveImageCloudinary } from "../../actions/uploadImageAction";
+import { getOneBusiness } from '../../actions/businessAction';
+import { editBusiness } from '../../actions/editBusinessAction';
+import { saveImageCloudinary } from '../../actions/uploadImageAction';
 
-import { addFlashMessage } from "../../actions/flashMessages";
+import { addFlashMessage } from '../../actions/flashMessages';
 /**
  * @description Edits Business
  *
@@ -29,13 +29,14 @@ class EditBusiness extends React.Component {
    */
   constructor(props) {
     super(props);
+    const { oneBusiness, business } = this.props;
     this.state = {
-      name: this.props.oneBusiness ? this.props.oneBusiness.name : "",
-      category: this.props.business.category,
-      location: this.props.business.location,
-      newImage: this.props.business.newImage,
-      image: this.props.business.image,
-      description: this.props.business.description,
+      name: oneBusiness ? oneBusiness.name : '',
+      category: business.category,
+      location: business.location,
+      newImage: business.newImage,
+      image: business.image,
+      description: business.description,
       errors: {},
       isLoading: false
     };
@@ -57,15 +58,9 @@ class EditBusiness extends React.Component {
     this.props.getOneBusiness(this.props.params.id);
   }
   /**
-   * @description Component Will recieve props
-   *
-   * @constructor
-   *
-   * @param {void}
-   *
-   * @memberof AddNewBusiness
-   *
-   * @returns {void}
+   * @return {null} new state
+   * @param {object} nextProps
+   * @memberof EditBusiness
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -92,19 +87,28 @@ class EditBusiness extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-   * @description Handles change image event
+   * @description Handles Form Submission
    *
-   * @method handleImageChange
+   * @method onSubmit
    *
-   * @memberof EditBusiness
+   * @param {object} event
    *
-   * @param {any} event
+   * @memberof AddNewBusiness
    *
    * @returns {void}
    */
-  handleImageChange(event) {
+  onSubmit(event) {
     event.preventDefault();
-    this.setState({ newImage: event.target.files[0] });
+    this.props.editBusiness(this.props.business.id, this.state).then(
+      () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Business Edited'
+        });
+        this.context.router.history.push('/dashboard');
+      },
+      res => this.setState({ errors: res.res.data.error, isLoading: false })
+    );
   }
   /**
    * @description Saves Image to cloudinary
@@ -124,29 +128,19 @@ class EditBusiness extends React.Component {
     });
   }
   /**
-   * @description Handles Form Submission
+   * @description Handles change image event
    *
-   * @method onSubmit
+   * @method handleImageChange
    *
-   * @param {object} event
+   * @memberof EditBusiness
    *
-   * @memberof AddNewBusiness
+   * @param {any} event
    *
    * @returns {void}
    */
-  onSubmit(event) {
+  handleImageChange(event) {
     event.preventDefault();
-    //const { hasSaved, imageData } = this.props.imageInfo;
-    this.props.editBusiness(this.props.business.id, this.state).then(
-      () => {
-        this.props.addFlashMessage({
-          type: "success",
-          text: "Business Edited"
-        });
-        this.context.router.history.push("/dashboard");
-      },
-      res => this.setState({ errors: res.res.data.error, isLoading: false })
-    );
+    this.setState({ newImage: event.target.files[0] });
   }
   /**
    * @description Render react component
@@ -159,7 +153,9 @@ class EditBusiness extends React.Component {
    *
    */
   render() {
-    const { errors } = this.state;
+    const {
+      errors, name, category, description, location
+    } = this.state;
     return (
       <div className="container my-5">
         <div className="row justify-content-center">
@@ -169,7 +165,7 @@ class EditBusiness extends React.Component {
         </div>
         <form
           onSubmit={this.onSubmit}
-          className={classnames("form-group", { "has-error": errors })}
+          className={classnames('form-group', { 'has-error': errors })}
         >
           <div className="row justify-content-center">
             <div className="col-lg-10 col-md-10">
@@ -179,7 +175,7 @@ class EditBusiness extends React.Component {
                     <div className="col-sm-4">
                       <label>Name:</label>
                       <input
-                        value={this.state.name}
+                        value={name}
                         onChange={this.onChange}
                         name="name"
                         type="text"
@@ -197,7 +193,7 @@ class EditBusiness extends React.Component {
                           className="form-control"
                           type="select"
                           name="category"
-                          value={this.state.category}
+                          value={category}
                           onChange={this.onChange}
                         >
                           <option value="" disabled>
@@ -221,7 +217,7 @@ class EditBusiness extends React.Component {
                           className="form-control"
                           type="select"
                           name="location"
-                          value={this.state.location}
+                          value={location}
                           onChange={this.onChange}
                         >
                           <option value="" disabled>
@@ -251,7 +247,7 @@ class EditBusiness extends React.Component {
                           onChange={this.handleImageChange}
                         />
                       </span>
-                    </span>{" "}
+                    </span>{' '}
                     <button onClick={this.submitImage}>Uplaod Image</button>
                     {errors && (
                       <span className="help-block">{errors.image}</span>
@@ -260,7 +256,7 @@ class EditBusiness extends React.Component {
                   <br />
                   <label>Details</label>
                   <textarea
-                    value={this.state.description}
+                    value={description}
                     onChange={this.onChange}
                     name="description"
                     placeholder="Put Business details here..."
@@ -274,7 +270,7 @@ class EditBusiness extends React.Component {
                   <hr />
                   <div className="text-center">
                     <button className="btn btn-primary">
-                      <i className="fa fa-plus-circle" aria-hidden="true" />{" "}
+                      <i className="fa fa-plus-circle" aria-hidden="true" />{' '}
                       Update Business
                     </button>
                   </div>
@@ -290,7 +286,13 @@ class EditBusiness extends React.Component {
 
 EditBusiness.propTypes = {
   editBusiness: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired
+  addFlashMessage: PropTypes.func.isRequired,
+  business: PropTypes.object.isRequired,
+  oneBusiness: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
+  getOneBusiness: PropTypes.func.isRequired,
+  imageInfo: PropTypes.object.isRequired,
+  saveImageCloudinary: PropTypes.func.isRequired
 };
 
 EditBusiness.contextTypes = {
@@ -304,5 +306,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getOneBusiness, saveImageCloudinary, editBusiness, addFlashMessage }
+  {
+    getOneBusiness, saveImageCloudinary, editBusiness, addFlashMessage
+  }
 )(EditBusiness);

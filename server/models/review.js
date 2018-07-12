@@ -15,7 +15,7 @@ export default (sequelize, DataTypes) => {
     rating: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: { min: 1, max: 5}
+      validate: { min: 1, max: 5 }
     },
   });
   Review.associate = (models) => {

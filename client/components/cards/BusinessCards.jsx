@@ -1,25 +1,24 @@
-import React from "react";
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
-import Buttons from '../businesses/Buttons';
 import moment from 'moment';
+import Buttons from '../businesses/Buttons';
 
 
-
-
-const BusinessCard = ({ name, image, description, createdAt, category, id, deleteBusiness }) => {
- 
-  const Style = { height: "250px" };
+const BusinessCard = ({
+  name, image, description, createdAt, category, id, deleteBusiness
+}) => {
+  const Style = { height: '250px' };
   return (
-   
     <div className="col-md-4">
-        <div className="card">
+      <div className="card">
         <div className="img-zoom">
           <img
             className="card-img-top"
             style={Style}
             src={image}
-            alt="Card image cap"
+            alt="Card cap"
           />
         </div>
         <div className="card-body">
@@ -44,8 +43,21 @@ const BusinessCard = ({ name, image, description, createdAt, category, id, delet
           { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} deleteBusiness={deleteBusiness} /> : ''}
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
+BusinessCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  createdAt: PropTypes.string,
+  category: PropTypes.string.isRequired,
+  deleteBusiness: PropTypes.func
+};
+
+BusinessCard.defaultProps = {
+  createdAt: ''
+};
 export default BusinessCard;

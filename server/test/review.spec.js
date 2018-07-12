@@ -56,18 +56,5 @@ describe('REVIEW API', () => {
           done();
         });
     });
-    // it('should not add review for a id that is not a number', (done) => {
-    //   chai.request(app)
-    //     .post('/api/v1/businesses/abcdefg/review')
-    //     .set('token', userToken)
-    //     .send(review)
-    //     .end((err, res) => {
-    //       expect(res.status).to.equal(400);
-    //       expect(res.body).to.be.an('object');
-    //       expect(res.body.error.id)
-    //         .to.include('The Id must be a number');
-    //       done();
-    //     });
-    // });
   });
 });

@@ -1,12 +1,10 @@
-import React from "react";
+import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import classnames from 'classnames';
 
 // actions
-import { addBusiness } from '../../actions/addBusinessAction';
 import { saveImageCloudinary } from '../../actions/uploadImageAction';
-import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
  * @description Creates New Business
@@ -30,21 +28,21 @@ class AddNewBusiness extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        name: '',
-        category: '',
-        location: '',
-        newImage: '',
-        image: '',
-        description: '',
-        errors: {},
-        isLoading: false
-    }
+      name: '',
+      category: '',
+      location: '',
+      newImage: '',
+      image: '',
+      description: '',
+      errors: {},
+      isLoading: false
+    };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.submitImage = this.submitImage.bind(this);
-}
-/**
+  }
+  /**
   * @description Bind the value of the inputs to state
   *
   * @method onChange
@@ -55,42 +53,12 @@ class AddNewBusiness extends React.Component {
   *
   * @returns {void}
   */
-onChange(event) {
+  onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-}
-/**
-  * @description Handles change image event
-  *
-  * @method handleImageChange
-  *
-  * @memberof AddNewBusiness
-  *
-  * @param {any} event
-  *
-  * @returns {void}
-  */
-handleImageChange(event){
-  event.preventDefault();
-  this.setState({ newImage: event.target.files[0] });
-}
-/**
-  * @description Saves Image to cloudinary
-  *
-  * @method submitImage
-  *
-  * @memberof AddNewBusiness
-  *
-  * @param {any} event
-  *
-  * @returns {void}
-  */
-submitImage(event){
-  event.preventDefault();
-  this.props.saveImageCloudinary(this.state.newImage).then(()=> {
-    this.setState({image: this.props.imageInfo.imageData});
-  });
-}
-/**
+  }
+
+
+  /**
   * @description Handles Form Submission
   *
   * @method onSubmit
@@ -101,22 +69,54 @@ submitImage(event){
   *
   * @returns {void}
   */
-onSubmit(event) {
+  onSubmit(event) {
     event.preventDefault();
-    const { imageData } = this.props.imageInfo; 
-      this.setState({ image: imageData, errors: {}, isLoading: true });
-        this.props.addBusiness(this.state).then(
-            () => {
-                this.props.addFlashMessage({
-                    type: 'success',
-                    text: 'Business Created'
-                })
-                this.context.router.history.push('/dashboard')
-            },
-             (err) => this.setState({ errors: err.response.data.error, isLoading: false }) 
-        );
-}
-/**
+    const { imageData } = this.props.imageInfo;
+    this.setState({ image: imageData, errors: {}, isLoading: true });
+    this.props.addBusiness(this.state).then(
+      () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Business Created'
+        });
+        this.context.router.history.push('/dashboard');
+      },
+      err => this.setState({ errors: err.response.data.error, isLoading: false })
+    );
+  }
+  /**
+  * @description Handles change image event
+  *
+  * @method handleImageChange
+  *
+  * @memberof AddNewBusiness
+  *
+  * @param {any} event
+  *
+  * @returns {void}
+  */
+  handleImageChange(event) {
+    event.preventDefault();
+    this.setState({ newImage: event.target.files[0] });
+  }
+  /**
+  * @description Saves Image to cloudinary
+  *
+  * @method submitImage
+  *
+  * @memberof AddNewBusiness
+  *
+  * @param {any} event
+  *
+  * @returns {void}
+  */
+  submitImage(event) {
+    event.preventDefault();
+    this.props.saveImageCloudinary(this.state.newImage).then(() => {
+      this.setState({ image: this.props.imageInfo.imageData });
+    });
+  }
+  /**
      * @description Render react component
      *
      * @method render
@@ -127,7 +127,9 @@ onSubmit(event) {
      *
      */
   render() {
-    const { errors } = this.state;
+    const {
+      errors, name, category, location, image, description
+    } = this.state;
     return (
       <div className="container my-5">
         <div className="row justify-content-center">
@@ -144,7 +146,7 @@ onSubmit(event) {
                     <div className="col-sm-4">
                       <label>Name:</label>
                       <input
-                        value={this.state.name}
+                        value={name}
                         onChange={this.onChange}
                         name="name"
                         type="text"
@@ -160,7 +162,7 @@ onSubmit(event) {
                           className="form-control"
                           type="select"
                           name="category"
-                          value={this.state.category}
+                          value={category}
                           onChange={this.onChange}
                         >
                           <option value="" disabled>Choose Category</option>
@@ -180,7 +182,7 @@ onSubmit(event) {
                           className="form-control"
                           type="select"
                           name="location"
-                          value={this.state.location}
+                          value={location}
                           onChange={this.onChange}
                         >
                           <option value="" disabled>Choose Location</option>
@@ -210,14 +212,14 @@ onSubmit(event) {
                     Uplaod Image
                         </button>
                       </span>
-                    </span> 
-                    <img src={this.state.image} alt="preview pic" height="150" width="250" />
+                    </span>
+                    <img src={image} alt="preview pic" height="150" width="250" />
                     {errors && <span className="help-block">{errors.image}</span>}
                   </div>
                   <br />
                   <label>Details</label>
                   <textarea
-                    value={this.state.description}
+                    value={description}
                     onChange={this.onChange}
                     name="description"
                     placeholder="Put Business details here..."
@@ -241,19 +243,20 @@ onSubmit(event) {
       </div>
     );
   }
-
 }
 
 AddNewBusiness.propTypes = {
   addBusiness: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired
-}
+  addFlashMessage: PropTypes.func.isRequired,
+  saveImageCloudinary: PropTypes.func.isRequired,
+  imageInfo: PropTypes.object.isRequired
+};
 
 AddNewBusiness.contextTypes = {
   router: PropTypes.object.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   imageInfo: state.imageUrl
-})
+});
 export default connect(mapStateToProps, { saveImageCloudinary })(AddNewBusiness);

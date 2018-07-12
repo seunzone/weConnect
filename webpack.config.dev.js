@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
+const Dotenv = require('dotenv-webpack');
+
 const path = require('path');
 
 
@@ -20,7 +22,11 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new WebpackBar()
+    new WebpackBar(),
+    new Dotenv({
+      path: './.env', // load this now instead of the ones in '.env'
+      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+    })
   ],
   resolve: {
     extensions: ['*', '.js', '.jsx']

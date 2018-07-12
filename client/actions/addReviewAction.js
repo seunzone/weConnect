@@ -1,16 +1,26 @@
 import axios from 'axios';
-import { ADD_REVIEWS } from './actionType'
+import { ADD_REVIEWS } from './actionType';
 
-const addReview = (review) => {
-    return {
-        type: ADD_REVIEWS,
-        review
-    }
-}
+/**
+ * @description - Add new review
+ * @export { Function } - Add Review
+ * @param {*} review
+ * @returns { review } - Action
+ */
+const addReview = review => ({
+  type: ADD_REVIEWS,
+  review
+});
 
-export const addBusinessReview = (id, content) => dispatch => {
-    return axios.post('/api/v1/businesses/' + id + '/review', content)
-        .then(res => {
-            dispatch(addReview(res.data.review));
-        });
-};
+/**
+ * @description - Posts a new review
+ * @param {*} id
+ * @param {*} content
+ * @returns { review } - Action
+ */
+const addBusinessReview = (id, content) => dispatch => axios.post(`/api/v1/businesses/${id}/review`, content)
+  .then((res) => {
+    dispatch(addReview(res.data.review));
+  });
+
+export default addBusinessReview;

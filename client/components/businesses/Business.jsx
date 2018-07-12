@@ -1,10 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Pagination from "rc-pagination";
-import BusinessCard from "../cards/BusinessCards";
-import FlashMessagesList from "../flash/FlashMessagesList";
-import { getAllBusiness, getBusinessSearchAction } from "../../actions/businessAction";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Pagination from 'rc-pagination';
+import BusinessCard from '../cards/BusinessCards';
+import FlashMessagesList from '../flash/FlashMessagesList';
+import { getAllBusiness, getBusinessSearchAction } from '../../actions/businessAction';
+import HomeFooter from '../extras/HomeFooter';
+
 /**
  * @description Business Cards
  *
@@ -30,8 +32,8 @@ class Businesses extends React.Component {
       currentPage: 1,
       count: 0,
       limit: 0,
-      searchKeyType: "",
-      keyValue: ""
+      searchKeyType: '',
+      keyValue: ''
     };
     this.onChange = this.onChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
@@ -52,6 +54,17 @@ class Businesses extends React.Component {
       this.setState({ count, currentPage, limit });
     });
   }
+  /**
+  * @description Bind the value of the inputs to state
+  *
+  * @method onChange
+  *
+  * @memberof Business
+  *
+  * @param {any} page
+  *
+  * @returns {void}
+  */
   onChange(page) {
     this.props.getAllBusiness(page).then(() => {
       const { count, currentPage, limit } = this.props.paginate;
@@ -69,11 +82,11 @@ class Businesses extends React.Component {
   *
   * @returns {void}
   */
-  onChangeThis(event){
+  onChangeThis(event) {
     event.preventDefault();
     this.setState({ [event.target.name]: event.target.value });
   }
-   /**
+  /**
    * @description use value for search
    *
    * @method onChange
@@ -120,22 +133,20 @@ class Businesses extends React.Component {
           Please try again. Thanks
         </span>
       </div>
-    )
-    const showBusiness = allBusinesses.map(business => {
-      return (
-        <BusinessCard
-          key={business.id}
-          id={business.id}
-          name={business.name}
-          image={business.image}
-          description={business.description}
-          category={business.category}
-        />
-      );
-    });
+    );
+    const showBusiness = allBusinesses.map(business => (
+      <BusinessCard
+        key={business.id}
+        id={business.id}
+        name={business.name}
+        image={business.image}
+        description={business.description}
+        category={business.category}
+      />
+    ));
     {
       const DivStyle = {
-        padding: "padding: 30px 0px"
+        padding: 'padding: 30px 0px'
       };
       return (
         <div>
@@ -151,13 +162,15 @@ class Businesses extends React.Component {
                       <input
                         className="form-control"
                         placeholder="Enter keyword here"
-                        name="keyValue" 
+                        name="keyValue"
                         onChange={this.onChangeThis}
+                        required
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <select className="form-control" name="searchKeyType" onChange={this.onChangeThis}>
-                        <option>Search by</option>
+                      <select className="form-control" name="searchKeyType" onChange={this.onChangeThis} required>
+                        <option value="" selected="true" disabled="disabled">Search By</option>
+                        <option value={this.state.name}>Name</option>
                         <option value={this.state.category}>Category</option>
                         <option value={this.state.location}>Location</option>
                       </select>
@@ -178,7 +191,7 @@ class Businesses extends React.Component {
             <br />
             <div className="card-deck wow fadeIn" />
             <div className="row">
-              {showBusiness.length === 0 ? emptyMessage  : allBusinesses && showBusiness}
+              {showBusiness.length === 0 ? emptyMessage : allBusinesses && showBusiness}
             </div>
             <div className="d-flex justify-content-center mt-5">
               <Pagination
@@ -192,6 +205,7 @@ class Businesses extends React.Component {
               />
             </div>
           </div>
+          <HomeFooter />
         </div>
       );
     }
@@ -199,7 +213,10 @@ class Businesses extends React.Component {
 }
 
 Businesses.propTypes = {
-  getAllBusiness: PropTypes.func.isRequired
+  getAllBusiness: PropTypes.func.isRequired,
+  paginate: PropTypes.object.isRequired,
+  getBusinessSearchAction: PropTypes.func.isRequired,
+  business: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -155,7 +155,9 @@ body {
     width: 47px;
     line-height: 0;
   }
-  
+  .user-dashboard-container{
+  margin-bottom: 80px;    
+  }
   .card .btn-action :hover {
     background-color: grey;
   }
@@ -390,17 +392,13 @@ background-color:#2196F3;
   height: 36px;
   transition: 0.3s;
 }
-
+.my-6{
+  margin-bottom: 150px;
+}
 .social-links a:hover {
   background: #007bff;
   color: #fff;
-}
-.rc-pagination-item {
-  background-color: #007bff !important;
-  color: white;
-  border: none !important;
- }
- 
+} 
  .rc-pagination-item-active {
   background-color: #007bff !important;
   color: white;
@@ -411,4 +409,7 @@ background-color:#2196F3;
   background-color: #007bff !important;
   color: white;
   border: none !important;
+ }
+ .not-found{
+  margin-bottom: 220px; 
  }

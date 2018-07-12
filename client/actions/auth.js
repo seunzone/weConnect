@@ -3,13 +3,20 @@ import decode from 'jwt-decode';
 import { CURRENT_USER } from './actionType';
 import authenticateUser from '../utils/auth';
 
-export const currentUser = (user) => {
-  return {
-    type: CURRENT_USER,
-    user
-  }
-};
+/**
+ * @description - Sets the current user in the store
+ * @param {*} user
+ * @returns {Object} user
+ */
+export const currentUser = user => ({
+  type: CURRENT_USER,
+  user
+});
 
+/**
+ * @description - Removes token from local storage
+ * @returns {*} object
+ */
 export function logout() {
   return (dispatch) => {
     localStorage.removeItem('makeToken');

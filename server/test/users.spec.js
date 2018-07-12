@@ -34,7 +34,6 @@ describe('User signup', () => {
       .end((err, res) => {
         expect(res).to.have.status(409);
         expect(res.body).to.be.an('object');
-        //expect(res.body.message).to.equal('Email already exist');
         done();
       });
   });

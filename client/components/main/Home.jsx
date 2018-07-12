@@ -6,8 +6,8 @@ import { signUpUsers } from '../../actions/auth';
 import { addFlashMessage } from '../../actions/flashMessages';
 import { getAllBusiness } from '../../actions/businessAction';
 import BusinessCard from '../cards/BusinessCards';
-import HomeFooter from "../extras/HomeFooter";
-import SignupForm from "../auth/SignupForm";
+import HomeFooter from '../extras/HomeFooter';
+import SignupForm from '../auth/SignupForm';
 
 /**
  * @description Home Page
@@ -17,20 +17,7 @@ import SignupForm from "../auth/SignupForm";
  * @extends {React.Component}
  */
 class Home extends React.Component {
-   /**
-   *
-   * @constructor
-   *
-   * @param {any} props
-   *
-   * @memberof Home
-   *
-   * @returns {void}
-   */
-  constructor(props) {
-    super(props);
-  }
-   /**
+  /**
    * @description Before component mounts
    *
    * @method isValid
@@ -40,9 +27,9 @@ class Home extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
-    this.props.getAllBusiness()
+    this.props.getAllBusiness();
   }
-   /**
+  /**
      * @description Render react component
      *
      * @method render
@@ -53,9 +40,7 @@ class Home extends React.Component {
      *
      */
   render() {
-    const { isAuthenticated } = this.props.auth;    
     const allBusinesses = this.props.business;
-    const { signUpUsers, addFlashMessage } = this.props;
     const someBusiness = allBusinesses.map((business, i) => {
       if (i < 3) {
         return (
@@ -67,10 +52,10 @@ class Home extends React.Component {
             description={business.description}
             category={business.category}
           />
-        )
+        );
       }
-    })
-    const divStyle = { color: "white" };
+    });
+    const divStyle = { color: 'white' };
     return (
       <div>
         <div id="jumbotron" className="jumbotron text-center">
@@ -93,7 +78,10 @@ class Home extends React.Component {
                   </Link>
                 </p>
               </div>
-              <SignupForm signUpUsers={signUpUsers} addFlashMessage={addFlashMessage} />
+              <SignupForm
+                signUpUsers={this.props.signUpUsers}
+                addFlashMessage={this.props.addFlashMessage}
+              />
             </div>
           </div>
         </div>
@@ -115,11 +103,11 @@ Home.propTypes = {
   signUpUsers: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
   getAllBusiness: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,  
-}
+  business: PropTypes.array.isRequired
+};
 const mapStateToProps = state => ({
   business: state.allBusinesses.business,
-  auth: state.auth  
-})
+  auth: state.auth
+});
 
 export default connect(mapStateToProps, { signUpUsers, addFlashMessage, getAllBusiness })(Home);

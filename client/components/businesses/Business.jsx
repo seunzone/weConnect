@@ -169,7 +169,7 @@ class Businesses extends React.Component {
                     </div>
                     <div className="form-group col-md-6">
                       <select className="form-control" name="searchKeyType" onChange={this.onChangeThis} required>
-                        <option value="" selected="true" disabled="disabled">Search By</option>
+                        <option value="" selected="true" disabled="disabled">Click to Choose</option>
                         <option value={this.state.name}>Name</option>
                         <option value={this.state.category}>Category</option>
                         <option value={this.state.location}>Location</option>

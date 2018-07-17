@@ -7,6 +7,9 @@
    "plugin:import/warnings",
    "plugin:react/recommended"
  ],
+ "plugins": [
+   "jest"
+ ],
  "env": {
    "node": true,
    "es6": true,

@@ -4,6 +4,7 @@ const initialState = {
   business: [],
   paginate: {}
 };
+
 /**
  * @param {*} state
  *

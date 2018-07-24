@@ -51,6 +51,7 @@
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.7",
     "eventsource-polyfill": "^0.9.6",
+    "expect": "^23.4.0",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "istanbul": "^0.4.5",
@@ -103,6 +104,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.0.6",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
     "eslint": "^4.18.1",
@@ -125,7 +127,7 @@
     "verbose": true,
     "testEnvironment": "node",
     "setupFiles": [
-      "./client/__test__/setup.test.js"
+      "./client/__test__/setup.config.js"
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/__tests__/__mocks__/fileMock.js",

@@ -2,12 +2,11 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
-import moment from 'moment';
 import Buttons from '../businesses/Buttons';
 
 
 const BusinessCard = ({
-  name, image, description, createdAt, category, id, deleteBusiness
+  name, image, description, category, id, deleteBusiness
 }) => {
   const Style = { height: '250px' };
   return (
@@ -34,10 +33,6 @@ const BusinessCard = ({
             <small>
               <span className="text-muted">Category</span> {category}
             </small>
-            <span className="text-muted float-right">
-              Added: &nbsp;
-              {moment(createdAt).format('Do MMMM YYYY')}
-            </span>
           </p>
           <Link align="center" className="btn btn-primary" to={`/business/view/${id}`}>View Details</Link>
           { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} deleteBusiness={deleteBusiness} /> : ''}
@@ -52,12 +47,8 @@ BusinessCard.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  createdAt: PropTypes.string,
   category: PropTypes.string.isRequired,
   deleteBusiness: PropTypes.func
 };
 
-BusinessCard.defaultProps = {
-  createdAt: ''
-};
 export default BusinessCard;

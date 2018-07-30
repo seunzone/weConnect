@@ -1,6 +1,6 @@
 # WEconnect
 
-[![Build Status](https://travis-ci.org/seunzone/weConnect.svg?branch=develop)](https://travis-ci.org/seunzone/weConnect) [![Coverage Status](https://coveralls.io/repos/github/seunzone/weConnect/badge.svg?branch=develop)](https://coveralls.io/github/seunzone/weConnect) [![Maintainability](https://api.codeclimate.com/v1/badges/a5a45a1da4b3a7209757/maintainability)](https://codeclimate.com/github/seunzone/weConnect/maintainability)
+[![Built with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](http://spacemacs.org) [![Build Status](https://travis-ci.org/seunzone/weConnect.svg?branch=develop)](https://travis-ci.org/seunzone/weConnect) [![Coverage Status](https://coveralls.io/repos/github/seunzone/weConnect/badge.svg?branch=develop)](https://coveralls.io/github/seunzone/weConnect) [![Maintainability](https://api.codeclimate.com/v1/badges/a5a45a1da4b3a7209757/maintainability)](https://codeclimate.com/github/seunzone/weConnect/maintainability)
 
 
 ## Application Description

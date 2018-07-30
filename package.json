@@ -13,7 +13,8 @@
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "postinstall": "npm run build",
-    "webpack": "webpack-dev-server -d --config ./webpack.config.dev.js --hot"
+    "webpack": "webpack-dev-server -d --config ./webpack.config.dev.js --hot",
+    "test:client": "jest"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,6 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -51,6 +51,7 @@
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.7",
     "eventsource-polyfill": "^0.9.6",
+    "expect": "^23.4.0",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "istanbul": "^0.4.5",
@@ -96,10 +97,18 @@
     "webpack-hot-middleware": "^2.21.2",
     "webpack-merge": "^4.1.2",
     "webpackbar": "^2.6.1",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "moxios": "^0.4.0",
+    "redux-mock-store": "^1.5.3",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme": "^3.3.0"
   },
   "devDependencies": {
+    "babel-jest": "^23.4.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-react": "^6.24.1",
+    "enzyme-adapter-react-15": "^1.0.6",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -108,6 +117,31 @@
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-react": "^7.7.0",
-    "nodemon": "^1.17.1"
+    "jest": "^23.4.1",
+    "nodemon": "^1.17.1",
+    "react-test-renderer": "^16.4.1",
+    "sinon": "^6.1.3"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "verbose": true,
+    "testEnvironment": "node",
+    "setupFiles": [
+      "./client/__test__/setup.config.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/__tests__/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/client/__tests__/__mocks__/styleMock.js"
+    },
+    "testMatch": [
+      "**/?(*.)(test).js?(x)",
+      "**/__tests__/?(*.)(spec|test).js?(x)"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/client/src/__tests__"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>./server/test/*.js"
+    ]
   }
 }

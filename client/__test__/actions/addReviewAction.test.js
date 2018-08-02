@@ -36,8 +36,6 @@ describe('Add review actions tests', () => {
 
     return store.dispatch(addBusinessReview(id, content))
       .then(() => {
-        console.log(store.getActions());
-        console.log(expectedActions);
         expect(store.getActions()).toEqual(expectedActions);
         done();
       });

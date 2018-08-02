@@ -35,6 +35,7 @@ const BusinessCard = ({
             </small>
           </p>
           <Link align="center" className="btn btn-primary" to={`/business/view/${id}`}>View Details</Link>
+          {/* { window.location.href.split('/')[3] === 'dashboard' ? <Buttons id={id} deleteBusiness={deleteBusiness} /> : ''} */}
           { window.location.href.split('/').splice(-1).toString() === 'dashboard' ? <Buttons id={id} deleteBusiness={deleteBusiness} /> : ''}
         </div>
       </div>

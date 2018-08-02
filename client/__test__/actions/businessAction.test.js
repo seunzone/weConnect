@@ -4,7 +4,6 @@ import * as types from '../../actions/actionType';
 
 import {
   myBusiness,
-  businessDetails,
   allMyBusinesses,
 } from '../__mocks__/businessActionMocks';
 

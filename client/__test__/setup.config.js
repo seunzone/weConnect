@@ -14,3 +14,24 @@ configure({ adapter: new Adapter() });
 // Make Enzyme functions available in all test files without importing
 global.moxios = moxios;
 global.mockStore = mockStore;
+const window = {
+  splice: jest.fn(),
+  location: {
+    href: {
+      split: jest.fn(() => ({
+        splice: jest.fn(() => ({
+          toString: jest.fn()
+        }))
+      }))
+    }
+  }
+};
+
+const document = {
+  getElementById: jest.fn(() => ({
+    click: jest.fn()
+  }))
+};
+
+global.window = window;
+global.document = document;

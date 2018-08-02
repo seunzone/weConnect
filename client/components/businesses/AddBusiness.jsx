@@ -13,7 +13,7 @@ import { saveImageCloudinary } from '../../actions/uploadImageAction';
  *
  * @extends {React.Component}
  */
-class AddNewBusiness extends React.Component {
+export class AddNewBusiness extends React.Component {
   /**
    * @description Creates an instance of AddBusiness
    *

@@ -14,7 +14,7 @@ import HomeFooter from '../extras/HomeFooter';
  *
  * @extends {React.Component}
  */
-class Businesses extends React.Component {
+export class Businesses extends React.Component {
   /**
    * @description Instance of Businesscard
    *

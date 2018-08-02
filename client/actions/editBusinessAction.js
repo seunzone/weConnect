@@ -31,7 +31,7 @@ export function editFailed(error) {
 export const editBusiness = (id, business) => dispatch =>
   axios.put(`/api/v1/businesses/${id}`, business)
     .then(() => {
-      dispatch(editSuccessful(' Business Sucessfully Updated'));
+      dispatch(editSuccessful('Business Sucessfully Updated'));
     })
     .catch(() => {
       dispatch(editFailed('Business failed to update'));

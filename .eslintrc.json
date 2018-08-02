@@ -22,7 +22,8 @@
  "globals": {
    "toastr": true,
    "expect": true,
-   "should": true
+   "should": true,
+   "jest": true
  },
  "rules": {
    "one-var": 0,
@@ -38,6 +39,7 @@
    "import/no-unresolved": [2, { "commonjs": true }],
    "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
    "react/prefer-stateless-function": [2, { "ignorePureComponents": true }],
+   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
    "valid-jsdoc": ["error", {
      "requireReturn": true,
      "requireReturnType": true,

@@ -64,15 +64,6 @@ describe('Component: RegisterBusinessPage', () => {
 
 describe('Connected RegisterBusiness', () => {
   it('should return registered business from state', () => {
-    const addBusiness = {
-      business: {
-        id: 1,
-        title: 'lorem',
-        image: 'image.png',
-        description: 'lorem ipsum dolor',
-        category: 'ict'
-      }
-    };
     const store = mockStore({
       imageInfo: {
         imageUrl: 'image.png'

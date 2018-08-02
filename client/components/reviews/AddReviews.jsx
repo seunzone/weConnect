@@ -8,7 +8,7 @@ import classnames from 'classnames';
  *
  * @extends {React.Component}
  */
-class AddReviews extends React.Component {
+export class AddReviews extends React.Component {
   /**
    * @description Creates an instance of AddReview
    *

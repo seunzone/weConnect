@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
  *
  * @extends {React.Component}
  */
-class Buttons extends Component {
+export class Buttons extends Component {
   render() {
     const { id } = this.props;
     return (

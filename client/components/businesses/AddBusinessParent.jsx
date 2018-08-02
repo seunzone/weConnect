@@ -14,7 +14,7 @@ import { addFlashMessage } from '../../actions/flashMessages';
  *
  * @extends {React.Component}
  */
-class AddBusinessParent extends React.Component {
+export class AddBusinessParent extends React.Component {
   render() {
     const { addBusiness, addFlashMessage } = this.props;
     return (

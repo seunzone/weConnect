@@ -1,7 +1,7 @@
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
-import  { SignupForm } from '../../../components/auth/SignupForm';
+import { SignupForm } from '../../../components/auth/SignupForm';
 
 configure({ adapter: new Adapter() });
 let props;

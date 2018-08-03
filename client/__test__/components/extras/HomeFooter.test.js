@@ -13,6 +13,5 @@ describe('Compnent: HomeFooter', () => {
     expect(wrapper.find('h3').length).toBe(4);
     expect(wrapper.find('img').length).toBe(1);
     expect(wrapper.find('p').length).toBe(3);
-
   });
 });

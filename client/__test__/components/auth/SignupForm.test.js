@@ -5,6 +5,7 @@ import { SignupForm } from '../../../components/auth/SignupForm';
 
 configure({ adapter: new Adapter() });
 let props;
+let context;
 const setup = () => {
   props = {
     params: { id: 5 },
@@ -20,7 +21,12 @@ const setup = () => {
     signUpUsers: jest.fn(() => Promise.resolve()),
     addFlashMessage: jest.fn(() => Promise.resolve())
   };
-  return shallow(<SignupForm {...props} />);
+  context = {
+    router: {
+      history: {}
+    }
+  };
+  return shallow(<SignupForm {...props} />, { context });
 };
 
 const event = {

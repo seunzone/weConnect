@@ -16,7 +16,7 @@ const setup = () => {
     business: [
       {
         id: 1,
-        namee: 'Andela'
+        name: 'Andela'
       }
     ]
   };

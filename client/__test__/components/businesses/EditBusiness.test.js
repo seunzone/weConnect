@@ -34,6 +34,7 @@ const setup = () => {
     editBusiness: jest.fn(() => Promise.resolve()),
     mapStateToProps: jest.fn(() => Promise.resolve()),
     getOneBusiness: jest.fn(() => Promise.resolve()),
+    saveImageCloudinary: jest.fn(() => Promise.resolve()),
   };
   props2 = {
     match: {
@@ -111,5 +112,12 @@ describe('Connected EditBusinessPage', () => {
     const onSubmit = jest.spyOn(wrapper.instance(), 'onSubmit');
     action.onSubmit(event);
     expect(onSubmit).toBeCalled();
+  });
+  it('should call onSubmit function', () => {
+    const wrapper = setup();
+    const action = wrapper.instance();
+    const submitImage = jest.spyOn(wrapper.instance(), 'submitImage');
+    action.submitImage(event);
+    expect(submitImage).toBeCalled();
   });
 });

@@ -1,14 +1,11 @@
 node_modules/
-
 coverage/
-
 .nyc_output
-
 server/dist/
-
 .env
-
 client/dist
 build
-
 .DS_Store
+reports/
+selenium-debug.log
+./bin

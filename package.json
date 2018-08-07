@@ -14,7 +14,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "postinstall": "npm run build",
     "webpack": "webpack-dev-server -d --config ./webpack.config.dev.js --hot",
-    "test:client": "jest"
+    "test:client": "jest",
+    "start:e2e-test": "NODE_ENV=test nodemon server/app.js --exec babel-node",
+    "e2e:test": "NODE_ENV=test npm run test-migrate && ./node_modules/.bin/nightwatch"
   },
   "repository": {
     "type": "git",
@@ -118,6 +120,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-react": "^7.7.0",
     "jest": "^23.4.1",
+    "nightwatch": "^0.9.21",
     "nodemon": "^1.17.1",
     "react-test-renderer": "^16.4.1",
     "sinon": "^6.1.3"

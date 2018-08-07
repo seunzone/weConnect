@@ -84,7 +84,14 @@ npm run dev
 
 ## Testing
 - To run server side test `npm run test`
-- To run client side test `npm run test:client`        
+- To run client side test `npm run test:client`
+
+### Running end to end test
+- Make sure Java SDK is up and running on your device
+- Download Chrome driver [here] (http://chromedriver.chromium.org/downloads)
+- Download Selenium stand alone server [here] (https://www.seleniumhq.org/download)
+- Create a bin folder in the root directory of the project and drop files there
+- run `npm run start:e2e-test` on one terminal and `npm run e2e:test` on another terminal to run end to end test
 
 ## API Routes
 

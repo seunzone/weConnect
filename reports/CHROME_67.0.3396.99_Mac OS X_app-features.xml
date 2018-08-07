@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="1"
+            tests="5">
+
+  <testsuite name="app-features"
+    errors="1" failures="1" hostname="" id="" package="app-features" skipped="0"
+    tests="5" time="54.15" timestamp="Tue, 07 Aug 2018 20:28:51 GMT">
+  
+    <testcase name="should not signup user with incorrect details" classname="app-features" time="12.56" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="User should be able to signup with correct and complete details " classname="app-features" time="8.592" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="User should not be able to login with incomplete details" classname="app-features" time="8.395" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="User login users with right details" classname="app-features" time="8.307" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Authenticated users should be able to create a business " classname="app-features" time="16.30" assertions="4">
+
+    
+
+    
+
+      <failure message="Testing if the URL equals &#34;http://localhost:3000/dashboard&#34;.">    at Object.Authenticated users should be able to create a business  (/Users/andeladeveloper/Documents/weConnect/e2e/app-features.js:71:15)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;input[name=image]&#34; using: css selector
+    at Object.Authenticated users should be able to create a business  (/Users/andeladeveloper/Documents/weConnect/e2e/app-features.js:65:8)
+    at Module.call (/Users/andeladeveloper/Documents/weConnect/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/andeladeveloper/Documents/weConnect/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/andeladeveloper/Documents/weConnect/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/andeladeveloper/Documents/weConnect/node_modules/nightwatch/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/andeladeveloper/Documents/weConnect/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /Users/andeladeveloper/Documents/weConnect/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/Users/andeladeveloper/Documents/weConnect/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/Users/andeladeveloper/Documents/weConnect/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>

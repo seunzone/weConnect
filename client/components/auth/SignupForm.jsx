@@ -149,7 +149,7 @@ export class SignupForm extends React.Component {
                 value={this.state.passwordConfirm}
                 onChange={this.onChange}
               />
-              <button disabled={this.state.isLoading} className="btn btn-warning btn-block">
+              <button disabled={this.state.isLoading} id="signup" className="btn btn-warning btn-block">
                 <i className="fa fa-user-plus" aria-hidden="true" /> Sign
                     Up
               </button>

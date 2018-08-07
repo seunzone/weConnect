@@ -207,7 +207,7 @@ export class AddNewBusiness extends React.Component {
                           id="imgInp"
                           onChange={this.handleImageChange}
                         />
-                        <button onClick={this.submitImage}>
+                        <button id="upload-img" onClick={this.submitImage}>
                           <i className="fa fa-cloud-upload" />
                     Uplaod Image
                         </button>
@@ -230,7 +230,7 @@ export class AddNewBusiness extends React.Component {
                   {errors && <span className="help-block">{errors.description}</span>}
                   <hr />
                   <div className="text-center">
-                    <button className="btn btn-primary">
+                    <button className="btn btn-primary" id="add-business">
                       <i className="fa fa-plus-circle" aria-hidden="true" /> Add
                       Profile
                     </button>

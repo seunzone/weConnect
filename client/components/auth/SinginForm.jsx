@@ -43,7 +43,7 @@ export const SigninForm = ({ onChange, onSubmit, state }) => {
                     error={errors.error ? errors.error.password : ''}
                     onChange={onChange}
                   />
-                  <button className="btn btn-warning btn-block">
+                  <button className="btn btn-warning btn-block" id="signin">
                     <i className="fa fa-sign-in" aria-hidden="true" /> Sign In
                   </button>
                 </form><hr />

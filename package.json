@@ -9,7 +9,7 @@
     "build": "babel server -d server/dist",
     "db-migrate": "sequelize db:migrate",
     "test-migrate": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
-    "test": "set NODE_ENV=test && npm run test-migrate && nyc mocha server/test/**.spec.js --timeout 15000 --compilers js:babel-core/register --exit",
+    "test": "set NODE_ENV=test && npm run test-migrate && nyc mocha server/test/**.spec.js --timeout 50000 --compilers js:babel-core/register --exit",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "postinstall": "npm run build",
@@ -129,10 +129,6 @@
     "setupFiles": [
       "./client/__test__/setup.config.js"
     ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/__tests__/__mocks__/fileMock.js",
-      "\\.(css|less|scss)$": "<rootDir>/client/__tests__/__mocks__/styleMock.js"
-    },
     "testMatch": [
       "**/?(*.)(test).js?(x)",
       "**/__tests__/?(*.)(spec|test).js?(x)"

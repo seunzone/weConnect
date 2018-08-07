@@ -12,7 +12,7 @@ import signupValidator from '../../validation/singupValidation';
  *
  * @extends {React.Component}
  */
-class SignupForm extends React.Component {
+export class SignupForm extends React.Component {
   /**
    * @description Creates an instance of SignupFrom
    *

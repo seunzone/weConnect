@@ -83,7 +83,8 @@ npm run dev
 5. Install postman to test all endpoints
 
 ## Testing
-- run test using `npm run test`    
+- To run server side test `npm run test`
+- To run client side test `npm run test:client`        
 
 ## API Routes
 

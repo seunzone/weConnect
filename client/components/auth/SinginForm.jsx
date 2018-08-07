@@ -8,7 +8,7 @@ import TextFieldGroup from '../common/TextFieldGroup';
  *
  * @extends {React.Component}
  */
-const SigninForm = ({ onChange, onSubmit, state }) => {
+export const SigninForm = ({ onChange, onSubmit, state }) => {
   const { errors } = state;
   const { email, password } = state;
   return (

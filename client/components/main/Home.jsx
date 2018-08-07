@@ -16,7 +16,7 @@ import SignupForm from '../auth/SignupForm';
  *
  * @extends {React.Component}
  */
-class Home extends React.Component {
+export class Home extends React.Component {
   /**
    * @description Before component mounts
    *

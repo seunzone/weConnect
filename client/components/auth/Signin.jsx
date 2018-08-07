@@ -13,7 +13,7 @@ import { addFlashMessage } from '../../actions/flashMessages';
  *
  * @extends {React.Component}
  */
-class Signin extends React.Component {
+export class Signin extends React.Component {
   /**
    * @description Creates an instance of SigninForm
    *

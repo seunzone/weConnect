@@ -16,7 +16,7 @@ import { addFlashMessage } from '../../actions/flashMessages';
  *
  * @extends {React.Component}
  */
-class EditBusinessParent extends React.Component {
+export class EditBusinessParent extends React.Component {
   /**
    * @description Before component mounts
    *

@@ -18,7 +18,7 @@ import { getAllBusiness, deleteBusiness } from '../../actions/businessAction';
  *
  * @extends {React.Component}
  */
-class UserDashboard extends React.Component {
+export class UserDashboard extends React.Component {
   /**
    * @description Instance of UserDashboard
    *

@@ -18,11 +18,11 @@ export default class contactController {
       message: 'Info created successfully',
       Contact: contactInfo
     }))
-    // .catch(() =>
-    //     res.status(500).json({
-    //       status: 'error',
-    //       message: 'Internal server error'
-    //     }));
+    .catch(() =>
+        res.status(500).json({
+          status: 'error',
+          message: 'Internal server error'
+        }));
   }
 
   static getAllInfo(req, res) {

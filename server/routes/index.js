@@ -3,7 +3,6 @@ import User from '../controllers/userController';
 import Business from '../controllers/businessController';
 import Reviews from '../controllers/reviewsController';
 import authLogin from '../middleware/authorize';
-import Contact from '../controllers/contact';
 import {
   verifyInput,
   verifyLenght,
@@ -41,9 +40,6 @@ const routes = (app) => {
     res.status(200)
       .send('Welcome to the weConnect api');
   });
-  // post contact form
-  app.post('/api/v1/contact', Contact.addInfo);
-  app.get('/api/v1/loremdo', Contact.getAllInfo);
 };
 
 export default routes;
